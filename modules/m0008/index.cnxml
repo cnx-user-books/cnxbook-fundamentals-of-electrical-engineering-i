@@ -1,0 +1,174 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Signal Decomposition</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>d362541f-fd79-4dcf-a15b-72943966d8b9</md:uuid>
+</metadata>
+
+  <content>
+    <para id="para1"> 
+      A signal's complexity is not related to how wiggly it
+      is. Rather, a signal expert looks for ways of decomposing a
+      given signal into a <emphasis>sum of simpler signals</emphasis>,
+      which we term the <term>signal decomposition</term>.  Though we
+      will never compute a signal's complexity, it essentially equals
+      the number of terms in its decomposition. In writing a signal as
+      a sum of component signals, we can change the component signal's
+      gain by multiplying it by a constant and by delaying it. More
+      complicated decompositions could contain derivatives or
+      integrals of simple signals. 
+    </para>
+
+    <example id="ex1">  
+      <para id="paraex1">
+	As an example of signal complexity, we can express the pulse  
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>Δ</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	as a sum of delayed unit steps.  
+	<equation id="eq1"> 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>Δ</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">u</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:ci>Δ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Thus, the pulse is a more complex signal than the step. Be
+	that as it may, the pulse is very useful to us.
+      </para>
+    </example>
+
+
+    <exercise id="swsuper">
+      <problem id="idp6803072">
+	<para id="swsupera">
+	  Express a square wave having period   
+	  <m:math>
+	    <m:ci>T</m:ci>
+	  </m:math> and amplitude
+	  <m:math>
+	    <m:ci>A</m:ci>
+	  </m:math>
+	  as a superposition of delayed and amplitude-scaled pulses.
+	</para>
+      </problem>
+
+      <solution id="idm966400">
+	<para id="swsuperb">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+	        <m:ci type="fn">sq</m:ci>
+	        <m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+	        <m:sum/>
+	        <m:bvar>
+	   	  <m:ci>n</m:ci>
+	        </m:bvar>
+	        <m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+	        <m:uplimit>
+		  <m:infinity/>
+	        </m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:ci>A</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mrow>
+			<m:mi>T</m:mi>
+			<m:mo>/</m:mo>
+			<m:mn>2</m:mn>
+		      </m:mrow>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>n</m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>T</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+	        </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="para2">
+      Because the sinusoid is a superposition of two complex
+      exponentials, the sinusoid is more complex. We could not prevent
+      ourselves from the pun in this statement. Clearly, the word
+      "complex" is used in two different ways here. The complex
+      exponential can also be written (using 
+
+      <link document="m0004" target-id="eq3" strength="2">
+	Euler's relation
+      </link>) 
+
+      as a sum of a sine and a cosine. We will discover that virtually
+      every signal can be decomposed into a sum of complex
+      exponentials, and that this decomposition is
+      <emphasis>very</emphasis> useful. Thus, the complex exponential
+      is more fundamental, and Euler's relation does not adequately
+      reveal its complexity.
+    </para>
+
+  </content>
+</document>

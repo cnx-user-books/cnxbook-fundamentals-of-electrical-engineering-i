@@ -1,0 +1,698 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML"> 
+
+  <title>Digital Communication in the Presence of Noise</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0546</md:content-id>
+  <md:title>Digital Communication in the Presence of Noise</md:title>
+  <md:abstract>Several factors of error in digital receivers are discussed.</md:abstract>
+  <md:uuid>6f55169e-24f6-4015-88d0-13a2fbfd3ce9</md:uuid>
+</metadata>
+
+<content>
+
+    <para id="para1">
+      When we incorporate additive noise into our channel model, so
+     that
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">r</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>α</m:ci>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">n</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, errors can creep in.  If the transmitter sent bit
+      <code>0</code> using a <link document="m10280" strength="3">BPSK
+      signal set</link>, the integrators' outputs in the <link document="m0520" target-id="figone" strength="3">matched filter
+      receiver</link> would be:
+
+
+    <equation id="eq0001">
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:int/>
+	    <m:bvar>
+	      <m:ci>t</m:ci>
+	    </m:bvar>
+	    <m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>n</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:uplimit>
+	    <m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:ci>n</m:ci>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:lowlimit>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">r</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>α</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:ci>A</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>n</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">n</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </equation>
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:int/>
+	    <m:bvar>
+	      <m:ci>t</m:ci>
+	    </m:bvar>
+	    <m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>n</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:uplimit>
+	    <m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:ci>n</m:ci>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:lowlimit>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">r</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>α</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:power/>
+		<m:ci>A</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>n</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">n</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </para>
+
+    <para id="para2">
+      It is the quantities containing the noise terms that cause
+      errors in the receiver's decision-making process.  Because they
+      involve noise, the values of these integrals are random
+      quantities drawn from some probability distribution that vary
+      erratically from bit interval to bit interval.  Because the noise
+      has zero average value and has an equal amount of power in all
+      frequency bands, the values of the integrals will hover about
+      zero.  What is important is how much they vary.  If the noise is
+      such that its integral term is more negative than
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:times/>
+	  <m:ci>α</m:ci>
+	  <m:apply>
+	    <m:power/>
+	    <m:ci>A</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>, then the receiver will make an error, deciding that
+      the transmitted zero-valued bit was indeed a one.  The
+      probability that this situation occurs depends on three factors:
+      </para>
+
+    <list id="deepestdepthsofhell">
+      <item>
+	<emphasis>Signal Set Choice</emphasis> — The difference
+	between the signal-dependent terms in the integrators' outputs
+	(equations <link target-id="eq0001" strength="2"/>) defines how
+	large the noise term must be for an incorrect receiver
+	decision to result.  What affects the probability of such
+	errors occurring is the energy in the difference of the received signals in
+	comparison to the noise term's variability. The signal-difference energy equals
+	<m:math display="block">
+	  <m:apply><m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:uplimit><m:ci>T</m:ci></m:uplimit>
+		<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		<m:apply><m:power/>
+		  <m:apply><m:minus/>
+		    <m:apply><m:ci type="fn"><m:msub><m:mi>s</m:mi> <m:mn>1</m:mn></m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply><m:ci type="fn"><m:msub><m:mi>s</m:mi> <m:mn>0</m:mn></m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+      </m:apply>
+	</m:math>
+	For our BPSK baseband signal set, the difference-signal-energy term is
+	<m:math display="inline">
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>4</m:cn>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>α</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>A</m:ci>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>T</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </item>
+      <item>
+	<emphasis>Variability of the Noise Term</emphasis> — We
+	quantify variability by the spectral height of the white noise
+	<m:math>
+	  <m:apply><m:divide/>
+		<m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		<m:cn>2</m:cn>
+      </m:apply>
+    </m:math>
+	added by the channel.
+
+      </item>
+
+      <item>
+	<emphasis>Probability Distribution of the Noise
+	Term</emphasis> — The value of the noise terms relative
+	to the signal terms and the probability of their occurrence
+	directly affect the likelihood that a receiver error will
+	occur.  For the white noise we have been considering, the
+	underlying distributions are Gaussian.  Deriving the following expression for the probability the
+	receiver makes an error on any bit transmission is complicated but can be found at <link document="m16253"/> and <link document="m11406"/>.
+     
+	<equation id="eqn0003">
+	  <m:math>
+	    <m:apply><m:eq/>
+	      <m:ci><m:msub><m:mi>p</m:mi><m:mi>e</m:mi></m:msub></m:ci>
+	      <m:apply><m:ci type="fn">Q</m:ci>
+		    <m:apply><m:root/>
+		      <m:apply><m:divide/>
+	  	        <m:apply><m:int/>
+		          <m:bvar><m:ci>t</m:ci></m:bvar>
+		          <m:uplimit><m:ci>T</m:ci></m:uplimit>
+		          <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		          <m:apply><m:power/>
+		            <m:apply><m:minus/>
+		              <m:apply><m:ci type="fn"><m:msub><m:mi>s</m:mi> <m:mn>1</m:mn></m:msub></m:ci>
+		              <m:ci>t</m:ci>
+		              </m:apply>
+		              <m:apply><m:ci type="fn"><m:msub><m:mi>s</m:mi> <m:mn>0</m:mn></m:msub></m:ci>
+		              <m:ci>t</m:ci>
+		              </m:apply>
+		            </m:apply>
+		            <m:cn>2</m:cn>
+		          </m:apply>
+                </m:apply>
+	            <m:apply><m:times/>
+		          <m:cn>2</m:cn>
+		          <m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+                </m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+	    
+	    <m:mrow>
+	    <m:apply><m:ci type="fn">Q</m:ci>
+	      <m:apply><m:root/>
+		   <m:apply><m:divide/>
+		     <m:apply><m:times/>
+		       <m:cn>2</m:cn>
+		       <m:apply><m:power/>
+		         <m:ci>α</m:ci>
+		         <m:cn>2</m:cn>
+		       </m:apply>
+		       <m:apply><m:power/>
+		         <m:ci>A</m:ci>
+		         <m:cn>2</m:cn>
+		       </m:apply>
+		       <m:ci>T</m:ci>
+		     </m:apply>
+		     <m:ci>
+		       <m:msub>
+		         <m:mi>N</m:mi>
+		         <m:mn>0</m:mn>
+		       </m:msub>
+		     </m:ci>
+		   </m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:mtext>  for the BPSK case</m:mtext>
+	    </m:mrow>
+	  </m:apply>
+	</m:math>
+	</equation>
+	
+	Here 
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">Q</m:ci>
+	    <m:ci>·</m:ci>
+	  </m:apply>
+	</m:math>
+
+	is the integral
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">Q</m:ci>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:root/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>α</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:ci>x</m:ci>
+		</m:lowlimit>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:power/>
+			<m:ci>α</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+	
+	This integral has no closed form expression, but it can be
+	accurately computed.  As <link target-id="fig1001" strength="3"/>
+	illustrates,
+
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">Q</m:ci>
+	    <m:ci>·</m:ci>
+	  </m:apply>
+	</m:math>
+	
+	is a decreasing, very nonlinear function.
+      </item>
+    </list>
+
+    <figure id="fig1001">
+      <media id="id1172310048353" alt="">
+        <image src="../../media/Q.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/Q.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The function
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">Q</m:ci>
+	    <m:ci>x</m:ci>
+	  </m:apply>
+	</m:math>
+
+	is plotted in semilogarithmic coordinates.  Note that it
+	decreases very rapidly for small increases in its arguments.
+	For example, when <m:math display="inline"><m:ci>x</m:ci></m:math> increases from
+	<m:math display="inline"><m:cn>4</m:cn></m:math> to <m:math display="inline"><m:cn>5</m:cn></m:math>,
+
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">Q</m:ci>
+	    <m:ci>x</m:ci>
+	  </m:apply>
+	</m:math>
+
+	decreases by a factor of <m:math display="inline"><m:cn>100</m:cn></m:math>.
+      </caption>
+    </figure>
+
+    <para id="para3"> 
+      The term 
+      <m:math display="inline">
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:power/>
+	    <m:ci>A</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>
+
+      equals the energy expended by the transmitter in sending the
+      bit; we label this term
+
+      <m:math display="inline">
+	<m:ci>
+	  <m:msub>
+	    <m:mi>E</m:mi>
+	    <m:mi>b</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>.  We arrive at a concise expression for the
+      probability the matched filter receiver makes a bit-reception
+      error.
+      
+      <equation id="eq0008">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>e</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:ci type="fn">Q</m:ci>
+	      <m:apply>
+		<m:root/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>α</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>E</m:mi>
+			<m:mi>b</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>N</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>  
+      </equation>
+      
+      <link target-id="fig1002" strength="3"/> shows how the receiver's
+      error rate varies with the signal-to-noise ratio
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:divide/>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>α</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>E</m:mi>
+		<m:mi>b</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>N</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <figure id="fig1002">
+      <media id="id1418422" alt="">
+        <image src="../../media/Pe.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/Pe.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The probability that the matched-filter receiver makes an
+	error on any bit transmission is plotted against the
+	signal-to-noise ratio of the received signal.  The upper curve
+	shows the performance of the FSK signal set, the lower (and
+	therefore better) one the BPSK signal set.
+      </caption>
+    </figure>
+
+    <exercise id="exer1">
+      <problem id="id6086153">
+	<para id="prob1">
+	  Derive the probability of error expression for the modulated
+	  BPSK signal set, and show that its performance identically
+	  equals that of the baseband BPSK signal set.
+	</para>
+      </problem>
+      
+      <solution id="id1172300582613">
+	<para id="sol1">
+	  The noise-free integrator outputs differ by  
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>α</m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:ci>A</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:math>, the factor of two smaller value than in the
+	  baseband case arising because the sinusoidal signals have
+	  less energy for the same amplitude.  Stated in terms of
+
+	  <m:math display="inline">
+	    <m:ci>
+	      <m:msub>
+		<m:mi>E</m:mi>
+		<m:mi>b</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>, the difference equals
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:ci>α</m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>E</m:mi>
+		  <m:mi>b</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:math>
+	  
+	  just as in the baseband case.
+	</para>
+      </solution>
+    </exercise> 
+
+  </content>
+</document>

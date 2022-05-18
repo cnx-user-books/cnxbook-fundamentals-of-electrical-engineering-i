@@ -1,0 +1,488 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Ideal Circuit Elements</title>
+
+  <metadata>
+  <md:content-id>m0012</md:content-id><md:title>Ideal Circuit Elements</md:title>
+  <md:abstract>This module provides examples of the elementary circuit elements; the resistor,
+the capacitor,and the inductor, which provide linear relationships between voltage 
+and current.
+</md:abstract>
+  <md:uuid>5546cc75-f108-46da-94f6-0eeddb981647</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1"> 
+      The elementary circuit elements—the resistor,
+      capacitor, and inductor— impose <term>linear</term>
+      relationships between voltage and current.
+    </para>
+
+    <section id="res">
+      <title>Resistor</title>
+
+      <figure id="fig1">
+	<title>Resistor</title>
+	<media id="id1168946705592" alt="">
+          <image src="../../media/resistor.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/resistor.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>Resistor.  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>v</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>R</m:ci>
+		<m:ci>i</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</caption>
+      </figure>
+
+      <para id="para2">
+	The resistor is far and away the simplest circuit element. In
+	a resistor, the voltage is proportional to the current, with
+	the constant of proportionality
+	<m:math>
+	  <m:ci>R</m:ci> </m:math>, known as the
+	<term>resistance</term>.
+	<m:math display="block">
+	  <m:apply><m:eq/>
+	    <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+	    <m:apply><m:times/>
+	      <m:ci>R</m:ci>
+	      <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	Resistance has units of ohms, denoted
+	by <m:math><m:ci>Ω</m:ci></m:math>, named for the German
+	electrical scientist <link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Ohm.html">Georg
+	Ohm</link>.  Sometimes, the <emphasis>v-i</emphasis> relation
+	for the resistor is written
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>i</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>G</m:ci>
+	      <m:ci>v</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+	with  
+	<m:math>
+	  <m:ci>G</m:ci>
+	</m:math>, 
+	the <term>conductance</term>, equal to 
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>R</m:ci>
+	  </m:apply>
+	</m:math>.
+	Conductance has units of Siemens (S), and is named for the
+	German electronics industrialist	
+	<link url="http://w4.siemens.de/archiv/en/persoenlichkeiten/werner_von_siemens.html">Werner von Siemens</link>.
+      </para>
+      
+      <para id="para2a">
+      When resistance is positive, as it is in most cases, a resistor consumes power.
+      A resistor's instantaneous power consumption can be written one of two ways.
+      <m:math display="block">
+        <m:apply><m:eq/>
+          <m:apply><m:ci type="fn">p</m:ci><m:ci>t</m:ci></m:apply>
+          <m:apply><m:times/>
+	        <m:ci>R</m:ci>
+	        <m:apply><m:power/>
+              <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+	          <m:cn>2</m:cn>
+	        </m:apply>
+	      </m:apply>
+          <m:apply><m:times/>
+	        <m:apply><m:divide/>
+	          <m:cn>1</m:cn>
+	          <m:ci>R</m:ci>
+	        </m:apply>
+	        <m:apply><m:power/>
+              <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+	          <m:cn>2</m:cn>
+	        </m:apply>
+	      </m:apply>
+        </m:apply>
+      </m:math>
+      </para>
+      
+      <para id="para3">
+	As the resistance approaches infinity, we have what is known
+	as an <term>open circuit</term>: No current flows but a
+	non-zero voltage can appear across the open circuit. As the
+	resistance becomes zero, the voltage goes to zero for a
+	non-zero current flow. This situation corresponds to a
+	<term>short circuit</term>. A superconductor physically
+	realizes a short circuit.
+      </para>
+    </section>
+
+
+    <section id="cap">
+      <title>Capacitor</title>
+
+      <figure id="fig2">
+	<title>Capacitor</title>
+	<media id="id1168941588488" alt="">
+          <image src="../../media/capacitor.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/capacitor.eps" mime-type="application/postscript"/>
+        </media>
+	<caption> Capacitor.
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>i</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>C</m:ci>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">v</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</caption>
+      </figure>
+
+
+      <para id="para4">
+	The capacitor stores charge and the relationship between the charge stored and the resultant voltage is	
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>q</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>C</m:ci>
+	      <m:ci>v</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+	The constant of proportionality, the
+	capacitance, has units of farads (F), and is named for the
+	English experimental physicist <link url="http://www.iee.org.uk/publish/faraday/faraday1.html">Michael
+	Faraday</link>.
+	As current is the rate of change of charge,
+	the <emphasis>v-i</emphasis> relation can be
+	expressed in differential or integral form.
+
+	<equation id="eqn1">
+	  <m:math>
+	  <m:mrow>
+	    <m:apply><m:eq/>
+	      <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+	      <m:apply><m:times/>
+		    <m:ci>C</m:ci>
+		    <m:apply><m:diff/>
+		      <m:bvar><m:ci>t</m:ci></m:bvar>
+		      <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+		    </m:apply>
+	      </m:apply>
+	    </m:apply>
+
+
+	    <m:mtext>  or  </m:mtext>
+	    
+	    <m:apply><m:eq/>
+	      <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>	      
+	      <m:apply><m:times/>
+		    <m:apply><m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+		    <m:apply><m:int/>
+		      <m:bvar><m:ci>α</m:ci></m:bvar>
+		      <m:lowlimit>
+                <m:apply><m:minus/>
+		          <m:infinity/>
+		        </m:apply>
+		      </m:lowlimit>
+		      <m:uplimit><m:ci>t</m:ci></m:uplimit>
+		      <m:apply><m:ci type="fn">i</m:ci><m:ci>α</m:ci></m:apply>
+		    </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:mrow>
+	  </m:math>	  
+	</equation>
+    If the voltage across a capacitor is
+	constant, then the current flowing into it equals zero. In
+	this situation, the capacitor is equivalent to an open
+	circuit.
+	The power consumed/produced by a voltage applied to a capacitor depends on the product of the voltage and its derivative.
+	<m:math display="block">
+	  <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">p</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:ci>C</m:ci>
+		  <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+		  <m:apply><m:diff/>
+		    <m:bvar><m:ci>t</m:ci></m:bvar>
+		    <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+		  </m:apply>
+        </m:apply>
+	  </m:apply>
+	</m:math>
+	This result means that a capacitor's total energy expenditure up to time
+	<m:math><m:ci>t</m:ci></m:math>
+	is concisely given by
+	<m:math display="block">
+	  <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">E</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+            <m:cn>2</m:cn>
+          </m:apply>
+          <m:ci>C</m:ci>
+          <m:apply><m:power/>
+            <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+            <m:cn>2</m:cn>
+          </m:apply>
+        </m:apply>
+	  </m:apply>
+	</m:math>
+	This expression presumes the <term>fundamental assumption</term> of circuit theory:
+	<emphasis>all voltages and currents in any circuit were zero in the far distant past</emphasis>
+	(<m:math>
+	  <m:apply><m:eq/>
+	    <m:ci>t</m:ci>
+	    <m:apply><m:minus/><m:infinity/></m:apply>
+	  </m:apply>
+	</m:math>).
+    </para>
+    </section>
+
+    
+    <section id="ind">
+      <title>Inductor</title>
+
+      <figure id="fig3">
+	<title>Inductor</title>
+	<media id="id1168948908602" alt="">
+          <image src="../../media/inductor.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/inductor.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>Inductor.
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>v</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>L</m:ci>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">i</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</caption>
+      </figure>
+      
+      <para id="para5"> 
+	The inductor stores magnetic flux, with larger valued
+	inductors capable of storing more flux. Inductance has units
+	of henries (H), and is named for the American physicist
+	<link url="http://www.si.edu/archives//ihd/jhp/">Joseph Henry</link>. 
+	The differential and integral forms of the inductor's <emphasis>v-i</emphasis>
+	relation are
+	
+	<equation id="eqn2">
+	  <m:math>
+	  <m:mrow>
+	    <m:apply><m:eq/>
+	      <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+	      <m:apply><m:times/>
+		    <m:ci>L</m:ci>
+		    <m:apply><m:diff/>
+		      <m:bvar><m:ci>t</m:ci></m:bvar>
+		      <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+		    </m:apply>
+	      </m:apply>
+	    </m:apply>
+
+	    <m:mtext>  or  </m:mtext>
+	    
+	    <m:apply><m:eq/>
+	      <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>	      
+	      <m:apply><m:times/>
+		    <m:apply><m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>L</m:ci>
+		    </m:apply>
+		    <m:apply><m:int/>
+		      <m:bvar><m:ci>α</m:ci></m:bvar>
+		      <m:lowlimit>
+		        <m:apply><m:minus/><m:infinity/></m:apply>
+		      </m:lowlimit>
+		      <m:uplimit><m:ci>t</m:ci></m:uplimit>
+		      <m:apply><m:ci type="fn">v</m:ci><m:ci>α</m:ci></m:apply>
+		    </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:mrow>
+	  </m:math>
+	</equation>
+	The power consumed/produced by an inductor depends on the product of the inductor current and its derivative
+	<m:math display="block">
+	  <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">p</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:ci>L</m:ci>
+		  <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+		  <m:apply><m:diff/>
+		    <m:bvar><m:ci>t</m:ci></m:bvar>
+		    <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+		  </m:apply>
+        </m:apply>
+	  </m:apply>
+	</m:math>
+	and its total energy expenditure up to time
+	<m:math><m:ci>t</m:ci></m:math>
+	is given by
+	<m:math display="block">
+	  <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">E</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+            <m:cn>2</m:cn>
+          </m:apply>
+          <m:ci>L</m:ci>
+          <m:apply><m:power/>
+            <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+            <m:cn>2</m:cn>
+          </m:apply>
+        </m:apply>
+	  </m:apply>
+	</m:math>
+      </para>
+    </section>
+
+
+    <section id="Sources">
+      <title>Sources</title>
+      
+      <figure id="fig4" orient="horizontal">
+	<title>Sources</title>
+	<subfigure id="vsource">
+	  <media id="id6460911" alt="">
+            <image src="../../media/vsource.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/vsource.eps" mime-type="application/postscript"/>
+          </media>
+	</subfigure>
+	<subfigure id="csource">
+	  <media id="id7398135" alt="">
+            <image src="../../media/isource.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/isource.eps" mime-type="application/postscript"/>
+          </media>
+	</subfigure>
+	<caption> 
+	  The voltage source on the left and current source on the
+	  right are like all circuit elements in that they have a
+	  particular relationship between the voltage and current
+	  defined for them. For the voltage source,
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>v</m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:math> 
+	  for any current  
+	  <m:math><m:ci>i</m:ci></m:math>; 
+	  for the current source,   
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>i</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>
+		  <m:msub>		  
+		    <m:mi>i</m:mi> 
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+	  for any voltage <m:math><m:ci>v</m:ci></m:math>.
+	</caption>
+      </figure>
+
+
+      <para id="para6"> 
+	Sources of voltage and current are also circuit elements, but
+	they are not linear in the strict sense of linear systems. For
+	example, the voltage source's <emphasis>v-i</emphasis>
+	relation is
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>v</m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>s</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:math>
+	regardless of what the current might be.  As for the current
+	source,
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>i</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	regardless of the voltage. Another name for a constant-valued
+	voltage source is a battery, and can be purchased in any
+	supermarket. Current sources, on the other hand, are much
+	harder to acquire; we'll learn why later.
+      </para>
+    </section>
+  </content>
+</document>

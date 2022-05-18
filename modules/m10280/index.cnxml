@@ -1,0 +1,560 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+  
+  <title>Binary Phase Shift Keying</title>
+
+  <metadata>
+  <md:content-id>m10280</md:content-id><md:title>Binary Phase Shift Keying</md:title>
+  <md:abstract>Introduces a method for representing bits with an analog signal known as binary phase shift keying.</md:abstract>
+  <md:uuid>eed1c63e-9733-4294-9cb6-f27db06efc92</md:uuid>
+</metadata>
+
+<content>
+    
+    <para id="para1">
+      A commonly used example of a signal set consists of pulses that
+      are negatives of each other (<link target-id="fig1000"/>).
+
+      <equation id="eq0000">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>T</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mi>T</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+    <figure id="fig1000">
+      <media id="id5107847" alt="">
+        <image src="../../media/sig26.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig26.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+      Here, we have a baseband signal set suitable for wireline
+      transmission. The entire bit stream 
+
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">b</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>
+
+      is represented by a sequence of these signals. Mathematically,
+      the transmitted signal has the form
+
+      <equation id="eq0001">
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar><m:ci>n</m:ci></m:bvar>
+	      <m:domainofapplication>
+		<m:ci>n</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		  <m:apply>
+                    <m:power/>
+                    <m:apply><m:minus/><m:cn>1</m:cn></m:apply>
+                    <m:apply><m:ci type="fn">b</m:ci><m:ci>n</m:ci></m:apply>
+                  </m:apply>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		   <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mi>T</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>n</m:ci>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      and graphically <link target-id="fig1001" strength="3"/> shows what
+      a typical transmitted signal might be.
+    </para>
+    
+
+    <figure id="fig1001" orient="vertical">
+      <subfigure id="sub1100">
+	<media id="id5108008" alt="">
+          <image src="../../media/sig27.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig27.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure>
+      <subfigure id="sub1101">
+	<media id="id5108023" alt="">
+          <image src="../../media/sig29.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig29.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure>
+      <caption>The upper plot shows how a baseband signal set for
+	transmitting the bit sequence <code>0110</code>. The lower one
+	shows an amplitude-modulated variant suitable for wireless
+	channels. 
+      </caption>
+    </figure>
+    
+
+    <para id="para1.2">
+      This way of representing a bit stream---changing the bit changes
+      the sign of the transmitted signal---is known as <term>binary
+      phase shift keying</term> and abbreviated BPSK. The name comes from concisely expressing this popular way of communicating digital information. The word "binary" is clear
+      enough (one binary-valued quantity is transmitted during a bit
+      interval). Changing the sign of sinusoid amounts to
+      changing---shifting---the phase by <m:math><m:pi/></m:math>
+      (although we don't have a sinusoid yet). The word "keying"
+      reflects back to the first electrical communication system, which happened to be digital as well: the telegraph.
+    </para>
+
+    <para id="para2">
+      The <term>datarate</term> <m:math><m:ci>R</m:ci></m:math> of a
+      digital communication system is how frequently an information
+      bit is transmitted. In this example it equals the reciprocal of
+      the bit interval:
+
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>R</m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>T</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Thus, for a 1 Mbps (megabit per second)
+      transmission, we must have
+      <m:math>
+        <m:apply><m:eq/>
+           <m:ci>T</m:ci>
+           <m:apply><m:times/>
+             <m:cn>1</m:cn><m:ci>μs</m:ci>
+           </m:apply>
+        </m:apply>
+      </m:math>. 
+    </para>
+
+    <para id="para2.1"> The choice of signals to represent bit values
+    is arbitrary to some degree. Clearly, we do not want to choose
+    signal set members to be the same; we couldn't distinguish bits if
+    we did so. We could also have made the negative-amplitude pulse
+    represent a 0 and the positive one a 1. This choice is indeed
+    arbitrary and will have no effect on performance
+    <emphasis>assuming </emphasis>the receiver knows which signal
+    represents which bit. As in all communication systems, we design
+    transmitter and receiver together.  </para>
+
+  <para id="para2.2">
+    A simple signal set for both wireless and wireline channels
+      amounts to amplitude modulating a baseband signal set (more
+      appropriate for a wireline channel) by a carrier having a
+      frequency harmonic with the bit interval.
+    </para>
+
+    <equation id="eq0002"> 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msub>
+		<m:mi>s</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>A</m:ci>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>T</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sin/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>k</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </equation>
+    <para id="missing_para">
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msub>
+		<m:mi>s</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>T</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    <m:apply>
+	      <m:sin/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>k</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:apply>
+	   </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+     </para>
+
+    <figure id="fig1002">
+      <media id="id5113587" alt="">
+        <image src="../../media/sig28.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig28.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+
+    <exercise id="exer1">
+      <problem id="id5113605">
+	<para id="prob1">
+	What is the value of <m:math><m:ci>k</m:ci></m:math> in this example?
+        </para>
+      </problem>
+ 
+     <solution id="id5113624">
+	<para id="sol1">  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>k</m:ci>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="para3">
+      This signal set is also known as a BPSK signal set. We'll
+      show later that indeed both signal sets provide identical performance
+      levels when the signal-to-noise ratios are equal.
+    </para>
+    
+    <exercise id="exer2">
+      <problem id="id5113675">
+	<para id="prob2">
+	Write a formula, in the style of the <link document="m0542" target-id="fig0001" strength="2">baseband signal set</link>, for
+	the transmitted signal as shown in the <link document="m0542" target-id="fig1001" strength="2">plot of the baseband signal
+	set</link> that emerges when we use this modulated signal.
+	</para>
+      </problem>
+
+      <solution id="id5113716">
+	<para id="sol2">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>n</m:ci></m:bvar>
+		<m:domainofapplication>
+		  <m:ci>n</m:ci>
+	      </m:domainofapplication>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+                    <m:power/>
+                    <m:apply><m:minus/><m:cn>1</m:cn></m:apply>
+                    <m:apply><m:ci type="fn">b</m:ci><m:ci>n</m:ci></m:apply>
+                  </m:apply>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>T</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>n</m:ci>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>k</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="para3.1">
+    What is the transmission bandwidth of these signal sets?  We need
+      only consider the baseband version as the second is an
+      amplitude-modulated version of the first. The bandwidth is
+      determined by the bit sequence.  If the bit sequence is
+      constant—always 0 or always 1—the transmitted signal
+      is a constant, which has zero bandwidth. The
+      worst-case—bandwidth consuming—bit sequence is the
+      alternating one shown in <link target-id="fig1003" strength="3"/>. In this case, the transmitted signal is a square
+      wave having a period of
+
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:cn>2</m:cn>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>.
+    </para>
+
+
+    <figure id="fig1003">
+      <media id="id2747800" alt="">
+        <image src="../../media/sig30.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig30.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+      Here we show the transmitted waveform corresponding to an
+      alternating bit sequence. </caption>
+    </figure>
+
+
+    <para id="para3.2">
+      From our work in Fourier series, we know that this signal's
+      spectrum contains odd-harmonics of the fundamental, which here
+      equals
+
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:cn>1</m:cn>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>2</m:cn>
+	    <m:ci>T</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Thus, strictly speaking, the signal's bandwidth is
+      infinite. In practical terms, we use the 90%-power bandwidth to
+      assess the effective range of frequencies consumed by the
+      signal. The first and third harmonics contain that fraction of
+      the total power, meaning that the effective bandwidth of our
+      baseband signal is
+
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:cn>3</m:cn>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>2</m:cn>
+	    <m:ci>T</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+
+      or, expressing this quantity in terms of the datarate,
+
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>3</m:cn>
+	    <m:ci>R</m:ci>
+	  </m:apply>
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math>. Thus, a digital communications signal requires more
+      bandwidth than the datarate: a 1 Mbps baseband system
+      requires a bandwidth of at least 1.5 MHz. Listen carefully
+      when someone describes the transmission bandwidth of digital
+      communication systems: Did they say "megabits" or "megahertz"?
+    </para>
+
+
+    <exercise id="exer3">
+      <problem id="id2747913">
+	<para id="prob3">
+	  Show that indeed the first and third harmonics contain 90%
+	  of the transmitted power. If the receiver uses a front-end
+	  filter of bandwidth
+
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>3</m:cn>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, what is the total harmonic distortion of the
+	  received signal?
+	</para>
+      </problem>
+
+      <solution id="id2747953">
+	<para id="sol3">
+	  The harmonic distortion is 10%.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <exercise id="exer4">
+      <problem id="id2747977">
+	<para id="prob4">
+	  What is the 90% transmission bandwidth of the modulated signal set?
+	</para>
+      </problem>
+
+      <solution id="id2747992">
+	<para id="sol4">
+	  Twice the baseband bandwidth because both positive and
+	  negative frequencies are shifted to the carrier by the
+	  modulation:
+	  
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>3</m:cn>
+	      <m:ci>R</m:ci>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+  </content>
+</document>

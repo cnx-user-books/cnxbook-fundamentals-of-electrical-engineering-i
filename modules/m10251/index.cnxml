@@ -1,0 +1,1052 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML"> 
+  
+  <title>Discrete-Time Systems in the Time-Domain</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10251</md:content-id>
+  <md:title>Discrete-Time Systems in the Time-Domain</md:title>
+  <md:abstract>Discrete-time systems allow for mathematically specified processes like the difference equation.</md:abstract>
+  <md:uuid>98d31d74-35de-470e-9fcb-17bf516993a6</md:uuid>
+</metadata>
+
+<content>
+    
+    <para id="p1">
+      A discrete-time signal 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">s</m:ci><m:ci>n</m:ci>
+	</m:apply>
+      </m:math>
+      
+      is <emphasis>delayed</emphasis> by 
+      <m:math>
+	<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+      </m:math>
+      
+      samples when we write 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci>n</m:ci>
+	    <m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>, with
+      
+      <m:math>
+	<m:apply>
+	  <m:gt/>
+	  <m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>.  Choosing
+
+      <m:math>
+	<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+      </m:math>
+
+      to be negative advances the signal along the integers. As
+      opposed to <link document="m0006" target-id="delay">analog
+      delays</link>, discrete-time delays can
+      <emphasis>only</emphasis> be integer valued. In the frequency
+      domain, delaying a signal corresponds to a linear phase shift of
+      the signal's discrete-time Fourier transform:
+
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>↔</m:mo></m:ci>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>n</m:ci>
+	      <m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	    </m:apply> 
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+		  <m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">S</m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/><m:cn>2</m:cn><m:pi/><m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    
+    <para id="p2"> 
+      <emphasis>Linear</emphasis> discrete-time systems have the
+      superposition property.  
+
+      <equation id="eq1">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">S</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      A discrete-time system is called <term>shift-invariant</term>
+      (analogous to <link document="m0006" target-id="para4wra">time-invariant analog systems</link>) if
+      delaying the input delays the corresponding output.
+       If 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">S</m:ci>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>, then a shift-invariant system has the property
+
+      <equation id="eq2">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">S</m:ci>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>n</m:ci>
+		  <m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:ci><m:msub><m:mi>n</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+      </equation>
+
+      We use the term shift-invariant to emphasize that delays can only have
+      integer values in discrete-time, while in analog signals, delays can
+      be arbitrarily valued.  
+    </para> 
+
+    <para id="p3">
+      We want to concentrate on systems that are both linear and
+      shift-invariant. It will be these that allow us the full power of
+      frequency-domain analysis and implementations.  Because we have no
+      physical constraints in "constructing" such systems, we
+      need only a mathematical specification. In analog systems, the
+      differential equation specifies the input-output relationship in the
+      time-domain. The corresponding discrete-time specification is the
+      <term>difference equation</term>.  
+
+      <equation id="eq3"> 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci><m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci><m:ci>p</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		<m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub></m:ci>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci><m:ci>q</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Here, the output signal 
+      <m:math>
+	<m:apply><m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+      </m:math> 
+      is related to its <emphasis>past</emphasis> values 
+      
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">y</m:ci>
+	  <m:apply><m:minus/><m:ci>n</m:ci><m:ci>l</m:ci></m:apply>
+	</m:apply>
+      </m:math>, 
+      
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>l</m:ci>
+	  <m:set>
+	    <m:cn>1</m:cn>
+	    <m:ci>…</m:ci>
+	    <m:ci>p</m:ci></m:set>
+	</m:apply>
+      </m:math>, and to the current and past values of the input signal
+      
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">x</m:ci><m:ci>n</m:ci>
+	</m:apply>
+      </m:math>.
+      
+      The system's characteristics are determined by the choices for the
+      number of coefficients <m:math><m:ci>p</m:ci></m:math> and 
+      <m:math><m:ci>q</m:ci></m:math> and the coefficients' values
+      <m:math>
+	<m:set>
+	  <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	  <m:ci>…</m:ci>
+	  <m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+	</m:set>
+      </m:math> 
+
+      and
+
+      <m:math>
+	<m:set>
+	  <m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	  <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	  <m:ci>…</m:ci>
+	  <m:ci><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub></m:ci>
+	</m:set>
+      </m:math>.
+      
+      <note id="id1167981578278" type="aside">There is an asymmetry in the coefficients:
+	where is
+        <m:math display="inline">
+           <m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+        </m:math>?  This coefficient would multiply the
+        <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+	    </m:apply>
+         </m:math>
+        term in <link target-id="eq3" strength="2"/>. We have essentially
+	divided the equation by it, which does not change the
+	input-output relationship. We have thus created the convention
+	that
+        <m:math>
+           <m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+        </m:math> is always one.
+      </note>
+    </para> 
+
+    <para id="p4">
+      As opposed to differential equations, which only provide an
+      <emphasis>implicit</emphasis> description of a system (we must somehow
+      solve the differential equation), difference equations provide an
+      <emphasis>explicit</emphasis> way of computing the output for any
+      input. We simply express the difference equation by a program that
+      calculates each output from the previous output values, and the
+      current and previous inputs.
+    </para>
+
+    <para id="intro">
+      Difference equations are usually expressed in software with
+      <emphasis>for</emphasis> loops.  A MATLAB program that would
+      compute the first 1000 values of the output has the form 
+    
+    <code id="id6160078" display="block">
+      for n=1:1000
+          y(n) = sum(a.*y(n-1:-1:n-p)) + sum(b.*x(n:-1:n-q));
+      end
+    </code>
+      An important detail emerges when we consider making this program
+      work; in fact, as written it has (at least) two bugs. What input
+      and output values enter into the computation of
+      <m:math display="inline">
+      	  <m:apply>
+	    <m:ci type="fn">y</m:ci><m:cn>1</m:cn>
+	  </m:apply>
+      </m:math>?  We need values for
+      <m:math display="inline">
+      	  <m:apply>
+	    <m:ci type="fn">y</m:ci><m:cn>0</m:cn>
+	  </m:apply>
+      </m:math>,
+      <m:math display="inline">
+      	  <m:apply>
+	    <m:ci type="fn">y</m:ci><m:cn>-1</m:cn>
+	  </m:apply>
+      </m:math>, ..., values we have not yet computed.  To compute
+      them, we would need more previous values of the output, which we
+      have not yet computed.  To compute these values, we would need
+      even earlier values, ad infinitum.  The way out of this
+      predicament is to specify the system's <term>initial
+      conditions</term>: we must provide the
+      <m:math><m:ci>p</m:ci></m:math> output values that
+      occurred before the input started.  These values can be
+      arbitrary, but the choice does impact how the system responds to
+      a given input.  <emphasis>One</emphasis> choice gives rise to a
+      linear system: Make the initial conditions zero.  The reason
+      lies in the definition of a <link document="m0006" target-id="linearsys" strength="3">linear system</link>: The only
+      way that the output to a sum of signals can be the sum of the
+      individual outputs occurs when the initial conditions in each
+      case are zero.
+    </para>
+
+    
+    <exercise id="exer1">
+      <problem id="id1167983191705">
+	<para id="prob1">
+	  The initial condition issue resolves making sense of the
+	  difference equation for inputs that start at some index.
+	  However, the program will not work because of a programming,
+	  not conceptual, error.  What is it?  How can it be "fixed?" 
+	</para>
+      </problem>
+
+      <solution id="id7080705">
+	<para id="soln1">
+	  The indices can be negative, and this condition is not
+	  allowed in  MATLAB.  To fix it, we must start the signals
+	  later in the array. 
+	</para>
+      </solution>
+    </exercise>
+
+    <example id="p0">
+      <para id="exp1">
+	Let's consider the simple system having 
+	<m:math>
+	  <m:apply><m:eq/><m:ci>p</m:ci><m:cn>1</m:cn></m:apply>
+	</m:math> 
+	and 
+	<m:math>
+	  <m:apply><m:eq/><m:ci>q</m:ci><m:cn>0</m:cn></m:apply>
+	</m:math>.
+	
+	<equation id="eq1b"> 
+	  <m:math>
+	    <m:apply>
+              <m:eq/>
+                <m:apply>
+	          <m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+	        </m:apply>
+	        <m:apply>
+	         <m:plus/>
+	           <m:apply>
+		     <m:times/>
+		       <m:ci>a</m:ci>
+		       <m:apply>
+		         <m:ci type="fn">y</m:ci>
+		         <m:apply>
+		           <m:minus/><m:ci>n</m:ci><m:cn>1</m:cn>
+		         </m:apply>
+		       </m:apply>
+	           </m:apply>
+	           <m:apply>
+		     <m:times/>
+		       <m:ci>b</m:ci>
+		       <m:apply>
+		         <m:ci type="fn">x</m:ci><m:ci>n</m:ci>
+		       </m:apply>
+	           </m:apply>
+	         </m:apply>
+              </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+      <para id="p1b"> 
+	To compute the output at some index, this difference equation
+	says we need to know what the previous output 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:apply><m:minus/><m:ci>n</m:ci><m:cn>1</m:cn></m:apply>
+	  </m:apply>
+	</m:math> 
+	
+	and what the input signal is at that moment of time. In more
+	detail, let's compute this system's output to a unit-sample
+	input:
+	
+	<m:math>
+	  <m:apply><m:eq/>
+	    <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+	    <m:apply><m:ci type="fn">δ</m:ci><m:ci>n</m:ci></m:apply>
+	  </m:apply>
+	</m:math>.  Because the input is zero for negative indices, we
+	start by trying to compute the output at
+        <m:math>
+          <m:apply>
+             <m:eq/>
+               <m:ci>n</m:ci>
+               <m:cn>0</m:cn>
+          </m:apply>
+        </m:math>. 
+
+	<equation id="eq2b">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply><m:ci type="fn">y</m:ci><m:cn>0</m:cn></m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>a</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:cn>-1</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:ci>b</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	What is the value of
+        <m:math>
+         <m:apply>
+           <m:ci type="fn">y</m:ci>
+           <m:apply><m:minus/><m:cn>1</m:cn></m:apply>
+         </m:apply>
+        </m:math>?  Because we have used an input that is zero for all
+	negative indices, it is reasonable to assume that the output
+	is also zero. Certainly, the difference equation would not
+	describe a <link document="m0006" target-id="linearsys" strength="2">linear system</link> if the input that is
+	zero for <emphasis>all</emphasis> time did not produce a zero
+	output. With this assumption,
+
+	<m:math> 
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:cn>-1</m:cn>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>, leaving
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply><m:ci type="fn">y</m:ci><m:cn>0</m:cn></m:apply>
+	    <m:ci>b</m:ci>
+	  </m:apply>
+	</m:math>.  For
+      <m:math>
+	<m:apply>
+	  <m:gt/>
+	  <m:ci>n</m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+	</m:math>, the input unit-sample is zero, which leaves us with
+	the difference equation
+
+	<m:math>
+	  <m:apply>
+	    <m:forall/>
+	    <m:bvar><m:ci>n</m:ci></m:bvar>
+	    <m:condition>
+	      <m:apply><m:gt/><m:ci>n</m:ci><m:cn>0</m:cn></m:apply>
+	    </m:condition>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>a</m:ci>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:apply><m:minus/><m:ci>n</m:ci><m:cn>1</m:cn></m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  We can envision how the filter responds to this
+	input by making a table.
+
+	<equation id="eq3b">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci><m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>a</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:apply><m:minus/><m:ci>n</m:ci><m:cn>1</m:cn></m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>b</m:ci>
+		  <m:apply>
+		  <m:ci type="fn">δ</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+
+      <table id="fig1000" frame="all" summary="">
+	  <tgroup cols="3" align="left" colsep="1" rowsep="1">
+	    <thead valign="top">
+	      <row>
+		<entry>
+		  <m:math><m:ci>n</m:ci></m:math>
+		</entry>
+		<entry>
+		  <m:math>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:math>
+		</entry>
+		<entry>
+		  <m:math>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply></m:math>
+		</entry>
+	      </row>
+	    </thead>
+	    <tbody valign="top">
+	      <row>
+		<entry>
+		  <m:math><m:apply><m:minus/><m:cn>1</m:cn></m:apply></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>1</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:ci>b</m:ci></m:math>
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  <m:math><m:cn>1</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math>
+                   <m:apply><m:times/><m:ci>b</m:ci><m:ci>a</m:ci></m:apply>
+                  </m:math>
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  <m:math><m:cn>2</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:apply>
+		      <m:times/>
+		      <m:ci>b</m:ci>
+		      <m:apply><m:power/><m:ci>a</m:ci><m:cn>2</m:cn></m:apply>
+		    </m:apply>
+		  </m:math>
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  :
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  :
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  <m:math><m:ci>n</m:ci></m:math>
+		</entry>
+		<entry>
+		  <m:math><m:cn>0</m:cn></m:math>
+		</entry>
+		<entry>
+		  <m:math> 
+		    <m:apply><m:times/>
+		      <m:ci>b</m:ci>
+		      <m:apply><m:power/><m:ci>a</m:ci><m:ci>n</m:ci></m:apply>
+		    </m:apply>
+		  </m:math>
+		</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+
+
+      <para id="p15">
+	Coefficient values determine how the output behaves. The
+	parameter <m:math><m:ci>b</m:ci></m:math> can be any value,
+	and serves as a gain. The effect of the parameter
+	<m:math><m:ci>a</m:ci></m:math> is more complicated (<link target-id="fig1000" strength="2"/>).  If it equals zero, the
+	output simply equals the input times the gain
+	<m:math><m:ci>b</m:ci></m:math>.  For all non-zero values of
+	<m:math><m:ci>a</m:ci></m:math>, the output lasts forever;
+	such systems are said to be <term>IIR</term>
+	(<emphasis>I</emphasis>nfinite <emphasis>I</emphasis>mpulse
+	<emphasis>R</emphasis>esponse). The reason for this
+	terminology is that the unit sample also known as the impulse
+	(especially in analog situations), and the system's response
+	to the "impulse" lasts forever. If
+	<m:math><m:ci>a</m:ci></m:math> is positive and less than one,
+	the output is a decaying exponential. When
+	<m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>a</m:ci>
+	  <m:cn>1</m:cn>
+	</m:apply>
+      </m:math>, the output is a unit step. If
+	<m:math><m:ci>a</m:ci></m:math> is negative and greater than
+	<m:math><m:apply><m:minus/><m:cn>1</m:cn></m:apply></m:math>,
+	the output oscillates while decaying exponentially. When
+	<m:math>
+	  <m:apply>
+	  <m:eq/>
+	  <m:ci>a</m:ci>
+	  <m:apply>
+	    <m:minus/>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:apply>
+	</m:math>, the output changes sign forever, alternating
+	between <m:math><m:ci>b</m:ci></m:math> and
+	<m:math><m:apply><m:minus/><m:ci>b</m:ci></m:apply></m:math>.
+	More dramatic effects when
+	<m:math>
+	  <m:apply>
+	  <m:gt/>
+	  <m:apply>
+	    <m:abs/>
+	    <m:ci>a</m:ci>
+	  </m:apply>
+	  <m:cn>1</m:cn>
+	</m:apply>
+	</m:math>; 
+	whether positive or negative, the output signal becomes larger
+	and larger, <emphasis>growing</emphasis> exponentially.  
+      </para>
+
+      <figure id="fig1001">
+	<media id="id2976292" alt="">
+          <image src="../../media/sig21.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig21.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	The input to the simple example system, a unit sample, is
+	  shown at the top, with the outputs for several system
+	  parameter values shown below.
+	</caption>
+      </figure>
+
+      <para id="p25">Positive values of <m:math><m:ci>a</m:ci></m:math> are used in
+	population models to describe how population size increases
+	over time. Here, <m:math><m:ci>n</m:ci></m:math> might
+	correspond to generation. The difference equation says that
+	the number in the next generation is some multiple of the
+	previous one. If this multiple is less than one, the
+	population becomes extinct; if greater than one, the
+	population flourishes. The same difference equation also
+	describes the effect of compound interest on deposits. Here,
+	<m:math><m:ci>n</m:ci></m:math> indexes the times at which
+	compounding occurs (daily, monthly, etc.),
+	<m:math><m:ci>a</m:ci></m:math> equals the compound interest
+	rate plus one, and
+	<m:math>
+	  <m:apply><m:eq/><m:ci>b</m:ci><m:cn>1</m:cn></m:apply>
+	</m:math> 
+	(the bank provides no gain). In signal processing
+	applications, we typically require that the output remain bounded for
+	any input. For our example, that means that we restrict 
+	<m:math>
+	  <m:apply><m:lt/>
+	  <m:apply><m:abs/>
+	    <m:ci>a</m:ci>
+	  </m:apply>
+	  <m:cn>1</m:cn>
+	</m:apply>
+	</m:math> 
+	and choose values for it and the gain according to the application. 
+      </para></example>
+    
+
+    <exercise id="exer1b">
+      <problem id="id1875126"> 
+	<para id="probpara1">
+	  Note that the <link target-id="eq3" strength="2">difference
+	  equation</link>,
+	  
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		    <m:apply>
+		      <m:ci type="fn">y</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci><m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+		    <m:apply>
+		      <m:ci type="fn">y</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci><m:ci>p</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		    <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci><m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub><m:mi>b</m:mi><m:mn>q</m:mn></m:msub></m:ci>
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci><m:ci>q</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  
+	  does not involve terms like 
+	  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:apply>
+		<m:plus/><m:ci>n</m:ci><m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+
+	  or 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:apply>
+		<m:plus/><m:ci>n</m:ci><m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> on the equation's right side. Can such terms also
+	  be included? Why or why not?
+	</para>
+      </problem>
+
+      <solution id="id8761413">
+	<para id="solp1">
+	  Such terms would require the system to know what future
+	  input or output values would be before the current value was
+	  computed. Thus, such terms can cause difficulties.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <figure id="fig1002">
+      <media id="id6260981" alt="">
+        <image src="../../media/sig22.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig22.eps" mime-type="application/postscript"/>
+      </media> 
+      <caption>The plot shows the unit-sample response of a length-5
+	boxcar filter.</caption>
+    </figure>                                    
+
+    <example id="ex2001"> 
+      <para id="para1"> 
+	A somewhat different system has no "<m:math><m:ci>a</m:ci></m:math>"
+        coefficients. Consider the difference equation
+
+	<equation id="eq0003"> 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>q</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:ci>q</m:ci>
+		      </m:apply>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+	</equation>
+
+	Because this system's output depends only on current and previous
+	input values, we need not be concerned with initial conditions. When
+	the input is a unit-sample, the output equals 
+	
+	<m:math>
+	  <m:apply>
+	    <m:divide/><m:cn>1</m:cn><m:ci>q</m:ci>
+	  </m:apply>
+	</m:math> 
+	for 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>n</m:ci>
+	    <m:set>
+	      <m:cn>0</m:cn>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:minus/> <m:ci>q</m:ci> <m:cn>1</m:cn>
+	      </m:apply>
+	    </m:set>
+	  </m:apply>
+	</m:math>, then equals zero thereafter. Such systems are said
+	to be <term>FIR</term> (<emphasis>F</emphasis>inite
+	<emphasis>I</emphasis>mpulse <emphasis>R</emphasis>esponse)
+	because their unit sample responses have finite
+	duration. Plotting this response (<link target-id="fig1002" strength="3"/>) shows that the unit-sample response is a pulse
+	of width <m:math><m:ci>q</m:ci></m:math> and height
+	
+	<m:math>
+	  <m:apply>
+	    <m:divide/> <m:cn>1</m:cn> <m:ci>q</m:ci>
+	  </m:apply>
+	</m:math>. 
+	
+	This waveform is also known as a boxcar, hence the name
+	<term>boxcar filter</term> given to this system. We'll derive
+	its frequency response and develop its filtering
+	interpretation in the next section. For now, note that the
+	difference equation says that each output value equals the
+	<emphasis>average</emphasis> of the input's current and
+	previous values. Thus, the output equals the running average
+	of input's previous <m:math><m:ci>q</m:ci></m:math>
+	values. Such a system could be used to produce the average
+	weekly temperature (<m:math>
+	  <m:apply>
+	    <m:eq/> <m:ci>q</m:ci> <m:cn>7</m:cn>
+	  </m:apply>
+	</m:math>) that could be updated daily.  
+      </para>
+    </example><para id="element-913"><media id="id1167983206960" alt=""><labview src="DiscreteTimeSys.llb" viname="Discrete Time System.vi" version="8.0" mime-type="application/x-labviewrpvi80" height="625" width="375"><param name="lvfppviname" value="Discrete Time System.vi"/></labview></media>
+</para>   
+
+
+  </content>
+</document>

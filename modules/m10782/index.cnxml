@@ -1,0 +1,81 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Channel Coding</title>
+  <metadata>
+  <md:content-id>m10782</md:content-id><md:title>Channel Coding</md:title>
+  <md:abstract>(Blank Abstract)</md:abstract>
+  <md:uuid>83d261eb-a086-4f0c-ad33-0e01af91337a</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">
+      We can, to some extent, <emphasis>correct </emphasis>errors made
+      by the receiver with only the error-filled bit stream emerging
+      from the digital channel available to us. The idea is for the
+      transmitter to send not only the symbol-derived bits emerging
+      from the source coder but also additional bits derived from the
+      coder's bit stream.  These additional bits, <emphasis>the
+      error correcting bits</emphasis>, help the receiver determine if
+      an error has occurred in the data bits (the important bits) or
+      in the error-correction bits. Instead of the <link document="m0102" target-id="digmc" strength="2">communication
+      model</link> shown previously, the transmitter inserts a
+      <term>channel coder</term> before analog modulation, and the
+      receiver the corresponding channel decoder (<link target-id="errcorr" strength="2"/>). This block diagram shown there forms the
+      <term>Fundamental Model of Digital Communication</term>.
+    </para>
+    <figure id="errcorr" orient="horizontal"> 
+      <media id="id8077954" alt="">
+        <image src="../../media/sys22-7141.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys22.eps" mime-type="application/postscript"/>
+      </media> 
+      <caption>To correct errors that occur in the
+      digital channel, a channel coder and decoder are added to the
+      communication system.  Properly designed channel coding can
+      greatly reduce the probability (from the uncoded value of
+	<m:math>
+	  <m:ci><m:msub>
+	      <m:mi>p</m:mi>
+	      <m:mi>e</m:mi>
+	    </m:msub></m:ci>
+	</m:math>)
+	that a data bit 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">b</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math> is received incorrectly even when the probability of        
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">c</m:ci>
+	    <m:ci>l</m:ci>
+	  </m:apply>
+	</m:math>
+	be received in error remains  
+	<m:math>
+	  <m:ci><m:msub>
+	      <m:mi>p</m:mi>
+	      <m:mi>e</m:mi>
+	    </m:msub></m:ci>
+	</m:math>
+	or becomes larger.  This system forms the Fundamental Model of
+	Digital Communication.</caption>
+    </figure>
+
+    <para id="para2">
+      Shannon's <link document="m0073" strength="3">Noisy Channel
+	Coding Theorem</link> says that if the data aren't
+	transmitted too quickly, that error correction codes exist
+	that can correct <emphasis>all</emphasis> the bit errors
+	introduced by the channel.  Unfortunately, Shannon did not
+	demonstrate an error correcting code that would achieve this
+	remarkable feat; in fact, no one has found such a code.
+	Shannon's result proves it exists; seems like there is always
+	more work to do.  In any case, that should not prevent us from
+	studying commonly used error correcting codes that not only
+	find their way into all digital communication systems, but
+	also into CDs and bar codes used on merchandise.
+    </para>
+
+  </content>
+  
+</document>

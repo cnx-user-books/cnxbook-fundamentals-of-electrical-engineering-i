@@ -1,0 +1,576 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Modulated Communication</title>
+
+  <metadata>
+  <md:content-id>m0518</md:content-id><md:title>Modulated Communication</md:title>
+  <md:abstract>An introduction to frequency and amplitude modulation.</md:abstract>
+  <md:uuid>3a96b3c2-d0bf-4b86-a0d3-9f17f923ce19</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">
+      Especially for wireless channels, like commercial radio and
+      television, but also for wireline systems like cable television,
+      an analog message signal must be <term>modulated</term>: The
+      transmitted signal's spectrum occurs at much higher frequencies
+      than those occupied by the signal.
+
+      <note id="id1168555715384" type="Point of Interest"><label>Point of Interest</label>
+	We use analog communication techniques for analog message
+	signals, like music, speech, and television.  Transmission and
+	reception of analog signals using analog results in an
+	inherently noisy received signal (assuming the channel adds
+	noise, which it almost certainly does).
+      </note>
+
+      The key idea of modulation is to affect the amplitude, frequency
+      or phase of what is known as the <term>carrier</term>
+      sinusoid.  Frequency modulation (FM) and less frequently used
+      phase modulation (PM) are not discussed here; we focus on
+      amplitude modulation (AM).  The amplitude modulated message
+      signal has the form
+
+      <equation id="eqn0000">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci><m:msub>
+		  <m:mi>A</m:mi>
+		  <m:mi>c</m:mi>
+		</m:msub></m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>  
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci><m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation> where
+      <m:math>
+	<m:ci><m:msub>
+	    <m:mi>f</m:mi>
+	    <m:mi>c</m:mi>
+	  </m:msub></m:ci>
+      </m:math>
+      is the <term>carrier frequency</term> and
+      <m:math>
+	<m:ci><m:msub>
+	    <m:mi>A</m:mi>
+	    <m:mi>c</m:mi>
+	  </m:msub></m:ci>
+      </m:math>
+      the <term>carrier amplitude</term>.  Also, the signal's
+      amplitude is assumed to be less than one:
+      <m:math>
+	<m:apply>
+	  <m:lt/>
+	  <m:apply>
+	    <m:abs/>
+	    <m:apply>
+	      <m:ci type="fn">m</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:cn>1</m:cn>
+	</m:apply>
+      </m:math>.  From our previous exposure to amplitude modulation
+      (see the <link document="m0046" target-id="ampmod" strength="3">Fourier Transform example</link>), we know that the
+      transmitted signal's spectrum occupies the frequency range
+      <m:math>
+	<m:interval>
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+	    <m:ci>W</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+	    <m:ci>W</m:ci>
+	  </m:apply>
+	</m:interval>
+      </m:math>, assuming the signal's bandwidth is
+      <m:math><m:mi>W</m:mi></m:math> Hz (see the <link target-id="fig1000" strength="3">figure</link>).  The carrier
+      frequency is usually much larger than the signal's highest
+      frequency:
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>≫</m:mo></m:ci>
+	  <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+	  <m:ci>W</m:ci>
+	</m:apply>
+      </m:math>, which means that the transmitter antenna and carrier
+      frequency are chosen jointly during the design process.
+    </para>
+
+    <figure id="fig1000" orient="horizontal"> 
+      <media id="id1168559742133" alt="">
+        <image src="../../media/sys18.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys18.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The AM coherent receiver along with the spectra of key
+	signals is shown for the case of a triangular-shaped signal
+	spectrum. The dashed line indicates the white noise level. Note that
+	the filters' characteristics — cutoff frequency and
+	center frequency for the bandpass filter — must be match to
+	the modulation and message parameters.
+      </caption>
+    </figure>
+
+    <para id="p2">
+      Ignoring the attenuation and noise introduced by the channel for
+      the moment, reception of an amplitude modulated signal is quite
+      easy (see <link document="m10350" target-id="i12" strength="3"/>).
+      The so-called <term>coherent</term> receiver multiplies the
+      input signal by a sinusoid and lowpass-filters the result (<link target-id="fig1000" strength="3"/>).
+
+      <equation id="eqn0001">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn"><m:mover>
+		  <m:mi>m</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover></m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">LPF</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci><m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>c</m:mi>
+		      </m:msub></m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">LPF</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub>
+		    <m:mi>A</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub></m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:ci type="fn">m</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>  
+		<m:apply>
+		  <m:power/>
+		  <m:apply> 
+		    <m:cos/> 
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub></m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>  
+	    </m:apply>         
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Because of our trigonometric identities, we know that
+      <equation id="eqn2">
+	<m:math>
+	  <m:apply><m:eq/>
+	    <m:apply><m:power/>
+	      <m:apply><m:cos/> 
+		<m:apply><m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:cn>2</m:cn>
+		    <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply> 
+	</m:math>
+      </equation>
+      At this point, the message signal is multiplied by a constant
+      and a sinusoid at twice the carrier frequency.  Multiplication by
+      the constant term returns the message signal to baseband (where
+      we want it to be!) while multiplication by the double-frequency
+      term yields a very high frequency signal.  The lowpass filter
+      removes this high-frequency signal, leaving only the baseband
+      signal.  Thus, the received signal is
+
+      <equation id="eqn0003">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:mover><m:mi>m</m:mi><m:mo>^</m:mo></m:mover>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci><m:msub><m:mi>A</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+		<m:cn>2</m:cn> 
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+      </equation>
+    </para>
+
+    <exercise id="exer1">
+      <problem id="id1168554818550">
+	<para id="prob">
+	  This derivation relies solely on the time domain; derive the
+	  same result in the frequency domain. You won't need the
+	  trigonometric identity with this approach.
+	</para>
+      </problem>
+      <solution id="id1168557727794">
+	<para id="sol">
+	  The signal-related portion of the transmitted spectrum is
+	  given by
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">M</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>f</m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">M</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>f</m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply> 
+	  </m:math>.
+	  Multiplying at the receiver by the carrier shifts this
+	  spectrum to
+	  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+	    </m:apply>
+	  </m:math>
+	  and to
+	  <m:math>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+	    </m:apply>
+	  </m:math>, and scales the result by half.
+	  <equation id="eqn0004">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">X</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+			<m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>c</m:mi>
+			  </m:msub></m:ci>
+		      </m:apply>
+		    </m:apply> 
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">X</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>f</m:ci>
+			<m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>c</m:mi>
+			  </m:msub></m:ci>
+		      </m:apply>
+		    </m:apply> 
+		  </m:apply>
+		</m:apply><!-- first term -->    
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:ci type="fn">M</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>f</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:ci><m:msub>
+				<m:mi>f</m:mi>
+				<m:mi>c</m:mi>
+			      </m:msub></m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">M</m:ci>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>    
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:ci type="fn">M</m:ci>
+			<m:apply>
+			  <m:plus/>
+			  <m:ci>f</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:ci><m:msub>
+				<m:mi>f</m:mi>
+				<m:mi>c</m:mi>
+			      </m:msub></m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">M</m:ci>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply><!-- second term -->
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">M</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:ci><m:msub>
+			      <m:mi>f</m:mi>
+			      <m:mi>c</m:mi>
+			    </m:msub></m:ci>
+			</m:apply> 
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">M</m:ci>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">M</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>f</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:ci><m:msub>
+			      <m:mi>f</m:mi>
+			      <m:mi>c</m:mi>
+			    </m:msub></m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply><!-- third term -->
+	      </m:apply>
+	    </m:math>
+	  </equation>
+	  The signal components centered at twice the carrier frequency
+	  are removed by the lowpass filter, while the baseband signal  
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">M</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:math>
+	  emerges.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="last">
+      Because it is so easy to remove the constant term by electrical
+      means—we insert a capacitor in series with the receiver's
+      output—we typically ignore it and concentrate on the signal
+      portion of the receiver's output when calculating
+      signal-to-noise ratio.
+    </para>
+
+  </content>
+</document>

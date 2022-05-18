@@ -1,0 +1,3875 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 3558 125 3742 198 
+%%Title: sig32.eps
+%%Creator: Canvas 
+%%CreationDate: Saturday, July 18, 1998
+%%DocumentProcSets: Deneba_CanvasCustomColors
+%%+ Deneba_CanvasGraphics
+%%DocumentFonts: Helvetica
+%%DocumentSuppliedFonts: 
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%Copyright: (C) 1996 Deneba Systems. All Rights Reserved
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Deneba_CanvasGraphics
+%%Title: Deneba standard graphics
+%%Version: 1.0
+%%CreationDate: 10/1/94
+%%Copyright: (C) 1994 Deneba Systems. All Rights Reserved
+userdict /Deneba_CanvasGraphics 300 dict put
+Deneba_CanvasGraphics begin
+/invalidcolortable? true def   
+/level2 /languagelevel where {pop languagelevel 2 ge}{false} ifelse def
+/initialize
+{Deneba_CanvasGraphics
+{dup xcheck{bind}if pop pop}forall
+currentscreen /_sp exch def /_sa exch def /_sf exch def
+/DefaultScreen{_sf _sa /_sp load}def
+/DefaultScreenProc{ /_sp load}def
+/setstrokeadjust where{pop true}{false}ifelse
+{
+	/sa /setstrokeadjust load def
+	/li /lineto load def
+	/mt /moveto load def
+	/ct /curveto load def
+	/lh { currentpoint exch pop lineto}bind def
+	/lv { currentpoint pop exch lineto}bind def}
+{
+/sa
+{
+	{/_xl
+	{transform
+	.25 sub round .25 add exch
+	.25 sub round .25 add exch
+	itransform
+	}bind def
+	/li{ _xl lineto}bind def
+	/mt{ _xl moveto}bind def
+	/ct{ _xl curveto}bind def
+	/lh { dup _xl pop currentpoint exch pop lineto}bind def
+	/lv { dup _xl pop currentpoint pop exch lineto}bind def
+	/rp{_xl/cv_b xdf/cv_r xdf
+	_xl/cv_t xdf/cv_l xdf
+	cv_l cv_t moveto
+	cv_r cv_t lineto
+	cv_r cv_b lineto
+	cv_l cv_b lineto
+	closepath
+	}def}
+	{/li{lineto} def
+	/mt{moveto} def
+	/ct{curveto} def
+	/lh{currentpoint exch pop lineto}def
+	/lv{currentpoint pop exch lineto}def
+	/rp
+	{/cv_b xdf/cv_r xdf
+	/cv_t xdf/cv_l xdf
+	cv_l cv_t moveto
+	cv_r cv_t lineto
+	cv_r cv_b lineto
+	cv_l cv_b lineto
+	closepath}def}ifelse}def
+}ifelse
+}def
+/terminate
+{
+currentdict Deneba_CanvasGraphics eq{end}if}def
+/mxMax 8 def
+/mxStk [mxMax {matrix} repeat]def
+/mxIdx 0 def
+/stm{mxStk mxIdx get currentmatrix pop
+/mxIdx mxIdx 1 add store}def
+/rtm{/mxIdx mxIdx 1 sub store
+mxStk mxIdx get setmatrix}def
+/_cvmtx matrix def
+/_txtmtx matrix def
+/_initmtx matrix def
+/xdf{exch def}def
+/min{2 copy gt{exch}if pop}def
+/max{2 copy lt{exch}if pop}def
+/CVvec 256 array def
+/T true def
+/F false def
+/_id 0 def
+/_encodindex 0 def
+/_encodArr 10 array def
+/_fd 0 def
+/_textSave null def
+/_letterSpace 0 def
+/_spaceXtra 0 def
+/_PageSave null def
+/_penh 1.0 def
+/_penv 1.0 def
+/save0 null def
+/_w 0 def
+/_h 0 def
+/st0 null def
+/st1 null def
+/st2 null def
+/st3 null def
+/st4 null def
+/stb 256 string def
+/pw 0 def
+/wdif 0 def
+/temp 0 def
+/currot 0 def
+/savehandler null def
+/debug
+{dup /$eps exch not def{/savehandler errordict /handleerror get def
+errordict
+/handleerror{$error begin
+newerror{/newerror false def
+showpage
+72 72 scale
+/Helvetica findfont .2 scalefont setfont
+.25 9.6 moveto
+(Error: )show
+errorname
+{dup type/stringtype ne
+{(converted error name will end up in this string)cvs}if
+show}exec
+.25 9.4 moveto
+(Offending Command: )show
+/command load
+{dup type/stringtype ne
+{(converted command name will end up in this string)cvs}if
+show}exec
+.25 9.2 moveto
+(Stack: )show
+ostack
+{.25 currentpoint .2 sub exch pop moveto
+dup type/stringtype ne{dup type/integertype eq
+1 index type/realtype eq or
+1 index type/nametype eq or
+not {type}if
+(converted stack will end up in this string)cvs}if
+show}forall
+showpage
+Deneba_CanvasGraphics /savehandler get exec}if
+end}put}if}def
+/lc{setlinecap}def
+/lj{setlinejoin}def
+/lm{setmiterlimit}def
+/lf{setflat}def
+/cp{closepath}def
+/np{newpath}def
+/$psz 6 array def
+/$pix 0 def
+/gs{gsave $psz dup $pix _penh put $pix 1 add _penv put /$pix $pix 2 add def}def
+/gr{grestore/$pix $pix 2 sub def $psz dup $pix get /_penh exch def $pix 1 add get /_penv exch def}def
+/li{lineto} def
+/lh{currentpoint exch pop lineto}def
+/lv{currentpoint pop exch lineto}def
+/mt{moveto} def
+/mh{currentpoint exch pop moveto}def
+/mv{currentpoint pop exch moveto}def
+/ct{curveto} def
+/rt{4 -2 roll moveto
+dup 0 exch rlineto
+exch 0 rlineto
+neg 0 exch rlineto
+closepath}def
+/_hr
+{
+{/@err false def currentflat dup{gsave{eoclip}stopped{grestore 2 mul dup setflat dup 200 ge{(%% Canvas:Clip failed\r)print /@err true def pop exit}if}{grestore setflat exit}ifelse}loop @err not {eoclip}if setflat}
+{/@err false def currentflat dup{gsave{clip}stopped{grestore 2 mul dup setflat dup 200 ge{(%% Canvas:Clip failed\r)print /@err true def pop exit}if}{grestore setflat exit}ifelse}loop @err not {clip}if setflat}
+}def
+/_cs null def
+/fg{$eps{systemdict /setgray get exec}{setgray}ifelse}def
+/setcmykcolor where {pop true}{false}ifelse
+{/f4{ setcmykcolor}def}{/f4{1 sub 4 1 roll 3{3 index add neg dup 0 lt{pop 0}if 3 1 roll}repeat setrgbcolor pop}def}ifelse
+/setcolorspace where {pop true}{false}ifelse
+{/scs{ dup setcolorspace /_cs exch def}def/f3{ _cs setcolorspace setcolor}def
+}{/f3{ setrgbcolor}def/scs{ pop}def}ifelse
+/$cc 5 array def
+/findcmykcustomcolor where {pop true}{false}ifelse
+not {/findcmykcustomcolor{$cc astore}def}if
+/setcustomcolor where {pop true}{false}ifelse
+not{
+/setcmykcolor where {pop true}{false}ifelse
+	{/setcustomcolor{exch aload pop pop 4{4 index mul 4 1 roll}repeat setcmykcolor pop}def}
+	{/setcustomcolor{exch aload pop pop 4{4 index mul 4 1 roll}repeat 1 sub 4 1 roll 3{3 index add neg dup 0 lt{pop 0}if 3 1 roll}repeat setrgbcolor pop pop}def}ifelse
+}if
+/fc{6 1 roll findcmykcustomcolor exch setcustomcolor}def
+/setseparationgray where {pop true}{false}ifelse
+not{/setseparationgray {systemdict /setgray get exec} def}if
+/sg{ setseparationgray}def
+/sp{/_penv xdf/_penh xdf}def
+/rp
+{/cv_b xdf/cv_r xdf
+/cv_t xdf/cv_l xdf
+cv_l cv_t moveto
+cv_r cv_t lineto
+cv_r cv_b lineto
+cv_l cv_b lineto
+closepath}def
+/rr{/yradius xdf
+/xradius xdf
+/cv_b xdf
+/cv_r xdf
+/cv_t xdf
+/cv_l xdf
+cv_l xradius add cv_t moveto
+cv_r xradius sub cv_t lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+1 0 1 1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_r cv_b yradius sub lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+0 1 -1 1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_l xradius add cv_b lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+-1 0 -1 -1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_l cv_t yradius add lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+0 -1 1 -1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+closepath}def
+/ep{_cvmtx currentmatrix pop
+translate
+scale
+1 0 moveto
+0 0 1 0 360 arc
+closepath
+_cvmtx setmatrix}def
+/wd{_cvmtx currentmatrix pop
+translate
+scale
+0 0 moveto
+0 0 1 5 -2 roll arcn
+closepath
+_cvmtx setmatrix}def
+/as{_cvmtx currentmatrix pop
+translate
+scale
+0 0 1 5 -2 roll arcn
+_cvmtx setmatrix}def
+/ds
+{_penv _penh ne dup{stm _penh dup 0 le{pop 1}if _penv dup 0 le{pop 1}if scale}{_penh setlinewidth}ifelse stroke {rtm}if}def
+/df{fill}def
+/de{eofill}def
+/_gstk 5 array def
+/_gstkc 0 def
+/_gst{ 9 dict begin level2{/_ccs currentcolorspace def /_cc [currentcolor] def}{/_cc [currentrgbcolor]def}ifelse {currentpoint}stopped {/_cp null def}{ 2 array astore /_cp exch def}ifelse /_cf currentfont def
+/_clw currentlinewidth def /_clc currentlinecap def /_clj currentlinejoin def /_cml currentmiterlimit def currentdict end}def
+/hs{newpath gsave stm}def
+/hc{/_hr load exch get exec newpath}def
+/he{_gstk _gstkc _gst put /_gstkc _gstkc 1 add store 
+grestore rtm /_gstkc _gstkc 1 sub store _gstk _gstkc get level2{dup /_ccs get setcolorspace dup /_cc get aload pop setcolor}{dup /_cc get aload pop setrgbcolor}ifelse dup /_cp get dup null eq 
+not{aload pop moveto}{pop}ifelse dup /_cf get setfont
+dup/_clw get setlinewidth dup/_clc get setlinecap dup/_clj get setlinejoin dup/_cml get setmiterlimit pop}def
+/id{ /_id xdf}def
+/_imatrix{_w 0 0 _h _id 0 ne{neg 0 _h}{0 0}ifelse _cvmtx astore}def
+% Copyright (C) 1990, 1991 by Adobe Systems Incorporated.
+% All rights reserved.
+level2 { save /dontloadlevel1 xdf }if
+/startnoload{{/noload save def} if}def
+/endnoload{{noload restore}if }def
+/testsystemdict{where{systemdict eq{true}{false}ifelse}{false}ifelse}def
+/ncolors 1 def
+/colorimage where{pop true}{false}ifelse{/ncolors 0
+statusdict begin 
+/processcolors where{pop pop processcolors}{/deviceinfo where{pop deviceinfo /Colors known
+{pop {deviceinfo /Colors get}}if}if}ifelse end def
+ncolors 0 ne{/colorimage testsystemdict
+/setcolortransfer testsystemdict
+/currentcolortransfer testsystemdict
+/currentcmykcolor testsystemdict
+and and and not{/ncolors 0 def}if}if}if
+ncolors dup 1 ne exch dup 3 ne exch 4 ne and and {/ncolors 0 def}if
+ncolors 1 eq dup dup not startnoload
+{/doclutimage{[{255 mul round cvi bwclut exch get 255 div} /exec load dup currenttransfer exch] 
+cvx bind settransfer _w _h 8 _imatrix {currentfile st0 readhexstring pop}image}def}if
+not endnoload
+ncolors dup 3 eq exch 4 eq or
+dup dup not startnoload
+{/nullproc{{}}def/concatutil{/exec load
+7 -1 roll /exec load}def
+/defsubclut
+{1 add getinterval def}def
+/spconcattransfer   
+{/Dclut exch def/Cclut exch def/Bclut exch def/Aclut exch def/ncompute exch ld
+currentcolortransfer
+[{Aclut ncompute}concatutil] cvx
+[{Bclut ncompute}concatutil] cvx
+[{Cclut ncompute}concatutil] cvx
+[{Dclut ncompute}concatutil] cvx
+setcolortransfer}def
+/setuprgbcluts
+{/bit3x rgbclut length 3 sub def
+/bit1x bit3x 3 idiv def/rclut rgbclut def
+/gclut rclut 1 bit3x defsubclut/bclut rclut 2 bit3x defsubclut}def}if not  
+endnoload ncolors 3 eq dup dup not startnoload
+{/3compute{exch bit3x mul
+round cvi get 255 div}def
+/doclutimage{%/rgbclut xdf pop 
+setuprgbcluts/3compute rclut gclut bclut dup
+spconcattransfer _w _h 8 _imatrix
+[{currentfile st0 readhexstring pop}/exec load
+/dup load dup]cvx
+nullproc nullproc true 3 colorimage}def}if not endnoload ncolors 4 eq dup dup not startnoload
+{/stuffclut{cmykindex 3 -1 roll put}def
+/ftoint{1 exch sub 255 mul round cvi}def
+/4compute { exch bit4x mul round cvi get 255 div } def
+/computecmykclut{setuprgbcluts/bit4x rgbclut length 3 idiv 4 mul 4 sub def
+/cmykclut bit4x 4 add string def
+/cclut cmykclut def
+/mclut cclut 1 bit4x defsubclut
+/yclut cclut 2 bit4x defsubclut
+/kclut cclut 3 bit4x defsubclut
+/cmykindex 0 def
+0 1 bit1x
+{dup /cmykindex exch bit1x exch sub 4 mul def
+3 mul dup rclut exch get 255 div exch dup gclut exch get 255 div
+exch bclut exch get 255 div
+setrgbcolor currentcmykcolor
+ftoint kclut stuffclut
+ftoint yclut stuffclut
+ftoint mclut stuffclut
+ftoint cclut stuffclut
+}for}def
+/doclutimage{invalidcolortable?{computecmykclut}if
+/4compute cclut mclut yclut kclut spconcattransfer
+_w _h 8 _imatrix[{currentfile st0 readhexstring pop}/exec load/dup load dup dup] cvx 
+nullproc nullproc nullproc true 4 colorimage}def}if
+not endnoload
+ncolors 0 eq
+dup dup not startnoload
+{/colorexpand{mystringexp 0 rgbclut
+3 copy
+7 -1 roll
+{3 mul 3 getinterval putinterval exch 3 add exch 3 copy}forall
+pop pop pop pop pop}def
+/createexpandstr{/mystringexp exch st0 length mul string def}def
+/doclutimage{/rgbclut xdf pop 3 createexpandstr _w _h 8 _imatrix
+[{currentfile st0 readhexstring pop} /exec load /colorexpand load /exec load] cvx
+false 3 colorimage}def}if not endnoload
+level2 { dontloadlevel1 restore }if
+level2 not{ save /dontloadlevel2 xdf }if
+/rgbclut 0 def/doclutimage{/hival 255 def
+[/Indexed /DeviceRGB hival rgbclut] setcolorspace
+_imagedict dup begin 
+/Width _w def 
+/Height _h def  
+/Decode [0 hival] def  
+/ImageMatrix _imatrix def
+/DataSource{currentfile st0 readhexstring pop}def
+/BitsPerComponent 8 def 
+/Interpolate false def
+end image}def
+level2 not{ dontloadlevel2 restore }if
+%%EndProcSet
+/_imagedict 12 dict begin /ImageType 1 def/BitsPerComponent 8 def/Interpolate false def currentdict end def
+/$rhs0 {currentfile st0 readhexstring pop}def
+/$rhs1 {currentfile st1 readhexstring pop}def
+/$rhs2 {currentfile st2 readhexstring pop}def
+/$rhs3 {currentfile st3 readhexstring pop}def
+/$rhs4 {currentfile st4 readhexstring pop}def
+/$rs0 {currentfile st0 readstring pop}def
+/$rs1 {currentfile st1 readstring pop}def
+/$rs2 {currentfile st2 readstring pop}def
+/$rs3 {currentfile st3 readstring pop}def
+/$rs4 {currentfile st4 readstring pop}def
+/hascolor
+/deviceinfo where
+{pop deviceinfo /Colors known
+{deviceinfo /Colors get exec 1 gt}
+{false} ifelse}
+{/statusdict where
+{pop statusdict /processcolors known
+{statusdict /processcolors get exec 1 gt}
+{false} ifelse}{false} ifelse}ifelse
+def
+/level2 systemdict /languagelevel known
+{languagelevel 2 ge}{false}ifelse def
+/foureq {4 index eq 8 1 roll
+4 index eq 8 1 roll
+4 index eq 8 1 roll
+4 index eq 8 1 roll
+pop pop pop pop and and and} def
+/setupbands{gsave
+/_settransfer systemdict /settransfer get def
+/_currenttransfer systemdict /currenttransfer get def
+/_image systemdict /image get def
+/blank 0 _currenttransfer exec
+1 _currenttransfer exec eq def
+/negative blank{0 _currenttransfer exec 0.5 lt}
+{0 _currenttransfer exec 1 _currenttransfer exec gt}ifelse def
+/inverted? negative def
+/_currentgray systemdict /currentgray get def
+hascolor{/$b 0 def} {/$b 5 def} ifelse
+/setcmykcolor where{pop 1 0 0 0 setcmykcolor _currentgray 1 exch sub
+0 1 0 0 setcmykcolor _currentgray 1 exch sub
+0 0 1 0 setcmykcolor _currentgray 1 exch sub
+0 0 0 1 setcmykcolor _currentgray 1 exch sub
+4 {4 copy} repeat
+1 0 0 0 foureq{/$b 1 store}if
+0 1 0 0 foureq{/$b 2 store}if
+0 0 1 0 foureq{/$b 3 store}if
+0 0 0 1 foureq{/$b 4 store}if
+0 0 0 0 foureq{/$b 6 store}if}if
+blank{/$b 6 store}if
+$b 0 eq $b 5 eq or{/$dt 0 def}if/$dt -1 def grestore}def
+/doimage{exch
+1 index 0 eq{dup dup/Width get exch /Decode get length 2 div mul cvi}{dup/Width get}ifelse
+/st0 exch string def
+begin
+/MultipleDataSources false def
+dup 0 eq{pop/DataSource /$rhs0 load def}
+{1 eq{/DataSource /$rs0 load def}{/DataSource currentfile /ASCII85Decode filter def}ifelse}ifelse
+currentdict end
+%level2{image}
+true
+{begin
+Width Height BitsPerComponent ImageMatrix
+Decode length 2 eq
+{/DataSource load end image}{
+Decode length 6 eq
+{MultipleDataSources{DataSource 0 get DataSource 1 get DataSource 2 get}{/DataSource load}ifelse
+MultipleDataSources 3 end DSIColorImage}{
+Decode length 8 eq{MultipleDataSources{DataSource 0 get DataSource 1 get
+DataSource 2 get DataSource 3 get}{/DataSource load}ifelse
+MultipleDataSources 4 end DSIColorImage}if}ifelse
+}ifelse
+}if}def
+/dt{/rgbclut xdf /bwclut xdf}def
+/cl{pop gsave $i setmatrix translate scale
+cvi/_h xdf cvi/_w xdf/st0 _w string def pop doclutimage grestore}def
+/c3{/imagesave save def
+/$src xdf $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+level2{_cs setcolorspace 0 0 0 setrgbcolor}if
+_imagedict begin
+/Width _w def
+/Height _h def
+/ImageMatrix _imatrix def
+/Decode [0 1 0 1 0 1]def 
+currentdict end exch
+doimage
+imagesave restore}def
+/ca{/imagesave save def
+/$src xdf $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+level2{_cs setcolorspace}if
+_imagedict begin
+/Decode[0 100 -128 127 -128 127]def  
+/Width _w def
+/Height _h def
+/ImageMatrix _imatrix def
+currentdict end exch
+doimage 
+imagesave restore}def
+/c4{/imagesave save def
+/$src xdf $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+level2 {/DeviceCMYK setcolorspace 0 0 0 0 setcmykcolor}if
+_imagedict begin
+/Decode [0 1 0 1 0 1 0 1] def  
+/Width _w def
+/Height _h def
+/ImageMatrix _imatrix def
+currentdict end exch
+doimage
+imagesave restore}def
+/im{/imagesave save def
+pop $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+level2{/DeviceGray setcolorspace 0 setgray}if
+_imagedict begin
+/Decode [0 1] def  
+/Width _w def
+/Height _h def
+/ImageMatrix _imatrix def
+currentdict end exch
+doimage 
+imagesave restore}def
+/colorimage where{pop/DSIColorImage {colorimage} def}{/DSIColorImage{
+/$nc xdf pop /proc0 xdf 3 index 2 index mul 7 add 8 div cvi string /st1 xdf
+$nc 3 eq{{proc0 dup/st0 xdf 0 exch 3 exch length 3 sub
+{dup st0 exch get .3 mul 1 index 1 add st0 exch get .59 mul add 1 index 2 add st0 exch get .11 mul add
+cvi exch 3 div cvi exch st1 3 1 roll put}for st1}}{{proc0 dup/st0 xdf 0 exch 4 exch length 4 sub{dup
+st0 exch get .3 mul
+1 index 1 add st0 exch get .59 mul add
+1 index 2 add st0 exch get .11 mul add
+1 index 3 add st0 exch get add dup 255.0 gt{pop 255.0}if
+255.0 exch sub cvi
+exch 4 div cvi exch
+st1 3 1 roll put}for st1}}ifelse
+image}def}ifelse
+/OPIimage{image}def
+/$i matrix def
+/bi{scale translate $i currentmatrix pop translate scale setupbands}def
+/ei{$i setmatrix}def
+/ik{/imagesave save def $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+/st0 _w 7 add 8 div cvi string def _w _h false _imatrix 5 -1 roll 0 eq {{$rhs0}}{{$rs0}}ifelse imagemask imagesave restore}def
+/rs{2 copy translate
+3 -1 roll neg rotate
+neg exch neg exch translate
+}def
+/cs{_cvmtx astore concat} def
+/fd{/_fd xdf}def
+/_fontMatrix{1 0 0 _fd 0 ne{-1 0 0}{1 0 0}ifelse _cvmtx astore}def
+/$cvfontdict 150 dict begin  /Symbol {/Symbol /Symbol /Symbol -1} def currentdict end def
+/rfp{/_encodindex xdf
+FontDirectory 3 index known
+not{
+dup FontDirectory exch known{exch pop}{pop}ifelse
+ findfont dup length 1 add dict begin{1 index/FID ne{def}{pop pop}ifelse}forall
+dup /FontName exch def FontType 0 ne{/Encoding Encoding 256 array copy def
+_encodindex 0 ge{0 _encodArr _encodindex get{dup type/nametype eq{Encoding 2 index 2 index put pop 1 add}
+{exch pop}ifelse}forall pop}if}if
+dup
+currentdict end
+definefont pop}{pop pop}ifelse} def
+/rf{3 index 6 1 roll
+counttomark array astore cvx exch pop
+$cvfontdict 3 1 roll put}def
+/cvsf{$cvfontdict exch get exec rfp findfont ftSize 0 0 ftSize _fd 0 ne{-1 mul}if 0 0 _cvmtx astore 
+makefont setfont}def
+/mf{3 -1 roll $cvfontdict exch get exec rfp
+findfont 3 1 roll exch ftSize mul exch ftSize mul 0 exch 0 exch _fd 0 ne{-1 mul}if 0 0 _cvmtx astore makefont setfont}def
+/wrk1 ( ) def
+/wdict 16 dict def
+/Work75 75 string def
+/Nmk{Work75 cvs dup}def
+/Npt{put cvn}def
+/dhOdh{Nmk 2 79 Npt}def
+/dhBdh{Nmk 2 111 Npt}def
+/dhSdh{Nmk 2 83 Npt}def
+/sfWidth{gsave 0 0 moveto 0 0 lineto 0 0 lineto 0 0 lineto closepath clip stringwidth grestore}def
+/fts{/ftSize exch def}def
+/mkFT{dup/FontType get 0 eq{dup maxlength dict begin
+{1 index/FID ne 2 index /UniqueID ne and{def}{pop pop}ifelse}forall
+currentdict end
+dup/FDepVector 2 copy get
+[exch 6 index exch 6 index exch{mkFT 3 1 roll}forall pop pop] put dup}{/tempFT 12 dict def
+tempFT begin
+/FontMatrix [1 0 0 1 0 0] def
+/FontType 3 def
+dup/Encoding get/Encoding exch def
+/proc2 2 index def
+dup/ft1 exch def
+/ft2 1 array def
+/FontBBox [0 0 1 1] def
+/BuildChar{Deneba_CanvasGraphics begin
+exch dup/ftdt xdf begin
+wdict begin
+/chr xdf/chrst wrk1 dup 0 chr put def
+ft2 0 get null eq{ft1 dup length 2 add dict begin
+{1 index/FID ne 2 index /UniqueID ne and{def}{pop pop}ifelse}forall
+/PaintType 2 def/StrokeWidth .024 0 FontMatrix idtransform pop def
+currentdict end
+/q exch definefont
+ft2 exch 0 exch put}if
+ftdt/proc2 get exec end end end}def end tempFT}ifelse
+3 index exch
+definefont exch pop}def
+/mb{dup dhBdh
+FontDirectory 1 index known
+{exch pop}{dup 2 index
+$cvfontdict exch get
+exec
+rfp
+findfont{boldproc}exch
+mkFT
+pop pop pop
+dup 3 -1 roll
+mark 3 1 roll dup -1
+counttomark array astore cvx
+exch pop
+$cvfontdict
+exch 2 index exch put}ifelse}def/mo{dup dhOdh
+FontDirectory 1 index known{exch pop}{dup 2 index
+$cvfontdict exch get
+exec
+rfp
+findfont{outproc} exch
+mkFT pop pop pop
+dup 3 -1 roll
+mark 3 1 roll dup -1
+counttomark array astore cvx 		
+exch pop
+$cvfontdict 
+exch 2 index exch put}ifelse}def
+/ms{
+dup dhSdh
+FontDirectory 1 index known{exch pop}{dup 2 index
+$cvfontdict exch get
+exec
+rfp
+findfont{ShadChar} exch
+mkFT
+pop pop pop
+dup 3 -1 roll
+mark 3 1 roll dup -1
+counttomark array astore cvx 		
+exch pop
+$cvfontdict 
+exch 2 index exch put}ifelse}def
+/outproc{ft1 setfont
+gsave chrst sfWidth grestore
+setcharwidth dblsh}def
+/boldproc{ft1 setfont
+gsave
+chrst sfWidth 1 index 0 ne{exch .05 add exch}if
+grestore
+setcharwidth
+ft1 /PaintType get 2 ne
+{0 0 moveto gsave ft2 0 get setfont chrst show grestore chrst show}
+{0 0 moveto gsave chrst show grestore .05 0 moveto chrst show}ifelse}def
+/dblsh{currentgray 1.0 setgray
+chrst 0 0 moveto show setgray
+ft2 0 get setfont chrst 0 0 moveto show}def
+/ShadChar{
+ft1 setfont
+gsave
+chrst sfWidth 1 index 0 ne{exch .05 add exch}if
+grestore
+setcharwidth
+chrst .06 0 moveto show
+0 .05 translate dblsh}def
+/ts{show}def
+/ta{/_letterSpace xdf/_spaceXtra xdf}def
+/tf{/_textWidth xdf
+/_numSpaces xdf
+/_stringLength xdf
+dup	stringwidth pop
+_letterSpace _stringLength 1 sub mul add
+_spaceXtra _numSpaces mul add
+_textWidth exch sub /wdif xdf
+_spaceXtra 0 32
+wdif _stringLength div
+_letterSpace add
+0 6 -1 roll awidthshow}def
+/pb{/_PageSave save def/showpage{}def}def
+/pe{_PageSave restore}def
+/pm{_pm currentmatrix pop}def
+/_pm matrix def
+/ps{showpage _pm setmatrix}def
+level2{/ef {gsave 6 array astore concat dup execform grestore}def}
+{/ef{gsave 6 array astore concat newpath dup begin Matrix concat
+BBox dup dup 0 get exch 1 get moveto
+dup dup 0 get exch 3 get lineto
+dup dup 2 get exch 3 get lineto
+dup 2 get exch 1 get lineto closepath
+clip newpath PaintProc end grestore}def}ifelse
+/DSIBeginPaintProc{/pp mark{currentfile token not{}if dup/DSIEndPaintProc
+eq{pop counttomark array astore cvx bind /exec load]cvx def DSIEndPaintProc exit}
+{counttomark 300 gt{counttomark array astore cvx bind /exec load}if}ifelse}loop}def
+/bc{save 11 1 roll 10 dict begin/BBox 5 1 roll 4 array astore def/Matrix 7 1 roll 6 array astore def
+/FormType 1 def/PaintProc{/pp get exec}def}def
+/ec{pop restore}def
+/printvm{1 vmreclaim vmstatus pop exch pop (                         )cvs print (\n)print flush}def
+/DSIEndPaintProc{currentdict end}def
+/setoverprint where {pop}{/setoverprint{pop}def}ifelse
+/initfonts{level2{$cvfontdict dup { pop 1 index exch undef}forall pop}if
+$cvfontdict begin /Symbol {/Symbol /Symbol /Symbol -1}def end}def
+initialize
+end
+%%EndResource
+Deneba_CanvasGraphics begin
+
+_encodArr 0
+[
+39/quotesingle 96/grave
+128/bullet/bullet/quotesinglbase/florin/quotedblbase/ellipsis/dagger/daggerdbl/circumflex/perthousand/Scaron/guilsinglleft/OE/bullet/bullet/bullet
+/bullet/quoteleft/quoteright/quotedblleft/quotedblright/bullet/endash/emdash/tilde/trademark
+/scaron
+/guilsinglright/oe/bullet/bullet/Ydieresis
+/bullet/exclamdown/cent/sterling/currency/yen/brokenbar/section/dieresis/copyright/ordfeminine/guillemotleft/logicalnot/hyphen/registered/macron
+/degree/plusminus/twosuperior/threesuperior/acute/mu/paragraph/periodcentered/cedilla/onesuperior/ordmasculine/guillemotright/onequarter/onehalf/threequarters/questiondown
+/Agrave/Aacute/Acircumflex/Atilde/Adieresis
+/Aring
+/AE/Ccedilla/Egrave/Eacute/Egrave/Edieresis/Igrave/Iacute/Icircumflex/Idieresis
+/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls
+/agrave/aacute/acircumflex/atilde/adieresis
+/aring
+/ae/ccedilla/egrave/eacute/ecircumflex/edieresis
+/igrave
+/iacute
+/icircumflex
+/idieresis
+/eth/ntilde/ograve/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis/yacute/thorn/ydieresis
+] put
+
+_encodArr 1
+[
+39/quotesingle 96/grave
+128/Adieresis/Aring/Ccedilla/Eacute/Ntilde/Odieresis/Udieresis/aacute
+/agrave/acircumflex/adieresis/atilde/aring/ccedilla/eacute/egrave
+/ecircumflex/edieresis/iacute/igrave/icircumflex/idieresis/ntilde/oacute
+/ograve/ocircumflex/odieresis/otilde/uacute/ugrave/ucircumflex/udieresis
+/dagger/degree/cent/sterling/section/bullet/paragraph/germandbls
+/registered/copyright/trademark/acute/dieresis/notequal/AE/Oslash
+/infinity/plusminus/lessequal/greaterequal/yen/mu/partialdiff/summation
+/product/pi/integral/ordfeminine/ordmasculine/Omega/ae/oslash
+/questiondown/exclamdown/logicalnot/radical/florin/approxequal/Delta/guillemotleft
+/guillemotright/ellipsis/blank/Agrave/Atilde/Otilde/OE/oe
+/endash/emdash/quotedblleft/quotedblright/quoteleft/quoteright/divide/lozenge
+/ydieresis/Ydieresis/fraction/currency/guilsinglleft/guilsinglright/fi/fl
+/daggerdbl/periodcentered/quotesinglbase/quotedblbase/perthousand/Acircumflex/Ecircumflex/Aacute
+/Edieresis/Egrave/Iacute/Icircumflex/Idieresis/Igrave/Oacute/Ocircumflex
+/apple/Ograve/Uacute/Ucircumflex/Ugrave/dotlessi/circumflex/tilde
+/macron/breve/dotaccent/ring/cedilla/hungarumlaut/ogonek/caron
+] put
+mark /___FN3 /Helvetica dup 1 rf
+F debug
+0 id
+1 fd
+0 323 translate
+1 -1 scale
+%%EndSetup
+/DeviceCMYK scs
+T sa
+%%DSIBeginObject: #1 - Ref:3450 Group
+%%DSIBeginObject: #2 - Ref:3412 Line
+0. 0. 0. 1. f4
+0.5 0.5 sp
+0 lc
+14.3 lm
+0 lj
+np
+3565.5604 163.8085 mt
+3721.9232 163.8085 li
+ds
+gs
+0. 0. 0. 1. f4
+np
+3730.017 163.8632 mt
+3720.392 167.3085 li
+3720.392 160.3085 li
+3730.017 163.8632 li
+cp
+de
+gr
+%%DSIEndObject
+%%DSIBeginObject: #3 - Ref:3413 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3604. 195.6999 mt
+(T) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #4 - Ref:3414 Group
+%%DSIBeginObject: #5 - Ref:3416 Group
+%%DSIBeginObject: #6 - Ref:3417 Polygon
+1. 0.957 0. 0. f4
+1. 1. sp
+np
+3607.4735 163.8085 mt
+3607.4735 163.3634 li
+3607.564 162.9183 li
+3607.564 162.4732 li
+3607.6544 162.028 li
+3607.6544 161.5829 li
+3607.6544 161.1378 li
+3607.7449 160.6926 li
+3607.7449 160.2475 li
+3607.8353 159.8024 li
+3607.8353 159.3573 li
+3607.8353 158.9121 li
+3607.9258 158.467 li
+3607.9258 158.0219 li
+3608.0162 157.5767 li
+3608.0162 157.1316 li
+3608.1067 156.6865 li
+3608.1067 156.2413 li
+3608.1067 155.7962 li
+3608.1971 155.3511 li
+3608.1971 154.906 li
+3608.2876 154.4608 li
+3608.2876 154.0157 li
+3608.3781 153.5706 li
+3608.3781 153.1254 li
+3608.4685 152.6803 li
+3608.4685 152.2352 li
+3608.559 151.7901 li
+3608.559 151.3449 li
+3608.6494 150.8998 li
+3608.6494 150.4547 li
+3608.7399 150.0095 li
+3608.8303 149.5644 li
+3608.8303 149.1193 li
+3608.9208 148.6741 li
+3609.0112 148.229 li
+3609.1017 147.7839 li
+3609.1921 147.3388 li
+3609.2826 146.8936 li
+3609.373 146.4485 li
+3609.4635 146.0034 li
+3609.554 145.5582 li
+3609.6444 145.5582 li
+3609.7349 145.5582 li
+3609.8253 145.5582 li
+3609.9158 146.0034 li
+3610.0062 146.0034 li
+3610.0967 146.4485 li
+3610.1871 146.8936 li
+3610.2776 147.3388 li
+3610.368 147.7839 li
+3610.4585 148.229 li
+3610.549 148.6741 li
+3610.6394 149.1193 li
+3610.7299 149.5644 li
+3610.7299 150.0095 li
+3610.8203 150.4547 li
+3610.8203 150.8998 li
+3610.9108 151.3449 li
+3611.0012 151.7901 li
+3611.0012 152.2352 li
+3611.0917 152.6803 li
+3611.0917 153.1254 li
+3611.0917 153.5706 li
+3611.1821 154.0157 li
+3611.1821 154.4608 li
+3611.2726 154.906 li
+3611.2726 155.3511 li
+3611.363 155.7962 li
+3611.363 156.2413 li
+3611.363 156.6865 li
+3611.4535 157.1316 li
+3611.4535 157.5767 li
+3611.5439 158.0219 li
+3611.5439 158.467 li
+3611.6344 158.9121 li
+3611.6344 159.3573 li
+3611.6344 159.8024 li
+3611.7249 160.2475 li
+3611.7249 160.6926 li
+3611.8153 161.1378 li
+3611.8153 161.5829 li
+3611.8153 162.028 li
+3611.9058 162.4732 li
+3611.9058 162.9183 li
+3611.9962 163.3634 li
+3611.9962 163.8085 li
+3611.9962 164.2537 li
+3612.0867 164.6988 li
+3612.0867 165.1439 li
+3612.0867 165.5891 li
+3612.1771 166.0342 li
+3612.1771 166.4793 li
+3612.2676 166.9245 li
+3612.2676 167.3696 li
+3612.2676 167.8147 li
+3612.358 168.2598 li
+3612.358 168.705 li
+3612.4485 169.1501 li
+3612.4485 169.5952 li
+3612.4485 170.0404 li
+3612.5389 170.4855 li
+3612.5389 170.9306 li
+3612.6294 171.3757 li
+3612.6294 171.8209 li
+3612.7198 172.266 li
+3612.7198 172.7111 li
+3612.8103 173.1563 li
+3612.8103 173.6014 li
+3612.8103 174.0465 li
+3612.9008 174.4917 li
+3612.9008 174.9368 li
+3612.9912 175.3819 li
+3612.9912 175.827 li
+3613.0817 176.2722 li
+3613.0817 176.7173 li
+3613.1721 177.1624 li
+3613.2626 177.6076 li
+3613.2626 178.0527 li
+3613.353 178.4978 li
+3613.4435 178.9429 li
+3613.4435 179.3881 li
+3613.5339 179.8332 li
+3613.6244 180.2783 li
+3613.7148 180.7235 li
+3613.8053 181.1686 li
+3613.8958 181.6137 li
+3613.9862 181.6137 li
+3614.0767 182.0589 li
+3614.1671 182.0589 li
+3614.2576 182.0589 li
+3614.348 181.6137 li
+3614.4385 181.6137 li
+3614.5289 181.6137 li
+3614.6194 181.1686 li
+3614.7098 180.7235 li
+3614.8003 180.2783 li
+3614.8907 179.8332 li
+3614.9812 179.3881 li
+3615.0717 178.9429 li
+3615.1621 178.4978 li
+3615.1621 178.0527 li
+3615.2526 177.6076 li
+3615.343 177.1624 li
+3615.343 176.7173 li
+3615.4335 176.2722 li
+3615.4335 175.827 li
+3615.5239 175.3819 li
+3615.5239 174.9368 li
+3615.6144 174.4917 li
+3615.6144 174.0465 li
+3615.7048 173.6014 li
+3615.7048 173.1563 li
+3615.7953 172.7111 li
+3615.7953 172.266 li
+3615.7953 171.8209 li
+3615.8857 171.3757 li
+3615.8857 170.9306 li
+3615.9762 170.4855 li
+3615.9762 170.0404 li
+3616.0667 169.5952 li
+3616.0667 169.1501 li
+3616.0667 168.705 li
+3616.1571 168.2598 li
+3616.1571 167.8147 li
+3616.2476 167.3696 li
+3616.2476 166.9245 li
+3616.2476 166.4793 li
+3616.338 166.0342 li
+3616.338 165.5891 li
+3616.4285 165.1439 li
+3616.4285 164.6988 li
+3616.4285 164.2537 li
+3616.5189 163.8085 li
+3616.5189 163.3634 li
+3616.5189 162.9183 li
+3616.6094 162.4732 li
+3616.6094 162.028 li
+3616.6998 161.5829 li
+3616.6998 161.1378 li
+3616.6998 160.6926 li
+3616.7903 160.2475 li
+3616.7903 159.8024 li
+3616.8807 159.3573 li
+3616.8807 158.9121 li
+3616.8807 158.467 li
+3616.9712 158.0219 li
+3616.9712 157.5767 li
+3617.0616 157.1316 li
+3617.0616 156.6865 li
+3617.0616 156.2413 li
+3617.1521 155.7962 li
+3617.1521 155.3511 li
+3617.2426 154.906 li
+3617.2426 154.4608 li
+3617.333 154.0157 li
+3617.333 153.5706 li
+3617.4235 153.1254 li
+3617.4235 152.6803 li
+3617.5139 152.2352 li
+3617.5139 151.7901 li
+3617.6044 151.3449 li
+3617.6044 150.8998 li
+3617.6948 150.4547 li
+3617.6948 150.0095 li
+3617.7853 149.5644 li
+3617.8757 149.1193 li
+3617.8757 148.6741 li
+3617.9662 148.229 li
+3618.0566 147.7839 li
+3618.1471 147.3388 li
+3618.2375 146.8936 li
+3618.328 146.4485 li
+3618.4185 146.0034 li
+3618.5089 146.0034 li
+3618.5994 145.5582 li
+3618.6898 145.5582 li
+3618.7803 145.5582 li
+3618.8707 146.0034 li
+3618.9612 146.0034 li
+3619.0516 146.4485 li
+3619.1421 146.4485 li
+3619.2325 146.8936 li
+3619.323 147.3388 li
+3619.4135 147.7839 li
+3619.5039 148.229 li
+3619.5944 148.6741 li
+3619.6848 149.1193 li
+3619.6848 149.5644 li
+3619.7753 150.0095 li
+3619.7753 150.4547 li
+3619.8657 150.8998 li
+3619.9562 151.3449 li
+3619.9562 151.7901 li
+3620.0466 152.2352 li
+3620.0466 152.6803 li
+3620.0466 153.1254 li
+3620.1371 153.5706 li
+3620.1371 154.0157 li
+3620.2275 154.4608 li
+3620.2275 154.906 li
+3620.318 155.3511 li
+3620.318 155.7962 li
+3620.4084 156.2413 li
+3620.4084 156.6865 li
+3620.4084 157.1316 li
+3620.4989 157.5767 li
+3620.4989 158.0219 li
+3620.5894 158.467 li
+3620.5894 158.9121 li
+3620.5894 159.3573 li
+3620.6798 159.8024 li
+3620.6798 160.2475 li
+3620.7703 160.6926 li
+3620.7703 161.1378 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #7 - Ref:3418 Polygon
+1. 0.957 0. 0. f4
+np
+3620.7703 161.1378 mt
+3620.7703 161.5829 li
+3620.8607 162.028 li
+3620.8607 162.4731 li
+3620.9512 162.9182 li
+3620.9512 163.3633 li
+3620.9512 163.8085 li
+3621.0416 164.2536 li
+3621.0416 164.6987 li
+3621.132 165.1438 li
+3621.132 165.5889 li
+3621.132 166.034 li
+3621.2225 166.4791 li
+3621.2225 166.9243 li
+3621.3129 167.3694 li
+3621.3129 167.8145 li
+3621.3129 168.2596 li
+3621.4034 168.7047 li
+3621.4034 169.1498 li
+3621.4939 169.5949 li
+3621.4939 170.0401 li
+3621.4939 170.4852 li
+3621.5843 170.9303 li
+3621.5843 171.3754 li
+3621.6747 171.8205 li
+3621.6747 172.2656 li
+3621.7652 172.7107 li
+3621.7652 173.1559 li
+3621.8556 173.601 li
+3621.8556 174.0461 li
+3621.8556 174.4912 li
+3621.9461 174.9363 li
+3621.9461 175.3814 li
+3622.0365 175.8265 li
+3622.0365 176.2717 li
+3622.127 176.7168 li
+3622.2174 177.1619 li
+3622.2174 177.607 li
+3622.3079 178.0521 li
+3622.3079 178.4972 li
+3622.3983 178.9423 li
+3622.4888 179.3875 li
+3622.5792 179.8326 li
+3622.6696 180.2777 li
+3622.7601 180.7228 li
+3622.8506 181.1679 li
+3622.941 181.613 li
+3623.0314 182.0581 li
+3623.1219 182.0581 li
+3623.2123 182.0581 li
+3623.3028 182.0581 li
+3623.3932 181.613 li
+3623.4837 181.613 li
+3623.5741 181.1679 li
+3623.6646 180.7228 li
+3623.755 180.2777 li
+3623.8455 179.8326 li
+3623.9359 179.3875 li
+3624.0264 178.9423 li
+3624.1168 178.4972 li
+3624.2073 178.0521 li
+3624.2977 177.607 li
+3624.2977 177.1619 li
+3624.3882 176.7168 li
+3624.3882 176.2717 li
+3624.4786 175.8265 li
+3624.4786 175.3814 li
+3624.569 174.9363 li
+3624.569 174.4912 li
+3624.6595 174.0461 li
+3624.6595 173.601 li
+3624.7499 173.1559 li
+3624.7499 172.7107 li
+3624.7499 172.2656 li
+3624.8404 171.8205 li
+3624.8404 171.3754 li
+3624.9308 170.9303 li
+3624.9308 170.4852 li
+3625.0213 170.0401 li
+3625.0213 169.5949 li
+3625.0213 169.1498 li
+3625.1117 168.7047 li
+3625.1117 168.2596 li
+3625.2022 167.8145 li
+3625.2022 167.3694 li
+3625.2022 166.9243 li
+3625.2926 166.4791 li
+3625.2926 166.034 li
+3625.3831 165.5889 li
+3625.3831 165.1438 li
+3625.3831 164.6987 li
+3625.4735 164.2536 li
+3625.4735 163.8085 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #8 - Ref:3419 Group
+%%DSIBeginObject: #9 - Ref:3420 Polygon
+1. 0.957 0. 0. f4
+np
+3625.4735 163.8085 mt
+3625.4735 163.3634 li
+3625.564 162.9183 li
+3625.564 162.4732 li
+3625.6544 162.028 li
+3625.6544 161.5829 li
+3625.6544 161.1378 li
+3625.7449 160.6926 li
+3625.7449 160.2475 li
+3625.8353 159.8024 li
+3625.8353 159.3573 li
+3625.8353 158.9121 li
+3625.9258 158.467 li
+3625.9258 158.0219 li
+3626.0162 157.5767 li
+3626.0162 157.1316 li
+3626.1067 156.6865 li
+3626.1067 156.2413 li
+3626.1067 155.7962 li
+3626.1971 155.3511 li
+3626.1971 154.906 li
+3626.2876 154.4608 li
+3626.2876 154.0157 li
+3626.3781 153.5706 li
+3626.3781 153.1254 li
+3626.4685 152.6803 li
+3626.4685 152.2352 li
+3626.559 151.7901 li
+3626.559 151.3449 li
+3626.6494 150.8998 li
+3626.6494 150.4547 li
+3626.7399 150.0095 li
+3626.8303 149.5644 li
+3626.8303 149.1193 li
+3626.9208 148.6741 li
+3627.0112 148.229 li
+3627.1017 147.7839 li
+3627.1921 147.3388 li
+3627.2826 146.8936 li
+3627.373 146.4485 li
+3627.4635 146.0034 li
+3627.554 145.5582 li
+3627.6444 145.5582 li
+3627.7349 145.5582 li
+3627.8253 145.5582 li
+3627.9158 146.0034 li
+3628.0062 146.0034 li
+3628.0967 146.4485 li
+3628.1871 146.8936 li
+3628.2776 147.3388 li
+3628.368 147.7839 li
+3628.4585 148.229 li
+3628.549 148.6741 li
+3628.6394 149.1193 li
+3628.7299 149.5644 li
+3628.7299 150.0095 li
+3628.8203 150.4547 li
+3628.8203 150.8998 li
+3628.9108 151.3449 li
+3629.0012 151.7901 li
+3629.0012 152.2352 li
+3629.0917 152.6803 li
+3629.0917 153.1254 li
+3629.0917 153.5706 li
+3629.1821 154.0157 li
+3629.1821 154.4608 li
+3629.2726 154.906 li
+3629.2726 155.3511 li
+3629.363 155.7962 li
+3629.363 156.2413 li
+3629.363 156.6865 li
+3629.4535 157.1316 li
+3629.4535 157.5767 li
+3629.5439 158.0219 li
+3629.5439 158.467 li
+3629.6344 158.9121 li
+3629.6344 159.3573 li
+3629.6344 159.8024 li
+3629.7249 160.2475 li
+3629.7249 160.6926 li
+3629.8153 161.1378 li
+3629.8153 161.5829 li
+3629.8153 162.028 li
+3629.9058 162.4732 li
+3629.9058 162.9183 li
+3629.9962 163.3634 li
+3629.9962 163.8085 li
+3629.9962 164.2537 li
+3630.0867 164.6988 li
+3630.0867 165.1439 li
+3630.0867 165.5891 li
+3630.1771 166.0342 li
+3630.1771 166.4793 li
+3630.2676 166.9245 li
+3630.2676 167.3696 li
+3630.2676 167.8147 li
+3630.358 168.2598 li
+3630.358 168.705 li
+3630.4485 169.1501 li
+3630.4485 169.5952 li
+3630.4485 170.0404 li
+3630.5389 170.4855 li
+3630.5389 170.9306 li
+3630.6294 171.3757 li
+3630.6294 171.8209 li
+3630.7198 172.266 li
+3630.7198 172.7111 li
+3630.8103 173.1563 li
+3630.8103 173.6014 li
+3630.8103 174.0465 li
+3630.9008 174.4917 li
+3630.9008 174.9368 li
+3630.9912 175.3819 li
+3630.9912 175.827 li
+3631.0817 176.2722 li
+3631.0817 176.7173 li
+3631.1721 177.1624 li
+3631.2626 177.6076 li
+3631.2626 178.0527 li
+3631.353 178.4978 li
+3631.4435 178.9429 li
+3631.4435 179.3881 li
+3631.5339 179.8332 li
+3631.6244 180.2783 li
+3631.7148 180.7235 li
+3631.8053 181.1686 li
+3631.8958 181.6137 li
+3631.9862 181.6137 li
+3632.0767 182.0589 li
+3632.1671 182.0589 li
+3632.2576 182.0589 li
+3632.348 181.6137 li
+3632.4385 181.6137 li
+3632.5289 181.6137 li
+3632.6194 181.1686 li
+3632.7098 180.7235 li
+3632.8003 180.2783 li
+3632.8907 179.8332 li
+3632.9812 179.3881 li
+3633.0717 178.9429 li
+3633.1621 178.4978 li
+3633.1621 178.0527 li
+3633.2526 177.6076 li
+3633.343 177.1624 li
+3633.343 176.7173 li
+3633.4335 176.2722 li
+3633.4335 175.827 li
+3633.5239 175.3819 li
+3633.5239 174.9368 li
+3633.6144 174.4917 li
+3633.6144 174.0465 li
+3633.7048 173.6014 li
+3633.7048 173.1563 li
+3633.7953 172.7111 li
+3633.7953 172.266 li
+3633.7953 171.8209 li
+3633.8857 171.3757 li
+3633.8857 170.9306 li
+3633.9762 170.4855 li
+3633.9762 170.0404 li
+3634.0667 169.5952 li
+3634.0667 169.1501 li
+3634.0667 168.705 li
+3634.1571 168.2598 li
+3634.1571 167.8147 li
+3634.2476 167.3696 li
+3634.2476 166.9245 li
+3634.2476 166.4793 li
+3634.338 166.0342 li
+3634.338 165.5891 li
+3634.4285 165.1439 li
+3634.4285 164.6988 li
+3634.4285 164.2537 li
+3634.5189 163.8085 li
+3634.5189 163.3634 li
+3634.5189 162.9183 li
+3634.6094 162.4732 li
+3634.6094 162.028 li
+3634.6998 161.5829 li
+3634.6998 161.1378 li
+3634.6998 160.6926 li
+3634.7903 160.2475 li
+3634.7903 159.8024 li
+3634.8807 159.3573 li
+3634.8807 158.9121 li
+3634.8807 158.467 li
+3634.9712 158.0219 li
+3634.9712 157.5767 li
+3635.0616 157.1316 li
+3635.0616 156.6865 li
+3635.0616 156.2413 li
+3635.1521 155.7962 li
+3635.1521 155.3511 li
+3635.2426 154.906 li
+3635.2426 154.4608 li
+3635.333 154.0157 li
+3635.333 153.5706 li
+3635.4235 153.1254 li
+3635.4235 152.6803 li
+3635.5139 152.2352 li
+3635.5139 151.7901 li
+3635.6044 151.3449 li
+3635.6044 150.8998 li
+3635.6948 150.4547 li
+3635.6948 150.0095 li
+3635.7853 149.5644 li
+3635.8757 149.1193 li
+3635.8757 148.6741 li
+3635.9662 148.229 li
+3636.0566 147.7839 li
+3636.1471 147.3388 li
+3636.2375 146.8936 li
+3636.328 146.4485 li
+3636.4185 146.0034 li
+3636.5089 146.0034 li
+3636.5994 145.5582 li
+3636.6898 145.5582 li
+3636.7803 145.5582 li
+3636.8707 146.0034 li
+3636.9612 146.0034 li
+3637.0516 146.4485 li
+3637.1421 146.4485 li
+3637.2325 146.8936 li
+3637.323 147.3388 li
+3637.4135 147.7839 li
+3637.5039 148.229 li
+3637.5944 148.6741 li
+3637.6848 149.1193 li
+3637.6848 149.5644 li
+3637.7753 150.0095 li
+3637.7753 150.4547 li
+3637.8657 150.8998 li
+3637.9562 151.3449 li
+3637.9562 151.7901 li
+3638.0466 152.2352 li
+3638.0466 152.6803 li
+3638.0466 153.1254 li
+3638.1371 153.5706 li
+3638.1371 154.0157 li
+3638.2275 154.4608 li
+3638.2275 154.906 li
+3638.318 155.3511 li
+3638.318 155.7962 li
+3638.4084 156.2413 li
+3638.4084 156.6865 li
+3638.4084 157.1316 li
+3638.4989 157.5767 li
+3638.4989 158.0219 li
+3638.5894 158.467 li
+3638.5894 158.9121 li
+3638.5894 159.3573 li
+3638.6798 159.8024 li
+3638.6798 160.2475 li
+3638.7703 160.6926 li
+3638.7703 161.1378 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #10 - Ref:3421 Polygon
+1. 0.957 0. 0. f4
+np
+3638.7703 161.1378 mt
+3638.7703 161.5829 li
+3638.8607 162.028 li
+3638.8607 162.4731 li
+3638.9512 162.9182 li
+3638.9512 163.3633 li
+3638.9512 163.8085 li
+3639.0416 164.2536 li
+3639.0416 164.6987 li
+3639.132 165.1438 li
+3639.132 165.5889 li
+3639.132 166.034 li
+3639.2225 166.4791 li
+3639.2225 166.9243 li
+3639.3129 167.3694 li
+3639.3129 167.8145 li
+3639.3129 168.2596 li
+3639.4034 168.7047 li
+3639.4034 169.1498 li
+3639.4939 169.5949 li
+3639.4939 170.0401 li
+3639.4939 170.4852 li
+3639.5843 170.9303 li
+3639.5843 171.3754 li
+3639.6747 171.8205 li
+3639.6747 172.2656 li
+3639.7652 172.7107 li
+3639.7652 173.1559 li
+3639.8556 173.601 li
+3639.8556 174.0461 li
+3639.8556 174.4912 li
+3639.9461 174.9363 li
+3639.9461 175.3814 li
+3640.0365 175.8265 li
+3640.0365 176.2717 li
+3640.127 176.7168 li
+3640.2174 177.1619 li
+3640.2174 177.607 li
+3640.3079 178.0521 li
+3640.3079 178.4972 li
+3640.3983 178.9423 li
+3640.4888 179.3875 li
+3640.5792 179.8326 li
+3640.6696 180.2777 li
+3640.7601 180.7228 li
+3640.8506 181.1679 li
+3640.941 181.613 li
+3641.0314 182.0581 li
+3641.1219 182.0581 li
+3641.2123 182.0581 li
+3641.3028 182.0581 li
+3641.3932 181.613 li
+3641.4837 181.613 li
+3641.5741 181.1679 li
+3641.6646 180.7228 li
+3641.755 180.2777 li
+3641.8455 179.8326 li
+3641.9359 179.3875 li
+3642.0264 178.9423 li
+3642.1168 178.4972 li
+3642.2073 178.0521 li
+3642.2977 177.607 li
+3642.2977 177.1619 li
+3642.3882 176.7168 li
+3642.3882 176.2717 li
+3642.4786 175.8265 li
+3642.4786 175.3814 li
+3642.569 174.9363 li
+3642.569 174.4912 li
+3642.6595 174.0461 li
+3642.6595 173.601 li
+3642.7499 173.1559 li
+3642.7499 172.7107 li
+3642.7499 172.2656 li
+3642.8404 171.8205 li
+3642.8404 171.3754 li
+3642.9308 170.9303 li
+3642.9308 170.4852 li
+3643.0213 170.0401 li
+3643.0213 169.5949 li
+3643.0213 169.1498 li
+3643.1117 168.7047 li
+3643.1117 168.2596 li
+3643.2022 167.8145 li
+3643.2022 167.3694 li
+3643.2022 166.9243 li
+3643.2926 166.4791 li
+3643.2926 166.034 li
+3643.3831 165.5889 li
+3643.3831 165.1438 li
+3643.3831 164.6987 li
+3643.4735 164.2536 li
+3643.4735 163.8085 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #11 - Ref:3422 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3560. 151.6999 mt
+(A) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #12 - Ref:3423 Line
+0. 0. 0. 1. f4
+0.5 0.5 sp
+np
+3569.8104 181.523 mt
+3569.8104 136.1168 li
+ds
+gs
+0. 0. 0. 1. f4
+np
+3569.8651 128.023 mt
+3573.3104 137.648 li
+3566.3104 137.648 li
+3569.8651 128.023 li
+cp
+de
+gr
+%%DSIEndObject
+%%DSIBeginObject: #13 - Ref:3424 Group
+%%DSIBeginObject: #14 - Ref:3425 Group
+%%DSIBeginObject: #15 - Ref:3426 Polygon
+1. 0.957 0. 0. f4
+1. 1. sp
+np
+3570.4735 163.8085 mt
+3570.4735 163.3634 li
+3570.5976 162.9183 li
+3570.5976 162.4732 li
+3570.7217 162.028 li
+3570.7217 161.5829 li
+3570.7217 161.1378 li
+3570.8458 160.6926 li
+3570.8458 160.2475 li
+3570.9699 159.8024 li
+3570.9699 159.3573 li
+3570.9699 158.9121 li
+3571.094 158.467 li
+3571.094 158.0219 li
+3571.2181 157.5767 li
+3571.2181 157.1316 li
+3571.3422 156.6865 li
+3571.3422 156.2413 li
+3571.3422 155.7962 li
+3571.4663 155.3511 li
+3571.4663 154.906 li
+3571.5904 154.4608 li
+3571.5904 154.0157 li
+3571.7145 153.5706 li
+3571.7145 153.1254 li
+3571.8386 152.6803 li
+3571.8386 152.2352 li
+3571.9627 151.7901 li
+3571.9627 151.3449 li
+3572.0868 150.8998 li
+3572.0868 150.4547 li
+3572.2109 150.0095 li
+3572.335 149.5644 li
+3572.335 149.1193 li
+3572.4591 148.6741 li
+3572.5832 148.229 li
+3572.7073 147.7839 li
+3572.8314 147.3388 li
+3572.9555 146.8936 li
+3573.0796 146.4485 li
+3573.2037 146.0034 li
+3573.3278 145.5582 li
+3573.4519 145.5582 li
+3573.576 145.5582 li
+3573.7001 145.5582 li
+3573.8242 146.0034 li
+3573.9483 146.0034 li
+3574.0724 146.4485 li
+3574.1965 146.8936 li
+3574.3206 147.3388 li
+3574.4447 147.7839 li
+3574.5688 148.229 li
+3574.6929 148.6741 li
+3574.817 149.1193 li
+3574.9411 149.5644 li
+3574.9411 150.0095 li
+3575.0652 150.4547 li
+3575.0652 150.8998 li
+3575.1893 151.3449 li
+3575.3134 151.7901 li
+3575.3134 152.2352 li
+3575.4375 152.6803 li
+3575.4375 153.1254 li
+3575.4375 153.5706 li
+3575.5616 154.0157 li
+3575.5616 154.4608 li
+3575.6857 154.906 li
+3575.6857 155.3511 li
+3575.8098 155.7962 li
+3575.8098 156.2413 li
+3575.8098 156.6865 li
+3575.9339 157.1316 li
+3575.9339 157.5767 li
+3576.058 158.0219 li
+3576.058 158.467 li
+3576.1821 158.9121 li
+3576.1821 159.3573 li
+3576.1821 159.8024 li
+3576.3062 160.2475 li
+3576.3062 160.6926 li
+3576.4303 161.1378 li
+3576.4303 161.5829 li
+3576.4303 162.028 li
+3576.5544 162.4732 li
+3576.5544 162.9183 li
+3576.6785 163.3634 li
+3576.6785 163.8085 li
+3576.6785 164.2537 li
+3576.8026 164.6988 li
+3576.8026 165.1439 li
+3576.8026 165.5891 li
+3576.9267 166.0342 li
+3576.9267 166.4793 li
+3577.0508 166.9245 li
+3577.0508 167.3696 li
+3577.0508 167.8147 li
+3577.1749 168.2598 li
+3577.1749 168.705 li
+3577.299 169.1501 li
+3577.299 169.5952 li
+3577.299 170.0404 li
+3577.4231 170.4855 li
+3577.4231 170.9306 li
+3577.5472 171.3757 li
+3577.5472 171.8209 li
+3577.6713 172.266 li
+3577.6713 172.7111 li
+3577.7954 173.1563 li
+3577.7954 173.6014 li
+3577.7954 174.0465 li
+3577.9195 174.4917 li
+3577.9195 174.9368 li
+3578.0436 175.3819 li
+3578.0436 175.827 li
+3578.1677 176.2722 li
+3578.1677 176.7173 li
+3578.2918 177.1624 li
+3578.4159 177.6076 li
+3578.4159 178.0527 li
+3578.54 178.4978 li
+3578.6641 178.9429 li
+3578.6641 179.3881 li
+3578.7882 179.8332 li
+3578.9123 180.2783 li
+3579.0364 180.7235 li
+3579.1605 181.1686 li
+3579.2846 181.6137 li
+3579.4087 181.6137 li
+3579.5328 182.0589 li
+3579.6569 182.0589 li
+3579.781 182.0589 li
+3579.9051 181.6137 li
+3580.0292 181.6137 li
+3580.1533 181.6137 li
+3580.2774 181.1686 li
+3580.4015 180.7235 li
+3580.5256 180.2783 li
+3580.6497 179.8332 li
+3580.7738 179.3881 li
+3580.8979 178.9429 li
+3581.022 178.4978 li
+3581.022 178.0527 li
+3581.1461 177.6076 li
+3581.2702 177.1624 li
+3581.2702 176.7173 li
+3581.3943 176.2722 li
+3581.3943 175.827 li
+3581.5184 175.3819 li
+3581.5184 174.9368 li
+3581.6425 174.4917 li
+3581.6425 174.0465 li
+3581.7666 173.6014 li
+3581.7666 173.1563 li
+3581.8907 172.7111 li
+3581.8907 172.266 li
+3581.8907 171.8209 li
+3582.0148 171.3757 li
+3582.0148 170.9306 li
+3582.1389 170.4855 li
+3582.1389 170.0404 li
+3582.263 169.5952 li
+3582.263 169.1501 li
+3582.263 168.705 li
+3582.3871 168.2598 li
+3582.3871 167.8147 li
+3582.5112 167.3696 li
+3582.5112 166.9245 li
+3582.5112 166.4793 li
+3582.6353 166.0342 li
+3582.6353 165.5891 li
+3582.7594 165.1439 li
+3582.7594 164.6988 li
+3582.7594 164.2537 li
+3582.8835 163.8085 li
+3582.8835 163.3634 li
+3582.8835 162.9183 li
+3583.0076 162.4732 li
+3583.0076 162.028 li
+3583.1317 161.5829 li
+3583.1317 161.1378 li
+3583.1317 160.6926 li
+3583.2558 160.2475 li
+3583.2558 159.8024 li
+3583.3799 159.3573 li
+3583.3799 158.9121 li
+3583.3799 158.467 li
+3583.504 158.0219 li
+3583.504 157.5767 li
+3583.6281 157.1316 li
+3583.6281 156.6865 li
+3583.6281 156.2413 li
+3583.7522 155.7962 li
+3583.7522 155.3511 li
+3583.8763 154.906 li
+3583.8763 154.4608 li
+3584.0004 154.0157 li
+3584.0004 153.5706 li
+3584.1245 153.1254 li
+3584.1245 152.6803 li
+3584.2486 152.2352 li
+3584.2486 151.7901 li
+3584.3727 151.3449 li
+3584.3727 150.8998 li
+3584.4968 150.4547 li
+3584.4968 150.0095 li
+3584.6209 149.5644 li
+3584.745 149.1193 li
+3584.745 148.6741 li
+3584.8691 148.229 li
+3584.9932 147.7839 li
+3585.1173 147.3388 li
+3585.2414 146.8936 li
+3585.3655 146.4485 li
+3585.4896 146.0034 li
+3585.6137 146.0034 li
+3585.7378 145.5582 li
+3585.8619 145.5582 li
+3585.986 145.5582 li
+3586.1101 146.0034 li
+3586.2342 146.0034 li
+3586.3583 146.4485 li
+3586.4824 146.4485 li
+3586.6065 146.8936 li
+3586.7306 147.3388 li
+3586.8547 147.7839 li
+3586.9789 148.229 li
+3587.1029 148.6741 li
+3587.2271 149.1193 li
+3587.2271 149.5644 li
+3587.3511 150.0095 li
+3587.3511 150.4547 li
+3587.4752 150.8998 li
+3587.5993 151.3449 li
+3587.5993 151.7901 li
+3587.7234 152.2352 li
+3587.7234 152.6803 li
+3587.7234 153.1254 li
+3587.8475 153.5706 li
+3587.8475 154.0157 li
+3587.9716 154.4608 li
+3587.9716 154.906 li
+3588.0957 155.3511 li
+3588.0957 155.7962 li
+3588.2198 156.2413 li
+3588.2198 156.6865 li
+3588.2198 157.1316 li
+3588.3439 157.5767 li
+3588.3439 158.0219 li
+3588.468 158.467 li
+3588.468 158.9121 li
+3588.468 159.3573 li
+3588.5921 159.8024 li
+3588.5921 160.2475 li
+3588.7162 160.6926 li
+3588.7162 161.1378 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #16 - Ref:3427 Polygon
+1. 0.957 0. 0. f4
+np
+3588.7162 161.1378 mt
+3588.7162 161.5829 li
+3588.8403 162.028 li
+3588.8403 162.4731 li
+3588.9644 162.9182 li
+3588.9644 163.3633 li
+3588.9644 163.8085 li
+3589.0885 164.2536 li
+3589.0885 164.6987 li
+3589.2126 165.1438 li
+3589.2126 165.5889 li
+3589.2126 166.034 li
+3589.3367 166.4791 li
+3589.3367 166.9243 li
+3589.4608 167.3694 li
+3589.4608 167.8145 li
+3589.4608 168.2596 li
+3589.5849 168.7047 li
+3589.5849 169.1498 li
+3589.709 169.5949 li
+3589.709 170.0401 li
+3589.709 170.4852 li
+3589.8331 170.9303 li
+3589.8331 171.3754 li
+3589.9572 171.8205 li
+3589.9572 172.2656 li
+3590.0813 172.7107 li
+3590.0813 173.1559 li
+3590.2054 173.601 li
+3590.2054 174.0461 li
+3590.2054 174.4912 li
+3590.3294 174.9363 li
+3590.3294 175.3814 li
+3590.4535 175.8265 li
+3590.4535 176.2717 li
+3590.5776 176.7168 li
+3590.7017 177.1619 li
+3590.7017 177.607 li
+3590.8258 178.0521 li
+3590.8258 178.4972 li
+3590.9499 178.9423 li
+3591.074 179.3875 li
+3591.1981 179.8326 li
+3591.3222 180.2777 li
+3591.4463 180.7228 li
+3591.5704 181.1679 li
+3591.6944 181.613 li
+3591.8185 182.0581 li
+3591.9426 182.0581 li
+3592.0667 182.0581 li
+3592.1908 182.0581 li
+3592.3149 181.613 li
+3592.439 181.613 li
+3592.5631 181.1679 li
+3592.6872 180.7228 li
+3592.8113 180.2777 li
+3592.9354 179.8326 li
+3593.0594 179.3875 li
+3593.1835 178.9423 li
+3593.3076 178.4972 li
+3593.4317 178.0521 li
+3593.5558 177.607 li
+3593.5558 177.1619 li
+3593.6799 176.7168 li
+3593.6799 176.2717 li
+3593.804 175.8265 li
+3593.804 175.3814 li
+3593.9281 174.9363 li
+3593.9281 174.4912 li
+3594.0522 174.0461 li
+3594.0522 173.601 li
+3594.1763 173.1559 li
+3594.1763 172.7107 li
+3594.1763 172.2656 li
+3594.3004 171.8205 li
+3594.3004 171.3754 li
+3594.4245 170.9303 li
+3594.4245 170.4852 li
+3594.5486 170.0401 li
+3594.5486 169.5949 li
+3594.5486 169.1498 li
+3594.6726 168.7047 li
+3594.6726 168.2596 li
+3594.7967 167.8145 li
+3594.7967 167.3694 li
+3594.7967 166.9243 li
+3594.9208 166.4791 li
+3594.9208 166.034 li
+3595.0449 165.5889 li
+3595.0449 165.1438 li
+3595.0449 164.6987 li
+3595.169 164.2536 li
+3595.169 163.8085 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #17 - Ref:3428 Group
+%%DSIBeginObject: #18 - Ref:3429 Polygon
+1. 0.957 0. 0. f4
+np
+3582.8214 163.8085 mt
+3582.8214 163.3634 li
+3582.9455 162.9183 li
+3582.9455 162.4732 li
+3583.0696 162.028 li
+3583.0696 161.5829 li
+3583.0696 161.1378 li
+3583.1937 160.6926 li
+3583.1937 160.2475 li
+3583.3178 159.8024 li
+3583.3178 159.3573 li
+3583.3178 158.9121 li
+3583.4419 158.467 li
+3583.4419 158.0219 li
+3583.566 157.5767 li
+3583.566 157.1316 li
+3583.6901 156.6865 li
+3583.6901 156.2413 li
+3583.6901 155.7962 li
+3583.8142 155.3511 li
+3583.8142 154.906 li
+3583.9383 154.4608 li
+3583.9383 154.0157 li
+3584.0624 153.5706 li
+3584.0624 153.1254 li
+3584.1865 152.6803 li
+3584.1865 152.2352 li
+3584.3106 151.7901 li
+3584.3106 151.3449 li
+3584.4347 150.8998 li
+3584.4347 150.4547 li
+3584.5588 150.0095 li
+3584.6829 149.5644 li
+3584.6829 149.1193 li
+3584.807 148.6741 li
+3584.9311 148.229 li
+3585.0552 147.7839 li
+3585.1793 147.3388 li
+3585.3034 146.8936 li
+3585.4275 146.4485 li
+3585.5516 146.0034 li
+3585.6757 145.5582 li
+3585.7998 145.5582 li
+3585.9239 145.5582 li
+3586.048 145.5582 li
+3586.1721 146.0034 li
+3586.2962 146.0034 li
+3586.4203 146.4485 li
+3586.5444 146.8936 li
+3586.6685 147.3388 li
+3586.7926 147.7839 li
+3586.9167 148.229 li
+3587.0408 148.6741 li
+3587.1649 149.1193 li
+3587.289 149.5644 li
+3587.289 150.0095 li
+3587.4131 150.4547 li
+3587.4131 150.8998 li
+3587.5372 151.3449 li
+3587.6613 151.7901 li
+3587.6613 152.2352 li
+3587.7854 152.6803 li
+3587.7854 153.1254 li
+3587.7854 153.5706 li
+3587.9095 154.0157 li
+3587.9095 154.4608 li
+3588.0336 154.906 li
+3588.0336 155.3511 li
+3588.1577 155.7962 li
+3588.1577 156.2413 li
+3588.1577 156.6865 li
+3588.2818 157.1316 li
+3588.2818 157.5767 li
+3588.4059 158.0219 li
+3588.4059 158.467 li
+3588.53 158.9121 li
+3588.53 159.3573 li
+3588.53 159.8024 li
+3588.6541 160.2475 li
+3588.6541 160.6926 li
+3588.7782 161.1378 li
+3588.7782 161.5829 li
+3588.7782 162.028 li
+3588.9023 162.4732 li
+3588.9023 162.9183 li
+3589.0264 163.3634 li
+3589.0264 163.8085 li
+3589.0264 164.2537 li
+3589.1505 164.6988 li
+3589.1505 165.1439 li
+3589.1505 165.5891 li
+3589.2746 166.0342 li
+3589.2746 166.4793 li
+3589.3987 166.9245 li
+3589.3987 167.3696 li
+3589.3987 167.8147 li
+3589.5228 168.2598 li
+3589.5228 168.705 li
+3589.6469 169.1501 li
+3589.6469 169.5952 li
+3589.6469 170.0404 li
+3589.771 170.4855 li
+3589.771 170.9306 li
+3589.8951 171.3757 li
+3589.8951 171.8209 li
+3590.0192 172.266 li
+3590.0192 172.7111 li
+3590.1433 173.1563 li
+3590.1433 173.6014 li
+3590.1433 174.0465 li
+3590.2674 174.4917 li
+3590.2674 174.9368 li
+3590.3915 175.3819 li
+3590.3915 175.827 li
+3590.5156 176.2722 li
+3590.5156 176.7173 li
+3590.6397 177.1624 li
+3590.7638 177.6076 li
+3590.7638 178.0527 li
+3590.8879 178.4978 li
+3591.012 178.9429 li
+3591.012 179.3881 li
+3591.1361 179.8332 li
+3591.2602 180.2783 li
+3591.3843 180.7235 li
+3591.5084 181.1686 li
+3591.6325 181.6137 li
+3591.7566 181.6137 li
+3591.8808 182.0589 li
+3592.0048 182.0589 li
+3592.129 182.0589 li
+3592.253 181.6137 li
+3592.3771 181.6137 li
+3592.5013 181.6137 li
+3592.6253 181.1686 li
+3592.7495 180.7235 li
+3592.8735 180.2783 li
+3592.9977 179.8332 li
+3593.1217 179.3881 li
+3593.2458 178.9429 li
+3593.3699 178.4978 li
+3593.3699 178.0527 li
+3593.494 177.6076 li
+3593.6181 177.1624 li
+3593.6181 176.7173 li
+3593.7422 176.2722 li
+3593.7422 175.827 li
+3593.8663 175.3819 li
+3593.8663 174.9368 li
+3593.9904 174.4917 li
+3593.9904 174.0465 li
+3594.1145 173.6014 li
+3594.1145 173.1563 li
+3594.2386 172.7111 li
+3594.2386 172.266 li
+3594.2386 171.8209 li
+3594.3627 171.3757 li
+3594.3627 170.9306 li
+3594.4868 170.4855 li
+3594.4868 170.0404 li
+3594.6109 169.5952 li
+3594.6109 169.1501 li
+3594.6109 168.705 li
+3594.735 168.2598 li
+3594.735 167.8147 li
+3594.8591 167.3696 li
+3594.8591 166.9245 li
+3594.8591 166.4793 li
+3594.9832 166.0342 li
+3594.9832 165.5891 li
+3595.1073 165.1439 li
+3595.1073 164.6988 li
+3595.1073 164.2537 li
+3595.2314 163.8085 li
+3595.2314 163.3634 li
+3595.2314 162.9183 li
+3595.3555 162.4732 li
+3595.3555 162.028 li
+3595.4796 161.5829 li
+3595.4796 161.1378 li
+3595.4796 160.6926 li
+3595.6038 160.2475 li
+3595.6038 159.8024 li
+3595.7278 159.3573 li
+3595.7278 158.9121 li
+3595.7278 158.467 li
+3595.852 158.0219 li
+3595.852 157.5767 li
+3595.976 157.1316 li
+3595.976 156.6865 li
+3595.976 156.2413 li
+3596.1001 155.7962 li
+3596.1001 155.3511 li
+3596.2243 154.906 li
+3596.2243 154.4608 li
+3596.3483 154.0157 li
+3596.3483 153.5706 li
+3596.4725 153.1254 li
+3596.4725 152.6803 li
+3596.5965 152.2352 li
+3596.5965 151.7901 li
+3596.7207 151.3449 li
+3596.7207 150.8998 li
+3596.8448 150.4547 li
+3596.8448 150.0095 li
+3596.9688 149.5644 li
+3597.093 149.1193 li
+3597.093 148.6741 li
+3597.217 148.229 li
+3597.3412 147.7839 li
+3597.4653 147.3388 li
+3597.5894 146.8936 li
+3597.7135 146.4485 li
+3597.8375 146.0034 li
+3597.9617 146.0034 li
+3598.0858 145.5582 li
+3598.2099 145.5582 li
+3598.334 145.5582 li
+3598.4581 146.0034 li
+3598.5822 146.0034 li
+3598.7063 146.4485 li
+3598.8304 146.4485 li
+3598.9545 146.8936 li
+3599.0786 147.3388 li
+3599.2027 147.7839 li
+3599.3268 148.229 li
+3599.4509 148.6741 li
+3599.575 149.1193 li
+3599.575 149.5644 li
+3599.6991 150.0095 li
+3599.6991 150.4547 li
+3599.8232 150.8998 li
+3599.9473 151.3449 li
+3599.9473 151.7901 li
+3600.0714 152.2352 li
+3600.0714 152.6803 li
+3600.0714 153.1254 li
+3600.1955 153.5706 li
+3600.1955 154.0157 li
+3600.3195 154.4608 li
+3600.3195 154.906 li
+3600.4437 155.3511 li
+3600.4437 155.7962 li
+3600.5678 156.2413 li
+3600.5678 156.6865 li
+3600.5678 157.1316 li
+3600.6918 157.5767 li
+3600.6918 158.0219 li
+3600.816 158.467 li
+3600.816 158.9121 li
+3600.816 159.3573 li
+3600.94 159.8024 li
+3600.94 160.2475 li
+3601.0642 160.6926 li
+3601.0642 161.1378 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #19 - Ref:3430 Polygon
+1. 0.957 0. 0. f4
+np
+3601.0642 161.1378 mt
+3601.0642 161.5829 li
+3601.1882 162.028 li
+3601.1882 162.4731 li
+3601.3123 162.9182 li
+3601.3123 163.3633 li
+3601.3123 163.8085 li
+3601.4364 164.2536 li
+3601.4364 164.6987 li
+3601.5605 165.1438 li
+3601.5605 165.5889 li
+3601.5605 166.034 li
+3601.6846 166.4791 li
+3601.6846 166.9243 li
+3601.8087 167.3694 li
+3601.8087 167.8145 li
+3601.8087 168.2596 li
+3601.9328 168.7047 li
+3601.9328 169.1498 li
+3602.0569 169.5949 li
+3602.0569 170.0401 li
+3602.0569 170.4852 li
+3602.181 170.9303 li
+3602.181 171.3754 li
+3602.3051 171.8205 li
+3602.3051 172.2656 li
+3602.4292 172.7107 li
+3602.4292 173.1559 li
+3602.5533 173.601 li
+3602.5533 174.0461 li
+3602.5533 174.4912 li
+3602.6774 174.9363 li
+3602.6774 175.3814 li
+3602.8015 175.8265 li
+3602.8015 176.2717 li
+3602.9255 176.7168 li
+3603.0496 177.1619 li
+3603.0496 177.607 li
+3603.1737 178.0521 li
+3603.1737 178.4972 li
+3603.2978 178.9423 li
+3603.4219 179.3875 li
+3603.546 179.8326 li
+3603.6701 180.2777 li
+3603.7942 180.7228 li
+3603.9183 181.1679 li
+3604.0424 181.613 li
+3604.1665 182.0581 li
+3604.2905 182.0581 li
+3604.4146 182.0581 li
+3604.5387 182.0581 li
+3604.6628 181.613 li
+3604.7869 181.613 li
+3604.911 181.1679 li
+3605.0351 180.7228 li
+3605.1592 180.2777 li
+3605.2833 179.8326 li
+3605.4073 179.3875 li
+3605.5315 178.9423 li
+3605.6556 178.4972 li
+3605.7796 178.0521 li
+3605.9037 177.607 li
+3605.9037 177.1619 li
+3606.0278 176.7168 li
+3606.0278 176.2717 li
+3606.1519 175.8265 li
+3606.1519 175.3814 li
+3606.276 174.9363 li
+3606.276 174.4912 li
+3606.4001 174.0461 li
+3606.4001 173.601 li
+3606.5242 173.1559 li
+3606.5242 172.7107 li
+3606.5242 172.2656 li
+3606.6483 171.8205 li
+3606.6483 171.3754 li
+3606.7724 170.9303 li
+3606.7724 170.4852 li
+3606.8965 170.0401 li
+3606.8965 169.5949 li
+3606.8965 169.1498 li
+3607.0206 168.7047 li
+3607.0206 168.2596 li
+3607.1446 167.8145 li
+3607.1446 167.3694 li
+3607.1446 166.9243 li
+3607.2688 166.4791 li
+3607.2688 166.034 li
+3607.3929 165.5889 li
+3607.3929 165.1438 li
+3607.3929 164.6987 li
+3607.5169 164.2536 li
+3607.5169 163.8085 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #20 - Ref:3375 Group
+%%DSIBeginObject: #21 - Ref:3383 Group
+%%DSIBeginObject: #22 - Ref:3384 Polygon
+1. 0.957 0. 0. f4
+np
+3643.9735 163.8085 mt
+3643.9735 163.3634 li
+3644.064 162.9183 li
+3644.064 162.4732 li
+3644.1544 162.028 li
+3644.1544 161.5829 li
+3644.1544 161.1378 li
+3644.2449 160.6926 li
+3644.2449 160.2475 li
+3644.3353 159.8024 li
+3644.3353 159.3573 li
+3644.3353 158.9121 li
+3644.4258 158.467 li
+3644.4258 158.0219 li
+3644.5162 157.5767 li
+3644.5162 157.1316 li
+3644.6067 156.6865 li
+3644.6067 156.2413 li
+3644.6067 155.7962 li
+3644.6971 155.3511 li
+3644.6971 154.906 li
+3644.7876 154.4608 li
+3644.7876 154.0157 li
+3644.8781 153.5706 li
+3644.8781 153.1254 li
+3644.9685 152.6803 li
+3644.9685 152.2352 li
+3645.059 151.7901 li
+3645.059 151.3449 li
+3645.1494 150.8998 li
+3645.1494 150.4547 li
+3645.2399 150.0095 li
+3645.3303 149.5644 li
+3645.3303 149.1193 li
+3645.4208 148.6741 li
+3645.5112 148.229 li
+3645.6017 147.7839 li
+3645.6921 147.3388 li
+3645.7826 146.8936 li
+3645.873 146.4485 li
+3645.9635 146.0034 li
+3646.054 145.5582 li
+3646.1444 145.5582 li
+3646.2349 145.5582 li
+3646.3253 145.5582 li
+3646.4158 146.0034 li
+3646.5062 146.0034 li
+3646.5967 146.4485 li
+3646.6871 146.8936 li
+3646.7776 147.3388 li
+3646.868 147.7839 li
+3646.9585 148.229 li
+3647.049 148.6741 li
+3647.1394 149.1193 li
+3647.2299 149.5644 li
+3647.2299 150.0095 li
+3647.3203 150.4547 li
+3647.3203 150.8998 li
+3647.4108 151.3449 li
+3647.5012 151.7901 li
+3647.5012 152.2352 li
+3647.5917 152.6803 li
+3647.5917 153.1254 li
+3647.5917 153.5706 li
+3647.6821 154.0157 li
+3647.6821 154.4608 li
+3647.7726 154.906 li
+3647.7726 155.3511 li
+3647.863 155.7962 li
+3647.863 156.2413 li
+3647.863 156.6865 li
+3647.9535 157.1316 li
+3647.9535 157.5767 li
+3648.0439 158.0219 li
+3648.0439 158.467 li
+3648.1344 158.9121 li
+3648.1344 159.3573 li
+3648.1344 159.8024 li
+3648.2249 160.2475 li
+3648.2249 160.6926 li
+3648.3153 161.1378 li
+3648.3153 161.5829 li
+3648.3153 162.028 li
+3648.4058 162.4732 li
+3648.4058 162.9183 li
+3648.4962 163.3634 li
+3648.4962 163.8085 li
+3648.4962 164.2537 li
+3648.5867 164.6988 li
+3648.5867 165.1439 li
+3648.5867 165.5891 li
+3648.6771 166.0342 li
+3648.6771 166.4793 li
+3648.7676 166.9245 li
+3648.7676 167.3696 li
+3648.7676 167.8147 li
+3648.858 168.2598 li
+3648.858 168.705 li
+3648.9485 169.1501 li
+3648.9485 169.5952 li
+3648.9485 170.0404 li
+3649.0389 170.4855 li
+3649.0389 170.9306 li
+3649.1294 171.3757 li
+3649.1294 171.8209 li
+3649.2198 172.266 li
+3649.2198 172.7111 li
+3649.3103 173.1563 li
+3649.3103 173.6014 li
+3649.3103 174.0465 li
+3649.4008 174.4917 li
+3649.4008 174.9368 li
+3649.4912 175.3819 li
+3649.4912 175.827 li
+3649.5817 176.2722 li
+3649.5817 176.7173 li
+3649.6721 177.1624 li
+3649.7626 177.6076 li
+3649.7626 178.0527 li
+3649.853 178.4978 li
+3649.9435 178.9429 li
+3649.9435 179.3881 li
+3650.0339 179.8332 li
+3650.1244 180.2783 li
+3650.2148 180.7235 li
+3650.3053 181.1686 li
+3650.3958 181.6137 li
+3650.4862 181.6137 li
+3650.5767 182.0589 li
+3650.6671 182.0589 li
+3650.7576 182.0589 li
+3650.848 181.6137 li
+3650.9385 181.6137 li
+3651.0289 181.6137 li
+3651.1194 181.1686 li
+3651.2098 180.7235 li
+3651.3003 180.2783 li
+3651.3907 179.8332 li
+3651.4812 179.3881 li
+3651.5717 178.9429 li
+3651.6621 178.4978 li
+3651.6621 178.0527 li
+3651.7526 177.6076 li
+3651.843 177.1624 li
+3651.843 176.7173 li
+3651.9335 176.2722 li
+3651.9335 175.827 li
+3652.0239 175.3819 li
+3652.0239 174.9368 li
+3652.1144 174.4917 li
+3652.1144 174.0465 li
+3652.2048 173.6014 li
+3652.2048 173.1563 li
+3652.2953 172.7111 li
+3652.2953 172.266 li
+3652.2953 171.8209 li
+3652.3857 171.3757 li
+3652.3857 170.9306 li
+3652.4762 170.4855 li
+3652.4762 170.0404 li
+3652.5667 169.5952 li
+3652.5667 169.1501 li
+3652.5667 168.705 li
+3652.6571 168.2598 li
+3652.6571 167.8147 li
+3652.7476 167.3696 li
+3652.7476 166.9245 li
+3652.7476 166.4793 li
+3652.838 166.0342 li
+3652.838 165.5891 li
+3652.9285 165.1439 li
+3652.9285 164.6988 li
+3652.9285 164.2537 li
+3653.0189 163.8085 li
+3653.0189 163.3634 li
+3653.0189 162.9183 li
+3653.1094 162.4732 li
+3653.1094 162.028 li
+3653.1998 161.5829 li
+3653.1998 161.1378 li
+3653.1998 160.6926 li
+3653.2903 160.2475 li
+3653.2903 159.8024 li
+3653.3807 159.3573 li
+3653.3807 158.9121 li
+3653.3807 158.467 li
+3653.4712 158.0219 li
+3653.4712 157.5767 li
+3653.5616 157.1316 li
+3653.5616 156.6865 li
+3653.5616 156.2413 li
+3653.6521 155.7962 li
+3653.6521 155.3511 li
+3653.7426 154.906 li
+3653.7426 154.4608 li
+3653.833 154.0157 li
+3653.833 153.5706 li
+3653.9235 153.1254 li
+3653.9235 152.6803 li
+3654.0139 152.2352 li
+3654.0139 151.7901 li
+3654.1044 151.3449 li
+3654.1044 150.8998 li
+3654.1948 150.4547 li
+3654.1948 150.0095 li
+3654.2853 149.5644 li
+3654.3757 149.1193 li
+3654.3757 148.6741 li
+3654.4662 148.229 li
+3654.5566 147.7839 li
+3654.6471 147.3388 li
+3654.7375 146.8936 li
+3654.828 146.4485 li
+3654.9185 146.0034 li
+3655.0089 146.0034 li
+3655.0994 145.5582 li
+3655.1898 145.5582 li
+3655.2803 145.5582 li
+3655.3707 146.0034 li
+3655.4612 146.0034 li
+3655.5516 146.4485 li
+3655.6421 146.4485 li
+3655.7325 146.8936 li
+3655.823 147.3388 li
+3655.9135 147.7839 li
+3656.0039 148.229 li
+3656.0944 148.6741 li
+3656.1848 149.1193 li
+3656.1848 149.5644 li
+3656.2753 150.0095 li
+3656.2753 150.4547 li
+3656.3657 150.8998 li
+3656.4562 151.3449 li
+3656.4562 151.7901 li
+3656.5466 152.2352 li
+3656.5466 152.6803 li
+3656.5466 153.1254 li
+3656.6371 153.5706 li
+3656.6371 154.0157 li
+3656.7275 154.4608 li
+3656.7275 154.906 li
+3656.818 155.3511 li
+3656.818 155.7962 li
+3656.9084 156.2413 li
+3656.9084 156.6865 li
+3656.9084 157.1316 li
+3656.9989 157.5767 li
+3656.9989 158.0219 li
+3657.0894 158.467 li
+3657.0894 158.9121 li
+3657.0894 159.3573 li
+3657.1798 159.8024 li
+3657.1798 160.2475 li
+3657.2703 160.6926 li
+3657.2703 161.1378 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #23 - Ref:3431 Polygon
+1. 0.957 0. 0. f4
+np
+3657.2703 161.1378 mt
+3657.2703 161.5829 li
+3657.3607 162.028 li
+3657.3607 162.4731 li
+3657.4512 162.9182 li
+3657.4512 163.3633 li
+3657.4512 163.8085 li
+3657.5416 164.2536 li
+3657.5416 164.6987 li
+3657.632 165.1438 li
+3657.632 165.5889 li
+3657.632 166.034 li
+3657.7225 166.4791 li
+3657.7225 166.9243 li
+3657.8129 167.3694 li
+3657.8129 167.8145 li
+3657.8129 168.2596 li
+3657.9034 168.7047 li
+3657.9034 169.1498 li
+3657.9939 169.5949 li
+3657.9939 170.0401 li
+3657.9939 170.4852 li
+3658.0843 170.9303 li
+3658.0843 171.3754 li
+3658.1747 171.8205 li
+3658.1747 172.2656 li
+3658.2652 172.7107 li
+3658.2652 173.1559 li
+3658.3556 173.601 li
+3658.3556 174.0461 li
+3658.3556 174.4912 li
+3658.4461 174.9363 li
+3658.4461 175.3814 li
+3658.5365 175.8265 li
+3658.5365 176.2717 li
+3658.627 176.7168 li
+3658.7174 177.1619 li
+3658.7174 177.607 li
+3658.8079 178.0521 li
+3658.8079 178.4972 li
+3658.8983 178.9423 li
+3658.9888 179.3875 li
+3659.0792 179.8326 li
+3659.1696 180.2777 li
+3659.2601 180.7228 li
+3659.3506 181.1679 li
+3659.441 181.613 li
+3659.5314 182.0581 li
+3659.6219 182.0581 li
+3659.7123 182.0581 li
+3659.8028 182.0581 li
+3659.8932 181.613 li
+3659.9837 181.613 li
+3660.0741 181.1679 li
+3660.1646 180.7228 li
+3660.255 180.2777 li
+3660.3455 179.8326 li
+3660.4359 179.3875 li
+3660.5264 178.9423 li
+3660.6168 178.4972 li
+3660.7073 178.0521 li
+3660.7977 177.607 li
+3660.7977 177.1619 li
+3660.8882 176.7168 li
+3660.8882 176.2717 li
+3660.9786 175.8265 li
+3660.9786 175.3814 li
+3661.069 174.9363 li
+3661.069 174.4912 li
+3661.1595 174.0461 li
+3661.1595 173.601 li
+3661.2499 173.1559 li
+3661.2499 172.7107 li
+3661.2499 172.2656 li
+3661.3404 171.8205 li
+3661.3404 171.3754 li
+3661.4308 170.9303 li
+3661.4308 170.4852 li
+3661.5213 170.0401 li
+3661.5213 169.5949 li
+3661.5213 169.1498 li
+3661.6117 168.7047 li
+3661.6117 168.2596 li
+3661.7022 167.8145 li
+3661.7022 167.3694 li
+3661.7022 166.9243 li
+3661.7926 166.4791 li
+3661.7926 166.034 li
+3661.8831 165.5889 li
+3661.8831 165.1438 li
+3661.8831 164.6987 li
+3661.9735 164.2536 li
+3661.9735 163.8085 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #24 - Ref:3432 Group
+%%DSIBeginObject: #25 - Ref:3433 Polygon
+1. 0.957 0. 0. f4
+np
+3661.9735 163.8085 mt
+3661.9735 163.3634 li
+3662.064 162.9183 li
+3662.064 162.4732 li
+3662.1544 162.028 li
+3662.1544 161.5829 li
+3662.1544 161.1378 li
+3662.2449 160.6926 li
+3662.2449 160.2475 li
+3662.3353 159.8024 li
+3662.3353 159.3573 li
+3662.3353 158.9121 li
+3662.4258 158.467 li
+3662.4258 158.0219 li
+3662.5162 157.5767 li
+3662.5162 157.1316 li
+3662.6067 156.6865 li
+3662.6067 156.2413 li
+3662.6067 155.7962 li
+3662.6971 155.3511 li
+3662.6971 154.906 li
+3662.7876 154.4608 li
+3662.7876 154.0157 li
+3662.8781 153.5706 li
+3662.8781 153.1254 li
+3662.9685 152.6803 li
+3662.9685 152.2352 li
+3663.059 151.7901 li
+3663.059 151.3449 li
+3663.1494 150.8998 li
+3663.1494 150.4547 li
+3663.2399 150.0095 li
+3663.3303 149.5644 li
+3663.3303 149.1193 li
+3663.4208 148.6741 li
+3663.5112 148.229 li
+3663.6017 147.7839 li
+3663.6921 147.3388 li
+3663.7826 146.8936 li
+3663.873 146.4485 li
+3663.9635 146.0034 li
+3664.054 145.5582 li
+3664.1444 145.5582 li
+3664.2349 145.5582 li
+3664.3253 145.5582 li
+3664.4158 146.0034 li
+3664.5062 146.0034 li
+3664.5967 146.4485 li
+3664.6871 146.8936 li
+3664.7776 147.3388 li
+3664.868 147.7839 li
+3664.9585 148.229 li
+3665.049 148.6741 li
+3665.1394 149.1193 li
+3665.2299 149.5644 li
+3665.2299 150.0095 li
+3665.3203 150.4547 li
+3665.3203 150.8998 li
+3665.4108 151.3449 li
+3665.5012 151.7901 li
+3665.5012 152.2352 li
+3665.5917 152.6803 li
+3665.5917 153.1254 li
+3665.5917 153.5706 li
+3665.6821 154.0157 li
+3665.6821 154.4608 li
+3665.7726 154.906 li
+3665.7726 155.3511 li
+3665.863 155.7962 li
+3665.863 156.2413 li
+3665.863 156.6865 li
+3665.9535 157.1316 li
+3665.9535 157.5767 li
+3666.0439 158.0219 li
+3666.0439 158.467 li
+3666.1344 158.9121 li
+3666.1344 159.3573 li
+3666.1344 159.8024 li
+3666.2249 160.2475 li
+3666.2249 160.6926 li
+3666.3153 161.1378 li
+3666.3153 161.5829 li
+3666.3153 162.028 li
+3666.4058 162.4732 li
+3666.4058 162.9183 li
+3666.4962 163.3634 li
+3666.4962 163.8085 li
+3666.4962 164.2537 li
+3666.5867 164.6988 li
+3666.5867 165.1439 li
+3666.5867 165.5891 li
+3666.6771 166.0342 li
+3666.6771 166.4793 li
+3666.7676 166.9245 li
+3666.7676 167.3696 li
+3666.7676 167.8147 li
+3666.858 168.2598 li
+3666.858 168.705 li
+3666.9485 169.1501 li
+3666.9485 169.5952 li
+3666.9485 170.0404 li
+3667.0389 170.4855 li
+3667.0389 170.9306 li
+3667.1294 171.3757 li
+3667.1294 171.8209 li
+3667.2198 172.266 li
+3667.2198 172.7111 li
+3667.3103 173.1563 li
+3667.3103 173.6014 li
+3667.3103 174.0465 li
+3667.4008 174.4917 li
+3667.4008 174.9368 li
+3667.4912 175.3819 li
+3667.4912 175.827 li
+3667.5817 176.2722 li
+3667.5817 176.7173 li
+3667.6721 177.1624 li
+3667.7626 177.6076 li
+3667.7626 178.0527 li
+3667.853 178.4978 li
+3667.9435 178.9429 li
+3667.9435 179.3881 li
+3668.0339 179.8332 li
+3668.1244 180.2783 li
+3668.2148 180.7235 li
+3668.3053 181.1686 li
+3668.3958 181.6137 li
+3668.4862 181.6137 li
+3668.5767 182.0589 li
+3668.6671 182.0589 li
+3668.7576 182.0589 li
+3668.848 181.6137 li
+3668.9385 181.6137 li
+3669.0289 181.6137 li
+3669.1194 181.1686 li
+3669.2098 180.7235 li
+3669.3003 180.2783 li
+3669.3907 179.8332 li
+3669.4812 179.3881 li
+3669.5717 178.9429 li
+3669.6621 178.4978 li
+3669.6621 178.0527 li
+3669.7526 177.6076 li
+3669.843 177.1624 li
+3669.843 176.7173 li
+3669.9335 176.2722 li
+3669.9335 175.827 li
+3670.0239 175.3819 li
+3670.0239 174.9368 li
+3670.1144 174.4917 li
+3670.1144 174.0465 li
+3670.2048 173.6014 li
+3670.2048 173.1563 li
+3670.2953 172.7111 li
+3670.2953 172.266 li
+3670.2953 171.8209 li
+3670.3857 171.3757 li
+3670.3857 170.9306 li
+3670.4762 170.4855 li
+3670.4762 170.0404 li
+3670.5667 169.5952 li
+3670.5667 169.1501 li
+3670.5667 168.705 li
+3670.6571 168.2598 li
+3670.6571 167.8147 li
+3670.7476 167.3696 li
+3670.7476 166.9245 li
+3670.7476 166.4793 li
+3670.838 166.0342 li
+3670.838 165.5891 li
+3670.9285 165.1439 li
+3670.9285 164.6988 li
+3670.9285 164.2537 li
+3671.0189 163.8085 li
+3671.0189 163.3634 li
+3671.0189 162.9183 li
+3671.1094 162.4732 li
+3671.1094 162.028 li
+3671.1998 161.5829 li
+3671.1998 161.1378 li
+3671.1998 160.6926 li
+3671.2903 160.2475 li
+3671.2903 159.8024 li
+3671.3807 159.3573 li
+3671.3807 158.9121 li
+3671.3807 158.467 li
+3671.4712 158.0219 li
+3671.4712 157.5767 li
+3671.5616 157.1316 li
+3671.5616 156.6865 li
+3671.5616 156.2413 li
+3671.6521 155.7962 li
+3671.6521 155.3511 li
+3671.7426 154.906 li
+3671.7426 154.4608 li
+3671.833 154.0157 li
+3671.833 153.5706 li
+3671.9235 153.1254 li
+3671.9235 152.6803 li
+3672.0139 152.2352 li
+3672.0139 151.7901 li
+3672.1044 151.3449 li
+3672.1044 150.8998 li
+3672.1948 150.4547 li
+3672.1948 150.0095 li
+3672.2853 149.5644 li
+3672.3757 149.1193 li
+3672.3757 148.6741 li
+3672.4662 148.229 li
+3672.5566 147.7839 li
+3672.6471 147.3388 li
+3672.7375 146.8936 li
+3672.828 146.4485 li
+3672.9185 146.0034 li
+3673.0089 146.0034 li
+3673.0994 145.5582 li
+3673.1898 145.5582 li
+3673.2803 145.5582 li
+3673.3707 146.0034 li
+3673.4612 146.0034 li
+3673.5516 146.4485 li
+3673.6421 146.4485 li
+3673.7325 146.8936 li
+3673.823 147.3388 li
+3673.9135 147.7839 li
+3674.0039 148.229 li
+3674.0944 148.6741 li
+3674.1848 149.1193 li
+3674.1848 149.5644 li
+3674.2753 150.0095 li
+3674.2753 150.4547 li
+3674.3657 150.8998 li
+3674.4562 151.3449 li
+3674.4562 151.7901 li
+3674.5466 152.2352 li
+3674.5466 152.6803 li
+3674.5466 153.1254 li
+3674.6371 153.5706 li
+3674.6371 154.0157 li
+3674.7275 154.4608 li
+3674.7275 154.906 li
+3674.818 155.3511 li
+3674.818 155.7962 li
+3674.9084 156.2413 li
+3674.9084 156.6865 li
+3674.9084 157.1316 li
+3674.9989 157.5767 li
+3674.9989 158.0219 li
+3675.0894 158.467 li
+3675.0894 158.9121 li
+3675.0894 159.3573 li
+3675.1798 159.8024 li
+3675.1798 160.2475 li
+3675.2703 160.6926 li
+3675.2703 161.1378 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #26 - Ref:3434 Polygon
+1. 0.957 0. 0. f4
+np
+3675.2703 161.1378 mt
+3675.2703 161.5829 li
+3675.3607 162.028 li
+3675.3607 162.4731 li
+3675.4512 162.9182 li
+3675.4512 163.3633 li
+3675.4512 163.8085 li
+3675.5416 164.2536 li
+3675.5416 164.6987 li
+3675.632 165.1438 li
+3675.632 165.5889 li
+3675.632 166.034 li
+3675.7225 166.4791 li
+3675.7225 166.9243 li
+3675.8129 167.3694 li
+3675.8129 167.8145 li
+3675.8129 168.2596 li
+3675.9034 168.7047 li
+3675.9034 169.1498 li
+3675.9939 169.5949 li
+3675.9939 170.0401 li
+3675.9939 170.4852 li
+3676.0843 170.9303 li
+3676.0843 171.3754 li
+3676.1747 171.8205 li
+3676.1747 172.2656 li
+3676.2652 172.7107 li
+3676.2652 173.1559 li
+3676.3556 173.601 li
+3676.3556 174.0461 li
+3676.3556 174.4912 li
+3676.4461 174.9363 li
+3676.4461 175.3814 li
+3676.5365 175.8265 li
+3676.5365 176.2717 li
+3676.627 176.7168 li
+3676.7174 177.1619 li
+3676.7174 177.607 li
+3676.8079 178.0521 li
+3676.8079 178.4972 li
+3676.8983 178.9423 li
+3676.9888 179.3875 li
+3677.0792 179.8326 li
+3677.1696 180.2777 li
+3677.2601 180.7228 li
+3677.3506 181.1679 li
+3677.441 181.613 li
+3677.5314 182.0581 li
+3677.6219 182.0581 li
+3677.7123 182.0581 li
+3677.8028 182.0581 li
+3677.8932 181.613 li
+3677.9837 181.613 li
+3678.0741 181.1679 li
+3678.1646 180.7228 li
+3678.255 180.2777 li
+3678.3455 179.8326 li
+3678.4359 179.3875 li
+3678.5264 178.9423 li
+3678.6168 178.4972 li
+3678.7073 178.0521 li
+3678.7977 177.607 li
+3678.7977 177.1619 li
+3678.8882 176.7168 li
+3678.8882 176.2717 li
+3678.9786 175.8265 li
+3678.9786 175.3814 li
+3679.069 174.9363 li
+3679.069 174.4912 li
+3679.1595 174.0461 li
+3679.1595 173.601 li
+3679.2499 173.1559 li
+3679.2499 172.7107 li
+3679.2499 172.2656 li
+3679.3404 171.8205 li
+3679.3404 171.3754 li
+3679.4308 170.9303 li
+3679.4308 170.4852 li
+3679.5213 170.0401 li
+3679.5213 169.5949 li
+3679.5213 169.1498 li
+3679.6117 168.7047 li
+3679.6117 168.2596 li
+3679.7022 167.8145 li
+3679.7022 167.3694 li
+3679.7022 166.9243 li
+3679.7926 166.4791 li
+3679.7926 166.034 li
+3679.8831 165.5889 li
+3679.8831 165.1438 li
+3679.8831 164.6987 li
+3679.9735 164.2536 li
+3679.9735 163.8085 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #27 - Ref:3374 Group
+%%DSIBeginObject: #28 - Ref:3435 Group
+%%DSIBeginObject: #29 - Ref:3436 Polygon
+1. 0.957 0. 0. f4
+np
+3680.4735 163.8085 mt
+3680.4735 163.3634 li
+3680.5976 162.9183 li
+3680.5976 162.4732 li
+3680.7217 162.028 li
+3680.7217 161.5829 li
+3680.7217 161.1378 li
+3680.8458 160.6926 li
+3680.8458 160.2475 li
+3680.9699 159.8024 li
+3680.9699 159.3573 li
+3680.9699 158.9121 li
+3681.094 158.467 li
+3681.094 158.0219 li
+3681.2181 157.5767 li
+3681.2181 157.1316 li
+3681.3422 156.6865 li
+3681.3422 156.2413 li
+3681.3422 155.7962 li
+3681.4663 155.3511 li
+3681.4663 154.906 li
+3681.5904 154.4608 li
+3681.5904 154.0157 li
+3681.7145 153.5706 li
+3681.7145 153.1254 li
+3681.8386 152.6803 li
+3681.8386 152.2352 li
+3681.9627 151.7901 li
+3681.9627 151.3449 li
+3682.0868 150.8998 li
+3682.0868 150.4547 li
+3682.2109 150.0095 li
+3682.335 149.5644 li
+3682.335 149.1193 li
+3682.4591 148.6741 li
+3682.5832 148.229 li
+3682.7073 147.7839 li
+3682.8314 147.3388 li
+3682.9555 146.8936 li
+3683.0796 146.4485 li
+3683.2037 146.0034 li
+3683.3278 145.5582 li
+3683.4519 145.5582 li
+3683.576 145.5582 li
+3683.7001 145.5582 li
+3683.8242 146.0034 li
+3683.9483 146.0034 li
+3684.0724 146.4485 li
+3684.1965 146.8936 li
+3684.3206 147.3388 li
+3684.4447 147.7839 li
+3684.5688 148.229 li
+3684.6929 148.6741 li
+3684.817 149.1193 li
+3684.9411 149.5644 li
+3684.9411 150.0095 li
+3685.0652 150.4547 li
+3685.0652 150.8998 li
+3685.1893 151.3449 li
+3685.3134 151.7901 li
+3685.3134 152.2352 li
+3685.4375 152.6803 li
+3685.4375 153.1254 li
+3685.4375 153.5706 li
+3685.5616 154.0157 li
+3685.5616 154.4608 li
+3685.6857 154.906 li
+3685.6857 155.3511 li
+3685.8098 155.7962 li
+3685.8098 156.2413 li
+3685.8098 156.6865 li
+3685.9339 157.1316 li
+3685.9339 157.5767 li
+3686.058 158.0219 li
+3686.058 158.467 li
+3686.1821 158.9121 li
+3686.1821 159.3573 li
+3686.1821 159.8024 li
+3686.3062 160.2475 li
+3686.3062 160.6926 li
+3686.4303 161.1378 li
+3686.4303 161.5829 li
+3686.4303 162.028 li
+3686.5544 162.4732 li
+3686.5544 162.9183 li
+3686.6785 163.3634 li
+3686.6785 163.8085 li
+3686.6785 164.2537 li
+3686.8026 164.6988 li
+3686.8026 165.1439 li
+3686.8026 165.5891 li
+3686.9267 166.0342 li
+3686.9267 166.4793 li
+3687.0508 166.9245 li
+3687.0508 167.3696 li
+3687.0508 167.8147 li
+3687.1749 168.2598 li
+3687.1749 168.705 li
+3687.299 169.1501 li
+3687.299 169.5952 li
+3687.299 170.0404 li
+3687.4231 170.4855 li
+3687.4231 170.9306 li
+3687.5472 171.3757 li
+3687.5472 171.8209 li
+3687.6713 172.266 li
+3687.6713 172.7111 li
+3687.7954 173.1563 li
+3687.7954 173.6014 li
+3687.7954 174.0465 li
+3687.9195 174.4917 li
+3687.9195 174.9368 li
+3688.0436 175.3819 li
+3688.0436 175.827 li
+3688.1677 176.2722 li
+3688.1677 176.7173 li
+3688.2918 177.1624 li
+3688.4159 177.6076 li
+3688.4159 178.0527 li
+3688.54 178.4978 li
+3688.6641 178.9429 li
+3688.6641 179.3881 li
+3688.7882 179.8332 li
+3688.9123 180.2783 li
+3689.0364 180.7235 li
+3689.1605 181.1686 li
+3689.2846 181.6137 li
+3689.4087 181.6137 li
+3689.5328 182.0589 li
+3689.6569 182.0589 li
+3689.781 182.0589 li
+3689.9051 181.6137 li
+3690.0292 181.6137 li
+3690.1533 181.6137 li
+3690.2774 181.1686 li
+3690.4015 180.7235 li
+3690.5256 180.2783 li
+3690.6497 179.8332 li
+3690.7738 179.3881 li
+3690.8979 178.9429 li
+3691.022 178.4978 li
+3691.022 178.0527 li
+3691.1461 177.6076 li
+3691.2702 177.1624 li
+3691.2702 176.7173 li
+3691.3943 176.2722 li
+3691.3943 175.827 li
+3691.5184 175.3819 li
+3691.5184 174.9368 li
+3691.6425 174.4917 li
+3691.6425 174.0465 li
+3691.7666 173.6014 li
+3691.7666 173.1563 li
+3691.8907 172.7111 li
+3691.8907 172.266 li
+3691.8907 171.8209 li
+3692.0148 171.3757 li
+3692.0148 170.9306 li
+3692.1389 170.4855 li
+3692.1389 170.0404 li
+3692.263 169.5952 li
+3692.263 169.1501 li
+3692.263 168.705 li
+3692.3871 168.2598 li
+3692.3871 167.8147 li
+3692.5112 167.3696 li
+3692.5112 166.9245 li
+3692.5112 166.4793 li
+3692.6353 166.0342 li
+3692.6353 165.5891 li
+3692.7594 165.1439 li
+3692.7594 164.6988 li
+3692.7594 164.2537 li
+3692.8835 163.8085 li
+3692.8835 163.3634 li
+3692.8835 162.9183 li
+3693.0076 162.4732 li
+3693.0076 162.028 li
+3693.1317 161.5829 li
+3693.1317 161.1378 li
+3693.1317 160.6926 li
+3693.2558 160.2475 li
+3693.2558 159.8024 li
+3693.3799 159.3573 li
+3693.3799 158.9121 li
+3693.3799 158.467 li
+3693.504 158.0219 li
+3693.504 157.5767 li
+3693.6281 157.1316 li
+3693.6281 156.6865 li
+3693.6281 156.2413 li
+3693.7522 155.7962 li
+3693.7522 155.3511 li
+3693.8763 154.906 li
+3693.8763 154.4608 li
+3694.0004 154.0157 li
+3694.0004 153.5706 li
+3694.1245 153.1254 li
+3694.1245 152.6803 li
+3694.2486 152.2352 li
+3694.2486 151.7901 li
+3694.3727 151.3449 li
+3694.3727 150.8998 li
+3694.4968 150.4547 li
+3694.4968 150.0095 li
+3694.6209 149.5644 li
+3694.745 149.1193 li
+3694.745 148.6741 li
+3694.8691 148.229 li
+3694.9932 147.7839 li
+3695.1173 147.3388 li
+3695.2414 146.8936 li
+3695.3655 146.4485 li
+3695.4896 146.0034 li
+3695.6137 146.0034 li
+3695.7378 145.5582 li
+3695.8619 145.5582 li
+3695.986 145.5582 li
+3696.1101 146.0034 li
+3696.2342 146.0034 li
+3696.3583 146.4485 li
+3696.4824 146.4485 li
+3696.6065 146.8936 li
+3696.7306 147.3388 li
+3696.8547 147.7839 li
+3696.9789 148.229 li
+3697.1029 148.6741 li
+3697.2271 149.1193 li
+3697.2271 149.5644 li
+3697.3511 150.0095 li
+3697.3511 150.4547 li
+3697.4752 150.8998 li
+3697.5993 151.3449 li
+3697.5993 151.7901 li
+3697.7234 152.2352 li
+3697.7234 152.6803 li
+3697.7234 153.1254 li
+3697.8475 153.5706 li
+3697.8475 154.0157 li
+3697.9716 154.4608 li
+3697.9716 154.906 li
+3698.0957 155.3511 li
+3698.0957 155.7962 li
+3698.2198 156.2413 li
+3698.2198 156.6865 li
+3698.2198 157.1316 li
+3698.3439 157.5767 li
+3698.3439 158.0219 li
+3698.468 158.467 li
+3698.468 158.9121 li
+3698.468 159.3573 li
+3698.5921 159.8024 li
+3698.5921 160.2475 li
+3698.7162 160.6926 li
+3698.7162 161.1378 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #30 - Ref:3437 Polygon
+1. 0.957 0. 0. f4
+np
+3698.7162 161.1378 mt
+3698.7162 161.5829 li
+3698.8403 162.028 li
+3698.8403 162.4731 li
+3698.9644 162.9182 li
+3698.9644 163.3633 li
+3698.9644 163.8085 li
+3699.0885 164.2536 li
+3699.0885 164.6987 li
+3699.2126 165.1438 li
+3699.2126 165.5889 li
+3699.2126 166.034 li
+3699.3367 166.4791 li
+3699.3367 166.9243 li
+3699.4608 167.3694 li
+3699.4608 167.8145 li
+3699.4608 168.2596 li
+3699.5849 168.7047 li
+3699.5849 169.1498 li
+3699.709 169.5949 li
+3699.709 170.0401 li
+3699.709 170.4852 li
+3699.8331 170.9303 li
+3699.8331 171.3754 li
+3699.9572 171.8205 li
+3699.9572 172.2656 li
+3700.0813 172.7107 li
+3700.0813 173.1559 li
+3700.2054 173.601 li
+3700.2054 174.0461 li
+3700.2054 174.4912 li
+3700.3294 174.9363 li
+3700.3294 175.3814 li
+3700.4535 175.8265 li
+3700.4535 176.2717 li
+3700.5776 176.7168 li
+3700.7017 177.1619 li
+3700.7017 177.607 li
+3700.8258 178.0521 li
+3700.8258 178.4972 li
+3700.9499 178.9423 li
+3701.074 179.3875 li
+3701.1981 179.8326 li
+3701.3222 180.2777 li
+3701.4463 180.7228 li
+3701.5704 181.1679 li
+3701.6944 181.613 li
+3701.8185 182.0581 li
+3701.9426 182.0581 li
+3702.0667 182.0581 li
+3702.1908 182.0581 li
+3702.3149 181.613 li
+3702.439 181.613 li
+3702.5631 181.1679 li
+3702.6872 180.7228 li
+3702.8113 180.2777 li
+3702.9354 179.8326 li
+3703.0594 179.3875 li
+3703.1835 178.9423 li
+3703.3076 178.4972 li
+3703.4317 178.0521 li
+3703.5558 177.607 li
+3703.5558 177.1619 li
+3703.6799 176.7168 li
+3703.6799 176.2717 li
+3703.804 175.8265 li
+3703.804 175.3814 li
+3703.9281 174.9363 li
+3703.9281 174.4912 li
+3704.0522 174.0461 li
+3704.0522 173.601 li
+3704.1763 173.1559 li
+3704.1763 172.7107 li
+3704.1763 172.2656 li
+3704.3004 171.8205 li
+3704.3004 171.3754 li
+3704.4245 170.9303 li
+3704.4245 170.4852 li
+3704.5486 170.0401 li
+3704.5486 169.5949 li
+3704.5486 169.1498 li
+3704.6726 168.7047 li
+3704.6726 168.2596 li
+3704.7967 167.8145 li
+3704.7967 167.3694 li
+3704.7967 166.9243 li
+3704.9208 166.4791 li
+3704.9208 166.034 li
+3705.0449 165.5889 li
+3705.0449 165.1438 li
+3705.0449 164.6987 li
+3705.169 164.2536 li
+3705.169 163.8085 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #31 - Ref:3438 Group
+%%DSIBeginObject: #32 - Ref:3439 Polygon
+1. 0.957 0. 0. f4
+np
+3692.8214 163.8085 mt
+3692.8214 163.3634 li
+3692.9455 162.9183 li
+3692.9455 162.4732 li
+3693.0696 162.028 li
+3693.0696 161.5829 li
+3693.0696 161.1378 li
+3693.1937 160.6926 li
+3693.1937 160.2475 li
+3693.3178 159.8024 li
+3693.3178 159.3573 li
+3693.3178 158.9121 li
+3693.4419 158.467 li
+3693.4419 158.0219 li
+3693.566 157.5767 li
+3693.566 157.1316 li
+3693.6901 156.6865 li
+3693.6901 156.2413 li
+3693.6901 155.7962 li
+3693.8142 155.3511 li
+3693.8142 154.906 li
+3693.9383 154.4608 li
+3693.9383 154.0157 li
+3694.0624 153.5706 li
+3694.0624 153.1254 li
+3694.1865 152.6803 li
+3694.1865 152.2352 li
+3694.3106 151.7901 li
+3694.3106 151.3449 li
+3694.4347 150.8998 li
+3694.4347 150.4547 li
+3694.5588 150.0095 li
+3694.6829 149.5644 li
+3694.6829 149.1193 li
+3694.807 148.6741 li
+3694.9311 148.229 li
+3695.0552 147.7839 li
+3695.1793 147.3388 li
+3695.3034 146.8936 li
+3695.4275 146.4485 li
+3695.5516 146.0034 li
+3695.6757 145.5582 li
+3695.7998 145.5582 li
+3695.9239 145.5582 li
+3696.048 145.5582 li
+3696.1721 146.0034 li
+3696.2962 146.0034 li
+3696.4203 146.4485 li
+3696.5444 146.8936 li
+3696.6685 147.3388 li
+3696.7926 147.7839 li
+3696.9167 148.229 li
+3697.0408 148.6741 li
+3697.1649 149.1193 li
+3697.289 149.5644 li
+3697.289 150.0095 li
+3697.4131 150.4547 li
+3697.4131 150.8998 li
+3697.5372 151.3449 li
+3697.6613 151.7901 li
+3697.6613 152.2352 li
+3697.7854 152.6803 li
+3697.7854 153.1254 li
+3697.7854 153.5706 li
+3697.9095 154.0157 li
+3697.9095 154.4608 li
+3698.0336 154.906 li
+3698.0336 155.3511 li
+3698.1577 155.7962 li
+3698.1577 156.2413 li
+3698.1577 156.6865 li
+3698.2818 157.1316 li
+3698.2818 157.5767 li
+3698.4059 158.0219 li
+3698.4059 158.467 li
+3698.53 158.9121 li
+3698.53 159.3573 li
+3698.53 159.8024 li
+3698.6541 160.2475 li
+3698.6541 160.6926 li
+3698.7782 161.1378 li
+3698.7782 161.5829 li
+3698.7782 162.028 li
+3698.9023 162.4732 li
+3698.9023 162.9183 li
+3699.0264 163.3634 li
+3699.0264 163.8085 li
+3699.0264 164.2537 li
+3699.1505 164.6988 li
+3699.1505 165.1439 li
+3699.1505 165.5891 li
+3699.2746 166.0342 li
+3699.2746 166.4793 li
+3699.3987 166.9245 li
+3699.3987 167.3696 li
+3699.3987 167.8147 li
+3699.5228 168.2598 li
+3699.5228 168.705 li
+3699.6469 169.1501 li
+3699.6469 169.5952 li
+3699.6469 170.0404 li
+3699.771 170.4855 li
+3699.771 170.9306 li
+3699.8951 171.3757 li
+3699.8951 171.8209 li
+3700.0192 172.266 li
+3700.0192 172.7111 li
+3700.1433 173.1563 li
+3700.1433 173.6014 li
+3700.1433 174.0465 li
+3700.2674 174.4917 li
+3700.2674 174.9368 li
+3700.3915 175.3819 li
+3700.3915 175.827 li
+3700.5156 176.2722 li
+3700.5156 176.7173 li
+3700.6397 177.1624 li
+3700.7638 177.6076 li
+3700.7638 178.0527 li
+3700.8879 178.4978 li
+3701.012 178.9429 li
+3701.012 179.3881 li
+3701.1361 179.8332 li
+3701.2602 180.2783 li
+3701.3843 180.7235 li
+3701.5084 181.1686 li
+3701.6325 181.6137 li
+3701.7566 181.6137 li
+3701.8808 182.0589 li
+3702.0048 182.0589 li
+3702.129 182.0589 li
+3702.253 181.6137 li
+3702.3771 181.6137 li
+3702.5013 181.6137 li
+3702.6253 181.1686 li
+3702.7495 180.7235 li
+3702.8735 180.2783 li
+3702.9977 179.8332 li
+3703.1217 179.3881 li
+3703.2458 178.9429 li
+3703.3699 178.4978 li
+3703.3699 178.0527 li
+3703.494 177.6076 li
+3703.6181 177.1624 li
+3703.6181 176.7173 li
+3703.7422 176.2722 li
+3703.7422 175.827 li
+3703.8663 175.3819 li
+3703.8663 174.9368 li
+3703.9904 174.4917 li
+3703.9904 174.0465 li
+3704.1145 173.6014 li
+3704.1145 173.1563 li
+3704.2386 172.7111 li
+3704.2386 172.266 li
+3704.2386 171.8209 li
+3704.3627 171.3757 li
+3704.3627 170.9306 li
+3704.4868 170.4855 li
+3704.4868 170.0404 li
+3704.6109 169.5952 li
+3704.6109 169.1501 li
+3704.6109 168.705 li
+3704.735 168.2598 li
+3704.735 167.8147 li
+3704.8591 167.3696 li
+3704.8591 166.9245 li
+3704.8591 166.4793 li
+3704.9832 166.0342 li
+3704.9832 165.5891 li
+3705.1073 165.1439 li
+3705.1073 164.6988 li
+3705.1073 164.2537 li
+3705.2314 163.8085 li
+3705.2314 163.3634 li
+3705.2314 162.9183 li
+3705.3555 162.4732 li
+3705.3555 162.028 li
+3705.4796 161.5829 li
+3705.4796 161.1378 li
+3705.4796 160.6926 li
+3705.6038 160.2475 li
+3705.6038 159.8024 li
+3705.7278 159.3573 li
+3705.7278 158.9121 li
+3705.7278 158.467 li
+3705.852 158.0219 li
+3705.852 157.5767 li
+3705.976 157.1316 li
+3705.976 156.6865 li
+3705.976 156.2413 li
+3706.1001 155.7962 li
+3706.1001 155.3511 li
+3706.2243 154.906 li
+3706.2243 154.4608 li
+3706.3483 154.0157 li
+3706.3483 153.5706 li
+3706.4725 153.1254 li
+3706.4725 152.6803 li
+3706.5965 152.2352 li
+3706.5965 151.7901 li
+3706.7207 151.3449 li
+3706.7207 150.8998 li
+3706.8448 150.4547 li
+3706.8448 150.0095 li
+3706.9688 149.5644 li
+3707.093 149.1193 li
+3707.093 148.6741 li
+3707.217 148.229 li
+3707.3412 147.7839 li
+3707.4653 147.3388 li
+3707.5894 146.8936 li
+3707.7135 146.4485 li
+3707.8375 146.0034 li
+3707.9617 146.0034 li
+3708.0858 145.5582 li
+3708.2099 145.5582 li
+3708.334 145.5582 li
+3708.4581 146.0034 li
+3708.5822 146.0034 li
+3708.7063 146.4485 li
+3708.8304 146.4485 li
+3708.9545 146.8936 li
+3709.0786 147.3388 li
+3709.2027 147.7839 li
+3709.3268 148.229 li
+3709.4509 148.6741 li
+3709.575 149.1193 li
+3709.575 149.5644 li
+3709.6991 150.0095 li
+3709.6991 150.4547 li
+3709.8232 150.8998 li
+3709.9473 151.3449 li
+3709.9473 151.7901 li
+3710.0714 152.2352 li
+3710.0714 152.6803 li
+3710.0714 153.1254 li
+3710.1955 153.5706 li
+3710.1955 154.0157 li
+3710.3195 154.4608 li
+3710.3195 154.906 li
+3710.4437 155.3511 li
+3710.4437 155.7962 li
+3710.5678 156.2413 li
+3710.5678 156.6865 li
+3710.5678 157.1316 li
+3710.6918 157.5767 li
+3710.6918 158.0219 li
+3710.816 158.467 li
+3710.816 158.9121 li
+3710.816 159.3573 li
+3710.94 159.8024 li
+3710.94 160.2475 li
+3711.0642 160.6926 li
+3711.0642 161.1378 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #33 - Ref:3440 Polygon
+1. 0.957 0. 0. f4
+np
+3711.0642 161.1378 mt
+3711.0642 161.5829 li
+3711.1882 162.028 li
+3711.1882 162.4731 li
+3711.3123 162.9182 li
+3711.3123 163.3633 li
+3711.3123 163.8085 li
+3711.4364 164.2536 li
+3711.4364 164.6987 li
+3711.5605 165.1438 li
+3711.5605 165.5889 li
+3711.5605 166.034 li
+3711.6846 166.4791 li
+3711.6846 166.9243 li
+3711.8087 167.3694 li
+3711.8087 167.8145 li
+3711.8087 168.2596 li
+3711.9328 168.7047 li
+3711.9328 169.1498 li
+3712.0569 169.5949 li
+3712.0569 170.0401 li
+3712.0569 170.4852 li
+3712.181 170.9303 li
+3712.181 171.3754 li
+3712.3051 171.8205 li
+3712.3051 172.2656 li
+3712.4292 172.7107 li
+3712.4292 173.1559 li
+3712.5533 173.601 li
+3712.5533 174.0461 li
+3712.5533 174.4912 li
+3712.6774 174.9363 li
+3712.6774 175.3814 li
+3712.8015 175.8265 li
+3712.8015 176.2717 li
+3712.9255 176.7168 li
+3713.0496 177.1619 li
+3713.0496 177.607 li
+3713.1737 178.0521 li
+3713.1737 178.4972 li
+3713.2978 178.9423 li
+3713.4219 179.3875 li
+3713.546 179.8326 li
+3713.6701 180.2777 li
+3713.7942 180.7228 li
+3713.9183 181.1679 li
+3714.0424 181.613 li
+3714.1665 182.0581 li
+3714.2905 182.0581 li
+3714.4146 182.0581 li
+3714.5387 182.0581 li
+3714.6628 181.613 li
+3714.7869 181.613 li
+3714.911 181.1679 li
+3715.0351 180.7228 li
+3715.1592 180.2777 li
+3715.2833 179.8326 li
+3715.4073 179.3875 li
+3715.5315 178.9423 li
+3715.6556 178.4972 li
+3715.7796 178.0521 li
+3715.9037 177.607 li
+3715.9037 177.1619 li
+3716.0278 176.7168 li
+3716.0278 176.2717 li
+3716.1519 175.8265 li
+3716.1519 175.3814 li
+3716.276 174.9363 li
+3716.276 174.4912 li
+3716.4001 174.0461 li
+3716.4001 173.601 li
+3716.5242 173.1559 li
+3716.5242 172.7107 li
+3716.5242 172.2656 li
+3716.6483 171.8205 li
+3716.6483 171.3754 li
+3716.7724 170.9303 li
+3716.7724 170.4852 li
+3716.8965 170.0401 li
+3716.8965 169.5949 li
+3716.8965 169.1498 li
+3717.0206 168.7047 li
+3717.0206 168.2596 li
+3717.1446 167.8145 li
+3717.1446 167.3694 li
+3717.1446 166.9243 li
+3717.2688 166.4791 li
+3717.2688 166.034 li
+3717.3929 165.5889 li
+3717.3929 165.1438 li
+3717.3929 164.6987 li
+3717.5169 164.2536 li
+3717.5169 163.8085 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #34 - Ref:3441 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3732. 167.6999 mt
+(t) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #35 - Ref:3024 Line
+1. 0.957 0. 0. f4
+0.5 0.5 sp
+np
+3606.517 144.023 mt
+3606.517 147.023 li
+3606.517 152.023 mt
+3606.517 155.023 li
+3606.517 160.023 mt
+3606.517 163.023 li
+3606.517 168.023 mt
+3606.517 171.023 li
+3606.517 176.023 mt
+3606.517 179.023 li
+3606.517 184.023 mt
+3606.517 186.523 li
+3606.517 186.523 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #36 - Ref:3443 Line
+1. 0.957 0. 0. f4
+np
+3643.3503 144.023 mt
+3643.3503 147.023 li
+3643.3503 152.023 mt
+3643.3503 155.023 li
+3643.3503 160.023 mt
+3643.3503 163.023 li
+3643.3503 168.023 mt
+3643.3503 171.023 li
+3643.3503 176.023 mt
+3643.3503 179.023 li
+3643.3503 184.023 mt
+3643.3503 186.523 li
+3643.3503 186.523 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #37 - Ref:3444 Line
+1. 0.957 0. 0. f4
+np
+3680.1836 144.023 mt
+3680.1836 147.023 li
+3680.1836 152.023 mt
+3680.1836 155.023 li
+3680.1836 160.023 mt
+3680.1836 163.023 li
+3680.1836 168.023 mt
+3680.1836 171.023 li
+3680.1836 176.023 mt
+3680.1836 179.023 li
+3680.1836 184.023 mt
+3680.1836 186.523 li
+3680.1836 186.523 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #38 - Ref:3445 Line
+1. 0.957 0. 0. f4
+np
+3717.017 144.023 mt
+3717.017 147.023 li
+3717.017 152.023 mt
+3717.017 155.023 li
+3717.017 160.023 mt
+3717.017 163.023 li
+3717.017 168.023 mt
+3717.017 171.023 li
+3717.017 176.023 mt
+3717.017 179.023 li
+3717.017 184.023 mt
+3717.017 186.523 li
+3717.017 186.523 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #39 - Ref:3442 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3584. 142.6999 mt
+0. 0. ta
+(\3220\323) 3 0 12.2217 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #40 - Ref:3447 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3620. 142.6999 mt
+0. 0. ta
+(\3221\323) 3 0 12.2217 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #41 - Ref:3448 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3656. 142.6999 mt
+0. 0. ta
+(\3221\323) 3 0 12.2217 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #42 - Ref:3449 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3693. 142.6999 mt
+0. 0. ta
+(\3220\323) 3 0 12.2217 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #43 - Ref:3446 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3574. 132.6999 mt
+0. 0. ta
+(x\(t\)) 4 0 14.4385 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #44 - Ref:3451 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3638. 195.6999 mt
+0. 0. ta
+(2T) 2 0 11.6699 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #45 - Ref:3452 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3675. 195.6999 mt
+0. 0. ta
+(3T) 2 0 11.6699 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #46 - Ref:3453 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+3712. 195.6999 mt
+0. 0. ta
+(4T) 2 0 11.6699 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIEndObject
+terminate
+showpage

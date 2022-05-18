@@ -1,0 +1,377 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Power Dissipation in Resistor Circuits</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m17305</md:content-id>
+  <md:title>Power Dissipation in Resistor Circuits</md:title>
+  <md:abstract>Power dissipation in resistor circuits.</md:abstract>
+  <md:uuid>39ab9ae9-9111-4108-bba4-a2410c6d2fc3</md:uuid>
+</metadata>
+
+<content>
+    <para id="intro">
+    We can find voltages and currents in simple circuits containing resistors 
+and voltage or current sources.
+    We should examine whether these circuits variables obey the Conservation of 
+Power principle:
+    since a circuit is a closed system, it should not dissipate or create 
+energy.
+    For the moment, our approach is to investigate first a resistor circuit's 
+<term>power</term> consumption/creation.
+    Later, we will <emphasis>prove</emphasis> that because of <term>KVL</term> 
+and <term>KCL</term> <emphasis>all</emphasis> circuits conserve power.
+    </para>   
+    
+    <para id="powerdef">
+    As defined on <link document="m0011" target-id="para5"/>, the instantaneous 
+power consumed/created by every circuit element equals the product of its 
+voltage and current.
+    The total power consumed/created by a circuit equals the sum of each 
+element's power.
+    <m:math display="block">
+    <m:apply><m:eq/>
+      <m:ci>P</m:ci>
+      <m:apply><m:sum/>
+		<m:bvar><m:ci>k</m:ci></m:bvar>
+        <m:condition><m:cn>k</m:cn></m:condition>
+        <m:apply><m:times/>
+          <m:ci><m:msub><m:mi>v</m:mi><m:mi>k</m:mi></m:msub></m:ci>
+          <m:ci><m:msub><m:mi>i</m:mi><m:mi>k</m:mi></m:msub></m:ci>
+        </m:apply>
+      </m:apply>
+    </m:apply>
+    </m:math>
+    Recall that each element's current and voltage must obey the convention that 
+positive current is defined to enter the positive-voltage terminal.
+    With this convention, a positive value of
+    <m:math>
+      <m:apply><m:times/>
+        <m:ci><m:msub><m:mi>v</m:mi><m:mi>k</m:mi></m:msub></m:ci>
+        <m:ci><m:msub><m:mi>i</m:mi><m:mi>k</m:mi></m:msub></m:ci>
+      </m:apply>
+    </m:math>
+    corresponds to consumed power, a negative value to created power.
+    Because the total power in a circuit must be zero
+    (<m:math>
+      <m:apply><m:eq/>
+        <m:ci>P</m:ci>
+        <m:cn>0</m:cn>
+      </m:apply>
+    </m:math>), some circuit elements must create power while others consume it.
+    </para>
+    
+    <para id="example">Consider the simple series circuit should in
+ <link target-id="simplecircuit" document="m0014"/>.
+    In performing our calculations, we defined the current
+    <m:math>
+      <m:ci><m:msub><m:mi>i</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+    </m:math>
+    to flow through the positive-voltage terminals of both resistors
+    and found it to equal
+    <m:math>
+	<m:apply><m:eq/>
+	  <m:ci><m:msub><m:mi>i</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+	  <m:apply><m:divide/>
+	    <m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	    <m:apply><m:plus/>
+	      <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	      <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+    </m:math>.
+    The voltage across the resistor
+    <m:math>
+      <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+    </m:math> is the output voltage and we found it to equal
+    <m:math>
+    <m:apply><m:eq/>
+	  <m:ci><m:msub><m:mi>v</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+	  <m:apply><m:times/>
+	    <m:apply><m:divide/>
+		  <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		  <m:apply><m:plus/>
+	        <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	        <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		  </m:apply>
+	    </m:apply>
+	    <m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	  </m:apply>
+	</m:apply>
+    </m:math>.
+    Consequently, calculating the power for this resistor yields
+    <m:math display="block">
+      <m:apply><m:eq/>
+	    <m:ci><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	    <m:apply><m:times/>
+	      <m:apply><m:divide/>
+		    <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		    <m:apply><m:power/>
+		      <m:apply><m:plus/>
+	            <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	            <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		      </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+	    </m:apply>
+	    <m:apply><m:power/>
+	      <m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+      </m:apply>
+    </m:math>
+    Consequently, this resistor dissipates power because
+    <m:math>
+	  <m:ci><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+    </m:math> is positive.
+    This result should not be surprising since
+ <link document="m0012" target-id="para2a">we showed</link> that the power 
+consumed 
+by 
+<emphasis>any</emphasis> 
+resistor equals either of the following.
+    <equation id="powerresistor">
+     <m:math>
+      <m:apply><m:divide/>
+        <m:apply><m:power/>
+          <m:ci>v</m:ci>
+          <m:cn>2</m:cn>
+        </m:apply>
+        <m:ci>R</m:ci>
+      </m:apply>
+      <m:mspace/><m:mtext>  or  </m:mtext><m:mspace/>
+      <m:apply><m:times/>
+        <m:apply><m:power/>
+          <m:ci>i</m:ci>
+          <m:cn>2</m:cn>
+        </m:apply>
+        <m:ci>R</m:ci>
+      </m:apply>
+     </m:math>
+    </equation>
+    Since resistors are positive-valued, <emphasis>resistors always dissipate 
+power</emphasis>.
+    But where does a resistor's power go?
+    By Conservation of Power, the dissipated power must be absorbed somewhere.
+    The answer is not directly predicted by circuit theory, but is by physics.
+    Current flowing through a resistor makes it hot;
+    its power is dissipated by heat.
+    
+    <note id="superconductor">
+    A physical wire has a resistance and hence dissipates power (it gets warm 
+just like a resistor in a circuit).
+    In fact, the resistance of a wire of length
+    <m:math>
+      <m:ci>L</m:ci>
+    </m:math>
+    and cross-sectional area
+    <m:math>
+      <m:ci>A</m:ci>
+    </m:math>
+    is given by
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:ci>R</m:ci>
+        <m:apply><m:divide/>
+          <m:apply><m:times/>
+            <m:ci>ρ</m:ci>
+            <m:ci>L</m:ci>
+          </m:apply>
+          <m:ci>A</m:ci>
+        </m:apply>
+      </m:apply>
+    </m:math>
+    The quantity
+    <m:math>
+      <m:ci>ρ</m:ci>
+    </m:math>
+    is known as the <term>resistivity</term> and presents the resistance of a 
+unit-length, unit cross-sectional area material constituting the wire.
+Resistivity has units of ohm-meters.
+    Most materials have a positive value for
+    <m:math>
+      <m:ci>ρ</m:ci>
+    </m:math>,
+    which means the longer the wire, the greater the resistance and thus the 
+power dissipated.
+    The thicker the wire, the smaller the resistance.
+    Superconductors have zero resistivity and hence do not dissipate power.
+    If a room-temperature superconductor could be found, electric power could be 
+sent through power lines without loss!
+    </note>
+    </para>
+    
+    <exercise id="rpower">
+    <problem id="id20229738">
+    <para id="exercise1">
+    Calculate the power consumed/created by the resistor
+    <m:math>
+	  <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+    </m:math> in our simple circuit example.
+    </para>
+    </problem>
+    <solution id="id20229761">
+    <para id="solution1">
+    The power consumed by the resistor
+    <m:math>
+	  <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+    </m:math>
+    can be expressed as
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:apply><m:times/>
+          <m:apply><m:minus/>
+	        
+<m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	        
+<m:ci><m:msub><m:mi>v</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+          </m:apply>
+	      <m:ci><m:msub><m:mi>i</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+        </m:apply>
+	    <m:apply><m:times/>
+	      <m:apply><m:divide/>
+		    <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		    <m:apply><m:power/>
+		      <m:apply><m:plus/>
+	            <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	            <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+	      </m:apply>
+	      <m:apply><m:power/>
+	        
+<m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	        <m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+      </m:apply>
+    </m:math>
+    </para>
+    </solution>
+    </exercise>
+    
+    <para id="source">
+    We conclude that both resistors in our example circuit consume power, which 
+points to the voltage source as the producer of power.
+    The current flowing <emphasis>into</emphasis> the source's positive terminal 
+is
+    <m:math>
+      <m:apply><m:minus/>
+	    <m:ci><m:msub><m:mi>i</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+      </m:apply>
+    </m:math>.
+    Consequently, the power calculation for the source yields
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:apply><m:minus/>
+          <m:apply><m:times/>
+	        
+<m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	        
+<m:ci><m:msub><m:mi>i</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+          </m:apply>
+        </m:apply>
+        <m:apply><m:minus/>
+          <m:apply><m:times/>
+            <m:apply><m:divide/>
+              <m:cn>1</m:cn>
+		      <m:apply><m:plus/>
+	            <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	            <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		      </m:apply>
+            </m:apply>
+	        <m:apply><m:power/>
+	          
+<m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	          <m:cn>2</m:cn>
+	        </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+    </m:math>
+    We conclude that the source provides the power consumed by the resistors, no 
+more, no less.
+    </para>
+    
+    <exercise id="totalpower">
+    <problem id="id20230006">
+    <para id="exercise2">
+    Confirm that the source produces <emphasis>exactly</emphasis> the total 
+power consumed by both resistors.
+    </para>
+    </problem>
+    <solution id="id20230023">
+    <para id="solution2">
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+		    <m:apply><m:plus/>
+	          <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	          <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		    </m:apply>
+          </m:apply>
+	      <m:apply><m:power/>
+	        
+<m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	        <m:cn>2</m:cn>
+	      </m:apply>
+        </m:apply>
+        <m:apply><m:plus/>
+          <m:apply><m:times/>
+	        <m:apply><m:divide/>
+		      <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		      <m:apply><m:power/>
+		        <m:apply><m:plus/>
+	              <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	              <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		        </m:apply>
+		        <m:cn>2</m:cn>
+		      </m:apply>
+	        </m:apply>
+	        <m:apply><m:power/>
+	          
+<m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	          <m:cn>2</m:cn>
+	        </m:apply>
+	      </m:apply>
+        <m:apply><m:plus/>
+          <m:apply><m:times/>
+	        <m:apply><m:divide/>
+		      <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		      <m:apply><m:power/>
+		        <m:apply><m:plus/>
+	              <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	              <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		        </m:apply>
+		        <m:cn>2</m:cn>
+		      </m:apply>
+	        </m:apply>
+	        <m:apply><m:power/>
+	          
+<m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	          <m:cn>2</m:cn>
+	        </m:apply>
+	      </m:apply>
+        </m:apply>
+        </m:apply>
+      </m:apply>
+    </m:math>
+    </para>
+    </solution>
+    </exercise>
+    
+    <para id="summary">
+    This result is quite general:
+    sources produce power and the circuit elements, especially resistors, 
+consume it.
+    But where do sources get their power?
+    Again, circuit theory does not model how sources are constructed, but the 
+theory decrees that <emphasis>all</emphasis> sources must be provided energy to 
+work.
+    </para>
+  </content>
+  
+</document>

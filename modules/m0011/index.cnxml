@@ -1,0 +1,143 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Voltage, Current, and Generic Circuit Elements</title>
+
+  <metadata>
+  <md:content-id>m0011</md:content-id><md:title>Voltage, Current, and Generic Circuit Elements</md:title>
+  <md:abstract>Systems which are used to manipulate signals are called circuits.  Traditionally,
+circuit elements utilize voltage and current.</md:abstract>
+  <md:uuid>585ac951-3773-4f52-bed4-6679f3bf6766</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">
+      We know that information can be represented by signals; now we
+      need to understand how signals are physically realized. Over the
+      years, electric signals have been found to be the easiest to
+      use. Voltage and currents comprise the electric instantiations
+      of signals. Thus, we need to delve into the world of electricity
+      and electromagnetism. The systems used to manipulate electric
+      signals directly are called <term>circuits</term>, and they
+      refine the information representation or extract information
+      from the voltage or current. In many cases, they make nice
+      examples of linear systems.
+    </para>
+
+    <!--section?-->
+    <para id="para2">
+      A generic circuit element places a constraint between the
+      classic variables of a circuit: voltage and
+      current. <term>Voltage</term> is electric potential and
+      represents the "push" that drives electric charge from one place
+      to another. What causes charge to move is a physical separation
+      between positive and negative charge. A battery generates,
+      through electrochemical means, excess positive charge at one
+      terminal and negative charge at the other, creating an electric
+      field. Voltage is defined <emphasis>across</emphasis> a circuit
+      element, with the positive sign denoting a positive voltage drop
+      across the element. When a conductor connects the positive and
+      negative potentials, <term>current</term> flows, with positive
+      current indicating that positive charge flows from the positive
+      terminal to the negative.  Electrons comprise current flow in
+      many cases. Because electrons have a negative charge, electrons
+      move in the opposite direction of positive current flow:
+      Negative charge flowing to the right is equivalent to positive
+      charge moving to the left.
+    </para>
+
+    <para id="para3">
+      It is important to understand the <link document="m1000" target-id="para2" strength="2">physics of current flow in
+      conductors</link> to appreciate the innovation of new electronic
+      devices. Electric charge can arise from many sources, the
+      simplest being the electron. When we say that "electrons flow
+      through a conductor," what we mean is that the conductor's
+      constituent atoms freely give up electrons from their outer
+      shells. "Flow" thus means that electrons hop from atom to atom
+      driven along by the applied electric potential. A missing
+      electron, however, is a virtual positive charge. Electrical
+      engineers call these <term><link document="m1002" target-id="para7" strength="2">holes</link></term>, and in some materials,
+      particularly certain semiconductors, current flow is actually
+      due to holes.  Current flow also occurs in nerve cells found in
+      your brain. Here, neurons "communicate" using propagating
+      voltage pulses that rely on the flow of positive ions (potassium
+      and sodium primarily, and to some degree calcium) across the
+      neuron's outer wall.  Thus, current can come from many sources,
+      and circuit theory can be used to understand how current flows
+      in reaction to electric fields.
+    </para>
+
+    <figure id="fig1">
+      <title>Generic Circuit Element</title>
+      <media id="id22559110" alt="">
+        <image src="../../media/element.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/element.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>The generic circuit element.</caption>
+    </figure>
+
+    <para id="para4">
+      Current flows through circuit elements, such as that depicted in
+      <link target-id="fig1" strength="2"/>, and through conductors,
+      which we indicate by lines in circuit diagrams. For every
+      circuit element we define a voltage and a current. The element
+      has a <emphasis>v-i</emphasis> relation defined by the element's
+      physical properties. In defining the <emphasis>v-i</emphasis>
+      relation, we have the convention that positive current flows
+      from positive to negative voltage drop. Voltage has units of
+      volts, and both the unit and the quantity are named for <link url="http://www.bioanalytical.com/info/calendar/97/volta.htm">Volta</link>.
+      Current has units of amperes, and is named for the French
+      physicist <link url="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Ampere.html">Ampère</link>.
+    </para>
+
+    <para id="para5">
+    Voltages and currents also carry <term>power</term>.
+    Again using the convention shown in <link target-id="fig1" strength="2"/> for circuit elements, the <term>instantaneous power</term> at each moment of time consumed by the element is given by the product of the voltage and current.
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">p</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+          <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+        </m:apply>
+      </m:apply>
+    </m:math>
+    A positive value for power indicates that at time
+    <m:math><m:ci>t</m:ci></m:math>
+    the circuit element is <emphasis>consuming</emphasis> power;
+    a negative value means it is <emphasis>producing</emphasis> power.
+    With voltage expressed in volts and current in amperes, power defined this way has units of <term>watts</term>.
+    Just as in all areas of physics and chemistry, power is the rate at which <term>energy</term> is consumed or produced.
+    Consequently, energy is the integral of power.
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">E</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:int/>
+		  <m:bvar><m:ci>α</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply><m:minus/><m:infinity/></m:apply>
+		  </m:lowlimit>
+		  <m:uplimit><m:ci>t</m:ci></m:uplimit>
+		  <m:apply><m:ci type="fn">p</m:ci><m:ci>α</m:ci></m:apply>
+		</m:apply>
+      </m:apply>
+    </m:math>
+    Again, positive energy corresponds to consumed energy and negative energy corresponds to energy production.
+    Note that a circuit element having a power profile that is both positive and negative over some time interval could consume or produce energy according to the sign of the integral of power.
+    The units of energy are <term>joules</term> since a watt equals joules/second.
+    </para>
+    
+    <exercise id="exer1">
+      <problem id="id13716433">
+        <para id="exer1p1">
+        Residential energy bills typically state a home's energy usage in kilowatt-hours.
+        Is this really a unit of energy?
+        If so, how many joules equals one kilowatt-hour?
+        </para>
+      </problem>
+      <solution id="id9141665">
+        <para id="exer1p2">One kilowatt-hour equals 3,600,000 watt-seconds, which indeed directly corresponds to 3,600,000 joules.
+        </para>
+      </solution>
+    </exercise>
+  </content>
+</document>

@@ -1,0 +1,860 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Elemental Signals</title>
+
+  <metadata>
+  <md:content-id>m0004</md:content-id><md:title>Elemental Signals</md:title>
+  <md:abstract>Complex signals can be built from elemental signals, including the complex
+exponential, unit step, pulse, etc. This module presents the elemental signals
+in brief.
+</md:abstract>
+  <md:uuid>99afb8b9-fdfa-4b7a-a154-911d2b2fb988</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">
+      <emphasis>Elemental signals are the building blocks with which
+	we build complicated signals.</emphasis> By definition,
+	elemental signals have a simple structure.  Exactly what we
+	mean by the "structure of a signal" will unfold in this
+	section of the course.  Signals are nothing more than
+	functions defined with respect to some independent variable,
+	which we take to be time for the most part.  Very interesting
+	signals are not functions solely of time; one great example of
+	which is an image.  For it, the independent variables are
+	<m:math><m:ci>x</m:ci></m:math> and
+	<m:math><m:ci>y</m:ci></m:math> (two-dimensional space).
+	Video signals are functions of three variables: two spatial
+	dimensions and time.  Fortunately, most of the ideas underlying modern
+	signal theory can be exemplified with one-dimensional signals.
+    </para>
+
+    <section id="sec1">
+      <title>Sinusoids</title>
+      <para id="para2">
+	Perhaps the most common real-valued signal is the sinusoid.  
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>	      
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>φ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation> For this signal,
+	<m:math>
+	  <m:ci>A</m:ci>
+	</m:math> is its amplitude, 
+	<m:math>
+	  <m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	</m:math> its frequency, and 
+	<m:math>
+	  <m:ci>φ</m:ci>
+	</m:math> its phase.
+      </para>
+    </section>
+
+    <section id="sec2">
+      <title>Complex Exponentials</title>
+      <para id="para3">The most important signal is complex-valued, the complex
+	exponential.
+	<equation id="eq2">
+	  <m:math>
+	    <m:apply><m:eq/>
+          <m:apply><m:ci type="fn">s</m:ci><m:ci>t</m:ci></m:apply>
+          <m:apply><m:times/>
+		    <m:ci>A</m:ci>
+		    <m:apply><m:exp/>
+		      <m:apply><m:times/>
+		        <m:imaginaryi/>
+		        <m:apply><m:plus/>
+		          <m:apply><m:times/>
+			        <m:cn>2</m:cn>
+			        <m:pi/>
+			        <m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			        <m:ci>t</m:ci>
+		          </m:apply>
+		          <m:ci>φ</m:ci>
+		        </m:apply>
+		      </m:apply>
+		    </m:apply>
+          </m:apply>
+          <m:apply><m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>φ</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Here, <m:math><m:imaginaryi/></m:math> denotes
+	<m:math>
+	  <m:apply>
+	    <m:root/>
+	    <m:cn>-1</m:cn>
+	  </m:apply>
+	</m:math>.
+	<m:math>
+	  <m:apply> 
+	    <m:times/>
+            <m:ci>A</m:ci>
+            <m:apply>
+              <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:ci>φ</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+
+	is known as the signal's <term>complex amplitude</term>.
+        Considering the complex amplitude as a complex number
+	in polar form, its magnitude is the amplitude
+	<m:math><m:ci>A</m:ci></m:math> and its angle the signal
+	phase. The complex amplitude is also known as a
+	<term>phasor</term>. The complex exponential cannot be further
+	decomposed into more elemental signals, and is the
+	<emphasis>most important signal in electrical
+	engineering</emphasis>!  Mathematical manipulations at first
+	appear to be more difficult because complex-valued numbers are
+	introduced. In fact, early in the twentieth century,
+	mathematicians thought engineers would not be sufficiently
+	sophisticated to handle complex exponentials even though they
+	greatly simplified solving circuit problems.
+
+	<link url="http://www.invent.org/hall_of_fame/139.html">
+	  Steinmetz
+	</link>
+	introduced complex exponentials to electrical engineering, and
+	demonstrated that "mere" engineers could use them to good
+	effect and even obtain right answers!  See <link document="m0081" strength="2">Complex Numbers</link> for a
+	review of complex numbers and complex arithmetic.
+      </para>
+
+      <para id="para4">
+	The complex exponential defines the notion of frequency: it is
+	the <emphasis>only</emphasis> signal that contains only one
+	frequency component.  The sinusoid consists of two frequency
+	components: one at the frequency 
+	<m:math>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	  </m:apply>
+	</m:math> 
+	and the other at 
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	  </m:apply>
+	</m:math>.
+	<note id="id9187966" type="Euler relation"><label>Euler relation</label>
+	  This decomposition of the sinusoid can be traced to Euler's
+	  relation.
+	</note>
+
+	<equation id="eq3">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>	      
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+                      <m:apply>
+                        <m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	<equation id="eq4">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>	      
+	      <m:apply>
+		<m:sin/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+  		      <m:apply>
+		        <m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>		
+		<m:apply>
+		  <m:times/>
+	          <m:cn>2</m:cn>
+		  <m:imaginaryi/>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	<equation id="eq5">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>	      
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	<note id="id8502977" type="Decomposition"><label>Decomposition</label>
+	  The complex exponential signal can thus be written in terms of
+	  its real and imaginary parts using Euler's relation.  Thus,
+	  sinusoidal signals can be expressed as either the real or the
+	  imaginary part of a complex exponential signal, the choice
+	  depending on whether cosine or sine phase is needed, or as the
+	  sum of two complex exponentials.  These two decompositions are
+	  mathematically equivalent to each other.
+	</note>
+
+	<equation id="eq6">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>	      
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>φ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:real/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>φ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	<equation id="eq11">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>	      
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:sin/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:ci>φ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:imaginary/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>A</m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>φ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+      <figure id="exprotate" orient="horizontal">
+	<media id="id4727484" alt="">
+          <image src="../../media/circle.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circle.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  Graphically, the complex exponential scribes a circle in the
+	  complex plane as time evolves. Its real and imaginary parts
+	  are sinusoids.  The rate at which the signal goes around the
+	  circle is the frequency <m:math><m:ci>f</m:ci></m:math> and
+	  the time taken to go around is the
+	  <emphasis>period</emphasis> <m:math><m:ci>T</m:ci></m:math>.
+	  A fundamental relationship is
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>T</m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</caption>
+      </figure>
+
+      <para id="para5">
+	Using the complex plane, we can envision the complex
+	exponential's temporal variations as seen in the above figure
+	(<link target-id="exprotate" strength="3"/>).  The magnitude of
+	the complex exponential is <m:math><m:ci>A</m:ci></m:math>,
+	and the initial value of the complex exponential at
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>t</m:ci>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math> has an angle of <m:math><m:ci>φ</m:ci></m:math>.
+	As time increases, the locus of points traced by the complex
+	exponential is a circle (it has constant magnitude of
+	<m:math><m:ci>A</m:ci></m:math>).  The number of times per
+	second we go around the circle equals the frequency
+	<m:math><m:ci>f</m:ci></m:math>.  The time taken for the
+	complex exponential to go around the circle once is known as
+	its <term>period</term> <m:math><m:ci>T</m:ci></m:math>, and
+	equals
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:math>.  The projections onto the real and imaginary axes
+	of the rotating vector representing the complex exponential
+	signal are the cosine and sine signal of Euler's relation
+	(<link target-id="eq3" strength="3"/>).
+      </para>
+    </section>
+
+    <section id="exponentialdef">
+      <title>Real Exponentials</title>
+
+      <para id="para6">
+	As opposed to complex exponentials which oscillate,
+        <link target-id="exp" strength="3">real exponentials</link> decay.  
+	<equation id="eq8">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>t</m:ci>
+		    <m:ci>τ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+
+      
+      <figure id="exp" orient="horizontal">
+	<media id="id3762848" alt="">
+          <image src="../../media/exp.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/exp.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>The real exponential.</caption>
+      </figure>
+
+      
+      <para id="para6.1">The quantity <m:math><m:ci>τ</m:ci></m:math> is known as
+	the exponential's <term>time constant</term>, and corresponds
+	to the time required for the exponential to decrease by a
+	factor of
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:exponentiale/>
+	  </m:apply>
+	</m:math>, which approximately equals
+	<m:math><m:cn>0.368</m:cn></m:math>.
+	<emphasis>
+	  A decaying complex exponential is the product of a real and
+	  a complex exponential.
+	</emphasis>
+
+        <equation id="eq9">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>	      
+              <m:apply>
+                <m:ci type="fn">s</m:ci>
+                <m:ci>t</m:ci>
+              </m:apply>	      
+              <m:apply>
+                <m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>φ</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>t</m:ci>
+		      <m:ci>τ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply> 	      
+              <m:apply>
+                <m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:ci>φ</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:ci>τ</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+	      	    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	  </m:math>
+        </equation>
+
+        In the complex plane, this signal corresponds to an
+        exponential spiral. For such signals, we can define
+        <term>complex frequency</term> as the quantity multiplying
+        <m:math><m:ci>t</m:ci></m:math>.
+      </para>      
+    </section>
+
+    
+    <section id="stepdef">
+      <title>Unit Step</title>
+      <para id="para7">
+	The <link target-id="step" strength="3">unit step function</link>
+	is denoted by
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">u</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>    
+	</m:math>, 
+	and is defined to be 
+
+	<equation id="eq10">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>	      
+              <m:apply>
+                <m:ci type="fn">u</m:ci>
+                <m:ci>t</m:ci>
+              </m:apply>	      
+              <m:piecewise>
+                <m:piece>
+                  <m:cn>0</m:cn>
+                  <m:apply><m:lt/><m:ci>t</m:ci><m:cn>0</m:cn></m:apply>
+                </m:piece>
+                <m:piece>
+                  <m:cn>1</m:cn>
+                  <m:apply><m:gt/><m:ci>t</m:ci><m:cn>0</m:cn></m:apply>
+                </m:piece>
+              </m:piecewise>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+      </para>
+
+      
+      <figure id="step" orient="horizontal">
+	<media id="id4861445" alt="">
+          <image src="../../media/step.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/step.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>The unit step.</caption>
+      </figure>
+      
+      <para id="para_new">
+	<note id="id10437294" type="origin warning"><label>Origin warning</label>
+	  This signal is discontinuous at the origin. Its value at the
+	  origin need not be defined, and doesn't matter in signal
+	  theory.  </note> This kind of signal is used to describe
+	  signals that "turn on" suddenly. For example, to
+	  mathematically represent turning on an oscillator, we can
+	  write it as the product of a sinusoid and a step:
+        <m:math>
+          <m:apply>
+            <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:sin/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">u</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </para>
+    </section>
+
+
+    <section id="pulsedef">
+      <title>Pulse</title>
+      <para id="para8">
+	The <link target-id="pulse" strength="3">unit pulse</link>
+	describes turning a unit-amplitude signal on for a duration of
+	<m:math><m:ci>Δ</m:ci></m:math> seconds, then turning it
+	off.
+
+	<equation id="eq12">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+              <m:apply>
+                <m:ci type="fn">
+                  <m:msub>
+                    <m:mi>p</m:mi>
+                    <m:mi>Δ</m:mi>
+                  </m:msub>
+                </m:ci>
+                <m:ci>t</m:ci>
+              </m:apply>
+              <m:piecewise>
+                <m:piece>
+                  <m:cn>0</m:cn>
+                  <m:apply>
+		    <m:lt/>
+		    <m:ci>t</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+                </m:piece>
+                <m:piece>
+                  <m:cn>1</m:cn>
+                  <m:apply>
+                    <m:lt/>
+		    <m:cn>0</m:cn>
+		    <m:ci>t</m:ci>
+		    <m:ci>Δ</m:ci>
+                  </m:apply>
+                </m:piece>
+                <m:piece>
+                  <m:cn>0</m:cn>
+                  <m:apply>
+		    <m:gt/>
+		    <m:ci>t</m:ci>
+		    <m:ci>Δ</m:ci>
+		  </m:apply>
+                </m:piece>
+              </m:piecewise>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+
+      <figure id="pulse" orient="horizontal">
+	<media id="id7912622" alt="">
+          <image src="../../media/pulse.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/pulse.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>The pulse.</caption>
+      </figure>
+
+  We will find that this is the second most important signal in
+  communications.
+      </para>
+    </section>
+
+
+    <section id="squarewave">
+      <title>Square Wave</title>
+      <para id="para9">
+	The <link target-id="sq" strength="3">square wave</link>
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">sq</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	is a periodic signal like the sinusoid.  It too has an
+	amplitude and a period, which must be specified to
+	characterize the signal.  We find subsequently that the sine
+	wave is a simpler signal than the square wave.
+      </para>
+
+      <figure id="sq" orient="horizontal">
+	<media id="id12755147" alt="">
+          <image src="../../media/sq.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sq.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>The square wave.</caption>
+      </figure>
+
+      
+    </section>
+  </content>
+</document>

@@ -1,0 +1,166 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Circuits with Capacitors and Inductors</title>
+
+  <metadata>
+  <md:content-id>m0023</md:content-id><md:title>Circuits with Capacitors and Inductors</md:title>
+  <md:abstract>Introducing when a circuit has capacitors and inductors other than resistors and sources, the impedance concept will be applied.</md:abstract>
+  <md:uuid>59167197-001b-4217-b2f3-f78564886bca</md:uuid>
+</metadata>
+
+<content>
+
+    <figure id="simpleRCcircuit">
+      
+      <media id="id1164856032719" alt="">
+        <image src="../../media/circuit5-a16b.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit5.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	A simple <m:math><m:ci>RC</m:ci></m:math> circuit.
+      </caption>
+    </figure>
+
+    <para id="para1">
+      Let's consider a circuit having something other than resistors
+      and sources. Because of KVL, we know that
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>in</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>R</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      The current through the capacitor is given by
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>i</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>C</m:ci>
+	    <m:apply>
+	      <m:diff/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, and this current equals that passing through the
+      resistor. Substituting
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>R</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>R</m:ci>
+	    <m:ci>i</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      into the KVL equation and using the <emphasis>v-i</emphasis>
+      relation for the capacitor, we arrive at
+
+      <equation id="eq1">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>R</m:ci>
+		<m:ci>C</m:ci>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>out</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:math>
+      </equation> 
+      The input-output relation for circuits involving energy storage
+      elements takes the form of an ordinary differential equation,
+      which we must solve to determine what the output voltage is for
+      a given input. In contrast to resistive circuits, where we
+      obtain an <emphasis>explicit</emphasis> input-output relation,
+      we now have an <emphasis>implicit</emphasis> relation that
+      requires more work to obtain answers.
+    </para>
+
+    <!-- This next part will become a segue -->
+    
+    <para id="para2">At this point, we could learn how to solve differential
+      equations. Note first that even finding the differential
+      equation relating an output variable to a source is often very
+      tedious. The parallel and series combination rules that apply to
+      resistors don't directly apply when capacitors and inductors
+      occur. We would have to slog our way through the circuit
+      equations, simplifying them until we finally found the equation
+      that related the source(s) to the output. At
+      the turn of the twentieth century, a method was discovered that not only
+      made finding the differential equation easy, but also simplified
+      the solution process in the most common situation. Although not
+      original with him, <link url="http://www.invent.org/hall_of_fame/139.html">Charles
+      Steinmetz</link> presented the key paper describing the
+      <term>impedance</term> approach in 1893.
+      It allows circuits containing capacitors and inductors to be solved with the <emphasis>same</emphasis> methods we have learned to solved resistor circuits.
+      To use impedances, we must master <term>complex numbers</term>.
+      Though the arithmetic of complex numbers is mathematically more complicated than with real numbers, the increased insight into circuit behavior and the ease with which circuits are solved with impedances is well worth the diversion. But more importantly, the impedance concept is central to engineering and physics, having a reach far beyond just circuits.
+    </para>
+
+  </content>
+</document>

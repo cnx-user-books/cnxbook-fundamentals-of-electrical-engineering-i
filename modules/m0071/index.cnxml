@@ -1,0 +1,578 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+
+  <title>Repetition Codes</title>
+
+  <metadata>
+  <md:content-id>m0071</md:content-id><md:title>Repetition Codes</md:title>
+  <md:abstract>Explains the repetition code for error correction.</md:abstract>
+  <md:uuid>7cf760e5-833a-4b37-82ba-9119240ed9df</md:uuid>
+</metadata>
+
+<content>
+    <para id="repcode">
+      Perhaps the simplest error correcting code is the
+      <term>repetition code</term>.
+     <figure id="rep_figure_1">
+      <title>Repetition Code</title>
+      <media id="id2362670" alt="">
+        <image src="../../media/sys32.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys32.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The upper portion depicts the result of directly modulating
+	the bit stream
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">b</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>
+	into a transmitted signal
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	using a baseband BPSK signal set.
+	<m:math>
+	  <m:ci><m:msup> 
+	      <m:mi>R</m:mi> 
+	      <m:mi>'</m:mi>
+	    </m:msup></m:ci> 
+	</m:math> 
+
+	is the datarate produced by the source coder.  If that bit
+	stream passes through a (3,1) channel coder to yield the bit
+	stream
+
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">c</m:ci>
+	    <m:ci>l</m:ci>
+	  </m:apply>
+	</m:math>, the resulting transmitted signal requires a bit
+	interval <m:math><m:ci>T</m:ci></m:math> three times smaller
+	than the uncoded version.  This reduction in the bit interval
+	means that the transmitted energy/bit decreases by a factor of
+	three, which results in an increased error probability in the
+	receiver.
+      </caption>
+    </figure>
+      Here, the transmitter sends the data bit several times, an odd
+      number of times in fact. Because the error probability
+      <m:math>
+	<m:ci><m:msub>
+	    <m:mi>p</m:mi>
+	    <m:mi>e</m:mi>
+	  </m:msub></m:ci>
+      </m:math> is always less than   
+      <m:math>
+	<m:apply><m:divide/>
+	  <m:cn>1</m:cn>
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math>, we know that more of the bits should be correct
+      rather than in error.
+
+      Simple majority voting of the received bits (hence the reason
+      for the odd number) determines the transmitted bit more
+      accurately than sending it alone.
+
+      For example, let's consider the three-fold repetition code:
+      for every bit
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">b</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math> emerging from the source coder, the channel coder
+	produces three. Thus, the bit stream emerging from the channel
+	coder 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">c</m:ci>
+	  <m:ci>l</m:ci>
+	</m:apply>
+      </m:math> has a data rate three times higher than that of the
+	original bit stream
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">b</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>. 
+
+      The coding table illustrates when errors can be
+      corrected and when they can't by the majority-vote decoder.
+    </para>
+
+    <table id="codetable" frame="all" summary="">
+	<title>Coding Table</title>
+	<tgroup cols="3" align="left" colsep="1" rowsep="1">
+	  <thead valign="top">
+	    <row>
+	      <entry>
+		Code
+	      </entry>
+	      <entry>
+		Probability
+	      </entry>
+	      <entry>
+		Bit
+	      </entry>
+	    </row>
+	  </thead>
+	  <tbody valign="top">
+	    <row>
+	      <entry>
+		000
+	      </entry>
+	      <entry>
+		<m:math> 
+		  <m:apply><m:power/>
+		    <m:apply><m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:ci><m:msub>
+			  <m:mi>p</m:mi>
+			  <m:mi>e</m:mi>
+			</m:msub></m:ci>
+		    </m:apply>
+		    <m:cn>3</m:cn> 
+		  </m:apply> 
+		</m:math>
+	      </entry>
+	      <entry>
+		0
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		001
+	      </entry>
+	      <entry>
+		<m:math> 
+		  <m:apply><m:times/>
+		    <m:ci><m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>e</m:mi>
+		      </m:msub></m:ci>
+		    <m:apply><m:power/>
+		      <m:apply><m:minus/>
+			<m:cn>1</m:cn>
+			<m:ci><m:msub>
+			    <m:mi>p</m:mi>
+			    <m:mi>e</m:mi>
+			  </m:msub></m:ci>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply> 
+		  </m:apply> 
+		</m:math>
+	      </entry>
+	      <entry>
+		0
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		010
+	      </entry>
+	      <entry>
+		<m:math> 
+		  <m:apply><m:times/>
+		    <m:ci><m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>e</m:mi>
+		      </m:msub></m:ci>
+		    <m:apply><m:power/>
+		      <m:apply><m:minus/>
+			<m:cn>1</m:cn>
+			<m:ci><m:msub>
+			    <m:mi>p</m:mi>
+			    <m:mi>e</m:mi>
+			  </m:msub></m:ci>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply> 
+		  </m:apply> 
+		</m:math>
+	      </entry>
+	      <entry>
+		0
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		011
+	      </entry>
+	      <entry>
+		<m:math> 
+		  <m:apply><m:times/>
+		    <m:apply><m:power/>
+		      <m:ci><m:msub>
+			  <m:mi>p</m:mi>
+			  <m:mi>e</m:mi>
+			</m:msub></m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply><m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:ci><m:msub>
+			  <m:mi>p</m:mi>
+			  <m:mi>e</m:mi>
+			</m:msub></m:ci>
+		    </m:apply> 
+		  </m:apply> 
+		</m:math>
+	      </entry>
+	      <entry>
+		1
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		100
+	      </entry>
+	      <entry>
+		<m:math> 
+		  <m:apply><m:times/>
+		    <m:ci><m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>e</m:mi>
+		      </m:msub></m:ci>
+		    <m:apply><m:power/>
+		      <m:apply><m:minus/>
+			<m:cn>1</m:cn>
+			<m:ci><m:msub>
+			    <m:mi>p</m:mi>
+			    <m:mi>e</m:mi>
+			  </m:msub></m:ci>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply> 
+		  </m:apply> 
+		</m:math>
+	      </entry>
+	      <entry>
+		0
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		101
+	      </entry>
+	      <entry>
+		<m:math> 
+		  <m:apply><m:times/>
+		    <m:apply><m:power/>
+		      <m:ci><m:msub>
+			  <m:mi>p</m:mi>
+			  <m:mi>e</m:mi>
+			</m:msub></m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply><m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:ci><m:msub>
+			  <m:mi>p</m:mi>
+			  <m:mi>e</m:mi>
+			</m:msub></m:ci>
+		    </m:apply> 
+		  </m:apply> 
+		</m:math>
+	      </entry>
+	      <entry>
+		1
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		110
+	      </entry>
+	      <entry>
+		<m:math> 
+		  <m:apply><m:times/>
+		    <m:apply><m:power/>
+		      <m:ci><m:msub>
+			  <m:mi>p</m:mi>
+			  <m:mi>e</m:mi>
+			</m:msub></m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply><m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:ci><m:msub>
+			  <m:mi>p</m:mi>
+			  <m:mi>e</m:mi>
+			</m:msub></m:ci>
+		    </m:apply> 
+		  </m:apply> 
+		</m:math>
+	      </entry>
+	      <entry>
+		1
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		111
+	      </entry>
+	      <entry>
+		<m:math> 
+		  <m:apply><m:power/>
+		    <m:ci><m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>e</m:mi>
+		      </m:msub></m:ci>
+		    <m:cn>3</m:cn> 
+		  </m:apply> 
+		</m:math>
+	      </entry>
+	      <entry>
+		1
+	      </entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      <caption>
+	In this example, the transmitter encodes 
+	<m:math>
+	  <m:cn>0</m:cn>
+	</m:math>
+	as 
+	<m:math>
+	  <m:cn>000</m:cn>
+	</m:math>.
+	The channel creates an error (changing a 
+	<m:math>
+	  <m:cn>0</m:cn>
+	</m:math>
+	into a 
+	<m:math>
+	  <m:cn>1</m:cn>
+	</m:math>) 
+	that with probability 
+	<m:math>
+	  <m:ci><m:msub> 
+	      <m:mi>p</m:mi> 
+	      <m:mi>e</m:mi>
+	    </m:msub></m:ci> 
+	</m:math>.  
+
+	The first column lists all possible received datawords and the
+	 second the probability of each dataword being received.  The
+	 last column shows the results of the majority-vote decoder.
+	 When the decoder produces <m:math><m:cn>0</m:cn></m:math>, it
+	 successfully corrected the errors introduced by the channel
+	 (if there were any; the top row corresponds to the case in
+	 which no errors occurred).  The error probability of the
+	 decoders is the sum of the probabilities when the decoder
+	 produces
+	<m:math>
+	  <m:cn>1</m:cn>
+	</m:math>.
+      </caption></table>
+
+
+    <para id="p2"> Thus, if one bit of the three bits is received in
+      error, the receiver can correct the error; if more than one
+      error occurs, the channel decoder announces the bit is
+      <emphasis>1</emphasis> instead of transmitted value of
+      <emphasis>0</emphasis>. Using this repetition code, the
+      probability of
+      <m:math>
+	<m:apply>
+	  <m:neq/>
+	  <m:apply>
+	    <m:ci type="fn"><m:mover accent="true">
+		<m:mi>b</m:mi><m:mo>^</m:mo>
+	      </m:mover></m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	  <m:cn>0</m:cn>
+	</m:apply></m:math> equals 
+      <m:math>
+	<m:apply><m:plus/>
+	  <m:apply><m:times/>
+	    <m:cn>3</m:cn>
+	    <m:apply><m:power/>
+	      <m:ci><m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		</m:msub></m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply><m:minus/>
+	      <m:cn>1</m:cn>
+	      <m:ci><m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		</m:msub></m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply><m:power/>
+	    <m:ci><m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>e</m:mi>
+	      </m:msub></m:ci>
+	    <m:cn>3</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      This probability of a decoding error is always less than  
+      <m:math>
+	<m:ci><m:msub>
+	    <m:mi>p</m:mi>
+	    <m:mi>e</m:mi>
+	  </m:msub></m:ci>
+      </m:math>, the uncoded value, so long as   
+      <m:math>
+	<m:apply>
+	  <m:lt/>
+	  <m:ci><m:msub>
+	      <m:mi>p</m:mi>
+	      <m:mi>e</m:mi>
+	    </m:msub></m:ci>
+	  <m:apply><m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <exercise id="exer1">
+      <problem id="id5852694">
+	<para id="p3">Demonstrate mathematically that this claim is
+	  indeed true.  Is 
+	  <m:math>
+	    <m:apply>
+	      <m:leq/>
+	      <m:apply><m:plus/>
+		<m:apply><m:times/>
+		  <m:cn>3</m:cn>
+		  <m:apply><m:power/>
+		    <m:ci><m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>e</m:mi>
+		      </m:msub></m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply><m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:ci><m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>e</m:mi>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply><m:power/>
+		  <m:ci><m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		    </m:msub></m:ci>
+		  <m:cn>3</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:ci><m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		</m:msub></m:ci>
+	    </m:apply>
+	  </m:math>? 
+	</para>
+      </problem>
+      <solution id="id1164555108298">
+	<para id="para4">
+	This question is equivalent to 
+	<m:math>
+	  <m:apply>
+	    <m:leq/> 
+	    <m:apply><m:plus/> 
+	      <m:apply><m:times/>
+		<m:cn>3</m:cn>
+		<m:ci><m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		  </m:msub></m:ci>
+		<m:apply><m:minus/> 
+		  <m:cn>1</m:cn>
+		  <m:ci><m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		    </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply><m:power/>
+		  <m:ci><m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		  </m:msub></m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math>
+	  or 
+	<m:math>
+	  <m:apply><m:geq/>
+	    <m:apply><m:plus/>
+	      <m:apply><m:times/>
+		<m:cn>2</m:cn>
+		<m:apply><m:power/>
+		    <m:ci><m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		    </m:msub></m:ci>
+		    <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply><m:times/>
+		<m:apply><m:minus/>
+		  <m:cn>3</m:cn>
+                </m:apply>
+		  <m:ci><m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		    </m:msub></m:ci>
+		</m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	    <m:cn>0</m:cn> 
+	  </m:apply> 
+	</m:math>.  
+
+	Because this is an upward-going parabola, we need only check
+	  where its roots are. Using the quadratic formula, we find
+	  that they are located at
+	  <m:math>
+	    <m:apply><m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  </m:math> and  
+	  <m:math><m:cn>1</m:cn></m:math>. Consequently
+	  in the range   
+	<m:math>
+	  <m:apply><m:leq/>
+	    <m:cn>0</m:cn>
+	    <m:ci><m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>e</m:mi>
+	      </m:msub></m:ci>
+	    <m:apply><m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	the error rate produced by coding is smaller.
+	</para>
+      </solution>
+    </exercise>
+    
+
+  </content>
+</document>

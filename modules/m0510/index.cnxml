@@ -1,0 +1,690 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Systems in the Frequency Domain</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>3d5aa709-f9a4-46e8-95a5-907f059d2909</md:uuid>
+</metadata>
+
+  <content>
+    <para id="intro">
+      As with analog linear systems, we need to find the frequency
+      response of discrete-time systems. We used impedances to derive
+      directly from the circuit's structure the frequency
+      response. The only structure we have so far for a discrete-time
+      system is the difference equation. We proceed as when we used
+      impedances: let the input be a complex exponential signal. When
+      we have a linear, shift-invariant system, the output should also
+      be a complex exponential of the same frequency, changed in
+      amplitude and phase. These amplitude and phase changes comprise
+      the frequency response we seek.  The complex exponential input
+      signal is
+
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>X</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Note that this input occurs for
+      <emphasis>all</emphasis> values of
+      <m:math><m:ci>n</m:ci></m:math>.  No need to worry about initial
+      conditions here.  Assume the output has a similar form:
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>Y</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Plugging these signals into the <link document="m10251" target-id="eq3" strength="3">fundamental
+	difference equation</link>, we have
+
+      <equation id="dtsinf">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>Y</m:ci>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		<m:ci>Y</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply> 
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+		<m:ci>Y</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:ci>p</m:ci>
+		    </m:apply> 
+		  </m:apply>
+		</m:apply>       
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		<m:ci>X</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>n</m:ci>  
+		  </m:apply>
+		</m:apply>  
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		<m:ci>X</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply> 
+		  </m:apply>
+		</m:apply>
+	      </m:apply>       
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub></m:ci>
+		<m:ci>X</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:ci>q</m:ci>
+		    </m:apply> 
+		  </m:apply>	  
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      The assumed output does indeed satisfy the difference equation
+      if the output complex amplitude is related to the input
+      amplitude by
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>Y</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:plus/>
+		<m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		<m:apply>   
+		  <m:times/>
+		  <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/> 
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>  
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub></m:ci>
+		  <m:apply> 
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/> 
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>q</m:ci>
+			<m:ci>f</m:ci>  
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:apply> 
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>   
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>   
+		      <m:times/>
+		      <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>f</m:ci>  
+			  </m:apply>
+			</m:apply>  
+		      </m:apply>
+		    </m:apply> 
+		  </m:apply>    
+		  <m:ci>…</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+		  <m:apply> 
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>p</m:ci>
+			<m:ci>f</m:ci>  
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>  
+	    <m:ci>X</m:ci>
+	  </m:apply> 
+	</m:apply> 
+      </m:math>
+
+      This relationship corresponds to the system's frequency response
+      or, by another name, its transfer function. We find that any
+      discrete-time system defined by a difference equation has a transfer
+      function given by 
+
+      <equation id="equation3">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:apply>
+		<m:exp/> 
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci> 
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:plus/>
+		<m:ci><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		<m:apply>   
+		  <m:times/>
+		  <m:ci><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/> 
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>  
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+		<m:ci>…</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub></m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/> 
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>q</m:ci>
+			<m:ci>f</m:ci>  
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:apply>   
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:minus/> 
+		  <m:apply>   
+		    <m:minus/> 
+		    <m:cn>1</m:cn>
+		    <m:apply>   
+		      <m:times/>
+		      <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>f</m:ci>  
+			  </m:apply>
+			</m:apply>  
+		      </m:apply>
+		    </m:apply> 
+		  </m:apply>   
+		  <m:ci>…</m:ci>
+		</m:apply> 
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub><m:mi>a</m:mi><m:mi>p</m:mi></m:msub></m:ci>
+		  <m:apply> 
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>p</m:ci>
+			<m:ci>f</m:ci>  
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:apply> 
+	    </m:apply> 
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Furthermore, because <emphasis>any</emphasis> discrete-time signal can
+      be expressed as a superposition of complex exponential signals and
+      because linear discrete-time systems obey the Superposition Principle,
+      the transfer function relates the discrete-time Fourier transform of
+      the system's output to the input's Fourier transform.
+
+      <equation id="eqn4">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">Y</m:ci>
+	      <m:apply>
+		<m:exp/> 
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci> 
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci> 
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci> 
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply> 
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para>
+
+    <example id="frequencyresponse">
+      <para id="transferfunctionexample"> 
+	The frequency response of the simple IIR system (difference
+	equation given in
+        <link document="m10251" target-id="p0" strength="3">a previous example</link>)
+        is given by 
+
+	<equation id="eqn5">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:apply>
+		  <m:exp/> 
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci> 
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>b</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>a</m:ci>
+		    <m:apply> 
+		      <m:exp/>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>f</m:ci>  
+			</m:apply>
+		      </m:apply>  
+		    </m:apply>           
+		  </m:apply>
+		</m:apply> 
+	      </m:apply>  
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	This Fourier transform occurred in a previous example; the
+	<link document="m10247" target-id="fig1002" strength="3">exponential signal spectrum</link> portrays the
+	magnitude and phase of this transfer function.  When the
+	filter coefficient <m:math><m:ci>a</m:ci></m:math> is
+	positive, we have a lowpass filter; negative
+	<m:math><m:ci>a</m:ci></m:math> results in a highpass filter.
+	The larger the coefficient in magnitude, the more pronounced
+	the lowpass or highpass filtering.
+      </para>
+    </example>
+
+    <example id="boxcarfilter">
+      <para id="boxcar2">
+	The length-<m:math><m:ci>q</m:ci></m:math> boxcar filter
+	(difference equation found in <link document="m10251" target-id="ex2001" strength="3">a previous example</link>) has
+	the frequency response
+
+	<equation id="boxcar">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:apply>
+		  <m:exp/> 
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci> 
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>q</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>m</m:ci></m:bvar>
+		  <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		  <m:uplimit><m:apply><m:minus/><m:ci>q</m:ci><m:cn>1</m:cn></m:apply></m:uplimit>
+		  
+		  <m:apply> 
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>  
+			<m:ci>m</m:ci>
+		      </m:apply>
+		    </m:apply>  
+		  </m:apply>
+		</m:apply>
+	      </m:apply> 
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	This expression amounts to the Fourier transform of the <link document="m10251" target-id="fig1002" strength="3">boxcar
+	signal</link>.  There we found that this frequency response
+	has a magnitude equal to the absolute value of
+	<m:math>
+          <m:apply><m:ci type="fn">dsinc</m:ci>
+            <m:apply><m:times/>
+              <m:pi/>
+              <m:ci>f</m:ci>
+            </m:apply>
+          </m:apply>
+	</m:math>; see the <link document="m10247" target-id="fig1003" strength="3">length-10 filter's frequency
+	  response</link>. We see that boxcar
+	  filters--length-<m:math><m:ci>q</m:ci></m:math> signal
+	  averagers--have a lowpass behavior, having a cutoff
+	  frequency of
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>q</m:ci>
+	  </m:apply>
+	</m:math>.
+      </para>
+    </example>
+
+    <exercise id="exer1">
+      <problem id="idm7482128">
+	<para id="question1">
+	  Suppose we multiply the boxcar filter's coefficients by a sinusoid:
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci><m:msub><m:mi>b</m:mi><m:mi>m</m:mi></m:msub></m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply><m:divide/><m:cn>1</m:cn><m:ci>q</m:ci></m:apply>  
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci><m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci>m</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Use Fourier transform properties to determine the transfer
+	  function. How would you characterize this system: Does it
+	  act like a filter? If so, what kind of filter and how do you
+	  control its characteristics with the filter's coefficients?
+	</para>
+      </problem>
+
+      <solution id="idm7891296">
+	<para id="solution1">
+	  It now acts like a bandpass filter with a center frequency of
+	  <m:math><m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci></m:math>
+	  and a bandwidth equal to <emphasis>twice</emphasis> of the original
+	  lowpass filter.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="moreonsolution">
+      These examples illustrate the point that systems described (and
+      implemented) by difference equations serve as filters for
+      discrete-time signals. The filter's <emphasis>order
+      </emphasis>is given by the number
+      <m:math><m:ci>p</m:ci></m:math> of denominator coefficients in
+      the transfer function (if the system is IIR) or by the number
+      <m:math><m:ci>q</m:ci></m:math> of numerator coefficients if the
+      filter is FIR. When a system's transfer function has both terms,
+      the system is usually IIR, and its order equals
+      <m:math><m:ci>p</m:ci></m:math> regardless of
+      <m:math><m:ci>q</m:ci></m:math>.  By selecting the coefficients
+      and filter type, filters having virtually any frequency response
+      desired can be designed. This design flexibility can't be found
+      in analog systems. In the next section, we detail how analog
+      signals can be filtered by computers, offering a much greater
+      range of filtering possibilities than is possible with circuits.
+    </para>
+
+  </content>
+</document>

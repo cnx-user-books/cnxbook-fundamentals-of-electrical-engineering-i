@@ -1,0 +1,3081 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:q="http://cnx.rice.edu/qml/1.0">
+  
+  <title>Digital Signal Processing Problems</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10351</md:content-id>
+  <md:title>Digital Signal Processing Problems</md:title>
+  <md:abstract>(Blank Abstract)</md:abstract>
+  <md:uuid>ba19e898-78f4-426b-851d-16c810942e63</md:uuid>
+</metadata>
+
+<content>
+    <q:problemset>
+      
+      <q:item id="i1a" type="text-response">
+	<q:question>
+	  <section id="s1a">
+	    <title>Sampling and Filtering</title>
+	    <para id="p1a">
+	      The signal 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> is bandlimited to 4 kHz.  We want to sample it,
+	      but it has been subjected to various signal processing
+	      manipulations.
+	      <list id="list5.1a" list-type="enumerated">
+		<item>What sampling frequency (if any works) can be used
+		  to sample the result of passing 
+		  <m:math>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>
+		  through an RC highpass filter with 
+		  <m:math>
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>R</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:cn>10</m:cn>
+			<m:ci>kΩ</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math> and
+		  <m:math>
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>C</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:cn>8</m:cn>
+			<m:ci>nF</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>?
+		</item>
+
+		<item>What sampling frequency (if any works) can be used to
+		  sample the <emphasis>derivative</emphasis> of
+		  <m:math>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>?
+		</item>
+
+		<item>The signal   
+		  <m:math>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math> has been modulated by an 8 kHz
+		  sinusoid having an unknown phase: the resulting
+		  signal is
+		  <m:math>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:plus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>
+			      <m:msub>
+				<m:mi>f</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:ci>φ</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>, with 
+		  
+		  <m:math>
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:cn>8</m:cn>
+			<m:ci>kHz</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math> and 
+		  
+		  <m:math>
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>φ</m:ci>
+		      <m:ci>?</m:ci>
+		    </m:apply>
+		  </m:math>
+		  Can the modulated signal be sampled so that the
+		  <emphasis>original</emphasis> signal can be recovered from
+		  the modulated signal regardless of the phase value
+		  <m:math><m:ci>φ</m:ci></m:math>?  If so, show how and
+		  find the smallest sampling rate that can be used; if not,
+		  show why not.
+		</item>
+	      </list>
+	    </para>
+	    
+	  </section>
+	</q:question>
+      </q:item>
+      
+
+      <q:item id="i1" type="text-response">
+	<q:question>
+	  <section id="s1">
+	    <title>Non-Standard Sampling</title>
+	    <para id="p1">
+	      Using the properties of the Fourier series can ease
+	      finding a signal's spectrum.
+	      <list id="list5.1" list-type="enumerated">
+		<item>Suppose a signal
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>
+
+		  is periodic with period <m:math><m:ci>T</m:ci></m:math>. If
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci><m:msub>
+			  <m:mi>c</m:mi><m:mi>k</m:mi>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:math>
+
+		  represents the signal's Fourier series
+		  coefficients, what are the Fourier series
+		  coefficients of
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>T</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>?</item>
+		
+		<item>Find the Fourier series of the signal
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">p</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>
+		  shown in <link target-id="fig1" strength="3"/>.
+		</item>
+		<item>Suppose this signal is used to sample a signal
+		  bandlimited to
+		  <m:math>
+		    <m:apply><m:times/>
+		      <m:apply><m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		      <m:ci>Hz</m:ci>
+		    </m:apply>
+		  </m:math>. Find an expression for and sketch the spectrum
+		  of the sampled signal.</item>
+
+		<item>Does aliasing occur? If so, can a change in sampling
+		  rate prevent aliasing;
+		  if not, show how the signal can be
+		  recovered from these samples.
+		 </item>
+	      </list>
+	    </para>
+
+	    <figure id="fig1">
+	      <title>Pulse Signal</title>
+	      <media id="id1172127326317" alt="">
+                <image src="../../media/sig35.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig35.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+	  </section></q:question>
+
+      </q:item>
+
+      <q:item id="iq2.2" type="text-response">
+	<q:question>
+	  <section id="sq2.2">
+	    <title>A Different Sampling Scheme</title>
+
+	    <para id="pq2.2">A signal processing engineer from Texas
+	    A&amp;M claims to have developed an improved sampling
+	    scheme. He multiplies the bandlimited signal by the
+	    depicted periodic pulse signal to perform sampling (<link target-id="figq2.2" strength="3"/>).
+	    </para>
+
+	    <figure id="figq2.2">
+	      <media id="id1172130810525" alt="">
+                <image src="../../media/sig47.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig47.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+	    <list id="lq2.2" list-type="enumerated">
+	      <item>Find the Fourier spectrum of this signal.</item>
+
+	      <item>Will this scheme work? If so, how should
+		<m:math>
+		  <m:ci><m:msub>
+		      <m:mi>T</m:mi>
+		      <m:mi>S</m:mi>
+		    </m:msub></m:ci>
+		</m:math> be related to the signal's bandwidth? 
+		If not, why not?
+	      </item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item id="i2" type="text-response">
+	<q:question>
+	  <section id="s2">
+	    <title>Bandpass Sampling</title>
+	    <para id="p2">
+	      The signal
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>
+	      has the indicated spectrum.
+	    </para>
+
+	    <figure id="fig5.2">
+              <media id="id8938753" alt="">
+                <image src="../../media/spectrum1.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/spectrum1.eps" mime-type="application/postscript"/>
+              </media>
+            </figure>
+
+	    <list id="list5.2" list-type="enumerated">
+	      <item>What is the minimum sampling rate for this signal
+		suggested by the Sampling Theorem?</item>
+		
+	      <item>Because of the particular structure of this
+		spectrum, one wonders whether a lower sampling rate
+		could be used.  Show that this is indeed the case, and
+		find the system that reconstructs
+
+		<m:math display="inline">
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>
+		from its samples.</item>
+
+	    </list>
+	  </section></q:question>
+      </q:item>
+
+
+      <q:item id="i3" type="text-response">
+	<q:question>
+	  <section id="s3">
+	    <title>Sampling Signals</title>
+	    <para id="p3">
+	      If a signal is bandlimited to
+	      <m:math><m:ci>W</m:ci></m:math> Hz, we can sample it at
+	      any rate
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:gt/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:ci>W</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      and recover the waveform exactly.  This statement of the
+	      Sampling Theorem can be taken to mean that all
+	      information about the original signal can be extracted
+	      from the samples.  While true in principle, you do have
+	      to be careful how you do so.  In addition to the rms
+	      value of a signal, an important aspect of a signal is
+	      its peak value, which equals
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:max/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+
+	      <list id="list5.3" list-type="enumerated">
+		<item>Let
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>
+		  be a sinusoid having frequency
+		  <m:math><m:ci>W</m:ci></m:math> Hz.  If we sample it
+		  at precisely the Nyquist rate, how accurately do the
+		  samples convey the sinusoid's amplitude?  In other
+		  words, find the worst case example.</item> 
+
+		<item>How fast would you need to sample for the
+		  amplitude estimate to be within 5% of the true
+		  value?</item>
+
+		<item>
+		  Another issue in sampling is the inherent amplitude
+		  quantization produced by A/D converters.  Assume the
+		  maximum voltage allowed by the converter is
+		    <m:math display="inline">
+		      <m:apply>
+			<m:ci><m:msub><m:mi>V</m:mi><m:mi>max</m:mi></m:msub></m:ci>
+		      </m:apply>
+		    </m:math>
+
+		  volts and that it quantizes amplitudes to
+                  <m:math><m:ci>b</m:ci></m:math> bits.
+		  We can express the quantized sample
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">Q</m:ci>
+		      <m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+
+		  as
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">ε</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>, where
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">ε</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>
+		  represents the quantization error at the
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci>
+			<m:msup>
+			  <m:mi>n</m:mi>
+			  <m:mi>th</m:mi>
+			</m:msup>
+		      </m:ci>
+		    </m:apply>
+		  </m:math>
+
+		  sample. Assuming the converter rounds, how large is
+		  maximum quantization error?</item> <item>We can
+		  describe the quantization error as noise, with a
+		  power proportional to the square of the maximum
+		  error.  What is the signal-to-noise ratio of the
+		  quantization error for a full-range sinusoid?
+		  Express your result in decibels.</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i4" type="text-response">
+	<q:question>
+	  <section id="s4">
+	    <title>Hardware Error</title>
+	    <para id="p4">
+	      An A/D converter has a curious hardware problem:
+	      Every other sampling pulse is half its normal amplitude
+              (<link target-id="fig5.4" strength="3"/>).
+	    </para>
+
+	    <figure id="fig5.4">
+              <media id="id4568790" alt="">
+                <image src="../../media/sig42.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig42.eps" mime-type="application/postscript"/>
+              </media></figure>
+
+	    <list id="list5.4" list-type="enumerated">
+	      <item>Find the Fourier series for this signal.</item>
+	      <item>Can this signal be used to sample a bandlimited signal
+		having highest frequency
+		<m:math display="inline">
+		  <m:apply>
+		    <m:eq/>
+		    <m:ci>W</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>1</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>?
+	      </item>
+
+	    </list>
+	  </section></q:question>
+      </q:item>
+
+
+      <q:item id="i5" type="text-response">
+	<q:question>
+	  <section id="s5">
+	    <title>Simple D/A Converter</title>
+	    <para id="p5">
+	      Commercial digital-to-analog converters don't work this
+	      way, but a simple circuit illustrates how they work.
+	      Let's assume we have a
+	      <m:math><m:ci>B</m:ci></m:math>-bit converter.  Thus, we
+	      want to convert numbers having a
+	      <m:math><m:ci>B</m:ci></m:math>-bit representation into
+	      a voltage proportional to that number.  The first step
+	      taken by our simple converter is to represent the number
+	      by a sequence of <m:math><m:ci>B</m:ci></m:math> pulses
+	      occurring at multiples of a time interval
+	      <m:math><m:ci>T</m:ci></m:math>.  The presence of a
+	      pulse indicates a “1” in the corresponding
+	      bit position, and pulse absence means a “0”
+	      occurred.  For a 4-bit converter, the number 13 has the
+	      binary representation 1101
+
+	      (<m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mn>13</m:mn>
+		      <m:mn>10</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:power/>
+			<m:cn>2</m:cn>
+			<m:cn>3</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:power/>
+			<m:cn>2</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>0</m:cn>
+		      <m:apply>
+			<m:power/>
+			<m:cn>2</m:cn>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:power/>
+			<m:cn>2</m:cn>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>) and would be represented by the depicted
+	      pulse sequence.  Note that the pulse sequence is
+	      “backwards” from the binary representation.
+	      We'll see why that is.
+	    </para>
+
+	    <figure id="fig5.5">
+              <media id="id1172128225343" alt="">
+                <image src="../../media/sig10.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig10.eps" mime-type="application/postscript"/>
+              </media>
+            </figure>
+
+	    <para id="p5.2">
+	      <link target-id="fig5.5" strength="3">This signal</link>
+	      serves as the input to a first-order RC lowpass filter.
+	      We want to design the filter and the parameters <m:math display="inline"><m:ci>Δ</m:ci></m:math> and
+	      <m:math display="inline"><m:ci>T</m:ci></m:math> so that
+	      the output voltage at time
+	      <m:math display="inline">
+	        <m:apply><m:times/>
+	         <m:cn>4</m:cn> <m:ci>T</m:ci>
+	        </m:apply>
+	      </m:math>
+	      (for a 4-bit converter) is proportional to the
+	      number.  This combination of pulse creation and
+	      filtering constitutes our simple D/A converter.  The
+	      requirements are
+
+	      <list id="list5.5">
+		<item>The voltage at time
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>t</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:cn>4</m:cn>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+
+		  should diminish by a factor of 2 the further the
+		  pulse occurs from this time.  In other words, the
+		  voltage due to a pulse at
+		  <m:math><m:apply><m:times/><m:cn>3</m:cn><m:ci>T</m:ci></m:apply></m:math>
+		  should be twice that of a pulse produced at
+		  <m:math><m:apply><m:times/><m:cn>2</m:cn><m:ci>T</m:ci></m:apply></m:math>,
+		  which in turn is twice that of a pulse at
+		  <m:math><m:ci>T</m:ci></m:math>,
+		  <foreign>etc.</foreign></item>
+                 <item>The 4-bit D/A
+		  converter must support a 10 kHz sampling
+		  rate.</item>
+	      </list>
+
+	      Show the circuit that works.  How do the
+	      converter's parameters change with sampling rate
+	      and number of bits in the converter?
+	    </para>
+
+	  </section></q:question>
+      </q:item>
+
+
+      <q:item id="i6" type="text-response">
+	<q:question>
+	  <section id="s6">
+	    <title>Discrete-Time Fourier Transforms</title>
+	    <para id="p6">
+	      Find the Fourier transforms of the following sequences, where
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>
+	      is some sequence having Fourier transform
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+
+	      <list id="list5.6" list-type="enumerated">
+		<item>
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:power/>
+			<m:apply><m:minus/><m:cn>1</m:cn></m:apply>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+
+		<item>
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:cos/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+
+		<item>
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:piecewise>
+			<m:piece>
+			  <m:apply>
+			    <m:ci type="fn">s</m:ci>
+			    <m:apply>
+			      <m:divide/>
+			      <m:ci>n</m:ci>
+			      <m:cn>2</m:cn>
+			    </m:apply>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci>n</m:ci>
+			    <m:mtext>even</m:mtext>
+			  </m:apply>
+			</m:piece>
+			<m:piece>
+			  <m:cn>0</m:cn>
+			  <m:apply>
+			    <m:ci>n</m:ci>
+			    <m:mtext>odd</m:mtext>
+			  </m:apply>
+			</m:piece>
+		      </m:piecewise>
+		    </m:apply>
+		  </m:math>
+		</item>
+
+		<item>
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>n</m:ci>
+		      <m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+
+	      </list>
+	    </para>
+	  </section></q:question>
+      </q:item>
+
+      <q:item id="i6b" type="text-response">
+	<q:question>
+	  <section id="s6b">
+	    <title>Spectra of Finite-Duration Signals</title>
+	    <para id="p6b">
+	      Find the indicated spectra for the following signals.
+
+	      <list id="list5.6b" list-type="enumerated">
+		  <item>
+		  The discrete-time Fourier transform of
+		  <m:math display="inline">
+		    <m:apply><m:eq/>
+		      <m:apply>
+			    <m:ci type="fn">s</m:ci>
+			    <m:ci>n</m:ci>
+		      </m:apply>
+		      <m:piecewise>
+			    <m:piece>
+			      <m:apply><m:power/>
+			        <m:apply><m:cos/>
+			          <m:apply><m:times/>
+			            <m:apply><m:divide/><m:pi/><m:cn>4</m:cn></m:apply>
+			            <m:ci>n</m:ci>
+			          </m:apply>
+			        </m:apply>
+			        <m:cn>2</m:cn>
+			      </m:apply>
+			      <m:apply><m:eq/>
+			        <m:ci>n</m:ci>
+			        <m:set>
+			          <m:cn>-1</m:cn>
+			          <m:cn>0</m:cn>
+			          <m:cn>1</m:cn>
+			        </m:set>
+			      </m:apply>
+			    </m:piece>
+			    <m:piece>
+			      <m:cn>0</m:cn>
+			      <m:mtext>otherwise</m:mtext>
+ 			    </m:piece>
+		      </m:piecewise>
+		    </m:apply>
+		  </m:math>
+		</item>
+
+		<item>
+		  The discrete-time Fourier transform of
+		  <m:math display="inline">
+		    <m:apply><m:eq/>
+		      <m:apply>
+			    <m:ci type="fn">s</m:ci>
+			    <m:ci>n</m:ci>
+		      </m:apply>
+		      <m:piecewise>
+			    <m:piece>
+                  <m:ci>n</m:ci>
+                  <m:apply><m:eq/>
+			        <m:ci>n</m:ci>
+			        <m:set>
+			          <m:cn>-2</m:cn>
+			          <m:cn>-1</m:cn>
+			          <m:cn>0</m:cn>
+			          <m:cn>1</m:cn>
+			          <m:cn>2</m:cn>
+			        </m:set>
+			      </m:apply>
+			    </m:piece>
+			    <m:piece>
+			      <m:cn>0</m:cn>
+			      <m:mtext>otherwise</m:mtext>
+ 			    </m:piece>
+		      </m:piecewise>
+		    </m:apply>
+		  </m:math>
+		</item>
+
+		<item>
+		  The discrete-time Fourier transform of
+		  <m:math display="inline">
+		    <m:apply><m:eq/>
+		      <m:apply>
+			    <m:ci type="fn">s</m:ci>
+			    <m:ci>n</m:ci>
+		      </m:apply>
+		      <m:piecewise>
+			    <m:piece>
+			      <m:apply><m:sin/>
+			        <m:apply><m:times/>
+			          <m:apply><m:divide/><m:pi/><m:cn>4</m:cn></m:apply>
+			          <m:ci>n</m:ci>
+			        </m:apply>
+			      </m:apply>
+			      <m:apply><m:eq/>
+			        <m:ci>n</m:ci>
+			        <m:set>
+			          <m:cn>0</m:cn>
+			          <m:ci>…</m:ci>
+			          <m:cn>7</m:cn>
+			        </m:set>
+			      </m:apply>
+			    </m:piece>
+			    <m:piece>
+			      <m:cn>0</m:cn>
+			      <m:mtext>otherwise</m:mtext>
+ 			    </m:piece>
+		      </m:piecewise>
+		    </m:apply>
+		  </m:math>
+		</item>
+		
+		<item>
+		The length-8 DFT of the previous signal.
+		</item>
+
+	      </list>
+	    </para>
+	  </section></q:question>
+      </q:item>
+
+
+      <q:item id="i6a" type="text-response">
+	<q:question>
+	  <section id="s6a"><title>Just Whistlin'</title>
+	    <para id="p6a">
+          Sammy loves to whistle and decides to record and analyze his whistling in lab.
+          He is a very good whistler; his whistle is a pure sinusoid that can be described by
+          <m:math>
+            <m:apply><m:eq/>
+              <m:apply>
+                <m:ci type="fn">
+                  <m:msub><m:mi>s</m:mi><m:mn>a</m:mn></m:msub>
+                </m:ci>
+                <m:ci>t</m:ci>
+              </m:apply>
+              <m:apply><m:sin/>
+                <m:apply><m:times/>
+                  <m:cn>4000</m:cn><m:ci>t</m:ci>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:math>.
+          To analyze the spectrum, he samples his recorded whistle with a sampling interval of
+          <m:math>
+            <m:apply><m:eq/>
+              <m:ci><m:msub><m:mi>T</m:mi><m:mn>S</m:mn></m:msub></m:ci>
+              <m:apply><m:times/>
+                <m:cn>2.5</m:cn>
+                <m:apply><m:power/>
+                  <m:cn>10</m:cn><m:cn>-4</m:cn>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:math> to obtain
+          <m:math>
+            <m:apply><m:eq/>
+              <m:apply><m:ci type="fn">s</m:ci><m:ci>n</m:ci></m:apply>
+              <m:apply>
+                <m:ci type="fn">
+                  <m:msub><m:mi>s</m:mi><m:mn>a</m:mn></m:msub>
+                </m:ci>
+                <m:apply><m:times/>
+                  <m:ci>n</m:ci>
+                  <m:ci><m:msub><m:mi>T</m:mi><m:mn>S</m:mn></m:msub></m:ci>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:math>.
+          Sammy (wisely) decides to analyze a few samples at a time, so he grabs 30 consecutive, but arbitrarily chosen, samples.
+          He calls this sequence
+          <m:math>
+            <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+          </m:math> and realizes he can write it as
+          <m:math display="block">
+            <m:apply><m:eq/>
+              <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+              <m:apply><m:sin/>
+                <m:apply><m:plus/>
+                  <m:apply><m:times/>
+                    <m:cn>4000</m:cn><m:ci>n</m:ci>
+                    <m:ci><m:msub><m:mi>T</m:mi><m:mn>S</m:mn></m:msub></m:ci>
+                  </m:apply>
+                  <m:ci>θ</m:ci>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+            <m:mtext>,  </m:mtext>
+            <m:apply><m:eq/>
+              <m:ci>n</m:ci>
+              <m:set>
+				<m:cn>0</m:cn>
+				<m:ci>…</m:ci>
+				<m:cn>29</m:cn>
+		      </m:set>
+            </m:apply>
+          </m:math>
+          
+	      <list id="list5.6a" list-type="enumerated">
+		<item>
+		  Did Sammy under- or over-sample his whistle?
+		</item>
+
+		<item>
+		  What is the discrete-time Fourier transform of
+		  <m:math>
+		    <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+		  </m:math> and how does it depend on
+		  <m:math><m:ci>θ</m:ci></m:math>?
+		</item>
+
+		<item>
+		  How does the 32-point DFT	of
+		  <m:math>
+		    <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+		  </m:math> depend on
+		  <m:math><m:ci>θ</m:ci></m:math>?
+		  </item>
+
+	      </list>
+	    </para>
+	  </section></q:question>
+      </q:item>
+
+
+      <q:item id="i7" type="text-response">
+	<q:question>
+	  <section id="s7">
+	    <title>Discrete-Time Filtering</title>
+	    <para id="p7">
+	      We can find the input-output relation for a
+	      discrete-time filter much more easily than for analog
+	      filters.  The key idea is that a sequence can be written
+	      as a weighted linear combination of unit samples.
+
+	      <list id="list5.7" list-type="enumerated">
+		<item>Show that
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:sum/>
+			<m:bvar><m:ci>i</m:ci></m:bvar>
+			<m:condition>
+			  <m:cn>i</m:cn>
+			</m:condition>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:ci type="fn">x</m:ci>
+			    <m:ci>i</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci type="fn">δ</m:ci>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>n</m:ci>
+			      <m:ci>i</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+
+		  where
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:math>
+		  is the unit-sample.
+
+		  <m:math display="block">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">δ</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:piecewise>
+			<m:piece>
+			  <m:cn>1</m:cn>
+			  <m:apply>
+			    <m:eq/>
+			    <m:ci>n</m:ci>
+			    <m:cn>0</m:cn>
+			  </m:apply>
+			</m:piece>
+			<m:otherwise>
+			  <m:cn>0</m:cn>
+			</m:otherwise>
+		      </m:piecewise>
+		    </m:apply>
+		  </m:math>
+		</item>
+
+		<item>If
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">h</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:math>
+
+		  denotes the <emphasis>unit-sample
+		  response</emphasis>—the output of a discrete-time
+		  linear, shift-invariant filter to a unit-sample
+		  input—find an expression for the output.
+		</item>
+
+		<item>In particular, assume our filter is FIR, with the
+		  unit-sample response having duration
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>q</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:math>.  If the input has duration <m:math display="inline"><m:ci>N</m:ci></m:math>, what is
+		  the duration of the filter's output to this
+		  signal?</item>
+
+		<item>Let the filter be a boxcar averager:
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">h</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:apply>
+			  <m:divide/>
+			  <m:cn>1</m:cn>
+			  <m:apply>
+			    <m:plus/>
+			    <m:ci>q</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		  
+		  for
+
+		  <m:math>
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>n</m:ci>
+		      <m:set>
+			<m:cn>0</m:cn>
+			<m:ci>…</m:ci>
+			<m:ci>q</m:ci>
+		      </m:set>
+		    </m:apply>
+		  </m:math> and zero otherwise.
+		  Let the input be a pulse of unit height and duration
+		  <m:math><m:ci>N</m:ci></m:math>.
+		  Find the filter's output when
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:cn>N</m:cn>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:plus/>
+			  <m:ci>q</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>,
+		  <m:math><m:ci>q</m:ci></m:math> an odd integer.</item>
+
+	      </list>
+	    </para>
+	  </section></q:question>
+      </q:item>
+
+      
+      <q:item id="iq3.1" type="text-response">
+	<q:question>
+	  <section id="sq3.1">
+	    <title>A Digital Filter</title> <para id="pq3.1">A digital
+	    filter has the <link target-id="figq3.1" strength="3">depicted</link> unit-sample reponse.
+	    </para>
+
+	    <figure id="figq3.1">
+	      <media id="id1172128112362" alt="">
+                <image src="../../media/sig48.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig48.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+	    
+	    <list id="lq3.1" list-type="enumerated">
+	      <item>What is the difference equation that defines this
+	      filter's input-output relationship?
+	      </item>
+
+	      <item>What is this filter's transfer function?</item>
+
+	      <item>What is the filter's output when the input is
+		<m:math>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:math>?
+	      </item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item id="i8" type="text-response">
+	<q:question>
+	  <section id="s8">
+	    <title>A Special Discrete-Time Filter</title>
+	    <para id="p8">
+	      Consider a FIR filter governed by the difference equation
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply><m:divide/><m:cn>1</m:cn><m:cn>3</m:cn></m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:plus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply><m:divide/><m:cn>2</m:cn><m:cn>3</m:cn></m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:plus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply><m:divide/><m:cn>2</m:cn><m:cn>3</m:cn></m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply><m:divide/><m:cn>1</m:cn><m:cn>3</m:cn></m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      <list id="list5.8" list-type="enumerated">
+		<item>Find this filter's unit-sample response.</item>
+
+		<item>Find this filter's transfer function.
+		  Characterize this transfer function
+		  (<foreign>i.e.</foreign>, what classic filter category
+		  does it fall into).</item>
+
+		<item>Suppose we take a sequence and stretch it out by
+		  a factor of three.
+		  <m:math display="block">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:piecewise>
+			<m:piece>
+			  <m:apply><m:ci type="fn">s</m:ci>
+			    <m:apply>
+			      <m:divide/>
+			      <m:ci>n</m:ci>
+			      <m:cn>3</m:cn>
+			    </m:apply>
+			  </m:apply>
+
+			  <m:apply>	
+			    <m:forall/>
+			    <m:bvar>
+			      <m:ci>m</m:ci>
+			    </m:bvar>
+			    <m:condition>
+			      <m:apply>
+				<m:eq/>
+				<m:ci>m</m:ci>
+				<m:set>
+				  <m:ci>…</m:ci>
+				  <m:cn>-1</m:cn>
+				  <m:cn>0</m:cn>
+				  <m:cn>1</m:cn>
+				  <m:ci>…</m:ci>
+				</m:set>
+			      </m:apply>
+			    </m:condition>
+			    <m:apply>
+			      <m:eq/>
+			      <m:ci>n</m:ci>
+			      <m:apply>
+				<m:times/> 
+				<m:cn>3</m:cn> 
+				<m:ci>m</m:ci> 
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:piece>
+			
+			<m:otherwise>
+			  <m:cn>0</m:cn>
+			</m:otherwise>
+		      </m:piecewise>
+		    </m:apply>
+		  </m:math>
+		  
+		  Sketch the sequence
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:math>
+
+		  for some example
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:math>. What is the filter's output to this
+		  input? In particular, what is the output at the
+		  indices where the input
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:math>
+		  is intentionally zero? Now how would you characterize this
+		  system?
+		  </item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item id="F4" type="text-response">
+	<q:question>
+	  <section id="sF4">
+	    <title>Simulating the Real World</title> <para id="pF4">Much
+	    of physics is governed by differntial equations, and we
+	    want to use signal processing methods to simulate physical
+	    problems. The idea is to replace the derivative with a
+	    discrete-time approximation and solve the resulting
+	    differential equation. For example, suppose we have the
+	    differential equation
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:diff/>
+		      <m:bvar>
+			<m:ci>t</m:ci>
+		      </m:bvar>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>a</m:ci>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      and we approximate the derivative by
+	      <m:math display="block">
+		<m:apply>
+		  <m:approx/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		    <m:bvar>
+		      <m:ci>t</m:ci>
+		    </m:bvar>
+		    <m:lowlimit>
+		      <m:apply>
+			<m:times/>
+			<m:ci>n</m:ci>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:lowlimit>
+		    <m:apply>
+		      <m:diff/>
+		      <m:bvar>
+			<m:ci>t</m:ci>
+		      </m:bvar>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>n</m:ci>
+			  <m:ci>T</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>n</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			  <m:ci>T</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>T</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      where <m:math><m:ci>T</m:ci></m:math> essentially
+	      amounts to a sampling interval.
+	    </para>
+	    
+	    <list id="lF4" list-type="enumerated">
+	      <item>What is the difference equation that must be
+	      solved to approximate the differential equation?
+	      </item>
+
+	      <item>When
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">u</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>, the unit step, what will be the simulated output?
+	      </item>
+
+	      <item>Assuming 
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math> is a sinusoid, how should the sampling
+		interval <m:math><m:ci>T</m:ci></m:math> be chosen so
+		that the approximation works well?
+	      </item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+    
+
+      <q:item id="derivative" type="text-response">
+	<q:question>
+	  <section id="derivatives1">
+	    <title>Derivatives</title>
+	    <para id="derivativep1">
+	    The derivative of a sequence makes little sense, but still, we can approximate it.
+	    The digital filter described by the difference equation
+	    <m:math display="block">
+          <m:apply><m:eq/>
+            <m:apply><m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+		    <m:apply><m:minus/>
+		      <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+		      <m:apply><m:ci type="fn">x</m:ci>
+		        <m:apply><m:minus/>
+		          <m:ci>n</m:ci>
+		          <m:cn>1</m:cn>
+		        </m:apply>
+		      </m:apply>
+		    </m:apply>
+          </m:apply>
+        </m:math>
+        resembles the derivative formula.
+        We want to explore how well it works.
+	    </para>
+	    
+	    <list id="derivativeparts" list-type="enumerated">
+	      <item>
+	      What is this filter's transfer function?
+	      </item>
+	      
+	      <item>
+	      What is the filter's output to the <link target-id="triangle">depicted triangle input</link>?
+	      <figure id="triangle">
+	        <media id="trianglemed" alt="">
+              <image src="../../media/sig56.png" mime-type="image/png"/>
+              <image for="pdf" src="../../media/sig56.eps" mime-type="application/postscript"/>
+	        </media>
+	      </figure>
+	      </item>
+	      
+	      <item>
+	      Suppose the signal
+	      <m:math>
+	        <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+	      </m:math>
+	      is a sampled analog signal:
+	      <m:math>
+	        <m:apply><m:eq/>
+	          <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+	          <m:apply><m:ci type="fn">x</m:ci>
+	            <m:apply><m:times/>
+	              <m:ci>n</m:ci>
+	              <m:ci><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:ci>
+	            </m:apply>
+	          </m:apply>
+	        </m:apply>
+	      </m:math>.
+	      Under what conditions will the filter act like a differentiator?
+	      In other words, when will
+	      <m:math>
+	        <m:apply><m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+	      </m:math>
+	      be proportional to
+	      <m:math>
+	        <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#evaluateat"/>
+		      <m:bvar><m:ci>t</m:ci></m:bvar>
+		      <m:lowlimit>
+		        <m:apply><m:times/>
+			      <m:ci>n</m:ci>
+			      <m:ci><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:ci>
+		        </m:apply>
+		      </m:lowlimit>
+              <m:apply><m:diff/>
+		        <m:bvar><m:ci>t</m:ci></m:bvar>
+		        <m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply>
+		      </m:apply>
+		    </m:apply>
+	      </m:math>?
+	      </item>
+	      
+	    </list>
+	  </section>
+	</q:question>
+	</q:item>
+
+
+
+      <q:item id="i9" type="text-response">
+	<q:question>
+	  <section id="s9">
+	    <title>The DFT</title>
+	    <para id="p9">
+	      Let's explore the DFT and its properties.
+
+	      <list id="list5.9" list-type="enumerated">
+		<item>What is the
+		  length-<m:math><m:ci>K</m:ci></m:math> DFT of
+		  length-<m:math><m:ci>N</m:ci></m:math> boxcar
+		  sequence, where
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:lt/>
+		      <m:ci>N</m:ci>
+		      <m:ci>K</m:ci>
+		    </m:apply>
+		  </m:math>?</item>
+		
+		<item id="inversedft">
+		  Consider the special case where
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci>K</m:ci>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:math>.  Find the inverse DFT of the product of
+		  the DFTs of two length-3 boxcars.</item>
+
+		  <item>
+		  If we could use DFTs to perform linear filtering, it
+		  should be true that the product of the input's
+		  DFT and the unit-sample response's DFT equals
+		  the output's DFT.  So that you can use what you
+		  just calculated, let the input be a boxcar signal
+		  and the unit-sample response also be a boxcar.  The
+		  result of part (b) would then be the filter's
+		  output <emphasis>if</emphasis> we could implement
+		  the filter with length-4 DFTs.  Does the actual
+		  output of the boxcar-filter equal the result found
+		  in the <link target-id="inversedft" strength="3">previous part</link>?  </item>
+
+		<item>What would you need to change so that the
+		  product of the DFTs of the input and unit-sample
+		  response in this case equaled the DFT of the
+		  filtered output?</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item id="i11a" type="text-response">
+	<q:question>
+	  <section id="s11a">
+	    <title>DSP Tricks</title>
+	    <para id="p11a">
+	      Sammy is faced with computing <emphasis>lots</emphasis>
+	      of discrete Fourier transforms.  He will, of course, use
+	      the FFT algorithm, but he is behind schedule and needs
+	      to get his results as quickly as possible.  He gets the
+	      idea of computing <emphasis>two</emphasis> transforms at
+	      one time by computing the transform of 
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub><m:mi>s</m:mi><m:mi>1</m:mi></m:msub>
+		      </m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:apply>
+			<m:ci type="fn">
+			  <m:msub><m:mi>s</m:mi><m:mi>2</m:mi></m:msub>
+			</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>, where 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>s</m:mi><m:mi>1</m:mi></m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math> and 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub><m:mi>s</m:mi><m:mi>2</m:mi></m:msub>
+		  </m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math> are two real-valued signals of which he needs
+	      to compute the spectra.  The issue is whether he can retrieve
+	      the individual DFTs from the result or not.
+	    </para>
+	    
+	    <list id="list5.11a" list-type="enumerated">
+	      <item>What will be the DFT 
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci><m:ci>k</m:ci>
+		  </m:apply>
+		</m:math> of this complex-valued signal in terms of 
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>S</m:mi><m:mi>1</m:mi></m:msub>
+		    </m:ci>
+		    <m:ci>k</m:ci>
+		  </m:apply>
+		</m:math> and 
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>S</m:mi><m:mi>2</m:mi></m:msub>
+		    </m:ci>
+		    <m:ci>k</m:ci>
+		  </m:apply>
+		</m:math>, the DFTs of the original signals?
+	      </item>
+	      
+	      <item>Sammy's friend, an Aggie who knows some signal
+		processing, says that retrieving the wanted DFTs is easy:
+		“Just find the real and imaginary parts of 
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci><m:ci>k</m:ci>
+		  </m:apply>
+		</m:math>.”  Show that this approach is too
+		simplistic.
+	      </item>
+	      
+	      <item> While his friend's idea is not correct, it does
+		give him an idea.  What approach will work?
+		<emphasis>Hint</emphasis>: Use the symmetry properties
+		of the DFT.
+	      </item>
+	      
+	      <item>How does the number of computations change with
+	      this approach?  Will Sammy's idea ultimately lead to a
+	      faster computation of the required DFTs?
+	      </item>
+
+	    </list>
+	    
+	  </section>
+	</q:question>
+      </q:item>
+      
+
+      <q:item id="i11" type="text-response">
+	<q:question>
+	  <section id="s11">
+	    <title>Discrete Cosine Transform (DCT)</title>
+	    <para id="p11">
+	      The discrete cosine transform of a
+	      length-<m:math><m:ci>N</m:ci></m:math> sequence is
+	      defined to be
+
+	      <m:math display="block">
+		  <m:apply><m:eq/>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub><m:mi>S</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:apply><m:sum/>
+		      <m:bvar><m:ci>n</m:ci></m:bvar>
+		      <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		      <m:uplimit><m:apply><m:minus/> <m:ci>N</m:ci> <m:cn>1</m:cn></m:apply>
+		      </m:uplimit>
+		      <m:apply><m:times/>
+			    <m:apply><m:ci type="fn">s</m:ci><m:ci>n</m:ci></m:apply>
+			    <m:apply><m:cos/>
+			      <m:apply><m:divide/>
+			        <m:apply><m:times/>
+			          <m:cn>2</m:cn><m:pi/><m:ci>n</m:ci><m:ci>k</m:ci>
+			        </m:apply>
+			        <m:apply><m:times/>
+			          <m:cn>2</m:cn><m:ci>N</m:ci>
+			        </m:apply>
+			      </m:apply>
+			    </m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+	      </m:math>
+
+	      Note that the number of frequency terms is
+	      <m:math display="inline">
+		<m:apply><m:minus/>
+		  <m:apply><m:times/><m:cn>2</m:cn><m:ci>N</m:ci></m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:math>:
+	      <m:math>
+	        <m:apply><m:eq/>
+	          <m:ci>k</m:ci>
+				<m:set>
+				  <m:cn>0</m:cn>
+				  <m:ci>…</m:ci>
+		          <m:apply><m:minus/>
+		            <m:apply><m:times/><m:cn>2</m:cn><m:ci>N</m:ci></m:apply>
+		            <m:cn>1</m:cn>
+		          </m:apply>
+		        </m:set>
+		      </m:apply>
+	      </m:math>.
+
+	      <list id="list5.11" list-type="enumerated">
+		<item>Find the inverse DCT.</item>
+		<item>Does a Parseval's Theorem hold for the DCT?</item>
+		<item>You choose to transmit information about the signal
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:math>
+
+		  according to the DCT coefficients.
+		  You could only send one, which one would you send?</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i12a" type="text-response">
+	<q:question>
+	  <section id="s12a">
+	    <title>A Digital Filter</title>
+	    <para id="p12a">
+	      A digital filter is described by the following
+	      difference equation:
+
+	      <m:math display="block">
+		  <m:apply><m:eq/>
+		    <m:apply><m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+		    <m:apply><m:plus/>
+		      <m:apply><m:times/>
+			    <m:ci>a</m:ci>
+			    <m:apply><m:ci type="fn">y</m:ci>
+			      <m:apply><m:minus/>
+			        <m:ci>n</m:ci>
+			        <m:cn>1</m:cn>
+			      </m:apply>
+			    </m:apply>
+		      </m:apply>
+		      <m:apply><m:minus/>
+			    <m:apply><m:times/>
+			      <m:ci>a</m:ci>
+			      <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+			    </m:apply>
+			    <m:apply><m:ci type="fn">x</m:ci>
+			      <m:apply><m:minus/>
+			        <m:ci>n</m:ci>
+			        <m:cn>1</m:cn>
+			      </m:apply>
+			    </m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:mspace/><m:mtext>,  </m:mtext>
+	      <m:apply><m:eq/>
+		   <m:ci>a</m:ci>
+		   <m:apply><m:divide/>
+		     <m:cn>1</m:cn>
+		     <m:apply><m:root/><m:cn>2</m:cn></m:apply>
+		   </m:apply>
+	     </m:apply>
+       </m:math>
+
+	    </para>
+
+	    <list id="list5.12a" list-type="enumerated">
+	      <item>What is this filter's unit sample response?</item>
+
+	      <item>What is this filter's transfer function?</item>
+	      
+	      <item>What is this filter's output when the input is 
+		<m:math display="inline">
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:math>?
+	      </item>
+
+	    </list>	    
+
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i12" type="text-response">
+	<q:question>
+	  <section id="s12">
+	    <title>Another Digital Filter</title>
+	    <para id="p12">
+	      A digital filter is determined by the following difference equation.
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply><m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply><m:ci type="fn">y</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>4</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      <list id="list5.12" list-type="enumerated">
+		<item>Find this filter's unit sample response.</item>
+		<item>What is the filter's transfer function?
+		How would you characterize this filter (lowpass, highpass, special purpose, ...)?
+		</item>
+		<item>Find the filter's output when the input is the sinusoid
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:pi/>
+			  <m:ci>n</m:ci>
+			</m:apply>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>.
+		</item>
+		
+		<item>
+		In another case, the input sequence is zero for
+		<m:math>
+		  <m:apply><m:lt/>
+		    <m:ci>n</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:math>, then becomes nonzero.
+		Sammy measures the output to be
+		<m:math>
+		  <m:apply><m:eq/>
+		    <m:apply><m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+		    <m:apply><m:plus/>
+		      <m:apply><m:ci type="fn">δ</m:ci><m:ci>n</m:ci></m:apply>
+		      <m:apply><m:ci type="fn">δ</m:ci>
+		        <m:apply><m:minus/>
+		          <m:ci>n</m:ci>
+		          <m:cn>1</m:cn>
+		        </m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>.
+		Can his measurement be correct?
+		In other words, is there an input that can yield this output?
+		If so, find the input
+		<m:math>
+		  <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+		  </m:math>
+		that gives rise to this output.
+		If not, why not?
+		</item>
+	    
+	    </list>
+	    </para>
+	  </section></q:question>
+      </q:item>
+
+      <q:item id="i13" type="text-response">
+	<q:question>
+	  <section id="s13">
+	    <title>Yet Another Digital Filter</title>
+	    <para id="p13">
+	      A filter has an input-output relationship given by the difference
+	      equation
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply><m:divide/><m:ci>1</m:ci><m:ci>4</m:ci></m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply><m:divide/><m:ci>1</m:ci><m:ci>2</m:ci></m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply><m:divide/><m:ci>1</m:ci><m:ci>4</m:ci></m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+
+	      <list id="list5.13" list-type="enumerated">
+		<item>What is the filter's transfer function?
+		  How would you characterize it?</item>
+		<item>What is the filter's output when the input equals
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:cos/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:pi/>
+			  <m:ci>n</m:ci>
+			</m:apply>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>?</item> <item>What is the filter's output
+		  when the input is the depicted discrete-time
+		  square wave (<link target-id="fig13" strength="3"/>)?
+		</item>
+
+	      </list>
+	    </para>
+
+	    <figure id="fig13">
+              <media id="id1172125455042" alt="">
+                <image src="../../media/sig36.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig36.eps" mime-type="application/postscript"/>
+              </media>
+            </figure>
+
+	  </section></q:question>
+      </q:item>
+
+      <q:item id="i13a" type="text-response">
+	  <q:question>
+	    <section id="s13a"><title>A Digital Filter in the Frequency Domain</title>
+	    <para id="p13a">
+	    We have a filter with the transfer function
+		  <m:math display="block">
+		    <m:apply><m:eq/>
+		      <m:apply><m:ci type="fn">H</m:ci>
+		        <m:apply><m:exp/>
+			      <m:apply><m:times/>
+			        <m:imaginaryi/>
+			        <m:cn>2</m:cn>
+			        <m:pi/>
+			        <m:ci>f</m:ci>
+			      </m:apply>
+		        </m:apply>
+		      </m:apply>
+		      <m:apply><m:times/>
+		        <m:apply><m:exp/>
+			      <m:apply><m:minus/>
+			        <m:apply><m:times/>
+			          <m:imaginaryi/>
+			          <m:cn>2</m:cn>
+			          <m:pi/>
+			          <m:ci>f</m:ci>
+			        </m:apply>
+			      </m:apply>
+		        </m:apply>
+		        <m:apply><m:cos/>
+		          <m:apply><m:times/>
+		            <m:cn>2</m:cn>
+		            <m:pi/>
+		            <m:ci>f</m:ci>
+		          </m:apply>
+		        </m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		  operating on the input signal
+		  <m:math>
+		    <m:apply><m:eq/>
+		      <m:apply><m:ci type="fn">x</m:ci><m:ci>n</m:ci></m:apply>
+		      <m:apply><m:minus/>
+		        <m:apply><m:ci type="fn">δ</m:ci><m:ci>n</m:ci></m:apply>
+		        <m:apply><m:ci type="fn">δ</m:ci>
+		          <m:apply><m:minus/>
+		            <m:ci>n</m:ci>
+		            <m:cn>2</m:cn>
+		          </m:apply>
+		        </m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math> that yields the output
+		  <m:math>
+		    <m:apply><m:ci type="fn">y</m:ci><m:ci>n</m:ci></m:apply>
+		  </m:math>.
+		  
+		  <list id="l13a" list-type="enumerated">
+		    <item>
+		      What is the filter's unit-sample response?
+		    </item>
+		    <item>
+		      What is the discrete-Fourier transform of the output?
+		    </item>
+		    <item>
+		      What is the time-domain expression for the output?
+		    </item>
+		  </list>
+	    </para>
+	    </section>
+	  </q:question>
+      </q:item>
+
+
+      <q:item id="i14" type="text-response">
+	<q:question>
+	  <section id="s14">
+	    <title>Digital Filters</title>
+	    <para id="p14">
+
+	      A discrete-time system is governed by the difference equation
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn">y</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:ci type="fn">x</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn">x</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>n</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      <list id="list5.14" list-type="enumerated">
+		<item>Find the transfer function for this system.</item>
+		<item>What is this system's output when the input is
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:pi/>
+			  <m:ci>n</m:ci>
+			</m:apply>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>?</item>
+
+		<item>If the output is observed to be
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:ci type="fn">δ</m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:ci type="fn">δ</m:ci>
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>n</m:ci>
+			    <m:cn>1</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>, then what is the input?
+		</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i15" type="text-response">
+	<q:question>
+	  <section id="s15">
+	    <title>Digital Filtering</title>
+	    <para id="p15">
+	      A digital filter has an input-output relationship
+	      expressed by the difference equation
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>1</m:cn>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>n</m:ci>
+			  <m:cn>3</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>4</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+
+	      <list id="list5.15" list-type="enumerated">
+		<item>
+		  Plot the magnitude and phase of this filter's transfer
+		  function.</item>
+		<item>
+		  What is this filter's output when
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:cos/>
+			  <m:apply>
+			    <m:divide/>
+			    <m:apply>
+			      <m:times/>
+			      <m:pi/>
+			      <m:ci>n</m:ci>
+			    </m:apply>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:apply>
+			    <m:sin/>
+			    <m:apply>
+			      <m:divide/>
+			      <m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+				<m:ci>n</m:ci>
+			      </m:apply>
+			      <m:cn>3</m:cn>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>?
+		</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i16" type="text-response">
+	<q:question>
+	  <section id="s16">
+	    <title>Detective Work</title>
+	    <para id="p16">
+	      The signal
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>
+
+	      equals
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+
+	      <list id="list5.16" list-type="enumerated">
+		<item>Find the length-8 DFT (discrete Fourier transform) of
+		  this signal.</item>
+		<item>You are told that when
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:math>
+		  served as the input to a linear FIR (finite impulse
+		  response) filter, the output was
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">y</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:ci type="fn">δ</m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci type="fn">δ</m:ci>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>n</m:ci>
+			      <m:cn>1</m:cn>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:apply>
+			    <m:ci type="fn">δ</m:ci>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>n</m:ci>
+			      <m:cn>2</m:cn>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>.
+
+		  Is this statement true?  If so, indicate why and
+		  find the system's unit sample response; if not, show
+		  why not.</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i17" type="text-response">
+	<q:question>
+	  <section id="s17">
+	    <para id="p17">
+	      A discrete-time, shift invariant, linear system produces
+	      an output
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">y</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:set>
+		    <m:cn>1</m:cn>
+		    <m:cn>-1</m:cn>
+		    <m:cn>0</m:cn>
+		    <m:cn>0</m:cn>
+		    <m:ci>…</m:ci>
+		  </m:set>
+		</m:apply>
+	      </m:math>
+	      when its input
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>
+
+	      equals a unit sample.
+
+	      <list id="list5.17" list-type="enumerated">
+		<item>Find the difference equation governing the system.</item>
+		<item>Find the output when
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:cos/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+			  <m:ci>n</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>.
+		</item>
+		<item>How would you describe this system's function?</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i18" type="text-response">
+	<q:question>
+	  <section id="s18">
+	    <title>Time Reversal has Uses</title>
+	    <para id="p18">
+	      A discrete-time system has transfer function
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+	      A signal
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>
+
+	      is passed through this system to yield the signal
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">w</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>.
+	      The time-reversed signal
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">w</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      is then passed through the system to yield the
+	      time-reversed output
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+	      What is the transfer function between
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>
+
+	      and
+
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>?
+
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i19" type="text-response">
+	<q:question>
+	  <section id="s19">
+	    <title>Removing “Hum”</title>
+	    <para id="p19">
+	      The slang word “hum” represents power line waveforms
+	      that creep into signals because of poor circuit
+	      construction.  Usually, the 60 Hz signal (and its
+	      harmonics) are added to the desired signal.  What we
+	      seek are filters that can remove hum.  In this problem,
+	      the signal and the accompanying hum have been sampled;
+	      we want to design a <emphasis>digital</emphasis> filter
+	      for hum removal.
+
+	      <list id="list5.19" list-type="enumerated">
+		<item>Find filter coefficients for the length-3 FIR filter
+		  that can remove a sinusoid having
+		  <emphasis>digital</emphasis> frequency
+
+		  <m:math display="inline">
+		    <m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		  </m:math>
+
+		  from its input.</item>
+		<item>Assuming the sampling rate is
+
+		  <m:math display="inline">
+		    <m:ci><m:msub><m:mi>f</m:mi><m:mi>s</m:mi></m:msub></m:ci>
+		  </m:math>
+
+		  to what analog frequency does
+
+		  <m:math display="inline">
+		    <m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		  </m:math>
+
+		  correspond?</item>
+
+		<item>A more general approach is to design a filter having a
+		  frequency response <emphasis>magnitude</emphasis>
+		  proportional to the absolute value of a cosine:
+
+		  <m:math display="inline">
+		    <m:mrow>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:ci type="fn">H</m:ci>
+			  <m:apply><m:exp/>
+			    <m:apply>
+			      <m:times/>
+			      <m:imaginaryi/>
+			      <m:cn>2</m:cn> 
+			      <m:pi/> 
+			      <m:ci>f</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:mo>∝</m:mo>
+		      <m:apply>
+			<m:abs/>
+			<m:apply>
+			  <m:cos/>
+			  <m:apply>
+			    <m:times/>
+			    <m:pi/>
+			    <m:ci>f</m:ci>
+			    <m:ci>N</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:mrow>
+		  </m:math>.  In this way, not only can the fundamental but
+		  also its first few harmonics be removed.  Select the
+		  parameter <m:math><m:ci>N</m:ci></m:math> and the sampling
+		  rate so that the frequencies at which the cosine equals zero
+		  correspond to 60 Hz and its odd harmonics through the fifth.
+		</item>
+
+		<item>Find the difference equation that defines this
+		  filter.</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i20" type="text-response">
+	<q:question>
+	  <section id="s20">
+	    <title>Digital AM Receiver</title>
+	    <para id="p20">
+	      Thinking that digital implementations are
+	      <emphasis>always</emphasis> better, our clever engineer
+	      wants to design a digital AM receiver.  The receiver
+	      would bandpass the received signal, pass the result
+	      through an A/D converter, perform all the demodulation
+	      with digital signal processing systems, and end with a
+	      D/A converter to produce the analog message signal.
+	      Assume in this problem that the carrier frequency is
+	      always a large <emphasis>even</emphasis> multiple of the
+	      message signal's bandwidth <m:math><m:ci>W</m:ci>
+	      </m:math>.
+
+	      <list id="list5.20" list-type="enumerated">
+		<item>What is the smallest sampling rate that would be
+		  needed?</item> <item>Show the block diagram of the
+		  least complex digital AM receiver.</item>
+		<item>Assuming the channel adds white noise and that
+		  a <m:math><m:ci>b</m:ci></m:math>-bit A/D converter
+		  is used, what is the output's signal-to-noise
+		  ratio?</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i21a" type="text-response">
+	<q:question>
+	  <section id="s21a">
+	    <title>DFTs</title>
+	    <para id="p21a">
+	      A problem on Samantha's homework asks for the
+	      <emphasis>8-point</emphasis> DFT of the discrete-time
+	      signal 
+	      <m:math>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>7</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+	    </para>
+	    
+	    <list id="list5.21a" list-type="enumerated">
+	      <item>What answer should Samantha obtain?</item>
+
+	      <item>As a check, her group partner Sammy says that he
+		computed the inverse DFT of her answer and got 
+		<m:math display="inline">
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">δ</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>n</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>.  Does Sammy's result mean that Samantha's
+		answer is wrong?</item>
+
+	      <item>The homework problem says to lowpass-filter the
+		sequence by multiplying its DFT by
+
+		<m:math display="block">
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:piecewise>
+			<m:piece>
+			  <m:cn>1</m:cn>
+			  <m:apply>
+			    <m:eq/>
+			    <m:ci>k</m:ci>
+			    <m:set>
+			      <m:cn>0</m:cn>
+			      <m:cn>1</m:cn>
+			      <m:cn>7</m:cn>
+			    </m:set>
+			  </m:apply>
+			</m:piece>
+			<m:otherwise>
+			  <m:cn>0</m:cn>
+			</m:otherwise>
+		      </m:piecewise>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+		and then computing the inverse DFT.  Will this
+		filtering algorithm work?  If so, find the filtered
+		output; if not, why not?
+	      </item>
+	    </list>		
+
+	  </section>
+	</q:question>
+      </q:item>
+
+
+      <q:item id="i21" type="text-response">
+	<q:question>
+	  <section id="s21">
+	    <title>Stock Market Data Processing</title>
+	    <para id="p21">
+	      Because a trading week lasts five days, stock markets
+	      frequently compute running averages each day over the
+	      previous five trading days to smooth price fluctuations.
+	      The technical stock analyst at the Buy-Lo--Sell-Hi
+	      brokerage firm has heard that FFT filtering techniques
+	      work better than any others (in terms of producing more
+	      accurate averages).
+
+	      <list id="list5.21" list-type="enumerated">
+		<item>What is the difference equation governing the
+		  five-day averager for daily stock prices?</item>
+		<item>Design an efficient FFT-based filtering
+		  algorithm for the broker.  How much data should be
+		  processed at once to produce an efficient algorithm?
+		  What length transform should be used?</item>
+		<item>Is the analyst's information correct that FFT
+		  techniques produce more accurate averages than any
+		  others?  Why or why not?</item>
+
+	      </list>
+	    </para>
+	  </section></q:question>
+      </q:item>
+
+
+      <q:item id="echo" type="text-response">
+	<q:question>
+	  <section id="echos1">
+	    <title>Echoes</title>
+	    <para id="echop1">
+	    Echoes not only occur in canyons, but also in auditoriums and telephone circuits.
+	    In one situation where the echoed signal has been sampled, the input signal
+	    <m:math>
+	      <m:apply><m:ci type="fcn">x</m:ci><m:ci>n</m:ci></m:apply>
+	    </m:math>
+	    emerges as
+	    <m:math>
+	      <m:apply><m:plus/>
+	        <m:apply><m:ci type="fcn">x</m:ci><m:ci>n</m:ci></m:apply>
+	        <m:apply><m:times/>
+	          <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	          <m:apply><m:ci type="fcn">x</m:ci>
+	            <m:apply><m:minus/>
+	              <m:ci>n</m:ci>
+	              <m:ci><m:msub><m:mi>n</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	            </m:apply>
+	          </m:apply>
+	        </m:apply>
+	        <m:apply><m:times/>
+	          <m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	          <m:apply><m:ci type="fcn">x</m:ci>
+	            <m:apply><m:minus/>
+	              <m:ci>n</m:ci>
+	              <m:ci><m:msub><m:mi>n</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	            </m:apply>
+	          </m:apply>
+	        </m:apply>
+	      </m:apply>
+	    </m:math>.
+	    </para>
+	    
+	    <list id="echoparts" list-type="enumerated">
+	      <item>
+	      Find the difference equation of the system that models the production of echoes.
+	      </item>
+	      
+	      <item>
+	      To simulate this echo system, ELEC 241 students are asked to write the most efficient (quickest) program that has the same input-output relationship.
+	      Suppose the duration of
+	      <m:math>
+	        <m:apply><m:ci type="fcn">x</m:ci><m:ci>n</m:ci></m:apply>
+	      </m:math>
+	      is 1,000 and that
+	      <m:math>
+	        <m:apply><m:eq/>
+	          <m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	          <m:apply><m:divide/>
+	            <m:cn>1</m:cn>
+	            <m:cn>2</m:cn>
+	          </m:apply>
+	        </m:apply>
+	      </m:math>,
+	      <m:math>
+	        <m:apply><m:eq/>
+	          <m:ci><m:msub><m:mi>n</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	          <m:cn>10</m:cn>
+	        </m:apply>
+	      </m:math>,
+	      <m:math>
+	        <m:apply><m:eq/>
+	          <m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	          <m:apply><m:divide/>
+	            <m:cn>1</m:cn>
+	            <m:cn>5</m:cn>
+	          </m:apply>
+	        </m:apply>
+	      </m:math>, and
+	      <m:math>
+	        <m:apply><m:eq/>
+	          <m:ci><m:msub><m:mi>n</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	          <m:cn>25</m:cn>
+	        </m:apply>
+	      </m:math>.
+	      Half the class votes to just program the difference equation while the other half votes to program a frequency domain approach that exploits the speed of the FFT.
+	      Because of the undecided vote, you must break the tie.
+	      Which approach is more efficient and why?
+	      </item>
+	      
+	      <item>
+	      Find the transfer function and difference equation of the system that suppresses the echoes.
+	      In other words, with the echoed signal as the input, what system's output is the signal
+	      <m:math>
+	        <m:apply><m:ci type="fcn">x</m:ci><m:ci>n</m:ci></m:apply>
+	      </m:math>?
+	      </item>
+	    </list>
+	  </section>
+	</q:question>
+	</q:item>
+
+
+      <q:item id="i22" type="text-response">
+	<q:question>
+	  <section id="s22">
+	    <title>Digital Filtering of Analog Signals</title>
+	    <para id="p22">
+	      RU Electronics wants to develop a filter that would be
+	      used in analog applications, but that is implemented
+	      digitally.  The filter is to operate on signals that
+	      have a 10 kHz bandwidth, and will serve as a lowpass
+	      filter.
+
+	      <list id="list5.22" list-type="enumerated">
+		<item>What is the block diagram for your filter
+		  implementation?  Explicitly denote which components
+		  are analog, which are digital (a computer performs
+		  the task), and which interface between analog and
+		  digital worlds.</item>
+
+		<item>What sampling rate must be used and how many
+		  bits must be used in the A/D converter for the
+		  acquired signal's signal-to-noise ratio to be at
+		  least 60 dB?  For this calculation, assume the
+		  signal is a sinusoid.</item>
+
+		<item>If the filter is a length-128 FIR filter (the
+		  duration of the filter's unit-sample response equals
+		  128), should it be implemented in the time or
+		  frequency domain?</item> <item>Assuming
+
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>f</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+
+		  is the transfer function of the digital filter, what
+		  is the transfer function of your system?</item>
+
+	      </list>
+	    </para>
+	  </section></q:question>
+      </q:item>
+
+
+      <q:item id="i23" type="text-response">
+	<q:question>
+	  <section id="s23">
+	    <title>Signal Compression</title>
+	    <para id="p23">
+	      Because of the slowness of the Internet, lossy signal
+	      compression becomes important if you want signals to be
+	      received quickly.  An enterprising 241 student has
+	      proposed a scheme based on frequency-domain processing.
+	      First of all, he would section the signal into
+	      length-<m:math><m:ci>N</m:ci></m:math> blocks, and
+	      compute its <m:math><m:ci>N</m:ci></m:math>-point DFT.
+	      He then would discard (zero the spectrum) at
+	      <emphasis>half</emphasis> of the frequencies, quantize
+	      them to <m:math><m:ci>b</m:ci></m:math>-bits, and send
+	      these over the network.  The receiver would assemble the
+	      transmitted spectrum and compute the inverse DFT, thus
+	      reconstituting an <m:math><m:ci>N</m:ci></m:math>-point
+	      block.
+	      <list id="list5.23" list-type="enumerated">
+		<item>At what frequencies should the spectrum be
+		  zeroed to minimize the error in this lossy
+		  compression scheme?</item> <item>The nominal way to
+		  represent a signal digitally is to use simple
+		  <m:math><m:ci>b</m:ci></m:math>-bit quantization of
+		  the time-domain waveform.  How long should a section
+		  be in the proposed scheme so that the required
+		  number of bits/sample is smaller than that nominally
+		  required?</item> <item>Assuming that effective
+		  compression can be achieved, would the proposed
+		  scheme yield satisfactory results?</item>
+
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+    </q:problemset>
+
+  </content>
+</document>

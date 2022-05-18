@@ -1,0 +1,427 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Decibels</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>01106bf6-2c07-4d80-b2ea-c67d1041aca1</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="decibelOverview"> The decibel scale expresses amplitudes
+      and power values <term>logarithmically</term>.  The
+      definitions for these differ, but are consistent with each
+      other.
+      <equation id="eq1">
+	<m:math>         
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">power</m:ci>
+	      <m:ci>s</m:ci>
+	      <m:mtext> in decibels</m:mtext>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>10</m:cn>
+	      <m:apply>
+		<m:log/>
+		<m:logbase><m:cn>10</m:cn></m:logbase>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:ci type="fn">power</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">power</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>      
+	  </m:apply>
+	</m:math>
+      </equation>
+
+	<m:math display="block">         
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">amplitude</m:ci>
+	      <m:ci>s</m:ci>
+	      <m:mtext> in decibels</m:mtext>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>20</m:cn>
+	      <m:apply>
+		<m:log/>
+		<m:logbase><m:cn>10</m:cn></m:logbase>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:ci type="fn">amplitude</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">amplitude</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>      
+	  </m:apply>
+	</m:math>
+    </para>
+
+    <para id="PowerExplanation">
+      Here   
+      <m:math>         
+	<m:apply>
+	  <m:ci type="fn">power</m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+          </m:ci>
+	</m:apply>      
+      </m:math>
+      and 
+      <m:math>         
+	<m:apply>
+	  <m:ci type="fn">amplitude</m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+          </m:ci>
+	</m:apply>      
+      </m:math>
+      represent a <term>reference</term> power and amplitude,
+      respectively.  Quantifying power or amplitude in decibels
+      essentially means that we are comparing quantities to a standard
+      or that we want to express how they changed. You will hear
+      statements like "The signal went down by 3 dB" and "The
+      filter's gain in the stopband is
+      <m:math><m:cn>-60</m:cn></m:math>" (Decibels is abbreviated
+      dB.).
+    </para>
+
+    <exercise id="exer1">
+      <problem id="idm1407760">
+	<para id="exer1a">
+	  The prefix "deci" implies a tenth; a decibel is a tenth of
+	  a Bel. Who is this measure named for?
+	</para>
+      </problem>
+      <solution id="idm746160">
+	<para id="exer1b">
+	  Alexander Graham Bell. He developed it because we seem to
+	  perceive physical quantities like loudness and brightness
+	  logarithmically. In other words,
+	  <emphasis>percentage</emphasis>, not absolute differences,
+	  matter to us.  We use decibels today because common values
+	  are small integers.  If we used Bels, they would be decimal
+	  fractions, which aren't as elegant.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="consistency"> The consistency of these two definitions
+      arises because power is proportional to the square of amplitude:
+
+      <equation id="eq2.5">
+	<m:math>
+	  <m:apply>
+	    <m:ci><m:mo>∝</m:mo></m:ci>     
+	    <m:apply>
+	      <m:ci type="fn">power</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:ci type="fn">amplitude</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Plugging this expression into the definition for decibels, we
+      find that
+
+      <equation id="eq3">
+	<m:math>         
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>10</m:cn>
+	      <m:apply>
+		<m:log/>
+		<m:logbase><m:cn>10</m:cn></m:logbase>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:ci type="fn">power</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">power</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>	
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>10</m:cn>
+	      <m:apply>
+		<m:log/>
+		<m:logbase><m:cn>10</m:cn></m:logbase>
+		<m:apply><m:divide/>
+		  <m:apply><m:power/>
+		      <m:apply><m:ci type="fn">amplitude</m:ci>
+		        <m:ci>s</m:ci>
+		      </m:apply>
+		      <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply><m:power/>
+		    <m:apply><m:ci type="fn">amplitude</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>20</m:cn>
+	      <m:apply>
+		<m:log/>
+		<m:logbase><m:cn>10</m:cn></m:logbase>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:ci type="fn">amplitude</m:ci>
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">amplitude</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>	
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Because of this consistency, <emphasis>stating relative change
+      in terms of decibels is unambiguous</emphasis>.  A factor of 10
+      increase in amplitude corresponds to a 20 dB increase in
+      both amplitude and power!
+    </para>
+
+    <table frame="all" id="decibel" summary=""><title>Decibel table</title>
+	<tgroup cols="2" align="left" colsep="1" rowsep="1">
+	  <thead valign="top">
+	    <row>
+	      <entry>Power Ratio</entry>
+	      <entry>dB</entry>
+	    </row>
+	  </thead>
+	  <tbody valign="top">
+	    <row>
+	      <entry>
+		<m:math><m:cn>1</m:cn></m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>0</m:cn></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:root/>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>1.5</m:cn></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math><m:cn>2</m:cn></m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>3</m:cn></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:root/>
+		    <m:cn>10</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>5</m:cn></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math><m:cn>4</m:cn></m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>6</m:cn></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math><m:cn>5</m:cn></m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>7</m:cn></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math><m:cn>8</m:cn></m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>9</m:cn></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math><m:cn>10</m:cn></m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>10</m:cn></m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math><m:cn>0.1</m:cn></m:math>
+	      </entry>
+	      <entry>
+		<m:math><m:cn>-10</m:cn></m:math>
+	      </entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      <caption>
+	Common values for the decibel.  The decibel values for all but
+	the powers of ten are approximate, but are accurate to a decimal
+	place.
+      </caption></table>
+
+    <para id="converting">The accompanying table provides "nice"
+      decibel values. Converting decibel values back and forth is fun,
+      and tests your ability to think of decibel values as sums and/or
+      differences of the well-known values and of ratios as products
+      and/or quotients. This conversion rests on the logarithmic
+      nature of the decibel scale.  For example, to find the decibel
+      value for <m:math>
+	<m:apply>
+	  <m:root/>
+	  <m:cn>2</m:cn></m:apply></m:math>, we halve the decibel value for  
+      <m:math>
+	<m:cn>2</m:cn>      
+      </m:math>;
+      <m:math>
+	<m:cn>26</m:cn>     
+      </m:math> dB equals 
+      <m:math>
+	<m:apply>
+	  <m:plus/>
+	  <m:cn>10</m:cn>
+	  <m:cn>10</m:cn>
+	  <m:cn>6</m:cn>	  
+	</m:apply>     
+      </m:math> dB that corresponds to a ratio of   
+      <m:math>         
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>10</m:cn>
+	    <m:cn>10</m:cn>
+	    <m:cn>4</m:cn>	  
+	  </m:apply> 
+	  <m:apply>
+	    <m:cn>400</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      Decibel quantities add; ratio values multiply.</para>
+
+    <para id="conclusion"> One reason decibels are used so much is the
+    frequency-domain input-output relation for <link document="m0007" target-id="linearsys" strength="2">linear systems</link>:
+
+      <m:math>         
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">Y</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>  
+	    <m:apply>
+	      <m:ci type="fn">X</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>. Because the transfer function multiplies the input signal's
+      spectrum, to find the output amplitude at a given frequency we
+      simply add the filter's gain in decibels (relative to a reference
+      of one) to the input amplitude at that frequency. This calculation
+      is one reason that we plot transfer function magnitude on a
+      logarithmic vertical scale expressed in decibels.
+    </para>
+
+  </content>
+</document>

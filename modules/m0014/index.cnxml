@@ -1,0 +1,745 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Electric Circuits and Interconnection Laws</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0014</md:content-id>
+  <md:title>Electric Circuits and Interconnection Laws</md:title>
+  <md:abstract>A circuit is the electrical/physical analogue of a system.  Kirchoff's laws provde
+connection rules about "nodes" in a circuit to determine relations between various
+circuit elements.
+</md:abstract>
+  <md:uuid>a2d726cc-a50d-4be9-b676-7fb6a65046de</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">
+      A <term>circuit</term> connects circuit elements together in a
+      specific configuration designed to transform the source signal
+      (originating from a voltage or current source) into another
+      signal—the output—that corresponds to the current
+      or voltage defined for a particular circuit element. A simple
+      resistive circuit is shown in <link target-id="simplecircuit" strength="2"/>.  This circuit is the electrical embodiment of a
+      system having its input provided by a source system producing
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mtext>in</m:mtext>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <figure id="simplecircuit" orient="vertical">
+      <subfigure id="simplecircuit1">                                    
+	<media id="id1165859867402" alt="">
+          <image src="../../media/circuit4-a1d8.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circuit4.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure>
+      <subfigure id="simplecircuit2">
+	<media id="id6898209" alt="">
+          <image src="../../media/circuit4a-6c67.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circuit4a.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure>
+      <subfigure id="id6739830">
+	<media id="id6716773" alt="">
+          <image src="../../media/system4.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/system4.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure> 
+      <caption>
+	The circuit shown in the top two figures is perhaps the
+	simplest circuit that performs a signal processing
+	function. On the bottom is the block diagram that corresponds
+	to the circuit. The input is provided by the voltage source
+        <m:math>
+          <m:ci>
+            <m:msub>
+              <m:mi>v</m:mi>
+              <m:mtext>in</m:mtext>
+            </m:msub>
+          </m:ci>
+        </m:math>
+	and the output is the voltage    
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mtext>out</m:mtext>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	across the resistor label 
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>.
+	As shown in the middle, we <emphasis>analyze</emphasis> the
+	circuit—understand what it accomplishes—by
+	defining currents and voltages for all circuit elements, and
+	then solving the circuit and element equations.
+      </caption>    
+    </figure>
+    
+    <para id="para2">To understand what this circuit accomplishes, we want to
+      determine the voltage across the resistor labeled by its value 
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>. 
+      Recasting this problem mathematically, we need to solve some set
+      of equations so that we relate the output voltage
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mtext>out</m:mtext>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      to the source voltage. It would be simple—a little too
+      simple at this point—if we could instantly write down the
+      one equation that relates these two voltages. Until we have more
+      knowledge about how circuits work, we must write a set of
+      equations that allow us to find <emphasis>all</emphasis> the
+      voltages and currents that can be defined for every circuit
+      element. Because we have a three-element circuit, we have a
+      total of six voltages and currents that must be either specified
+      or determined.  You can define the directions for positive current flow
+      and positive voltage drop <emphasis>any way you
+      like</emphasis>.
+      Once the values for the voltages and currents are calculated, they may be positive or negative according to your definition.
+      When two people define variables according to their individual preferences,
+      the signs of their variables may not agree, but current flow and
+      voltage drop values for each element will agree.  Do recall in <link document="m0012" strength="3">defining your voltage and current
+      variables</link> that the <emphasis>v-i</emphasis> relations for
+      the elements presume that positive current flow is in the same
+      direction as positive voltage drop. Once you define voltages and
+      currents, we need six nonredundant equations to solve for the
+      six unknown voltages and currents. By specifying the source, we
+      have one; this amounts to providing the source's
+      <emphasis>v-i</emphasis> relation. The <emphasis>v-i</emphasis>
+      relations for the resistors give us two more. We are only
+      halfway there;
+      where do we get the other three equations we need?
+    </para>
+    
+    <para id="para3">What we need to solve every circuit problem are
+      mathematical statements that express how the circuit elements are interconnected. Said another way, we need the laws that govern the
+      electrical connection of circuit elements. First of all, the
+      places where circuit elements attach to each other are called
+      <term>nodes</term>. Two nodes are explicitly indicated in <link target-id="simplecircuit" strength="2"/>; a third is at the bottom
+      where the voltage source and resistor
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math> are connected. Electrical engineers tend to draw
+      circuit diagrams—schematics— in a rectilinear
+      fashion. Thus the long line connecting the bottom of the voltage
+      source with the bottom of the resistor is intended to make the
+      diagram look pretty. This line simply means that the two
+      elements are connected together.  <term>Kirchhoff's Laws</term>,
+      one for <link target-id="voltage" strength="2">voltage</link> and
+      one for <link target-id="current" strength="2">current</link>,
+      determine what a connection among circuit elements means.  These
+      laws are essential to analyzing this and any circuit. They are named for <link url="http://en.wikipedia.org/wiki/Gustav_Kirchhoff">Gustav Kirchhoff</link>, a nineteenth century German physicist.
+    </para>
+
+    <section id="current"><title>Kirchhoff's Current Law</title><para id="para1wra">
+	At every node, the sum of all currents entering or leaving a node must
+	equal zero. What this law means physically is that charge
+	cannot accumulate in a node; what goes in must come out. In
+	the example, <link target-id="simplecircuit" strength="2"/>,
+	below we have a three-node circuit and thus have three KCL
+	equations.
+
+	  <m:math display="block">
+	    <m:mtable columnalign="right">
+	      <m:mtr>
+	        <m:mtd>
+	          <m:apply><m:eq/>
+                <m:apply><m:minus/>
+		          <m:apply><m:minus/><m:ci>i</m:ci></m:apply>
+		          <m:ci><m:msub><m:mi>i</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                </m:apply>
+                <m:cn>0</m:cn>
+	          </m:apply>
+	        </m:mtd>
+	      </m:mtr>
+
+	      <m:mtr>
+	        <m:mtd>
+	          <m:apply><m:eq/>
+                <m:apply><m:minus/>
+		          <m:ci><m:msub><m:mi>i</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		          <m:ci><m:msub><m:mi>i</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                </m:apply>
+                <m:cn>0</m:cn>
+	          </m:apply>
+	        </m:mtd>
+	      </m:mtr>
+
+	      <m:mtr>
+	        <m:mtd>
+	          <m:apply><m:eq/>
+                <m:apply><m:plus/>
+		          <m:ci>i</m:ci>
+		          <m:ci><m:msub><m:mi>i</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                </m:apply>
+                <m:cn>0</m:cn>
+	          </m:apply>
+	        </m:mtd>
+	      </m:mtr>
+	    </m:mtable>
+	  </m:math>
+
+	Note that the current entering a node is the negative of the
+	current leaving the node.
+      </para>
+      
+      <para id="para2wra">
+	Given any two of these KCL equations, we can find the other by
+	adding or subtracting them. Thus, one of them is redundant
+	and, in mathematical terms, we can discard any one of
+	them. The convention is to discard the equation for the
+	(unlabeled) node at the bottom of the circuit.
+      </para>
+
+
+      <figure id="simplecircuitroar" orient="horizontal"><subfigure id="id5409075">
+	  <media id="id2516092" alt=""><image src="../../media/circuit4-a1d8.png" mime-type="image/png"/>
+             <image for="pdf" src="../../media/circuit4.eps" mime-type="application/postscript"/></media>
+	</subfigure>
+	<subfigure id="id8116141">
+	  <media id="id8356115" alt=""><image src="../../media/circuit4a-6c67.png" mime-type="image/png"/>
+             <image for="pdf" src="../../media/circuit4a.eps" mime-type="application/postscript"/></media>
+	</subfigure> 
+	  
+      <caption>The circuit shown is perhaps the simplest circuit that
+	  performs a signal processing function. The input is provided
+	  by the voltage source
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mtext>in</m:mtext>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>	  
+	  and the output is the voltage 
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mtext>out</m:mtext>
+	      </m:msub>
+	    </m:ci>
+	  </m:math> 
+	  across the resistor labelled
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>.
+	</caption></figure>
+
+      <exercise id="exer1">
+	<problem id="id7439851">
+	  <para id="exer1a">
+	    In writing KCL equations, you will find that in an
+	    <m:math><m:ci>n</m:ci></m:math>-node circuit, exactly one
+	    of them is always redundant. Can you sketch a proof of why
+	    this might be true? Hint: It has to do with the fact that
+	    charge won't accumulate in one place on its own.
+	  </para>
+	</problem>
+	<solution id="id7259808">
+	  <para id="exer1b">
+	    KCL says that the sum of currents entering or leaving a
+	    node must be zero. If we consider two nodes together as a
+	    "supernode", KCL applies as well to currents entering the
+	    combination.  Since no currents enter an entire circuit,
+	    the sum of currents must be zero.  If we had a two-node
+	    circuit, the KCL equation of one <emphasis>must</emphasis>
+	    be the negative of the other, We can combine all but one
+	    node in a circuit into a supernode; KCL for the supernode
+	    must be the negative of the remaining node's KCL equation.
+	    Consequently, specifying <m:math> <m:apply> <m:minus/>
+	    <m:ci>n</m:ci> <m:cn>1</m:cn> </m:apply> </m:math> KCL
+	    equations always specifies the remaining one.
+	  </para>
+	</solution>
+      </exercise>
+    </section>
+
+    <section id="voltage">
+      <title>Kirchhoff's Voltage Law (KVL)</title>
+      <para id="para3wra">
+	The voltage law says that the sum of voltages around every
+	closed loop in the circuit must equal zero. A closed loop has
+	the obvious definition: Starting at a node, trace a path
+	through the circuit that returns you to the origin node. KVL
+	expresses the fact that electric fields are conservative: The
+	total work performed in moving a test charge around a closed
+	path is zero. The KVL equation for our circuit is
+
+	<m:math display="block">
+	    <m:apply>
+	      <m:eq/> 
+              <m:apply>
+                <m:minus/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>v</m:ci>
+              </m:apply>
+              <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+
+	In writing KVL equations, we follow the convention that an
+	element's voltage enters with a plus sign when traversing the
+	closed path, we go from the positive to the negative of the
+	voltage's definition.
+      </para>
+    </section>
+
+    
+
+    <para id="para1roar">For the <link target-id="simplecircuitroar" strength="3">example
+      circuit</link>, we have three
+      <emphasis>v-i</emphasis> relations, two KCL equations, and
+      one KVL equation for solving for the circuit's six voltages and
+      currents.
+     
+ 	<m:math display="block">
+      <m:mtable>
+        <m:mtr>
+          <m:mtd>
+            <m:mtext>v-i:</m:mtext>
+          </m:mtd>
+          <m:mtd>
+	        <m:apply><m:eq/>
+              <m:ci>v</m:ci>
+              <m:ci><m:msub><m:mi>v</m:mi><m:mtext>in</m:mtext></m:msub></m:ci>
+	        </m:apply>
+	      </m:mtd>
+	    </m:mtr>
+
+	    <m:mtr>
+	      <m:mtd/>
+	      <m:mtd>
+	        <m:apply><m:eq/>
+              <m:ci><m:msub><m:mi>v</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+              <m:apply><m:times/>
+	            <m:ci><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	            <m:ci><m:msub><m:mi>i</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+              </m:apply>
+	        </m:apply>
+	      </m:mtd>
+	    </m:mtr>
+
+	    <m:mtr>
+	      <m:mtd/>
+	      <m:mtd>
+	        <m:apply><m:eq/>
+              <m:ci><m:msub><m:mi>v</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+              <m:apply><m:times/>
+	            <m:ci><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	            <m:ci><m:msub><m:mi>i</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+              </m:apply>
+	        </m:apply>
+	      </m:mtd>
+	    </m:mtr>
+
+        <m:mtr>
+          <m:mtd><m:mtext>KCL:</m:mtext></m:mtd>
+          <m:mtd>
+	        <m:apply><m:eq/>
+              <m:apply><m:minus/>
+	            <m:apply><m:minus/><m:ci>i</m:ci></m:apply>
+	            <m:ci><m:msub><m:mi>i</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+              </m:apply>
+              <m:cn>0</m:cn>
+	        </m:apply>
+	      </m:mtd>
+	    </m:mtr>
+
+	    <m:mtr>
+	      <m:mtd/>
+	      <m:mtd>
+	        <m:apply><m:eq/>
+	          <m:apply><m:minus/>
+	            <m:ci><m:msub><m:mi>i</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	            <m:ci><m:msub><m:mi>i</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+	          </m:apply>
+	          <m:cn>0</m:cn>
+	        </m:apply>
+	      </m:mtd>
+	    </m:mtr>
+
+        <m:mtr>
+          <m:mtd><m:mtext>KVL:</m:mtext></m:mtd> 
+          <m:mtd>
+            <m:apply><m:eq/>
+	          <m:apply><m:plus/>
+	            <m:apply><m:minus/><m:ci>v</m:ci></m:apply>
+	            <m:ci><m:msub><m:mi>v</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	            <m:ci><m:msub><m:mi>v</m:mi><m:mtext>out</m:mtext></m:msub></m:ci>
+	          </m:apply>
+	          <m:cn>0</m:cn>
+	        </m:apply>
+	      </m:mtd>
+	    </m:mtr>
+      </m:mtable>
+	</m:math>
+
+    We have exactly the right number of equations! Eventually, we
+      will discover shortcuts for solving circuit problems; for now,
+      we want to eliminate all the variables but
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mtext>out</m:mtext>
+	  </m:msub>
+	</m:ci>
+      </m:math> and determine how it depends on
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mtext>in</m:mtext>
+	  </m:msub>
+	</m:ci>
+      </m:math> and on resistor values. 
+      The KVL equation can be rewritten as  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mtext>in</m:mtext>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mtext>out</m:mtext>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      Substituting into it the resistor's <emphasis>v-i</emphasis>
+      relation, we have
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mtext>in</m:mtext>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mtext>out</m:mtext>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+          </m:apply>
+	</m:apply>
+      </m:math>.
+      Yes, we temporarily eliminate the quantity we seek. Though not
+      obvious, it is the simplest way to solve the equations. One of
+      the KCL equations says
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>i</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>i</m:mi>
+	      <m:mtext>out</m:mtext>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>,
+      which means that  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mtext>in</m:mtext>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mtext>out</m:mtext>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mtext>out</m:mtext>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+          <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:plus/>
+              <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+              </m:ci>
+              <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+              </m:ci>
+	    </m:apply>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mtext>out</m:mtext>
+	      </m:msub>
+	    </m:ci>
+          </m:apply>
+	</m:apply>
+      </m:math>.
+      Solving for the current in the output resistor, we have  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>i</m:mi>
+	      <m:mtext>out</m:mtext>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mtext>in</m:mtext>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      <emphasis>We have now solved the circuit</emphasis>: We have
+      expressed one voltage or current in terms of sources and
+      circuit-element values. To find any other circuit quantities, we
+      can back substitute this answer into our original equations or
+      ones we developed along the way. Using the
+      <emphasis>v-i</emphasis> relation for the output resistor,
+      we obtain the quantity we seek.
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mtext>out</m:mtext>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mtext>in</m:mtext>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+    </para>
+
+    <exercise id="exer1gwar">
+      <problem id="id2269821"> 
+	<para id="exer1agwar">
+	  Referring back to 
+	  <link target-id="simplecircuit" strength="3"/>, 
+	  a circuit should serve some useful purpose. What kind of
+	  system does our circuit realize and, in terms of element
+	  values, what are the system's parameter(s)?
+	</para>
+      </problem>
+
+      <solution id="id5481042">
+	<para id="exer1bgwar">
+	  The circuit serves as an amplifier having a gain of  
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+  </content>
+</document>

@@ -1,0 +1,369 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Encoding Information in the Frequency Domain</title>
+
+  <metadata>
+  <md:content-id>m0043</md:content-id><md:title>Encoding Information in the Frequency Domain</md:title>
+  <md:abstract>Using a finite Fourier series to represent the encoding of information in time T.</md:abstract>
+  <md:uuid>0097c65e-a082-4570-9954-a9563b3b9878</md:uuid>
+</metadata>
+
+<content>
+
+    <para id="introduction">
+      To emphasize the fact that every periodic signal has both a time
+      and frequency domain representation, we can exploit both to
+      <emphasis>encode information</emphasis> into a signal.  Refer to
+      the <link document="m0002" target-id="commsys" strength="3">Fundamental Model of Communication</link>.  We have
+      an information source, and want to construct a transmitter that
+      produces a signal
+      <m:math>
+	<m:apply> 
+	  <m:ci type="fn">x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.  For the source, let's assume we have information to
+      encode every <m:math><m:ci>T</m:ci></m:math> seconds.  For
+      example, we want to represent typed letters produced by an
+      extremely good typist (a key is struck every
+      <m:math><m:ci>T</m:ci></m:math> seconds).  Let's consider the
+      complex Fourier series formula in the light of trying to encode
+      information.
+
+      <equation id="complexformula">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>k</m:ci>
+	      </m:bvar>
+	      <m:uplimit>
+		<m:ci>K</m:ci>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>K</m:ci>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>k</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>k</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation> 
+
+      We use a finite sum here merely for simplicity (fewer parameters
+      to determine).  An important aspect of the spectrum is that each
+      frequency component
+      <m:math>
+	<m:ci>
+	  <m:msub> 
+	    <m:mi>c</m:mi> 
+	    <m:mi>k</m:mi>
+	  </m:msub>
+	</m:ci> 
+      </m:math>
+      can be manipulated separately: Instead of finding the Fourier
+      spectrum from a time-domain specification, let's construct it in
+      the frequency domain by selecting the
+      <m:math>
+	<m:ci>
+	  <m:msub> 
+	    <m:mi>c</m:mi> 
+	    <m:mi>k</m:mi>
+	  </m:msub>
+	</m:ci> 
+      </m:math>
+      according to some rule that relates coefficient values to the
+      alphabet.  In defining this rule, we want to always create a
+      real-valued signal
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.  
+      Because of the Fourier spectrum's 
+      <link document="m0042" target-id="rule1" strength="3">properties</link>, 
+      the spectrum must have conjugate symmetry.  This requirement
+      means that we can only assign positive-indexed coefficients
+      (positive frequencies), with negative-indexed ones equaling the
+      complex conjugate of the corresponding positive-indexed ones.
+    </para>
+
+    <para id="secondparagraph"> Assume we have <m:math>
+      <m:ci>N</m:ci></m:math> letters to encode: 
+      <m:math>
+	<m:set>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>a</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>…</m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>a</m:mi>
+	      <m:mi>N</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:set>
+      </m:math>.  
+      One simple encoding rule could be to make a single Fourier
+      coefficient be non-zero and all others zero for each letter. For
+      example, if
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>a</m:mi>
+	    <m:mi>n</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      occurs, we make   
+      <m:math> 
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>n</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:cn>1</m:cn>
+	</m:apply>
+      </m:math> 
+      and  
+      <m:math> 
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>,
+      <m:math>
+	<m:apply>
+	  <m:neq/>
+	  <m:ci>k</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>.  
+      In this way, the
+      <m:math> 
+	<m:ci>
+	  <m:msup>
+	    <m:mi>n</m:mi>
+	    <m:mi>th</m:mi>
+	  </m:msup>
+	</m:ci>
+      </m:math> 
+      harmonic of the frequency  
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:cn>1</m:cn>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>
+      is used to represent a letter.  Note that the
+      <term>bandwidth</term>—the range of frequencies required for
+      the encoding—equals
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>N</m:ci>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>.  Another possibility is to consider the binary
+      representation of the letter's index.  For example, if the
+      letter
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>a</m:mi>
+	    <m:mn>13</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math> occurs, converting <m:math><m:cn>13</m:cn></m:math> to
+      its base 2 representation, we have
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:cn type="integer">13</m:cn>
+	  <m:cn type="integer" base="2">1101</m:cn>
+	</m:apply>
+      </m:math>.        
+      We can use the pattern of zeros and ones to represent directly
+      which Fourier coefficients we "turn on" (set equal to one) and
+      which we "turn off."
+    </para>
+
+
+    <exercise id="exer1">
+      <problem id="id1169179226820">
+	<para id="firstex">
+	  Compare the bandwidth required for the direct encoding
+	  scheme (one nonzero Fourier coefficient for each letter) to
+	  the binary number scheme.  Compare the bandwidths for a
+	  128-letter alphabet.  Since both schemes represent
+	  information without loss -- we can determine the typed
+	  letter uniquely from the signal's spectrum -- both are
+	  viable.  Which makes more efficient use of bandwidth and
+	  thus might be preferred?
+	</para>
+      </problem>
+      <solution id="id1169182142498">
+	<para id="firstexsoln">
+	  <m:math><m:ci>N</m:ci></m:math> signals directly encoded
+	  require a bandwidth of <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>N</m:ci>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:math>.  
+	  Using a binary representation, we need   
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:log/>
+		<m:logbase>
+		  <m:cn>2</m:cn>
+		</m:logbase>
+		<m:ci>N</m:ci>
+	      </m:apply>
+	      <m:ci>T</m:ci>
+	    </m:apply> 
+	  </m:math>.  
+	  For 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>N</m:ci>
+	      <m:cn>128</m:cn>
+	    </m:apply>
+	  </m:math>, 
+	  the binary-encoding scheme has a factor of   
+	  <m:math> 
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>7</m:cn>
+		<m:cn>128</m:cn>
+	      </m:apply>
+	      <m:cn>0.05</m:cn>
+	    </m:apply>
+	  </m:math>
+	  smaller bandwidth.  Clearly, binary encoding is superior.
+	</para>
+      </solution>
+    </exercise>
+
+    
+    <exercise id="exer2">
+      <problem id="id1169180833094">
+	<para id="secondproblem">
+	  Can you think of an information-encoding scheme that makes
+	  even more efficient use of the spectrum?  In particular, can
+	  we use only one Fourier coefficient to represent
+	  <m:math><m:ci>N</m:ci></m:math> letters uniquely?
+	</para>
+      </problem>
+      <solution id="id1169183457067">
+	<para id="secondproblemsoln">
+	  We can use <m:math><m:ci>N</m:ci></m:math> different
+	  amplitude values at only one frequency to represent the
+	  various letters.
+	</para>
+      </solution>
+    </exercise>
+
+    
+    <para id="para1">We can create an <link target-id="secondparagraph" strength="2">encoding scheme in the frequency domain</link> to
+      represent an alphabet of letters.  But, as this
+      information-encoding scheme stands, we can represent one letter
+      for all time.  However, we note that the Fourier coefficients
+      depend <emphasis>only</emphasis> on the signal's characteristics
+      over a single period.  We could change the signal's spectrum
+      every <m:math><m:ci>T</m:ci></m:math> as each letter is
+      typed. In this way, we turn spectral coefficients on and off as
+      letters are typed, thereby encoding the entire typed
+      document. For the receiver (see the <link document="m0002" target-id="commsys" strength="2">Fundamental Model of
+      Communication</link>) to retrieve the typed letter, it would
+      simply use the Fourier formula for the <link document="m0065" target-id="complex" strength="2">complex Fourier spectrum</link>
+      for each <m:math><m:ci>T</m:ci></m:math>-second interval to
+      determine what each typed letter was.  <link target-id="encode" strength="3"/> shows such a signal in the time-domain.
+    </para>
+
+
+    <figure id="encode">
+      <title>Encoding Signals</title>
+      <media id="id1169183451936" alt="">
+        <image src="../../media/sig15.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig15.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The encoding of signals via the Fourier spectrum is shown over
+	three "periods."  In this example, only the third and fourth
+	harmonics are used, as shown by the spectral magnitudes
+	corresponding to each <m:math><m:ci>T</m:ci></m:math>-second
+	interval plotted below the waveforms.  Can you determine the
+	phase of the harmonics from the waveform?
+      </caption>
+    </figure>
+
+    <para id="para2">
+      In this Fourier-series encoding scheme, we have used the fact
+      that spectral coefficients can be independently specified and
+      that they can be uniquely recovered from the time-domain signal
+      over one "period."  Do note that the signal representing the
+      entire document is no longer periodic. By understanding the
+      Fourier series' properties (in particular that coefficients are
+      determined only over a <m:math><m:ci>T</m:ci></m:math>-second
+      interval, we can construct a communications system. This
+      approach represents a simplification of how modern modems
+      represent text that they transmit over telephone lines.
+    </para>
+
+  </content>
+</document>

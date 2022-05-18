@@ -1,0 +1,487 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Digital Communication Receivers</title>
+
+  <metadata>
+  <md:content-id>m0520</md:content-id><md:title>Digital Communication Receivers</md:title>
+  <md:abstract>Bit streams through digital communications receivers.</md:abstract>
+  <md:uuid>b0c46471-fb14-46cb-aa51-02962984c71f</md:uuid>
+</metadata>
+
+<content>
+
+    <para id="p1">
+      The receiver interested in the transmitted bit stream must
+      perform two tasks when received waveform
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">r</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math> 
+      begins.
+
+      <list id="l1" list-type="bulleted">
+	<item>
+	  It must determine when bit boundaries occur: The receiver
+	  needs to <term>synchronize</term> with the transmitted
+	  signal.  Because transmitter and receiver are designed in
+	  concert, both use the same value for the bit interval
+	  <m:math><m:ci>T</m:ci></m:math>.  Synchronization can occur
+	  because the transmitter begins sending with a reference bit
+	  sequence, known as the <term>preamble</term>.  This
+	  reference bit sequence is usually the alternating sequence
+	  as shown in the <link document="m0544" target-id="fig1003" strength="3">square wave example </link> and in the <link document="m0545" target-id="fig1006" strength="3">FSK
+	  example</link>. The receiver knows what the preamble bit
+	  sequence is and uses it to determine when bit boundaries
+	  occur.  This procedure amounts to what in digital hardware
+	  as <term>self-clocking signaling</term>: The receiver of a
+	  bit stream must derive the clock — when bit boundaries
+	  occur — from its input signal. Because the receiver
+	  usually does not determine which bit was sent until
+	  synchronization occurs, it does not know when during the
+	  preamble it obtained synchronization.  The transmitter
+	  signals the end of the preamble by switching to a second bit
+	  sequence.  The second preamble phase informs the receiver
+	  that data bits are about to come and that the preamble is
+	  almost over.
+	</item>
+
+	<item>
+	  Once synchronized and data bits are transmitted, the
+	  receiver must then determine every <m:math><m:ci>T</m:ci>
+	  </m:math> seconds what bit was transmitted during the
+	  previous bit interval.  We focus on this aspect of the
+	  digital receiver because this strategy is also used in
+	  synchronization.
+	</item>
+      </list>
+
+      The receiver for digital communication is known as a
+      <term>matched filter</term>.
+    <figure id="figone" orient="horizontal">
+      <title>Optimal receiver structure</title>
+      <media id="id1171576225425" alt="">
+        <image src="../../media/sys19.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys19.eps" mime-type="application/postscript"/>
+      </media> 
+      <caption>
+	The optimal receiver structure for digital communication faced
+	with additive white noise channels is the depicted matched
+	filter.
+      </caption>
+    </figure>
+      This receiver, shown in <link target-id="figone" strength="3"/>,
+      multiplies the received signal by each of the possible members
+      of the transmitter signal set, integrates the product over the
+      bit interval, and compares the results.  Whichever path through
+      the receiver yields the largest value corresponds to the
+      receiver's decision as to what bit was sent during the previous
+      bit interval. For the next bit interval, the multiplication and
+      integration begins again, with the next bit decision made at the
+      end of the bit interval.  Mathematically, the received value of
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">b</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>, which we label 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:mover accent="true">
+	      <m:mi>b</m:mi>
+	      <m:mo>^</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>, is given by
+      <equation id="eqnone">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:mover accent="true">
+		  <m:mi>b</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover>
+	      </m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#argmax"/>
+	      <m:domainofapplication><m:ci>i</m:ci></m:domainofapplication>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>n</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:ci>T</m:ci>
+		  </m:apply>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:apply><m:times/>
+                      <m:ci>n</m:ci> <m:ci>T</m:ci>
+                  </m:apply>
+                </m:lowlimit>
+                <m:apply><m:times/>
+                  <m:apply> <m:ci type="fn">r</m:ci> <m:ci>t</m:ci> </m:apply>
+		  <m:apply> <m:ci type="fn"> <m:msub> <m:mi>s</m:mi> <m:mi>i</m:mi> </m:msub>
+		  </m:ci> <m:ci>t</m:ci> </m:apply>
+                </m:apply>
+             </m:apply>
+          </m:apply>
+      </m:apply>
+  </m:math>
+</equation>
+
+      You may not have seen the
+      <m:math>
+	<m:apply>
+	  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#argmax"/>
+	  <m:domainofapplication><m:ci>i</m:ci></m:domainofapplication>
+	</m:apply>
+      </m:math> 
+      notation before.  
+      <m:math>
+	<m:apply>
+	  <m:max/>
+	  <m:bvar><m:ci>i</m:ci></m:bvar>
+          <m:ci>·</m:ci>
+	</m:apply>
+      </m:math> 
+      yields the maximum value of its argument with respect to the index 
+      <m:math>
+	<m:ci>i</m:ci>
+      </m:math>.  
+      <m:math>
+	<m:apply>
+	  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#argmax"/>
+	  <m:domainofapplication><m:ci>i</m:ci></m:domainofapplication>
+	</m:apply>
+      </m:math> equals the value of the index that yields the maximum.
+      Note that the precise numerical value of the integrator's output
+      does not matter; what does matter is its value relative to the
+      other integrator's output.
+    </para>
+
+    <para id="p2">
+      Let's assume a perfect channel for the moment: The received
+      signal equals the transmitted one.  If bit 0 were sent using the
+      baseband BPSK signal set, the integrator outputs would be
+
+      <equation id="eqn0003"> 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar><m:ci>t</m:ci></m:bvar>
+	      <m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>n</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">r</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply><m:times/>
+	      <m:apply><m:power/>
+		<m:ci>A</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation> 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar><m:ci>t</m:ci></m:bvar>
+	      <m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>n</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">r</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply><m:minus/>
+	      <m:apply><m:times/>
+		<m:apply><m:power/>
+		  <m:ci>A</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	        <m:ci>T</m:ci>
+              </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      If bit 1 were sent,
+
+      <equation id="eqn0004">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar><m:ci>t</m:ci></m:bvar>
+	      <m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>n</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">r</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply><m:minus/>
+	      <m:apply><m:times/>
+		<m:apply><m:power/>
+		  <m:ci>A</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	        <m:ci>T</m:ci>
+              </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar><m:ci>t</m:ci></m:bvar>
+	      <m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>n</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">r</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>      
+		<m:power/>
+		<m:ci>A</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+    </para>
+
+    <exercise id="exer1">
+      <problem id="id1171580979600">
+	<para id="ex1">
+	  Can you develop a receiver for BPSK signal sets that
+	  requires only one multiplier-integrator combination?
+	</para>
+      </problem>
+
+      <solution id="id1171576118442">
+	<para id="sol1">
+	  In BPSK, the signals are negatives of each other:
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  Consequently, the output of each
+	  multiplier-integrator combination is the negative of the
+	  other.  Choosing the largest therefore amounts to choosing
+	  which one is positive.  We only need to calculate one of
+	  these.  If it is positive, we are done.  If it is negative,
+	  we choose the other signal.
+	</para>
+      </solution>
+    </exercise>
+
+    <exercise id="exer2">
+      <problem id="id1171578751828">
+	<para id="ex2">
+	  What is the corresponding result when the
+	  amplitude-modulated BPSK signal set is used?
+	</para>
+      </problem>
+
+      <solution id="id1171569394624">
+	<para id="sol2">
+	  The matched filter outputs are
+	  <m:math>
+	    <m:apply>
+	      <m:ci><m:mo>±</m:mo></m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>A</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:ci>T</m:ci>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  because the sinusoid has less power than a pulse having the
+	  same amplitude.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="p3">
+      Clearly, this receiver would always choose the bit correctly.
+      Channel attenuation would not affect this correctness; it would
+      only make the values smaller, but all that matters is which is
+      largest.
+    </para>
+
+  </content>
+</document>

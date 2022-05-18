@@ -1,0 +1,100 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>The Ionosphere and Communications</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>192c2ee9-77fb-46c7-a950-c6a918587d63</md:uuid>
+</metadata>
+
+  <content>
+    <para id="para1">
+      If we were limited to line-of-sight communications, long
+      distance wireless communication, like ship-to-shore
+      communication, would be impossible.  At the turn of the century,
+      Marconi, the inventor of wireless telegraphy, boldly tried such
+      long distance communication without any evidence — either
+      empirical or theoretical — that it was possible. When the
+      experiment worked, but only at night, physicists scrambled to
+      determine why (using Maxwell's equations, of course).  It was
+      Oliver Heaviside, a mathematical physicist with strong
+      engineering interests, who hypothesized that an invisible
+      electromagnetic "mirror" surrounded the earth. What he meant was
+      that at optical frequencies (and others as it turned out), the
+      mirror was transparent, but at the frequencies Marconi used, it
+      reflected electromagnetic radiation back to earth.  He had
+      predicted the existence of the ionosphere, a plasma that
+      encompasses the earth at altitudes <m:math> <m:ci><m:msub>
+      <m:mi>h</m:mi> <m:mi>i</m:mi> </m:msub></m:ci> </m:math> between
+      80 and 180 km that reacts to solar radiation: It becomes
+      transparent at Marconi's frequencies during the day, but becomes
+      a mirror at night when solar radiation diminishes. The maximum
+      distance along the earth's surface that can be reached by a
+      <emphasis>single</emphasis> ionospheric reflection is
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:cn>2</m:cn>
+	  <m:ci>R</m:ci>
+	  <m:apply>
+	    <m:arccos/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>R</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>R</m:ci>
+		<m:ci><m:msub>
+		    <m:mi>h</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub></m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, which ranges between 2,010 and 3,000 km when we
+      substitute minimum and maximum ionospheric altitudes.  This
+      distance does not span the United States or cross the Atlantic;
+      for transatlantic communication, at least two reflections would
+      be required.  The communication delay encountered with a single
+      reflection in this channel is
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>2</m:cn>
+	    <m:apply>
+	      <m:root/>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>R</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>h</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>h</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:ci>c</m:ci>
+	</m:apply>
+      </m:math>, which ranges between 6.8 and 10 ms, again a small
+    time interval.
+    </para>
+
+  </content>
+</document>

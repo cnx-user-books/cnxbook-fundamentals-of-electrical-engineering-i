@@ -1,0 +1,236 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Power Conservation in Circuits</title>
+  <metadata>
+  <md:content-id>m17317</md:content-id><md:title>Power Conservation in Circuits</md:title>
+  <md:abstract>Proof that circuits conserve power regardless of the elements used to construct them.</md:abstract>
+  <md:uuid>fc21fce0-4b47-4dba-85f2-400fffe1743c</md:uuid>
+</metadata>
+
+<content>
+    <para id="powerp1">
+       Now that we have a formal method---the node method---for solving circuits, we can use it to prove a powerful result:
+       KVL and KCL are all that are required to show that <emphasis>all</emphasis> circuits conserve power, regardless of what elements are used to build the circuit.
+    </para>
+    
+    <figure id="nodesincircuit">
+	  <title>Part of a general circuit to prove Conservation of Power</title>
+      <media id="id1170575387924" alt="">
+        <image src="../../media/circuit39.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit39.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+
+    <para id="powerp2">
+    First of all, define node voltages for all nodes in a given circuit.
+    Any node chosen as the reference will do.
+    For example, in the portion of a large <link target-id="nodesincircuit">circuit</link> depicted here, we define node voltages for nodes a, b and c.
+    With these node voltages, we can express the voltage across any element in terms of them.
+    For example, the voltage across element 1 is given by
+    <m:math>
+      <m:apply><m:eq/>
+        <m:msub><m:ci>v</m:ci><m:mtext>1</m:mtext></m:msub>
+        <m:apply><m:minus/>
+          <m:msub><m:ci>e</m:ci><m:mtext>b</m:mtext></m:msub>
+          <m:msub><m:ci>e</m:ci><m:mtext>a</m:mtext></m:msub>
+        </m:apply>
+      </m:apply>
+    </m:math>.
+    The instantaneous power for element 1 becomes
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:apply><m:times/>
+          <m:msub><m:ci>v</m:ci><m:mtext>1</m:mtext></m:msub>
+          <m:msub><m:ci>i</m:ci><m:mtext>1</m:mtext></m:msub>
+        </m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:minus/>
+            <m:msub><m:ci>e</m:ci><m:mtext>b</m:mtext></m:msub>
+            <m:msub><m:ci>e</m:ci><m:mtext>a</m:mtext></m:msub>
+          </m:apply>
+          <m:msub><m:ci>i</m:ci><m:mtext>1</m:mtext></m:msub>
+        </m:apply>
+        <m:apply><m:minus/>
+          <m:apply><m:times/>
+            <m:msub><m:ci>e</m:ci><m:mtext>b</m:mtext></m:msub>
+            <m:msub><m:ci>i</m:ci><m:mtext>1</m:mtext></m:msub>
+          </m:apply>
+          <m:apply><m:times/>
+            <m:msub><m:ci>e</m:ci><m:mtext>a</m:mtext></m:msub>
+            <m:msub><m:ci>i</m:ci><m:mtext>1</m:mtext></m:msub>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+    </m:math>
+    Writing the power for the other elements, we have
+    <m:math display="block">
+      <m:mtable columnalign="left">
+        <m:mtr>
+          <m:mtd>
+            <m:apply><m:times/>
+              <m:msub><m:ci>v</m:ci><m:mtext>2</m:mtext></m:msub>
+              <m:msub><m:ci>i</m:ci><m:mtext>2</m:mtext></m:msub>
+            </m:apply>
+          </m:mtd>
+          
+          <m:mtd><m:mtext>=</m:mtext></m:mtd>
+          
+          <m:mtd>
+            <m:apply><m:minus/>
+              <m:apply><m:times/>
+                <m:msub><m:ci>e</m:ci><m:mtext>c</m:mtext></m:msub>
+                <m:msub><m:ci>i</m:ci><m:mtext>2</m:mtext></m:msub>
+              </m:apply>
+              <m:apply><m:times/>
+                <m:msub><m:ci>e</m:ci><m:mtext>a</m:mtext></m:msub>
+                <m:msub><m:ci>i</m:ci><m:mtext>2</m:mtext></m:msub>
+              </m:apply>
+            </m:apply>
+          </m:mtd>
+        </m:mtr>
+        
+        <m:mtr>
+          <m:mtd>
+            <m:apply><m:times/>
+              <m:msub><m:ci>v</m:ci><m:mtext>3</m:mtext></m:msub>
+              <m:msub><m:ci>i</m:ci><m:mtext>3</m:mtext></m:msub>
+            </m:apply>
+          </m:mtd>
+          
+          <m:mtd><m:mtext>=</m:mtext></m:mtd>
+          
+          <m:mtd>
+            <m:apply><m:minus/>
+              <m:apply><m:times/>
+                <m:msub><m:ci>e</m:ci><m:mtext>c</m:mtext></m:msub>
+                <m:msub><m:ci>i</m:ci><m:mtext>3</m:mtext></m:msub>
+              </m:apply>
+              <m:apply><m:times/>
+                <m:msub><m:ci>e</m:ci><m:mtext>b</m:mtext></m:msub>
+                <m:msub><m:ci>i</m:ci><m:mtext>3</m:mtext></m:msub>
+              </m:apply>
+            </m:apply>
+          </m:mtd>
+        </m:mtr>
+      </m:mtable>
+    </m:math>
+    When we add together the element power terms, we discover that once we collect terms involving a particular node voltage, it is multiplied by the sum of currents leaving the node minus the sum of currents entering.
+    For example, for node b, we have
+    <m:math>
+      <m:apply><m:times/>
+        <m:msub><m:ci>e</m:ci><m:mtext>b</m:mtext></m:msub>
+        <m:apply><m:minus/>
+          <m:msub><m:ci>i</m:ci><m:mtext>3</m:mtext></m:msub>
+          <m:msub><m:ci>i</m:ci><m:mtext>1</m:mtext></m:msub>
+        </m:apply>
+      </m:apply>
+    </m:math>.
+    We see that the currents will obey KCL that multiply each node voltage.
+    Consequently, <emphasis>we conclude that the sum of element powers must equal zero in any circuit regardless of the elements used to construct the circuit</emphasis>.
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:apply><m:sum/>
+          <m:bvar><m:ci>k</m:ci></m:bvar>
+          <m:condition><m:ci>k</m:ci></m:condition>
+          <m:apply><m:times/>
+            <m:msub><m:ci>v</m:ci><m:mtext>k</m:mtext></m:msub>
+            <m:msub><m:ci>i</m:ci><m:mtext>k</m:mtext></m:msub>
+          </m:apply>
+        </m:apply>
+        <m:cn>0</m:cn>
+      </m:apply>
+    </m:math>
+    </para>
+    
+    <para id="powerp3">
+    The simplicity and generality with which we proved this results generalizes to other situations as well.
+    In particular, note that the complex amplitudes of voltages and currents obey KVL and KCL, respectively.
+    Consequently, we have that
+    <m:math>
+      <m:apply><m:eq/>
+        <m:apply><m:sum/>
+          <m:bvar><m:ci>k</m:ci></m:bvar>
+          <m:condition><m:ci>k</m:ci></m:condition>
+          <m:apply><m:times/>
+            <m:msub><m:ci>V</m:ci><m:mtext>k</m:mtext></m:msub>
+            <m:msub><m:ci>I</m:ci><m:mtext>k</m:mtext></m:msub>
+          </m:apply>
+        </m:apply>
+        <m:cn>0</m:cn>
+      </m:apply>
+    </m:math>.
+    Furthermore, the complex-conjugate of currents also satisfies KCL, which means we also have
+    <m:math>
+      <m:apply><m:eq/>
+        <m:apply><m:sum/>
+          <m:bvar><m:ci>k</m:ci></m:bvar>
+          <m:condition><m:ci>k</m:ci></m:condition>
+          <m:apply><m:times/>
+            <m:msub><m:ci>V</m:ci><m:mtext>k</m:mtext></m:msub>
+            <m:apply><m:conjugate/>
+              <m:msub><m:ci>I</m:ci><m:mtext>k</m:mtext></m:msub>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+        <m:cn>0</m:cn>
+      </m:apply>
+    </m:math>.
+    And finally, we know that evaluating the real-part of an expression is linear.
+    Finding the real-part of this power conservation gives the result that <emphasis>average power is also conserved in any circuit</emphasis>.
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:apply><m:sum/>
+          <m:bvar><m:ci>k</m:ci></m:bvar>
+          <m:condition><m:ci>k</m:ci></m:condition>
+          <m:apply><m:times/>
+            <m:apply><m:divide/>
+              <m:cn>1</m:cn>
+              <m:cn>2</m:cn>
+            </m:apply>
+            <m:apply><m:real/>
+              <m:apply><m:times/>
+                <m:msub><m:ci>V</m:ci><m:mtext>k</m:mtext></m:msub>
+                <m:apply><m:conjugate/>
+                  <m:msub><m:ci>I</m:ci><m:mtext>k</m:mtext></m:msub>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+        <m:cn>0</m:cn>
+      </m:apply>
+    </m:math>
+    
+    <note id="powernote">
+      This proof of power conservation can be generalized in another very interesting way.
+      All we need is a set of voltages that obey KVL and a set of currents that obey KCL.
+      Thus, for a given circuit topology (the specific way elements are interconnected), the voltages and currents can be measured at different times and the sum of v-i products is zero.
+      <m:math display="block">
+        <m:apply><m:eq/>
+          <m:apply><m:sum/>
+            <m:bvar><m:ci>k</m:ci></m:bvar>
+            <m:condition><m:ci>k</m:ci></m:condition>
+            <m:apply><m:times/>
+              <m:apply>
+                <m:ci type="fn"><m:msub><m:ci>v</m:ci><m:mtext>k</m:mtext></m:msub></m:ci>
+                <m:msub><m:ci>t</m:ci><m:cn>1</m:cn></m:msub>
+              </m:apply>
+              <m:apply>
+                <m:ci type="fn"><m:msub><m:ci>i</m:ci><m:mtext>k</m:mtext></m:msub></m:ci>
+                <m:msub><m:ci>t</m:ci><m:cn>2</m:cn></m:msub>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+          <m:cn>0</m:cn>
+        </m:apply>
+      </m:math>
+      
+      Even more interesting is the fact that the elements don't matter.
+      We can take a circuit and measure all the voltages.
+      We can then make element-for-element replacements and, if the topology has not changed, we can measure a set of currents.
+      The sum of the product of element voltages and currents will also be zero!
+    </note>
+    
+    </para>
+  </content>
+  
+</document>

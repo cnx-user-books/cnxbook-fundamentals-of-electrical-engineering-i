@@ -1,0 +1,46 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+ 
+  <title>Discrete-Time Systems</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>4b4f7cf4-27d0-47e0-9744-54fc7229cb0e</md:uuid>
+</metadata>
+
+  <content>
+    <para id="p1">
+      When we developed analog systems, interconnecting the circuit
+      elements provided a natural starting place for constructing
+      useful devices. In discrete-time signal processing, we are not
+      limited by hardware considerations but by what can be
+      constructed in software.
+    </para>
+
+    <exercise id="exer1">
+      <problem id="idp6151920">
+	<para id="prob1">
+	  One of the first analog systems we described was the <link document="m0006" target-id="amplifier" strength="2">amplifier</link>.  We found that
+	    implementing an amplifier was difficult in analog systems,
+	    requiring an op-amp at least. What is the discrete-time
+	    implementation of an amplifier? Is this especially hard or
+	    easy?
+	</para>
+      </problem>
+      <solution id="idp451488">
+	<para id="sol1">
+	  In discrete-time signal processing, an amplifier amounts to
+	  a multiplication, a very easy operation to perform.
+	  </para>
+      </solution>
+    </exercise>
+
+    <para id="p2">
+      In fact, we will discover that frequency-domain implementation
+      of systems, wherein we multiply the input signal's Fourier
+      transform by a frequency response, is not only a viable
+      alternative, but also a computationally efficient one. We begin
+      with discussing the underlying mathematical structure of linear,
+      shift-invariant systems, and devise how software filters can be
+      constructed.
+    </para>
+
+  </content>
+</document>

@@ -1,0 +1,622 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>The Impedance Concept</title>
+
+  <metadata>
+  <md:content-id>m0024</md:content-id><md:title>The Impedance Concept</md:title>
+  <md:abstract>Discussing the results if all sources in the circuit are complex exponentials.</md:abstract>
+  <md:uuid>1292758b-63a9-4d16-935c-25bdfd593e4f</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">
+      Rather than solving the differential equation that arises in
+      circuits containing capacitors and inductors, let's pretend that
+      all sources in the circuit are complex exponentials having the
+      <emphasis>same</emphasis> frequency. Although this pretense can
+      only be mathematically true, this fiction will greatly ease
+      solving the circuit no matter what the source really is.
+    </para>
+
+    <figure id="rc">
+      <title>Simple Circuit</title>
+      <media id="id1164863297594" alt="">
+        <image src="../../media/circuit5-a16b.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit5.eps" mime-type="application/postscript"/>
+      </media><caption>
+	A simple   
+	<m:math>
+	  <m:ci>RC</m:ci>
+	</m:math>
+	circuit.
+      </caption>
+    </figure>
+
+    <para id="para2">For the above example  
+      <m:math>
+	<m:ci>RC</m:ci> 
+      </m:math> 
+      circuit (<link target-id="rc" strength="2"/>), let
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>in</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>V</m:mi>
+		<m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  
+      The complex amplitude
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>V</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      determines the size of the source and its phase. The critical
+      consequence of assuming that sources have this form is that
+      <emphasis>all</emphasis> voltages and currents in the circuit
+      are also complex exponentials, having amplitudes governed by
+      KVL, KCL, and the <emphasis>v-i</emphasis> relations and the
+      same frequency as the source. To appreciate why this should be
+      true, let's investigate how each circuit element behaves when
+      either the voltage or current is a complex exponential. For the
+      resistor,
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>v</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>R</m:ci>
+	    <m:ci>i</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>. 
+      When
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>v</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>V</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>; 
+      then
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>i</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>V</m:ci>
+	      <m:ci>R</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      Thus, if the resistor's voltage is a complex exponential, so is
+      the current, with an amplitude
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>I</m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>V</m:ci>
+	    <m:ci>R</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      (determined by the resistor's <emphasis>v-i</emphasis> relation)
+      and a frequency the same as the voltage. Clearly, if the current
+      were assumed to be a complex exponential, so would the
+      voltage. For a capacitor,
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>i</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>C</m:ci>
+	    <m:apply>
+	      <m:diff/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:ci>v</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      Letting the voltage be a complex exponential, we have
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>i</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>C</m:ci>
+	    <m:ci>V</m:ci>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>. 
+      The amplitude of this complex exponential is
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>I</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>C</m:ci>
+	    <m:ci>V</m:ci>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>. 
+      Finally, for the inductor, where
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>v</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>L</m:ci>
+	    <m:apply>
+	      <m:diff/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:ci>i</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, 
+      assuming the current to be a complex exponential results in the
+      voltage having the form
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>v</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>L</m:ci>
+	    <m:ci>I</m:ci>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, 
+      making its complex amplitude
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>V</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>L</m:ci>
+	    <m:ci>I</m:ci>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <para id="para1lit1"><emphasis>The major consequence of assuming complex exponential
+	voltage and currents is that the ratio</emphasis>
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>Z</m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>V</m:ci>
+	    <m:ci>I</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      <emphasis>for each element does not depend on time, but does depend on source frequency</emphasis>.
+	This quantity is known as the element's
+	<term>impedance</term>.
+    </para>
+
+
+    <figure id="basicelements">
+      <title>Impedance</title>
+      <subfigure id="id1164856852541">
+	<media id="id1164865016483" alt="">
+          <image src="../../media/resistor.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/resistor.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>Resistor:  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>Z</m:mi>
+		  <m:mi>R</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>R</m:ci>
+	    </m:apply>
+	  </m:math> 
+	</caption>
+      </subfigure>
+      <subfigure id="id1164856246967">
+	<media id="id1164857135175" alt="">
+          <image src="../../media/capacitor.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/capacitor.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  Capacitor:  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>Z</m:mi>
+		  <m:mi>C</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>C</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</caption>
+      </subfigure>
+      <subfigure id="id1164857012532">
+	<media id="id1164857263663" alt="">
+          <image src="../../media/inductor.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/inductor.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  Inductor:  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>Z</m:mi>
+		  <m:mi>L</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>L</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</caption>
+      </subfigure> 
+    </figure>
+
+    <para id="para2lit1">
+      The impedance is, in general, a complex-valued,
+      frequency-dependent quantity. For example, the magnitude of the
+      capacitor's impedance is inversely related to frequency, and has
+      a phase of
+      <m:math>
+	<m:apply>
+	  <m:minus/>
+	  <m:apply>
+	    <m:divide/>
+	    <m:pi/>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      This observation means that if the current is a complex
+      exponential and has constant amplitude, the amplitude of the
+      voltage decreases with frequency.
+    </para>
+
+    <para id="para3"> 
+      Let's consider Kirchoff's circuit laws. When voltages around a
+      loop are all complex exponentials of the same frequency, we have
+
+      <equation id="eq1">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:domainofapplication>
+		<m:ci>n</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:domainofapplication>
+		<m:ci>n</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+      </equation>
+      which means
+      <equation id="eq2">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:domainofapplication>
+		<m:ci>n</m:ci>
+	      </m:domainofapplication>
+	      <m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mi>n</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <emphasis>the complex amplitudes of the voltages obey
+	KVL</emphasis>. We can easily imagine that the complex
+      amplitudes of the currents obey KCL.
+    </para>
+
+
+    <para id="para4">
+      What we have discovered is that source(s) equaling a complex
+      exponential of the same frequency forces all circuit variables
+      to be complex exponentials of the same frequency. Consequently,
+      the ratio of voltage to current for each element equals the
+      ratio of their complex amplitudes, which depends only on the
+      source's frequency and element values.
+    </para>
+      
+    <para id="para4.5">      
+      This situation occurs because the circuit elements are linear
+      and time-invariant. For example, suppose we had a circuit
+      element where the voltage equaled the square of the current:
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">v</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>K</m:ci>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:ci type="fn">i</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>. 
+      If  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">i</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>I</m:ci>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>,
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">v</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>K</m:ci>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>I</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:cn>2</m:cn>
+		<m:ci>f</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, 
+      meaning that voltage and current no longer had the same
+      frequency and that their ratio was time-dependent.
+    </para>
+
+
+    <para id="para5">Because for linear circuit elements the complex amplitude of
+      voltage is proportional to the complex amplitude of
+      current—
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>V</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>Z</m:ci>
+	    <m:ci>I</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> 
+      — assuming complex exponential sources means circuit
+      elements behave as if they were resistors, where instead of
+      resistance, we use impedance.
+     <emphasis>Because complex amplitudes for
+      voltage and current also obey Kirchoff's laws, we can solve
+      circuits using voltage and current divider and the series and
+      parallel combination rules by considering the elements to be
+      impedances.</emphasis>
+    </para>
+
+  </content>
+</document>

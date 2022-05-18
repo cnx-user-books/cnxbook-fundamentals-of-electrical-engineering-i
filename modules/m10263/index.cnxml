@@ -1,0 +1,905 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Introduction to Computer Organization</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10263</md:content-id>
+  <md:title>Introduction to Computer Organization</md:title>
+  <md:abstract>Explains how digital systems such as the computer represent numbers.  Covers the basics of boolean algebra and binary math.</md:abstract>
+  <md:uuid>8a80ce72-9a4c-4789-a2ff-7a5b456ccc0b</md:uuid>
+</metadata>
+
+<content>
+    <section id="sect_1">
+      <title>Computer Architecture</title>
+      
+      <para id="intro_to_comp_org">
+        To understand digital signal processing systems, we must
+	understand a little about how computers compute.  The modern
+	definition of a <emphasis>computer</emphasis> is an electronic
+	device that performs calculations on data, presenting the
+	results to humans or other computers in a variety of
+	(hopefully useful) ways.
+      </para>
+
+      <figure id="figure_2">
+	<title>Organization of a Simple Computer</title>
+	<media id="id1165174012032" alt="">
+          <image src="../../media/hardware.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/hardware.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  Generic computer hardware organization.
+	</caption>
+      </figure>
+
+      <para id="generic_computer">
+        The generic computer contains <emphasis>input</emphasis>
+	devices (keyboard, mouse, A/D (analog-to-digital) converter,
+	etc.), a <emphasis>computational unit</emphasis>, and output
+	devices (monitors, printers, D/A converters).  The
+	computational unit is the computer's heart, and usually
+	consists of a <emphasis>central processing unit</emphasis>
+	(CPU), a <emphasis>memory</emphasis>, and an input/output
+	(I/O) interface.  What I/O devices might be present on a given
+	computer vary greatly.
+
+	<list id="list_3" list-type="bulleted"><item>
+	    <emphasis>A simple computer operates fundamentally in
+	    discrete time.</emphasis> Computers are
+	    <emphasis>clocked</emphasis> devices, in which
+	    computational steps occur periodically according to ticks
+	    of a clock.  This description belies clock speed: When you
+	    say "I have a 1 GHz computer," you mean that your computer
+	    takes 1 nanosecond to perform each step.  That is
+	    incredibly fast!  A "step" does not, unfortunately,
+	    necessarily mean a computation like an addition; computers
+	    break such computations down into several stages, which
+	    means that the clock speed need not express the
+	    computational speed.  Computational speed is expressed in
+	    units of millions of instructions/second (Mips).  Your 1
+	    GHz computer (clock speed) may have a computational speed
+	    of 200 Mips.
+	  </item>
+
+	  <item>
+	    <emphasis>Computers perform integer (discrete-valued)
+	    computations.</emphasis>  Computer calculations can be
+	    numeric (obeying the laws of arithmetic), logical (obeying
+	    the laws of an algebra), or symbolic (obeying any law you
+	    like).<footnote id="id8365642">An example of a symbolic
+	    computation is sorting a list of names.
+	    </footnote>
+
+	    Each computer instruction that performs an elementary
+	    numeric calculation --- an addition, a multiplication, or a
+	    division --- does so only for integers.  The sum or product
+	    of two integers is also an integer, but the quotient of
+	    two integers is likely to not be an integer.  How does a
+	    computer deal with numbers that have digits to the right
+	    of the decimal point?  This problem is addressed by using
+	    the so-called <emphasis>floating-point</emphasis>
+	    representation of real numbers.  At its heart, however,
+	    this representation relies on integer-valued computations.
+	    </item>
+	</list>
+      </para>
+    </section>
+
+    <section id="number">
+      <title>Representing Numbers</title>
+      <para id="numbers">
+         Focusing on numbers, all numbers can represented by the
+        <emphasis>positional notation system</emphasis>.  <footnote id="id1165181587493">Alternative number representation systems
+        exist.  For example, we could use stick figure counting or
+        Roman numerals.  These were useful in ancient times, but very
+        limiting when it comes to arithmetic calculations: ever tried
+        to divide two Roman numerals?
+        </footnote>
+	The <m:math><m:ci>b</m:ci></m:math>-ary positional
+	representation system uses the position of digits ranging from
+	0 to <m:math><m:ci>b</m:ci></m:math>-1 to denote a number.
+	The quantity <m:math><m:ci>b</m:ci></m:math> is known as the
+	<emphasis>base</emphasis> of the number system.
+	Mathematically, positional systems represent the positive
+	integer <m:math><m:ci>n</m:ci></m:math> as
+
+	<equation id="positive_int_representation">
+	  <m:math>
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>d</m:mi>
+		    <m:mi>k</m:mi>
+		  </m:msub>
+		  </m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:in/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>d</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:set>
+		      <m:cn>0</m:cn>
+		      <m:ci>…</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>b</m:ci>
+			<m:cn>1</m:cn>            
+		      </m:apply>
+		    </m:set>
+		  </m:apply>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>n</m:ci>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>k</m:ci></m:bvar>
+		  <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		  <m:uplimit><m:infinity/></m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>d</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>b</m:ci>
+		      <m:ci>k</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+	</equation>
+	
+	and we succinctly express <m:math><m:ci>n</m:ci></m:math> in
+	base-<m:math><m:ci>b</m:ci></m:math> as
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>n</m:mi>
+		<m:mi>b</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>d</m:mi>
+		    <m:mi>N</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci><m:msub>
+		    <m:mi>d</m:mi>
+		    <m:mrow>
+		      <m:mi>N</m:mi>
+		      <m:mo>−</m:mo>
+		      <m:mn>1</m:mn>
+		    </m:mrow>
+		  </m:msub></m:ci>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>d</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+
+	The number 25 in base 10 equals 
+
+	<m:math>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:cn>10</m:cn>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>5</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:cn>10</m:cn>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+
+	so that the <emphasis>digits</emphasis> representing this number are 
+	
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci><m:msub>
+		  <m:mi>d</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+	    </m:apply>
+	    <m:cn>5</m:cn>
+	  </m:apply>
+	</m:math>,
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>d</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:math>, and all other 
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>d</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math> equal zero.  This same number in
+	<emphasis>binary</emphasis> (base 2) equals 11001
+	
+	(<m:math>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:cn>2</m:cn>
+		<m:cn>4</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:cn>2</m:cn>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>0</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:cn>2</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>0</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:cn>2</m:cn>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:cn>2</m:cn>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>) 
+	
+	and 19 in hexadecimal (base 16).  Fractions between zero and
+	one are represented the same way.
+	
+	<equation id="fractions">
+	  <m:math>
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>d</m:mi>
+		    <m:mi>k</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:bvar>
+	      <m:condition>
+		<m:apply>
+		  <m:in/>
+		  <m:ci><m:msub>
+		      <m:mi>d</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub></m:ci>
+		  <m:apply>
+		    <m:set>
+		      <m:cn>0</m:cn>
+		      <m:ci>…</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>b</m:ci>
+			<m:cn>1</m:cn>          
+		      </m:apply>
+		    </m:set>
+		  </m:apply>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>f</m:ci>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>k</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:cn>-1</m:cn>
+		  </m:uplimit>		  
+		  <m:apply>
+		    <m:times/>
+		    <m:ci><m:msub>
+			<m:mi>d</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub></m:ci><m:apply>
+		      <m:power/>
+		      <m:ci>b</m:ci>
+		      <m:ci>k</m:ci>
+		    </m:apply>          
+		  </m:apply>
+		</m:apply>          
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	<emphasis>All</emphasis> numbers can be represented by their
+	sign, integer and fractional parts.  <link document="m0081" strength="2">Complex numbers</link> can be thought of as two
+	real numbers that obey special rules to manipulate them.
+      </para>
+
+      <para id="Silly_Humans">Humans use base 10, commonly assumed to be due to us having
+	ten fingers.  Digital computers use the base 2 or
+	<emphasis>binary</emphasis> number representation, each digit
+	of which is known as a <term>bit</term>
+	(<emphasis>b</emphasis>inary dig<emphasis>it</emphasis>).
+
+      <figure id="figure_3">
+	<title>Number representations on computers</title>
+	<media id="id1165183330075" alt="">
+          <image src="../../media/sys29.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sys29.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  The various ways numbers are represented in binary are
+	  illustrated.  The number of bytes for the exponent and
+	  mantissa components of floating point numbers varies.
+	</caption>
+      </figure>
+
+	Here, each bit is represented as a voltage that is either
+        "high" or "low," thereby representing "1" or "0,"
+        respectively.  To represent signed values, we tack on a
+        special bit—the <term>sign bit</term>—to express
+        the sign.  The computer's memory consists of an ordered
+        sequence of <term>bytes</term>, a collection of eight bits.  A
+        byte can therefore represent an unsigned number ranging from
+	<m:math>
+	  <m:cn>0</m:cn>
+	</m:math>
+	to 
+	<m:math>
+	  <m:cn>255</m:cn> </m:math>.  If we take one of the bits and
+	make it the sign bit, we can make the same byte to represent
+	numbers ranging from
+	<m:math><m:apply><m:minus/><m:cn>128</m:cn></m:apply></m:math>
+	to <m:math><m:cn>127</m:cn></m:math>.  But a computer cannot
+	represent <emphasis>all</emphasis> possible real numbers.  The
+	fault is not with the binary number system; rather having only
+	a finite number of bytes is the problem.  While a gigabyte of
+	memory may seem to be a lot, it takes an infinite number of
+	bits to represent <m:math><m:pi/></m:math>.  Since we want to
+	store many numbers in a computer's memory, we are restricted
+	to those that have a <emphasis>finite</emphasis> binary
+	representation.  Large integers can be represented by an
+	ordered sequence of bytes.  Common lengths, usually expressed
+	in terms of the number of bits, are 16, 32, and 64.  Thus, an
+	unsigned 32-bit number can represent integers ranging between
+	0 and
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>2</m:cn>
+	      <m:cn>32</m:cn>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math> (4,294,967,295), a number almost big enough to
+	enumerate every human in the world!<footnote id="id1165170159662">You
+	need one more bit to do that.
+	</footnote>
+      </para>
+
+      <exercise id="exer2">
+	<problem id="id6903809">
+	  <para id="exer2a">
+	    For both 32-bit and 64-bit integer representations, what
+	    are the largest numbers that can be represented if a sign bit must also be included.
+	  </para>
+	</problem>
+	<solution id="id1165180008464">
+	  <para id="exer2b">
+	    For <m:math><m:ci>b</m:ci></m:math>-bit signed integers,
+	    the largest number is
+	    <m:math>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:power/>
+		  <m:cn>2</m:cn>
+		  <m:apply><m:minus/>
+		    <m:ci>b</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:math>. For 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>b</m:ci>
+		<m:cn>32</m:cn>
+	      </m:apply>
+	    </m:math>, we have 2,147,483,647 and for 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>b</m:ci>
+		<m:cn>64</m:cn>
+	      </m:apply>
+	    </m:math>, we have 9,223,372,036,854,775,807 or about 
+	    <m:math>
+	      <m:cn type="e-notation">9.2<m:sep/>18</m:cn>
+	    </m:math>. 
+	  </para>
+	</solution>
+      </exercise>
+
+      <para id="intro_float_representation">While this system represents integers well, how about numbers
+	having nonzero digits to the right of the decimal point?
+	In other words, how are numbers that have fractional parts represented? For
+	such numbers, the binary representation system is used, but
+	with a little more complexity.  The
+	<emphasis>floating-point</emphasis> system uses a number of
+	bytes - typically 4 or 8 - to represent the number, but with
+	one byte (sometimes two bytes) reserved to represent the
+	<emphasis>exponent</emphasis> <m:math><m:ci>e</m:ci></m:math>
+	of a power-of-two multiplier for the number - the
+	<emphasis>mantissa</emphasis> <m:math><m:ci>m</m:ci></m:math>
+	- expressed by the remaining bytes.
+	
+	<equation id="eq1">
+	  <m:math>
+	    <m:apply><m:eq/>
+	      <m:ci>x</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:ci>m</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:cn>2</m:cn><m:ci>e</m:ci>
+		</m:apply>
+	      </m:apply>        
+	    </m:apply>
+	  </m:math>
+	</equation>
+	The mantissa is usually taken to be a binary fraction having a
+	magnitude in the range 
+
+	<m:math>
+	  <m:apply>
+	    <m:interval closure="closed-open">
+              <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:interval>
+	  </m:apply>
+	</m:math>, which means that the binary representation is such that 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>d</m:mi>
+		<m:mn>-1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>.  <footnote id="id1165182301589">In some computers, this
+	normalization is taken to an extreme: the leading binary digit
+	is not explicitly expressed, providing an extra bit to
+	represent the mantissa a little more accurately.  This
+	convention is known as the <term>hidden-ones
+	notation</term>.</footnote>  The number zero is an exception to
+	this rule, and it is the <emphasis>only</emphasis> floating
+	point number having a zero fraction.  The sign of the mantissa
+	represents the sign of the number and the exponent can be a
+	signed integer.
+      </para>
+
+      <para id="problems_with_digital_representation"> A computer's
+	representation of integers is either perfect or only
+	approximate, the latter situation occurring when the integer
+	exceeds the range of numbers that a limited set of bytes can
+	represent.  Floating point representations have similar
+	representation problems: <emphasis>if</emphasis> the number
+	<m:math><m:ci>x</m:ci></m:math> can be multiplied/divided by
+	enough powers of two to yield a fraction lying between 1/2 and
+	1 that has a <emphasis>finite</emphasis> binary-fraction
+	representation, the number is represented exactly in floating
+	point.  Otherwise, we can only represent the number
+	approximately, not catastrophically in error as with integers.
+	For example, the number 2.5 equals 
+	<m:math>
+	  <m:apply><m:times/>
+	    <m:cn>0.625</m:cn>
+	    <m:apply><m:power/>
+	      <m:cn>2</m:cn><m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, the fractional part of which has an exact binary
+	representation.  <footnote id="id1165183917509">See if you can find
+	this representation.</footnote> However, the number
+	<m:math><m:cn>2.6</m:cn></m:math> does
+	<emphasis>not</emphasis> have an exact binary representation,
+	and only be represented approximately in floating point.  In
+	<emphasis>single precision floating point</emphasis> numbers,
+	which require 32 bits (one byte for the exponent and the
+	remaining 24 bits for the mantissa), the number 2.6 will be
+	represented as <m:math>
+	<m:cn>2.600000079...</m:cn></m:math>.  Note that this
+	approximation has a much longer decimal expansion.  This level
+	of accuracy may not suffice in numerical calculations.
+	<emphasis>Double precision floating point numbers</emphasis>
+	consume 8 bytes, and <emphasis>quadruple precision</emphasis>
+	16 bytes.  The more bits used in the mantissa, the greater the
+	accuracy.  This increasing accuracy means that more numbers
+	can be represented exactly, but there are always some that
+	cannot.  Such inexact numbers have an infinite binary
+	representation.<footnote id="id1165182558980">Note that there will
+	<emphasis>always</emphasis> be numbers that have an infinite
+	representation in any chosen positional system. The choice of
+	base defines which do and which don't.  If you were
+	thinking that base 10 numbers would solve this inaccuracy,
+	note that 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:cn type="rational">1<m:sep/>3</m:cn>
+	      <m:cn>0.333333....</m:cn>
+	    </m:apply>
+	  </m:math>
+
+	  has an infinite representation in decimal (and binary for
+	that matter), but has finite representation in base 3.</footnote>
+	Realizing that real numbers can be only represented
+	approximately is quite important, and underlies the entire
+	field of <emphasis>numerical analysis</emphasis>, which seeks
+	to predict the numerical accuracy of any computation.
+      </para>
+      
+      <exercise id="exer3">
+	<problem id="id1165174150173">
+	  <para id="exer3a">
+	    What are the largest and smallest numbers that can be
+	    represented in 32-bit floating point? in 64-bit floating
+	    point that has sixteen bits allocated to the exponent? 
+	    Note that both exponent and mantissa require a sign bit.
+	  </para>
+	</problem>
+	
+	<solution id="id1165176015377">
+	  <para id="exer3b">
+	    In floating point, the number of bits in the exponent
+	    determines the largest and smallest representable numbers.
+	    For 32-bit floating point, the largest (smallest) numbers
+	    are
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:power/>
+		  <m:cn>2</m:cn>
+		  <m:apply>
+		    <m:ci><m:mo>±</m:mo></m:ci>
+		    <m:cn>127</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>1.7</m:cn>
+		  <m:apply>
+		    <m:power/>
+		    <m:cn>10</m:cn>
+		    <m:cn>38</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math> 
+	    (<m:math>
+	      <m:apply>
+		<m:times/>
+		<m:cn>5.9</m:cn>
+		<m:apply>
+		  <m:power/>
+		  <m:cn>10</m:cn>
+		  <m:cn>-39</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:math>). For 64-bit floating point, the largest number is about 
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:cn>10</m:cn>
+		<m:cn>9863</m:cn>
+	      </m:apply>
+	    </m:math>. 
+	  </para>
+	</solution>
+      </exercise>
+
+      <para id="representation_conclusion">
+	So long as the integers aren't too large, they can be
+	represented exactly in a computer using the binary positional
+	notation.  Electronic circuits that make up the physical
+	computer can add and subtract integers without error.
+	(This statement isn't quite true; when does addition cause problems?)
+      </para>
+
+    </section>
+
+    <section id="arithmetic">
+      <title>Computer Arithmetic and Logic</title>
+      <para id="addmult">
+	The binary addition and multiplication tables are
+
+	<equation id="ones_and_zeroes">
+	  <m:math>
+	    <m:matrix>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>0</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:cn>10</m:cn>
+		</m:apply>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:matrixrow>
+	      <m:matrixrow>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>0</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>0</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>1</m:cn>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:matrixrow>
+	      <m:matrixrow>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>1</m:cn>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:matrixrow>
+	    </m:matrix>
+	  </m:math> 
+	</equation>
+      </para>
+
+      <para id="carries_ignored">
+	Note that if carries are ignored,<footnote id="id1165181152691">A
+	  <emphasis>carry</emphasis> means that a computation
+	  performed at a given position affects other positions as
+	  well.  Here,
+          <m:math>
+            <m:apply><m:eq/>
+              <m:apply>
+                <m:plus/>
+                   <m:cn>1</m:cn>
+                   <m:cn>1</m:cn>
+                </m:apply>
+              <m:cn>10</m:cn>
+            </m:apply>
+         </m:math>
+	  is an example of a computation that involves a carry.
+        </footnote>
+	
+	subtraction of two single-digit binary numbers yields the same
+	bit as addition.  Computers use high and low voltage values to
+	express a bit, and an array of such voltages express numbers
+	akin to positional notation.  Logic circuits perform
+	arithmetic operations.
+      </para>
+
+      <exercise id="exer1">
+	<problem id="id1165173722767">
+	  <para id="exer1a">
+	    Add twenty-five and seven in base 2.  Note the carries
+	    that might occur.  Why is the result "nice"?
+	  </para>
+	</problem>
+	<solution id="id1165178634153">
+	  <para id="exer1b">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:cn type="integer">25</m:cn>
+		<m:cn type="integer" base="2">11011</m:cn>
+	      </m:apply>
+	    </m:math> and 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:cn type="integer">7</m:cn>
+		<m:cn type="integer" base="2">111</m:cn>
+	      </m:apply>
+	    </m:math>. We find that 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:plus/>
+		<m:cn type="integer" base="2">11001</m:cn>
+		<m:cn type="integer" base="2">111</m:cn>
+		</m:apply>
+		<m:cn type="integer" base="2">100000</m:cn>
+		<m:cn type="integer">32</m:cn>
+	      </m:apply>
+	    </m:math>. 
+	  </para>
+	</solution>
+      </exercise>
+
+      <para id="logical_operations">The variables of logic indicate truth or falsehood.
+	<m:math><m:apply><m:intersect/> <m:ci>A</m:ci><m:ci>B</m:ci>
+	  </m:apply>
+	</m:math>, the AND of <m:math><m:ci>A</m:ci></m:math> and
+	<m:math><m:ci>B</m:ci></m:math>, represents a statement that
+	both <m:math><m:ci>A</m:ci></m:math> and
+	<m:math><m:ci>B</m:ci></m:math> must be true for the statement
+	to be true.  You use this kind of statement to tell search
+	engines that you want to restrict hits to cases where both of
+	the events <m:math><m:ci>A</m:ci></m:math> and
+	<m:math><m:ci>B</m:ci></m:math> occur.
+	<m:math><m:apply><m:union/><m:ci>A</m:ci><m:ci>B</m:ci>
+	  </m:apply>
+	</m:math>, the OR of <m:math><m:ci>A</m:ci></m:math> and
+	<m:math><m:ci>B</m:ci></m:math>, yields a value of truth if
+	either is true.  Note that if we represent truth by a "1" and
+	falsehood by a "0," <emphasis>binary multiplication
+	corresponds to AND and addition (ignoring carries) to
+	XOR</emphasis>.  XOR, the exclusive or operator, equals the union of
+<m:math><m:apply><m:union/><m:ci>A</m:ci><m:ci>B</m:ci></m:apply>
+	  </m:math> and <m:math><m:apply><m:intersect/><m:ci>A</m:ci><m:ci>B</m:ci></m:apply>
+	</m:math>.
+ The Irish mathematician George Boole
+	discovered this equivalence in the mid-nineteenth century.  It
+	laid the foundation for what we now call Boolean algebra,
+	which expresses as equations logical statements.  More
+	importantly, any computer using base-2 representations and
+	arithmetic can also easily evaluate logical statements.  This
+	fact makes an integer-based computational device much more
+	powerful than might be apparent.
+      </para></section>
+    
+  </content>
+</document>

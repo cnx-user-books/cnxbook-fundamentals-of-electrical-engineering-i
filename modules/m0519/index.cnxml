@@ -1,0 +1,177 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+    <title>Digital Communication</title>
+
+    <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>74e74c5a-e8f4-41f4-a190-6c17d346ab47</md:uuid>
+</metadata>
+
+    <content>
+
+      <para id="p1">
+	Effective, error-free transmission of a sequence of bits—a
+	<term>bit stream</term>
+	<m:math>
+	  <m:set>
+	    <m:apply><m:ci type="fn">b</m:ci><m:cn>0</m:cn></m:apply>
+	    <m:apply><m:ci type="fn">b</m:ci><m:cn>1</m:cn></m:apply>
+	    <m:ci>…</m:ci>
+	  </m:set>
+	</m:math>—is the goal here.  We found that
+	analog schemes, as represented by amplitude modulation, always
+	yield a received signal containing noise as well as the message
+	signal when the channel adds noise.  Digital communication
+	schemes are very different.  Once we decide how to represent
+	bits by analog signals that can be transmitted over wireline
+	(like a computer network) or wireless (like digital cellular
+	telephone) channels, we will then develop a way of tacking on
+	communication bits to the message bits that will reduce
+	channel-induced errors greatly.  In theory, digital
+	communication errors can be zero, even though the channel adds
+	noise!
+      </para>
+
+      <para id="para1">
+	We represent a bit by associating one of two specific analog
+	signals with the bit's value. Thus, if
+
+	<m:math>                 
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">b</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>, we transmit the signal 
+
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msub>
+		<m:mi>s</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>; if
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">b</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>, send
+
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:msub>
+		<m:mi>s</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.  These two signals comprise the <term>signal
+	set</term> for digital communication and are designed with the
+	channel and bit stream in mind. In virtually every case, these
+	signals have a finite duration <m:math><m:ci>T</m:ci></m:math>
+	common to both signals; this duration is known as the
+	<term>bit interval</term>.  Exactly what signals we use
+	ultimately affects how well the bits can be received.
+	Interestingly, baseband and modulated signal sets can yield
+	the same performance.  Other considerations determine how
+	signal set choice affects digital communication performance.
+      </para>
+
+      <exercise id="exercise">
+	<problem id="idm10398704">
+	  <para id="exer">
+	    What is the expression for the signal arising from a
+	    digital transmitter sending the bit stream
+	    <m:math>
+	      <m:apply><m:ci type="fn">b</m:ci><m:ci>n</m:ci></m:apply>
+	    </m:math>,
+	    <m:math>
+	      <m:apply><m:eq/>
+		<m:ci>n</m:ci>
+		<m:set>
+		  <m:ci>…</m:ci>
+		  <m:apply><m:minus/><m:cn>1</m:cn></m:apply>
+		  <m:cn>0</m:cn>
+		  <m:cn>1</m:cn>
+		  <m:ci>…</m:ci>
+		</m:set>
+	      </m:apply>
+	    </m:math>
+	    using the signal set
+	    <m:math>
+	      <m:apply><m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>,
+	    <m:math>
+	      <m:apply><m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>, each signal of which has duration
+	    <m:math>
+	      <m:ci>T</m:ci>
+	    </m:math>?
+	  </para>
+	</problem>
+	<solution id="idm10989504">
+	  <para id="solution">
+	    <m:math>
+	      <m:apply><m:eq/>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply><m:sum/>
+		  <m:bvar><m:ci>n</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply><m:minus/><m:infinity/></m:apply>
+		  </m:lowlimit>
+		  <m:uplimit><m:infinity/></m:uplimit>
+		  <m:apply><m:ci type="fn">
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mrow>
+			  <m:mi>b</m:mi>
+			  <m:mo>(</m:mo>
+			  <m:mi>n</m:mi>
+			  <m:mo>)</m:mo>
+			</m:mrow>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply><m:minus/>
+		      <m:ci>t</m:ci>
+		      <m:apply><m:times/><m:ci>n</m:ci><m:ci>T</m:ci></m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+	  </para>
+	</solution>
+      </exercise>
+
+    </content>
+  </document>

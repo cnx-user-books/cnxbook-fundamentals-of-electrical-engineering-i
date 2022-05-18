@@ -1,0 +1,215 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Structure of Communication Systems</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0002</md:content-id>
+  <md:title>Structure of Communication Systems</md:title>
+  <md:abstract>An introduction to the fundamental model of communication, from the generation of
+the signal at the source through a noisy channel to reception of the signal at 
+the sink.
+</md:abstract>
+  <md:uuid>4506df11-805a-48ed-9c4e-54197faa6a8b</md:uuid>
+</metadata>
+
+<content>
+
+
+    <figure id="commsys" orient="horizontal">
+      <title>Fundamental model of communication</title>
+      <media id="id1165863109746" alt=""><image src="../../media/fundamental.png" mime-type="image/png"/><image for="pdf" src="../../media/fundamental.eps" mime-type="application/postscript" width="5in"/></media>
+      <caption>The Fundamental Model of Communication.</caption>
+    </figure>
+    <figure id="systemdef" orient="horizontal">
+      <title>Definition of a system</title>
+      <media id="id1165865240278" alt="">
+        <image src="../../media/systemdef.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/systemdef.eps" mime-type="application/postscript"/>
+      </media> 
+      <caption>
+	A system operates on its input signal 
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	to produce an output
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.
+      </caption>
+    </figure>
+
+    <para id="para1">
+      The fundamental model of communications is portrayed in 
+
+      <link target-id="commsys" strength="2"/>.  
+      
+      In this fundamental model, each message-bearing signal,
+      exemplified by
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>, 
+
+      is analog and is a function of time.  A <term>system</term>
+      operates on zero, one, or several signals to produce more
+      signals or to simply absorb them (<link target-id="systemdef" strength="2"/>).  In electrical engineering, we represent a
+      system as a box, receiving input signals (usually coming from
+      the left) and producing from them new output signals.  This
+      graphical representation is known as a <term> block diagram</term>.
+      We denote input signals by lines having arrows
+      pointing into the box, output signals by arrows pointing away.
+      As typified by the communications model, how information flows,
+      how it is corrupted and manipulated, and how it is ultimately
+      received is summarized by interconnecting block diagrams: The
+      outputs of one or more systems serve as the inputs to others.
+    </para>
+
+    <para id="para2">
+
+      In the communications model, the <term>source</term> produces a
+      signal that will be absorbed by the <term>sink</term>.  Examples
+      of time-domain signals produced by a source are music, speech,
+      and characters typed on a keyboard.  Signals can also be
+      functions of two variables—an image is a signal that
+      depends on two spatial variables—or
+      more—television pictures (video signals) are functions of
+      two spatial variables and time.  Thus, information sources
+      produce signals.  <emphasis>In physical systems, each signal
+      corresponds to an electrical voltage or current</emphasis>.  To
+      be able to design systems, we must understand electrical science
+      and technology.  However, we first need to understand the big
+      picture to appreciate the context in which the electrical
+      engineer works.
+
+    </para>
+
+    <para id="para3">
+      In communication systems, messages—signals produced by
+      sources—must be recast for transmission.  The block diagram
+      has the message
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math> 
+      passing through a block labeled <term>transmitter</term> that
+      produces the signal
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.  In the case of a radio transmitter, it accepts an input
+      audio signal and produces a signal that physically is an
+      electromagnetic wave radiated by an antenna and propagating as
+      Maxwell's equations predict.  In the case of a computer network,
+      typed characters are encapsulated in packets, attached with a
+      destination address, and launched into the Internet.  From the
+      communication systems “big picture” perspective, the
+      <emphasis>same</emphasis> block diagram applies although the
+      systems can be very different.  In any case, the transmitter
+      should <emphasis>not</emphasis> operate in such a way that the
+      message 
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math> 
+      cannot be recovered from 
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.  
+      In the mathematical sense, the inverse system must exist, else
+      the communication system cannot be considered reliable. (It is
+      ridiculous to transmit a signal in such a way that <emphasis>no
+      one</emphasis> can recover the original.  However, clever
+      systems exist that transmit signals so that only the “in crowd”
+      can recover them.  Such crytographic systems underlie secret
+      communications.)
+    </para>
+
+    <para id="para4">Transmitted signals next pass through the next stage, the evil
+      <term>channel</term>.  Nothing good happens to a signal
+      in a channel: It can become corrupted by noise, distorted, and
+      attenuated among many possibilities. The channel cannot be escaped
+      (the real world is cruel), and transmitter design <emphasis>and</emphasis> receiver design focus on how best to jointly fend off
+      the channel's effects on signals.  The channel is another system in
+      our block diagram, and produces 
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">r</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>, the signal <emphasis>received</emphasis> by the receiver.
+      If the channel were benign (good luck finding such a channel in
+      the real world), the receiver would serve as the inverse system to
+      the transmitter, and yield the message with no distortion.
+      However, because of the channel, the receiver must do its best to
+      produce a received message
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:mover>
+	      <m:mi>s</m:mi>
+	      <m:mo>̂</m:mo>
+	    </m:mover></m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math> 
+      that resembles
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math> 
+      as much as possible.  
+
+      <link url="http://en.wikipedia.org/wiki/Claude_Shannon">Shannon</link>
+      
+      showed in his 1948 paper that reliable—for the moment,
+      take this word to mean error-free—digital communication
+      was possible over arbitrarily noisy channels. It is this result
+      that modern communications systems exploit, and why many
+      communications systems are going “digital.”  The module on
+      <link document="m0513" strength="2">
+	Information Communication
+      </link>
+      details Shannon's theory of information, and there we learn of
+      Shannon's result and how to use it.
+    </para><para id="para5">
+      Finally, the received message is passed to the information
+      <term>sink</term> that somehow makes use of the message.  In the
+      communications model, the source is a system having no input but
+      producing an output; a sink has an input and no output.
+    </para>
+
+    <para id="para6">
+      Understanding signal generation and how systems work amounts to
+      understanding signals, the nature of the information they
+      represent, how information is transformed between analog and
+      digital forms, and how information can be processed by systems
+      operating on information-bearing signals.  This understanding
+      demands two different fields of knowledge.  One is electrical
+      science: How are signals represented and manipulated
+      electrically?  The second is signal science: What is the
+      structure of signals, no matter what their source, what is their
+      information content, and what capabilities does this structure
+      force upon communication systems?
+    </para>
+
+  </content>
+</document>

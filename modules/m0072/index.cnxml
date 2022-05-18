@@ -1,0 +1,635 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Error-Correcting Codes: Channel Decoding</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>a91e5b0e-41f1-4f9f-b92e-0147cb6dcaea</md:uuid>
+</metadata>
+
+  <content>
+    <para id="par1">Because the idea of channel coding has merit (so long as the
+      code is efficient), let's develop a systematic procedure for
+      performing channel decoding. One way of checking for errors is
+      to try recreating the error correction bits from the data
+      portion of the received block
+      <m:math>
+	<m:ci type="vector">
+	  <m:mover accent="true">
+	    <m:mi>c</m:mi>
+	    <m:mo>^</m:mo>
+	  </m:mover>
+	</m:ci>
+      </m:math>.  Using matrix notation, we make this calculation by
+      multiplying the received block
+      <m:math>
+	<m:ci type="vector">
+	  <m:mover accent="true">
+	    <m:mi>c</m:mi>
+	    <m:mo>^</m:mo>
+	  </m:mover>
+	</m:ci>
+      </m:math> by the matrix <m:math><m:ci type="matrix">H</m:ci></m:math> known as the <term>parity check
+      matrix</term>.  It is formed from the generator matrix
+      <m:math display="inline">
+	<m:ci type="matrix">G</m:ci>
+      </m:math> 
+
+      by taking the bottom, error-correction portion of <m:math display="inline"><m:ci type="matrix">G</m:ci></m:math> and
+      attaching to it an identity matrix. For our <link document="m0095" target-id="codematrix" strength="2">(7,4) code</link>,
+      
+      <equation id="eqeq11"><m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci type="matrix">H</m:ci>
+	    <m:mfenced open="[" close="]" separators=" ">
+        <m:munder>
+	    <m:munder>
+		<m:mtable>
+		  <m:mtr>
+		    <m:mtd><m:mn>1</m:mn></m:mtd>
+		    <m:mtd><m:mn>1</m:mn></m:mtd>
+		    <m:mtd><m:mn>1</m:mn></m:mtd>
+		    <m:mtd><m:mn>0</m:mn></m:mtd>
+		  </m:mtr>
+		  <m:mtr>
+		    <m:mtd><m:mn>0</m:mn></m:mtd>
+		    <m:mtd><m:mn>1</m:mn></m:mtd>
+		    <m:mtd><m:mn>1</m:mn></m:mtd>
+		    <m:mtd><m:mn>1</m:mn></m:mtd>
+		  </m:mtr>
+		  <m:mtr>
+		      <m:mtd><m:mn>1</m:mn></m:mtd>
+		      <m:mtd><m:mn>1</m:mn></m:mtd>
+		      <m:mtd><m:mn>0</m:mn></m:mtd>
+		      <m:mtd><m:mn>1</m:mn></m:mtd>
+		    </m:mtr>
+		  </m:mtable>
+		  <m:mo>︸</m:mo>
+	        </m:munder>
+		  <m:mrow>
+		    <m:mtext>Lower portion of  </m:mtext>
+		    <m:mi>G</m:mi>
+		  </m:mrow>
+	      </m:munder>
+	      <m:munder><m:munder>
+	      <m:mtable>
+		<m:mtr><m:mtd><m:mn>1</m:mn></m:mtd>
+		  <m:mtd><m:mn>0</m:mn></m:mtd>
+		  <m:mtd><m:mn>0</m:mn></m:mtd>
+		</m:mtr>
+		<m:mtr>
+		  <m:mtd><m:mn>0</m:mn></m:mtd>
+		  <m:mtd><m:mn>1</m:mn></m:mtd>
+		  <m:mtd><m:mn>0</m:mn></m:mtd>
+		</m:mtr>
+		<m:mtr>
+		  <m:mtd><m:mn>0</m:mn></m:mtd>
+		  <m:mtd><m:mn>0</m:mn></m:mtd>
+		  <m:mtd><m:mn>1</m:mn></m:mtd>
+		</m:mtr>
+	      </m:mtable>
+	      <m:mo>︸</m:mo>
+	        </m:munder>
+	        <m:mtext>Identity</m:mtext>
+	        </m:munder>
+	    </m:mfenced>
+	  </m:apply>
+	</m:math>
+      </equation> 
+      The parity check matrix thus has size  
+      <m:math>
+	<m:ci><m:mrow> 
+	    <m:mo>(</m:mo> 
+	    <m:mi>N</m:mi>
+	    <m:mo>−</m:mo> 
+	    <m:mi>K</m:mi> 
+	    <m:mo>)</m:mo>
+	    <m:mo>×</m:mo> 
+	    <m:mi>N</m:mi> 
+	  </m:mrow></m:ci>
+	  </m:math>, 
+
+      and the result of multiplying this matrix with a received word
+      is a length-
+      <m:math>
+	<m:ci>
+	  <m:mrow>
+	    <m:mo>(</m:mo>
+	    <m:mi>N</m:mi>
+	    <m:mo>−</m:mo>
+	    <m:mi>K</m:mi>
+	    <m:mo>)</m:mo>
+	  </m:mrow>
+	</m:ci>
+      </m:math> binary vector.  If no digital channel errors
+      occur—we receive a codeword so that
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci type="vector"><m:mover accent="true">
+	      <m:mi>c</m:mi> 
+	      <m:mo>^</m:mo>
+	    </m:mover></m:ci>
+	  <m:ci type="vector">c</m:ci>
+	</m:apply>
+      </m:math>
+      — then 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci type="matrix">H</m:ci>
+	    <m:ci type="vector"><m:mover accent="true">
+		<m:mi>c</m:mi>
+		<m:mo>^</m:mo>
+	      </m:mover></m:ci>
+	  </m:apply>
+	  <m:cn type="vector">0</m:cn>
+	</m:apply>
+      </m:math>.  For example, the first column of
+      <m:math>
+	<m:ci type="matrix">G</m:ci>
+      </m:math>, 
+      <m:math display="inline">
+	<m:vector>
+	  <m:cn>1</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>1</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>1</m:cn>
+	</m:vector>
+      </m:math>, is a codeword.  Simple calculations show that
+      multiplying this vector by
+      <m:math>
+	<m:ci type="matrix">H</m:ci>
+      </m:math> results in a length-<m:math>
+	<m:ci><m:mrow> 
+	    <m:mo>(</m:mo> 
+	    <m:mi>N</m:mi>
+	    <m:mo>−</m:mo> 
+	    <m:mi>K</m:mi> 
+	    <m:mo>)</m:mo>
+	    </m:mrow></m:ci> 
+      </m:math> 
+      zero-valued vector.
+    </para>
+
+    <exercise id="exer1">
+      <problem id="idm3197824"> 
+	<para id="exer1a">
+	  Show that 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci type="matrix">H</m:ci>
+		<m:ci type="vector">c</m:ci>
+	      </m:apply>
+	      <m:cn type="vector">0</m:cn>
+	    </m:apply>
+	  </m:math> 
+	  for all the columns of 
+	  <m:math>
+	    <m:ci type="matrix">G</m:ci>
+	  </m:math>.  In other words, show that
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci type="matrix">H</m:ci>
+		<m:ci type="matrix">G</m:ci>
+	      </m:apply>
+	      <m:cn type="vector">0</m:cn>
+	    </m:apply>
+	  </m:math> an 
+	  <m:math>
+	    <m:ci><m:mrow>
+	      <m:mo>(</m:mo>
+	      <m:mi>N</m:mi>
+	      <m:mo>−</m:mo>
+	      <m:mi>K</m:mi>
+	      <m:mo>)</m:mo>
+	      <m:mo>×</m:mo> 
+	      <m:mi>K</m:mi>
+	    </m:mrow></m:ci>
+	  </m:math> matrix of zeroes.
+
+	  Does this property guarantee that all codewords also satisfy
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci type="matrix">H</m:ci>
+		<m:ci type="vector">c</m:ci>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>?
+	</para>
+      </problem>
+      <solution id="idm3684592"> 
+	<para id="exer1b">
+	  When we multiply the parity-check matrix times any codeword
+	  equal to a column of <m:math><m:ci type="matrix">G</m:ci></m:math>, the result consists of the
+	  sum of an entry from the lower portion of <m:math><m:ci type="matrix">G</m:ci></m:math> and itself that, by the laws
+	  of binary arithmetic, is always zero.
+	</para>
+	<para id="par3">
+	  Because the code is linear—sum of any two codewords is a
+	  codeword—we can generate all codewords as sums of columns of  
+	  <m:math><m:ci type="matrix">G</m:ci></m:math>.  Since
+	  multiplying by   
+	  <m:math display="inline">
+	    <m:ci type="matrix">H</m:ci>
+	  </m:math>
+	  is also linear, 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci type="matrix">H</m:ci>
+		<m:ci type="vector">c</m:ci>
+	      </m:apply>
+	      <m:cn type="vector">0</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+    
+    <para id="fixedfromexer">
+      When the received bits 
+      <m:math>
+	<m:ci type="vector"><m:mover accent="true">
+	    <m:mi>c</m:mi>
+	    <m:mo>^</m:mo>
+	  </m:mover></m:ci>
+      </m:math>
+      do <emphasis>not</emphasis> form a codeword, 
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:ci type="matrix">H</m:ci>
+	  <m:ci type="vector"><m:mover accent="true">
+	      <m:mi>c</m:mi>
+	      <m:mo>^</m:mo>
+	    </m:mover></m:ci>
+	</m:apply>
+      </m:math> does not equal zero, indicating the presence of one or
+      more errors induced by the digital channel.  Because the presence
+      of an error can be mathematically written as 
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci type="vector"><m:mover accent="true">
+	      <m:mi>c</m:mi>
+	      <m:mo>^</m:mo>
+	    </m:mover></m:ci> 
+	  <m:apply>
+	    <m:xor/>
+	    <m:ci type="vector">c</m:ci> 
+	    <m:ci type="vector">e</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      , with <m:math><m:ci type="vector">e</m:ci></m:math> a vector of
+      binary values having a 1 in those positions where a bit error
+      occurred.
+    </para>
+
+    <exercise id="exercise2">
+      <problem id="idm5253072">
+	<para id="exer2para">
+	  Show that adding the error vector
+	  <m:math display="inline">
+	    <m:vector>
+	      <m:cn>1</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:ci>…</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:vector>
+	  </m:math>
+	  to a codeword flips the codeword's leading bit and leaves
+	  the rest unaffected.
+	</para>
+      </problem>
+      <solution id="idm17558208">
+	<para id="solnpara">
+	  In binary arithmetic <link document="m0095" target-id="table1" strength="2">see this table</link>, adding 0 to a binary
+	  value results in that binary value while adding 1 results in
+	  the opposite binary value.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="para2b">
+      Consequently,
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci type="matrix">H</m:ci>
+	    <m:ci type="vector"><m:mover accent="true">
+		<m:mi>c</m:mi>
+		<m:mo>^</m:mo>
+	      </m:mover></m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci type="matrix">H</m:ci>
+	    <m:apply>
+	      <m:xor/>
+	      <m:ci type="vector">c</m:ci>
+	      <m:ci type="vector">e</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci type="matrix">H</m:ci>
+	    <m:ci type="vector">e</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      Because  the  result  of  the  product  is  a  length- 
+      <m:math display="inline">
+	<m:ci><m:mrow> 
+	    <m:mo>(</m:mo> 
+	    <m:mi>N</m:mi>
+	    <m:mo>−</m:mo> 
+	    <m:mi>K</m:mi> 
+	    <m:mo>)</m:mo>
+	  </m:mrow></m:ci> 
+      </m:math> 
+
+      vector of binary values, we can have 
+      <m:math display="inline">
+	<m:apply>
+	  <m:minus/>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>2</m:cn>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>N</m:ci>
+	      <m:ci>K</m:ci>
+	    </m:apply>
+	  </m:apply> 
+	  <m:cn>1</m:cn>
+	</m:apply>
+      </m:math>
+      non-zero values that correspond to non-zero error patterns
+      <m:math display="inline"><m:ci type="vector">e</m:ci></m:math>.  To perform our channel
+      decoding,
+      <list id="computationstuff" list-type="enumerated"><item>compute (conceptually at least)   
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:ci type="matrix">H</m:ci>
+	      <m:ci type="vector"><m:mover accent="true">
+		  <m:mi>c</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover></m:ci>
+	    </m:apply>
+	  </m:math>;
+	</item>
+	<item>if this result is zero, no detectable or correctable
+	error occurred;
+	</item>
+	<item>if non-zero, consult a table of length-<m:math display="inline">
+	    <m:ci><m:mrow>
+	      <m:mo>(</m:mo>
+	      <m:mi>N</m:mi>
+	      <m:mo>−</m:mo>
+	      <m:mi>K</m:mi>
+	      <m:mo>)</m:mo>
+	    </m:mrow></m:ci>
+	  </m:math>
+	  binary vectors to associate them with the <emphasis>minimal
+	  </emphasis>error pattern that could have resulted in the
+	  non-zero result; then
+	</item>
+	<item>add the error vector thus obtained to the received
+	  vector   
+	  <m:math display="inline">
+	    <m:ci type="vector"><m:mover accent="true">
+		<m:mi>c</m:mi>
+		<m:mo>^</m:mo>
+	      </m:mover></m:ci>
+	  </m:math>
+	  to correct the error (because   
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:xor/>
+		<m:ci type="vector">c</m:ci>
+		<m:ci type="vector">e</m:ci> 
+		<m:ci type="vector">e</m:ci>
+	      </m:apply> 
+	      <m:ci type="vector">c</m:ci>
+	    </m:apply>
+	  </m:math>).
+	</item>
+	<item>Select the data bits from the corrected word to produce
+	  the received bit sequence 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:mover accent="true">
+		  <m:mi>b</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover></m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	  </m:math>.
+	</item>
+      </list>
+
+      The phrase <emphasis>minimal</emphasis> in the third item raises
+      the point that a double (or triple or quadruple …) error
+      occurring during the transmission/reception of one codeword can
+      create the same received word as a single-bit error or no error
+      in <emphasis>another</emphasis> codeword.  For example, 
+      <m:math display="inline">
+	<m:vector>
+	  <m:cn>1</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>1</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>1</m:cn>
+	</m:vector>
+      </m:math>
+      and 
+      <m:math display="inline">
+	<m:vector>
+	  <m:cn>0</m:cn>
+	  <m:cn>1</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>0</m:cn>
+	  <m:cn>1</m:cn>
+	  <m:cn>1</m:cn>
+	  <m:cn>1</m:cn>
+	</m:vector>
+      </m:math>
+      are both codewords in the example (7,4) code.  The second
+      results when the first one experiences three bit errors (first,
+      second, and sixth bits).  Such an error pattern cannot be
+      detected by our coding strategy, but such multiple error
+      patterns are very unlikely to occur.  Our receiver uses the
+      principle of maximum probability: An error-free transmission is
+      much more likely than one with three errors if the bit-error probability
+      <m:math display="inline">
+        <m:ci>
+          <m:msub><m:mi>p</m:mi><m:mi>e</m:mi>
+          </m:msub>
+        </m:ci>
+      </m:math> is small enough.
+     </para>
+
+    <exercise id="exer3">
+      <problem id="idm4017984"> <para id="exer3a">How small must 
+	  <m:math display="inline">
+	    <m:ci><m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>e</m:mi>
+	      </m:msub></m:ci>
+	  </m:math>
+	be so that a single-bit error is more likely to occur than a
+	triple-bit error?  
+	</para>
+      </problem> 
+
+      <solution id="idm5274816"> 
+	<para id="exer3b">
+	  The probability of a single-bit error in a length-<m:math display="inline">
+	    <m:ci>N</m:ci>
+	  </m:math> 
+	  block is 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>N</m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		</m:msub></m:ci>
+	      <m:apply>
+		<m:power/>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:ci><m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		    </m:msub></m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  and a triple-bit error has probability 
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/>
+		<m:ci>N</m:ci>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:power/>
+		<m:ci><m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		  </m:msub></m:ci>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	      <m:apply><m:power/>
+                <m:apply><m:minus/>
+		   <m:cn>1</m:cn>
+		   <m:ci><m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		  </m:msub></m:ci>
+	        </m:apply>
+	        <m:apply><m:minus/>
+		   <m:ci>N</m:ci>
+		   <m:cn>3</m:cn>
+	        </m:apply>
+               </m:apply>
+	    </m:apply>
+	  </m:math>.  For the first to be greater than the second, we
+	  must have 
+	  <m:math display="block">
+	    <m:apply>
+	      <m:lt/>
+	      <m:ci><m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		</m:msub></m:ci>
+	      <m:apply><m:divide/>
+               <m:cn>1</m:cn>
+               <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:root/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>6</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+             </m:apply>
+	    </m:apply>
+	  </m:math>
+         For 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>N</m:ci>
+	      <m:cn>7</m:cn>
+	    </m:apply>
+	  </m:math>, 
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:lt/>
+	      <m:ci><m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		</m:msub></m:ci>
+	      <m:cn>0.31</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+  </content>
+</document>

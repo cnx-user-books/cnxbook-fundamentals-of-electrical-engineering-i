@@ -1,0 +1,149 @@
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en">
+  <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
+    <md:content-id>col10040</md:content-id>
+    <md:title>Fundamentals of Electrical Engineering I</md:title>
+    <md:language>en</md:language>
+    <md:license url="http://creativecommons.org/licenses/by/1.0">Creative Commons Attribution License</md:license>
+    <md:uuid>778e36af-4c21-4ef7-9c02-dae860eb7d14</md:uuid>
+<md:slug>fundamentals-of-electrical-engineering-i</md:slug>
+</metadata>
+  <col:content>
+    <col:subcollection>
+      <md:title>Introduction</md:title>
+      <col:content>
+        <col:module document="m0000"/>
+        <col:module document="m0001"/>
+        <col:module document="m0002"/>
+        <col:module document="m0003"/>
+        <col:module document="m10353"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Signals and Systems</md:title>
+      <col:content>
+        <col:module document="m0081"/>
+        <col:module document="m0004"/>
+        <col:module document="m0008"/>
+        <col:module document="m0009"/>
+        <col:module document="m0005"/>
+        <col:module document="m0006"/>
+        <col:module document="m10348"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Analog Signal Processing</md:title>
+      <col:content>
+        <col:module document="m0011"/>
+        <col:module document="m0012"/>
+        <col:module document="m0013"/>
+        <col:module document="m0014"/>
+        <col:module document="m17305"/>
+        <col:module document="m10674"/>
+        <col:module document="m0020"/>
+        <col:module document="m0023"/>
+        <col:module document="m0024"/>
+        <col:module document="m10708"/>
+        <col:module document="m17308"/>
+        <col:module document="m0030"/>
+        <col:module document="m0028"/>
+        <col:module document="m0031"/>
+        <col:module document="m0032"/>
+        <col:module document="m17317"/>
+        <col:module document="m0035"/>
+        <col:module document="m0053"/>
+        <col:module document="m0036"/>
+        <col:module document="m0037"/>
+        <col:module document="m10349"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Frequency Domain</md:title>
+      <col:content>
+        <col:module document="m0038"/>
+        <col:module document="m0042"/>
+        <col:module document="m0039"/>
+        <col:module document="m0040"/>
+        <col:module document="m10687"/>
+        <col:module document="m0043"/>
+        <col:module document="m0044"/>
+        <col:module document="m0046"/>
+        <col:module document="m0048"/>
+        <col:module document="m0049"/>
+        <col:module document="m10350"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Digital Signal Processing</md:title>
+      <col:content>
+        <col:module document="m10781"/>
+        <col:module document="m10263"/>
+        <col:module document="m0050"/>
+        <col:module document="m0051"/>
+        <col:module document="m10342"/>
+        <col:module document="m10247"/>
+        <col:module document="m10249"/>
+        <col:module document="m0503"/>
+        <col:module document="m10250"/>
+        <col:module document="m0505"/>
+        <col:module document="m0507"/>
+        <col:module document="m10251"/>
+        <col:module document="m0510"/>
+        <col:module document="m10257"/>
+        <col:module document="m10279"/>
+        <col:module document="m0511"/>
+        <col:module document="m10351"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Information Communication</md:title>
+      <col:content>
+        <col:module document="m0513"/>
+        <col:module document="m0099"/>
+        <col:module document="m0100"/>
+        <col:module document="m0101"/>
+        <col:module document="m0538"/>
+        <col:module document="m0539"/>
+        <col:module document="m0540"/>
+        <col:module document="m0515"/>
+        <col:module document="m0516"/>
+        <col:module document="m0517"/>
+        <col:module document="m0518"/>
+        <col:module document="m0541"/>
+        <col:module document="m0519"/>
+        <col:module document="m10280"/>
+        <col:module document="m0545"/>
+        <col:module document="m0520"/>
+        <col:module document="m0546"/>
+        <col:module document="m10282"/>
+        <col:module document="m0102"/>
+        <col:module document="m0070"/>
+        <col:module document="m0091"/>
+        <col:module document="m0092"/>
+        <col:module document="m0093"/>
+        <col:module document="m10782"/>
+        <col:module document="m0071"/>
+        <col:module document="m0094"/>
+        <col:module document="m10283"/>
+        <col:module document="m0072"/>
+        <col:module document="m0097"/>
+        <col:module document="m0073"/>
+        <col:module document="m0098"/>
+        <col:module document="m0074"/>
+        <col:module document="m0075"/>
+        <col:module document="m0076"/>
+        <col:module document="m0077"/>
+        <col:module document="m10284"/>
+        <col:module document="m0080"/>
+        <col:module document="m10352"/>
+      </col:content>
+    </col:subcollection>
+    <col:subcollection>
+      <md:title>Appendix</md:title>
+      <col:content>
+        <col:module document="m0082"/>
+        <col:module document="m10262"/>
+        <col:module document="m0083"/>
+      </col:content>
+    </col:subcollection>
+  </col:content>
+</col:collection>

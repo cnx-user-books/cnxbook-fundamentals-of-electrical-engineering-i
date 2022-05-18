@@ -1,0 +1,704 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Efficiency of Frequency-Domain Filtering</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10279</md:content-id>
+  <md:title>Efficiency of Frequency-Domain Filtering</md:title>
+  <md:abstract>Compares the efficiency of frequency domain and time domain filtering.</md:abstract>
+  <md:uuid>879c9453-6952-4bb4-98f0-e67a8575fe7f</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">To determine for what signal and filter durations a time- or
+      frequency-domain implementation would be the most efficient, we
+      need only count the computations required by each. For the
+      time-domain, difference-equation approach, we need
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply><m:plus/>
+	    <m:ci><m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub></m:ci>
+	    <m:ci>q</m:ci>
+          </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:cn>2</m:cn>
+	      <m:ci>q</m:ci>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      The frequency-domain approach requires three Fourier transforms, each
+      requiring
+      <m:math>
+	<m:apply>
+	  <m:apply><m:divide/>
+	    <m:apply><m:times/>
+              <m:cn>5</m:cn>
+              <m:ci>K</m:ci>
+            </m:apply>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  <m:apply>
+	    <m:log/>
+	    <m:logbase> <m:cn>2</m:cn> </m:logbase>
+            <m:ci>K</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      computations for a length-<m:math><m:ci>K</m:ci></m:math> FFT, and the
+      multiplication of two spectra
+      (<m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:cn>6</m:cn>
+	  <m:ci>K</m:ci>
+	</m:apply>
+      </m:math>
+      computations). The output-signal-duration-determined length must be at
+      least
+      <m:math>
+	<m:apply>
+	  <m:plus/>
+	  <m:ci>
+	    <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	  </m:ci>
+	  <m:ci>q</m:ci>  
+	</m:apply>
+      </m:math>. Thus, we must compare 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:ci><m:mo>↔</m:mo></m:ci>
+	    <m:apply><m:times/>
+	     <m:apply><m:plus/>
+	       <m:ci><m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi></m:msub></m:ci>
+	       <m:ci>q</m:ci>  
+	     </m:apply>
+	     <m:apply><m:plus/>
+		<m:apply><m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>q</m:ci>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>6</m:cn>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+		  </m:ci>
+		  <m:ci>q</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>5</m:cn>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+		  </m:ci>
+		  <m:ci>q</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:log/>
+		  <m:logbase> <m:cn>2</m:cn> </m:logbase>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+		    </m:ci>
+		    <m:ci>q</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      Exact analytic evaluation of this comparison is quite difficult
+      (we have a transcendental equation to solve). Insight into this
+      comparison is best obtained by dividing by
+      <m:math>
+	<m:apply><m:plus/>
+          <m:ci><m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi></m:msub></m:ci>
+          <m:ci>q</m:ci>
+        </m:apply>
+      </m:math>.
+
+      <m:math display="block">
+	  <m:apply>
+	    <m:ci><m:mo>↔</m:mo></m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:ci>q</m:ci>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+		<m:cn>6</m:cn>
+	      <m:apply>
+		<m:times/>
+		  <m:cn>5</m:cn>
+		<m:apply><m:log/><m:logbase><m:cn>2</m:cn> </m:logbase>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+		    </m:ci>
+		    <m:ci>q</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      With this manipulation, we are evaluating the number of
+      computations per sample. For any given value of the filter's
+      order <m:math><m:ci>q</m:ci></m:math>, the right side, the
+      number of frequency-domain computations, will exceed the left if
+      the signal's duration is long enough. However, for filter
+      durations greater than about 10, as long as the input is at
+      least 10 samples, the frequency-domain approach is faster
+      <emphasis>so long as the FFT's power-of-two constraint is
+      advantageous</emphasis>.
+    </para><para id="para2"> The frequency-domain approach is not yet viable;
+      what will we do when the input signal is infinitely long? The
+      difference equation scenario fits perfectly with the <link document="m0511" target-id="fig1000" strength="3">envisioned
+      digital filtering structure</link>, but so far we have required
+      the input to have limited duration (so that we could calculate
+      its Fourier transform). The solution to this problem is quite
+      simple: Section the input into frames, filter each, and add the
+      results together. To section a signal means expressing it as a
+      linear combination of length-<m:math>
+	<m:ci>
+	  <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	</m:ci>
+      </m:math>
+      non-overlapping "chunks." Because the filter is linear,
+      filtering a sum of terms is equivalent to summing the results of
+      filtering each term.
+
+      <equation id="eqn0005">
+	<m:math>
+	  <m:apply><m:implies/>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar> <m:ci>m</m:ci> </m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>m</m:ci>
+		      <m:ci>
+			<m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">y</m:ci>
+		<m:ci>n</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar> <m:ci>m</m:ci> </m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>m</m:ci>
+		      <m:ci>
+			<m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      
+      As illustrated in <link target-id="fig1003" strength="3"/>, note
+      that each filtered section has a duration longer than the input.
+      Consequently, we must literally add the filtered sections
+      together, not just butt them together.
+    </para>
+    
+      <figure id="fig1003">
+	<media id="id3830402" alt="">
+          <image src="../../media/sig25.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig25.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  The noisy input signal is sectioned into length-48 frames,
+	  each of which is filtered using frequency-domain
+	  techniques. Each filtered section is added to other outputs
+	  that overlap to create the signal equivalent to having
+	  filtered the entire input. The sinusoidal component of the
+	  signal is shown as the red dashed line.
+	</caption>
+      </figure>    
+
+    <para id="para3">Computational considerations reveal a substantial advantage for
+      a frequency-domain implementation over a time-domain one. The number
+      of computations for a time-domain implementation essentially remains
+      constant whether we section the input or not. Thus, the number of
+      computations for each output is
+      <m:math>
+	<m:apply>
+	  <m:plus/>
+	  <m:apply>
+	    <m:cn>2</m:cn>
+	    <m:ci>q</m:ci>
+	  </m:apply>
+	  <m:cn>1</m:cn>
+	</m:apply>
+      </m:math>.  In the frequency-domain approach, computation
+      counting changes because we need only compute the filter's
+      frequency response
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">H</m:ci>
+	  <m:ci>k</m:ci>
+	</m:apply>
+      </m:math>
+      once, which amounts to a fixed overhead. We need only compute
+      two DFTs and multiply them to filter a section.  Letting
+      <m:math>
+	<m:ci>
+	  <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	</m:ci>
+      </m:math>
+      denote a section's length, the number of computations for a
+      section amounts to
+      <m:math>
+	<m:apply>
+	  <m:plus/>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>
+		<m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	      </m:ci>
+	      <m:ci>q</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:log/>
+	      <m:logbase> <m:cn>2</m:cn> </m:logbase>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+		</m:ci>
+		<m:ci>q</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>6</m:cn>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>
+		<m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	      </m:ci>
+	      <m:ci>q</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  In addition, we must add the filtered outputs
+      together; the number of terms to add corresponds to the excess
+      duration of the output compared with the input
+      (<m:math><m:ci>q</m:ci></m:math>). The frequency-domain approach
+      thus requires
+      <m:math>
+	<m:apply><m:plus/>
+	    <m:apply><m:log/><m:logbase> <m:cn>2</m:cn> </m:logbase>
+	      <m:apply><m:plus/>
+		<m:ci><m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub></m:ci>
+		<m:ci>q</m:ci>
+	      </m:apply><!-- close plus -->
+	    </m:apply><!-- close log -->
+	  <m:cn>6</m:cn>
+	  <m:apply><m:divide/>
+	      <m:ci>q</m:ci>
+	      <m:apply><m:plus/>
+                <m:ci><m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub></m:ci>
+                <m:ci>q</m:ci>
+              </m:apply>
+	    </m:apply><!-- close divide -->
+	</m:apply><!-- close plus -->
+      </m:math>
+      computations per output value. For even modest filter orders, the
+      frequency-domain approach is much faster.
+    </para><exercise id="exer1">
+      <problem id="id1165744532061">
+	<para id="exer1a">
+	  Show that as the section length increases, the frequency
+	  domain approach becomes increasingly more efficient.</para>
+      </problem>
+      <solution id="id8389872">
+	<para id="exer1b">Let <m:math><m:ci>N</m:ci></m:math> denote the input's total
+	  duration. The time-domain implementation requires a total of
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>N</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>q</m:ci>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  computations, or   
+	  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:ci>q</m:ci>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math>
+	  computations per input value. In the frequency domain, we split the
+	  input into
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>N</m:ci>
+	      <m:ci>
+		<m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:math>
+	  sections, each of which requires 
+      <m:math>
+	<m:apply><m:plus/>
+	    <m:apply><m:log/><m:logbase> <m:cn>2</m:cn> </m:logbase>
+	      <m:apply><m:plus/>
+		<m:ci><m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub></m:ci>
+		<m:ci>q</m:ci>
+	      </m:apply><!-- close plus -->
+	    </m:apply><!-- close log -->
+	  <m:cn>6</m:cn>
+	  <m:apply><m:divide/>
+	      <m:ci>q</m:ci>
+	      <m:apply><m:plus/>
+                <m:ci><m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub></m:ci>
+                <m:ci>q</m:ci>
+              </m:apply>
+	    </m:apply><!-- close divide -->
+	</m:apply><!-- close plus -->
+      </m:math>
+	  per input in the section. Because we divide
+	  <emphasis>again</emphasis> by
+	  <m:math>
+	    <m:ci>
+	      <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	    </m:ci>
+	  </m:math>
+	  to find the number of computations per input value in the
+	  entire input, this quantity <emphasis>decreases</emphasis>
+	  as
+	  <m:math>
+	    <m:ci>
+	      <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	    </m:ci>
+	  </m:math>
+	  increases. For the time-domain implementation, it stays
+	  constant.
+	</para></solution>
+    </exercise>
+
+    <para id="para4"> 
+      Note that the choice of section duration is arbitrary. Once the
+      filter is chosen, we should section so that the required FFT length is
+      precisely a power of two: Choose
+      <m:math>
+	<m:ci>
+	  <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	</m:ci>
+      </m:math>
+      so that 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>
+	      <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	    </m:ci>
+	    <m:ci>q</m:ci>  
+	  </m:apply>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>2</m:cn>
+	    <m:ci>L</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <para id="para4.1">Implementing the digital filter shown in the
+      <link document="m0511" target-id="fig1000" strength="3">A/D block
+      diagram</link> with a frequency-domain implementation requires
+      some additional signal management not required by time-domain
+      implementations. Conceptually, a real-time, time-domain filter
+      could accept each sample as it becomes available, calculate the
+      difference equation, and produce the output value, all in less
+      than the sampling interval
+      <m:math>
+      <m:ci><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:ci>
+      </m:math>.
+      Frequency-domain approaches don't operate on a
+      sample-by-sample basis; instead, they operate on sections. They
+      filter in real time by producing <m:math><m:ci><m:msub>
+      <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub></m:ci></m:math> outputs
+      for the same number of inputs faster than
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:ci> <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub> </m:ci>
+	  <m:ci> <m:msub> <m:mi>T</m:mi> <m:mi>s</m:mi> </m:msub> </m:ci>
+	</m:apply>
+      </m:math>.  Because they generally take longer to produce an
+      output section than the sampling interval duration, we must
+      filter one section while accepting into memory the
+      <emphasis>next</emphasis> section to be filtered. In
+      programming, the operation of building up sections while
+      computing on previous ones is known as <term>buffering</term>.
+      Buffering can also be used in time-domain filters as well but
+      isn't required.
+    </para><example id="exa2000">
+      <para id="para1b">
+	We want to lowpass filter a signal that contains a sinusoid
+	and a significant amount of noise. The example shown in <link target-id="fig1003" strength="3"/> shows a portion of the noisy signal's waveform. If
+	it weren't for the overlaid sinusoid, discerning the sine wave
+	in the signal is virtually impossible. One of the primary
+	applications of linear filters is <term>noise removal</term>:
+	preserve the signal by matching filter's passband with the
+	signal's spectrum and greatly reduce all other frequency
+	components that may be present in the noisy signal.  </para>
+      
+
+      <para id="para2b"> 
+	A smart Rice engineer has selected a FIR filter having a unit-sample
+	response corresponding a period-17 sinusoid: 
+	<m:math>
+	  <!-- h(n) = (1 - cos2pi(n+1)/17) / 18 -->
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">h</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+              <m:times/>
+              <m:apply>
+	        <m:divide/>
+                  <m:cn>1</m:cn><m:cn>17</m:cn>
+              </m:apply>
+	      <m:apply><m:minus/>
+		<m:cn>1</m:cn>
+		  <m:apply><m:cos/>
+		    <m:apply><m:divide/>
+                      <m:apply><m:times/>
+		        <m:cn>2</m:cn>
+		        <m:pi/>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:cn>17</m:cn>
+		    </m:apply>
+		  </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+	<m:math>
+	  <!-- n = 0, ..., 16 -->
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>n</m:ci>
+	    <m:set>
+	      <m:cn>0</m:cn>
+	      <m:ci>…</m:ci>
+	      <m:cn>16</m:cn>
+	    </m:set>
+	  </m:apply>
+	</m:math>, which makes
+	<m:math>
+	  <!-- q = 16 -->
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>q</m:ci>
+	    <m:cn>16</m:cn>
+	  </m:apply>
+	</m:math>.  Its frequency response (determined by computing
+	the discrete Fourier transform) is shown in <link target-id="fig1004" strength="3"/>. To apply, we can select the
+	length of each section so that the frequency-domain filtering
+	approach is maximally efficient: Choose the section length
+	<m:math><m:ci> <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi>
+	</m:msub></m:ci> </m:math> so that
+	<m:math>
+	  <!-- Nsubx + q -->
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>
+	      <m:msub> <m:mi>N</m:mi> <m:mi>x</m:mi> </m:msub>
+	    </m:ci>
+	    <m:ci>q</m:ci>
+	  </m:apply>
+	</m:math>
+	is a power of two.  To use a length-64 FFT, each section must
+	be 48 samples long. Filtering with the difference equation
+	would require 33 computations per output while the frequency
+	domain requires a little over 16; this frequency-domain
+	implementation is over twice as fast!  <link target-id="fig1003" strength="3"/> shows how frequency-domain filtering works.
+      </para>
+
+      <figure id="fig1004">
+	<media id="id1165746229828" alt="">
+          <image src="../../media/sig24.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig24.eps" mime-type="application/postscript"/>
+        </media> 
+	<caption>
+	  The figure shows the unit-sample response of a length-17
+	  Hanning filter on the left and the frequency response on the
+	  right.  This filter functions as a lowpass filter having a
+	  cutoff frequency of about 0.1.
+	</caption>
+      </figure>
+
+      <para id="para3b">
+	We note that the noise has been dramatically reduced, with a
+	sinusoid now clearly visible in the filtered output. Some
+	residual noise remains because noise components within the
+	filter's passband appear in the output as well as the signal.
+      </para>
+    </example>
+
+    <exercise id="exer11">
+      <problem id="id1165738536474">
+	<para id="exer1ab">
+	  Note that when compared to the input signal's sinusoidal
+	  component, the output's sinusoidal component seems to be
+	  delayed. What is the source of this delay? Can it be removed?</para>
+      </problem>
+
+      <solution id="id1165743075216">
+	<para id="exer1bb">
+	  The delay is  <emphasis>not</emphasis> computational delay here--the
+	  plot shows the first output value is aligned with the filter's first
+	  input--although in real systems this is an important
+	  consideration. Rather, the delay is due to the filter's phase shift: A
+	  phase-shifted sinusoid is equivalent to a time-delayed one:
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:ci>φ</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		      <m:ci>n</m:ci>
+		      <m:apply>
+		        <m:divide/>
+		          <m:ci>φ</m:ci>
+		          <m:apply>
+		            <m:times/>
+		              <m:cn>2</m:cn>
+		              <m:pi/>
+		              <m:ci>f</m:ci>
+		          </m:apply>
+		      </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>. All filters have phase shifts. This delay could
+	  be removed if the filter introduced no phase shift. Such
+	  filters do not exist in analog form, but digital ones can be
+	  programmed, but not in real time. Doing so would require the
+	  output to emerge before the input arrives!
+	</para>
+      </solution>
+    </exercise>
+
+  </content>
+</document>

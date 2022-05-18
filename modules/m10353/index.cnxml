@@ -1,0 +1,460 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:q="http://cnx.rice.edu/qml/1.0">
+  
+  <title>Introduction Problems</title> <!-- Section 1.5 Ch1 problems -->
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10353</md:content-id>
+  <md:title>Introduction Problems</md:title>
+  <md:abstract>Problems for introduction to signals and systems.</md:abstract>
+  <md:uuid>10cb1068-42a5-4e23-b0a5-3182525bcd11</md:uuid>
+</metadata>
+
+<content>
+    <q:problemset>
+      <q:item id="qitem1" type="text-response">
+	<q:question>
+	  
+	  <section id="ex11sec">
+	    <title>RMS Values</title>
+	    <para id="ex11para">
+	      The <emphasis>rms</emphasis> (root-mean-square) value of
+	      a periodic signal is defined to be
+	      
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>s</m:ci>
+		  <m:apply>
+		    <m:root/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>T</m:ci>
+		      </m:apply>		  
+		      <m:apply>
+			<m:int/>
+			<m:bvar><m:ci>t</m:ci></m:bvar>
+			<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+			<m:uplimit><m:ci>T</m:ci></m:uplimit>
+			<m:apply>
+			  <m:power/>
+			  <m:apply>
+			    <m:ci type="fn">s</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>    
+		    
+		  </m:apply>
+		</m:apply>	    
+	      </m:math>
+	      where 
+	      <m:math>
+		<m:ci>T</m:ci>
+	      </m:math> 
+	      is defined to be the signal's <emphasis>period</emphasis>:
+	      the smallest positive number such that
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>t</m:ci>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+	    </para>
+	    
+	    <list id="ex11" list-type="enumerated">	    
+	      <item>
+		What is the period of
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci><m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>A</m:ci>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:plus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>
+			      <m:msub>
+				<m:mi>f</m:mi>
+				<m:mn>0</m:mn>
+			      </m:msub>
+			    </m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:ci>φ</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>?
+	      </item>
+
+	      <item>
+		What is the rms value of this signal? How is it
+		related to the peak value?
+	      </item>
+	      <item>
+		What is the period and rms value of the
+                <link target-id="ex11fig" strength="3">depicted</link>
+		<emphasis>square wave</emphasis>, generically denoted
+		by
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">sq</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>?
+	      </item>
+	      <item>
+		By inspecting any device you plug into a wall socket,
+		you'll see that it is labeled "110 volts AC".  What is
+		the expression for the voltage provided by a wall
+		socket?  What is its rms value?
+	      </item>
+	    </list>
+
+	    <figure id="ex11fig">
+	      <media id="id4805182" alt="">
+                <image src="../../media/sig13.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig13.eps" mime-type="application/postscript"/>
+              </media>
+	      
+	    </figure>
+
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item id="qitem12" type="text-response">
+	<q:question>
+	  <section id="q12sec">
+	    <title>Modems</title>
+	    <para id="ex12para">
+	      The word "modem" is short for "modulator-demodulator."
+              Modems are used not only for connecting computers to
+              telephone lines, but also for connecting digital
+              (discrete-valued) sources to generic channels.  In this
+              problem, we explore a simple kind of modem, in which
+              binary information is represented by the presence or
+              absence of a sinusoid (presence representing a "1" and
+              absence a "0").  Consequently, the modem's transmitted
+              signal that represents a single bit has the form
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>A</m:ci>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:mtext> , </m:mtext>
+		<m:apply>
+		  <m:leq/>
+		  <m:cn>0</m:cn>
+		  <m:ci>t</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:math>
+
+	      Within each bit interval
+	      <m:math><m:ci>T</m:ci></m:math>, the amplitude is either
+	      <m:math><m:ci>A</m:ci></m:math> or zero.
+
+	      <list id="ex12list" list-type="enumerated">
+		<item>
+		  What is the smallest transmission interval that
+		  makes sense with the frequency
+		  <m:math>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:math>?
+		</item>
+
+		<item>
+		  Assuming that ten cycles of the sinusoid comprise a
+		  single bit's transmission interval, what is the
+		  datarate of this transmission scheme?
+		</item>
+
+		<item>
+		  Now suppose instead of using "on-off" signaling, we
+		  allow one of several <emphasis>different</emphasis>
+		  values for the amplitude during any transmission
+		  interval.  If <m:math><m:ci>N</m:ci></m:math>
+		  amplitude values are used, what is the resulting
+		  datarate?
+		</item>
+
+		<item>
+		  The classic communications block diagram applies to
+		  the modem.  Discuss how the transmitter must
+		  interface with the message source since the source
+		  is producing letters of the alphabet, not bits.
+		</item>
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item id="qitem13" type="text-response">
+	<q:question>
+	  <section id="q13sec">
+	    <title>Advanced Modems</title>
+	    <para id="ex13para">
+	      To transmit symbols, such as letters of the alphabet, RU
+	      computer modems use two frequencies (1600 and 1800 Hz)
+	      and several amplitude levels.  A transmission is sent
+	      for a period of time <m:math><m:ci>T</m:ci></m:math>
+	      (known as the transmission or baud interval) and equals
+	      the sum of two amplitude-weighted carriers.
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>A</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>f</m:mi>
+			      <m:mn>1</m:mn>
+			    </m:msub></m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>A</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>f</m:mi>
+			      <m:mn>2</m:mn>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:mtext> , </m:mtext>
+		<m:apply>
+		  <m:leq/>
+		  <m:cn>0</m:cn>
+		  <m:ci>t</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:math>
+	      We send successive symbols by choosing an appropriate
+	      frequency and amplitude combination, and sending them
+	      one after another.
+
+	      <list id="ex13list" list-type="enumerated">
+		<item>
+		  What is the smallest transmission interval that
+		  makes sense to use with the frequencies given above?
+		  In other words, what should
+		  <m:math><m:ci>T</m:ci></m:math> be so that an
+		  integer number of cycles of the carrier occurs?
+		</item>
+
+		<item>
+		  Sketch (using Matlab) the signal that modem produces
+		  over several transmission intervals.  Make sure you
+		  axes are labeled.
+		</item>
+		<item>
+		  Using your signal transmission interval, how many
+		  amplitude levels are needed to transmit ASCII
+		  characters at a datarate of 3,200 bits/s? Assume use
+		  of the extended (8-bit) ASCII code.
+		</item>
+	      </list>
+
+	      <note id="id9168956"> We use a discrete set of values for
+		<m:math>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:math>
+		and
+		<m:math>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:math>.
+		If we have
+		<m:math>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>N</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:math> 
+		values for amplitude
+		<m:math>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:math>, 
+		and
+		<m:math>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>N</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:math> 
+		values for
+		<m:math>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:math>, 
+		we have
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>N</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>N</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:math>
+		
+		possible symbols that can be sent during each
+		<m:math><m:ci>T</m:ci></m:math> second interval.  To
+		convert this number into bits (the fundamental unit of
+		information engineers use to qualify things), compute
+
+		<m:math>
+		  <m:apply>
+		    <m:log/>
+		    <m:logbase>
+		      <m:cn>2</m:cn>
+		    </m:logbase>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>N</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>N</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:math>.
+	      </note>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+    </q:problemset>
+
+  </content>
+</document>

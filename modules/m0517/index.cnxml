@@ -1,0 +1,166 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+<title>Baseband Communication</title><metadata>
+  <md:content-id>m0517</md:content-id><md:title>Baseband Communication</md:title>
+  <md:abstract>Baseband communication is the simplest form of analog communication.</md:abstract>
+  <md:uuid>fc1e1040-08c2-44d6-bab1-c7d70f5f5e58</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">
+      We use analog communication techniques for analog message
+      signals, like music, speech, and television.  Transmission and
+      reception of analog signals using analog results in an
+      inherently noisy received signal (assuming the channel adds
+      noise, which it almost certainly does).</para>
+    
+
+    <para id="p2">
+      The simplest form of analog communication is <term>baseband
+      communication</term>.
+      
+      <note id="id1299915" type="Point of Interest"><label>Point of Interest</label>We use analog communication
+	techniques for analog message signals, like music, speech, and
+	television. Transmission and reception of analog signals using
+	analog results in an inherently noisy received signal
+	(assuming the channel adds noise, which it almost certainly
+	does).</note>
+
+      Here, the transmitted signal equals the message times a
+      transmitter gain.
+      
+      <equation id="eqn0000">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci><m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>G</m:ci>
+	      <m:apply>
+		<m:ci type="fn">m</m:ci><m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	
+      </equation>
+      An example, which is somewhat out of date, is the wireline
+      telephone system. You don't use baseband communication in
+      wireless systems simply because low-frequency signals do not
+      radiate well. The receiver in a baseband system can't do much
+      more than filter the received signal to remove out-of-band noise
+      (interference is small in wireline channels). Assuming the
+      signal occupies a bandwidth of <m:math><m:ci>W</m:ci></m:math>
+      Hz (the signal's spectrum extends from zero to
+      <m:math><m:ci>W</m:ci></m:math>), the receiver applies a lowpass
+      filter having the same bandwidth, as shown in <link target-id="fig1000" strength="3"/>.
+    </para>
+    
+    <figure id="fig1000" orient="horizontal">
+      <media id="id5099606" alt="">
+        <image src="../../media/sys17.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys17.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>The receiver for baseband communication systems is quite
+	simple: a lowpass filter having the same bandwidth as the
+	signal. </caption>
+    </figure>                                                                     
+    
+    <para id="p3">
+      We use the <term>signal-to-noise ratio </term>of the
+      receiver's output 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:mover><m:mi>m</m:mi>
+	      <m:mo>^</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+      to evaluate any analog-message communication system. Assume that
+      the channel introduces an attenuation
+      <m:math><m:ci>α</m:ci></m:math> and white noise of
+      spectral height
+      <m:math>
+	<m:apply><m:divide/>
+	  <m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math>.  The filter does not affect the signal component—we
+      assume its gain is unity—but does filter the noise,
+      removing frequency components above
+      <m:math><m:ci>W</m:ci></m:math> Hz.  In the filter's output, the
+      received signal power equals
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:power/>
+	    <m:ci>α</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  <m:apply> 
+	    <m:power/>
+	    <m:ci>G</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">power</m:ci><m:ci>m</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      and the noise power
+      <m:math>
+	<m:apply><m:times/>
+	  <m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	  <m:ci>W</m:ci>
+	</m:apply>
+      </m:math>,
+      which gives a signal-to-noise ratio of
+
+      <equation id="eqn0001">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci><m:msub><m:ci>SNR</m:ci><m:mo>baseband</m:mo></m:msub></m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>α</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply> 
+		  <m:power/>
+		  <m:ci>G</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">power</m:ci><m:ci>m</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		<m:ci>W</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      The signal power <m:math><m:apply><m:ci type="fn">power</m:ci><m:ci>m</m:ci></m:apply></m:math> will be
+      proportional to the bandwidth <m:math><m:ci>W</m:ci></m:math>;
+      thus, in baseband communication the signal-to-noise ratio varies
+      only with transmitter gain and channel attenuation and noise
+      level.
+    </para>
+  </content>
+</document>

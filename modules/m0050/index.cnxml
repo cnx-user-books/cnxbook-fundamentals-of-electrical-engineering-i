@@ -1,0 +1,947 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>The Sampling Theorem</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0050</md:content-id>
+  <md:title>The Sampling Theorem</md:title>
+  <md:abstract>Converting between a signal and numbers.</md:abstract>
+  <md:uuid>1f556584-be30-4121-8ffa-fc0dc77cbec7</md:uuid>
+</metadata>
+
+<content>
+    <section id="first_AD_section">
+      <title>Analog-to-Digital Conversion</title>	
+      <para id="first_AD_para">Because of the way computers are organized, signal must be
+	represented by a finite number of bytes.  This restriction
+	means that <emphasis>both</emphasis> the time axis and the
+	amplitude axis must be <term>quantized</term>: They must each
+	be a multiple of the integers. 
+	
+	<footnote id="id12489557">
+	  We assume that we do not use floating-point A/D converters.
+	</footnote>
+	
+	Quite surprisingly, the Sampling Theorem allows us to quantize
+	the time axis <emphasis>without error</emphasis> for some
+	signals.  The signals that can be sampled without introducing
+	error are interesting, and as described in the next section,
+	we can make a signal "samplable" by filtering.  In contrast,
+	no one has found a way of performing the amplitude
+	quantization step without introducing an unrecoverable error.
+	Thus, a signal's value can no longer be any real number.
+	Signals processed by digital computers must be
+	<term>discrete-valued</term>: their values must be
+	proportional to the integers.  Consequently,
+        <emphasis>analog-to-digital conversion introduces
+	error</emphasis>.
+      </para>
+    </section>
+
+
+    <section id="first_sampling_section">
+      <title>The Sampling Theorem</title>	
+      <para id="sampling_theorem">Digital transmission of information and digital signal
+	processing all require signals to first be "acquired" by a
+	computer. One of the most amazing and useful results in
+	electrical engineering is that signals can be converted from a
+	function of time into a sequence of numbers <emphasis>without
+	error</emphasis>: We can convert the numbers back into the
+	signal with (theoretically) <emphasis>no</emphasis>
+	error. Harold Nyquist, a Bell Laboratories engineer, first derived
+	this result, known as the Sampling Theorem, in the
+	1920s. It found no real application back then.
+	<link url="http://www.lucent.com/minds/infotheory/">Claude
+	  Shannon</link>, 	
+	also at Bell Laboratories, revived the result once computers
+	were made public after World War II.
+      </para>      
+
+      <para id="two"> 
+	The sampled version of the analog signal 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> 
+	is 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>n</m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>T</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub></m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+	with 
+	<m:math>
+	  <m:ci><m:msub> 
+	      <m:mi>T</m:mi> 
+	      <m:mi>s</m:mi>
+	    </m:msub></m:ci> 
+	</m:math>	
+	known as the <term>sampling interval</term>.  Clearly, the
+	value of the original signal at the sampling times is
+	preserved; the issue is how the signal values
+	<emphasis>between</emphasis> the samples can be
+	reconstructed since they are lost in the sampling
+	process.  To characterize sampling, we approximate it as
+	the product
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>P</m:mi>
+		    <m:msub>
+		      <m:mi>T</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+	with 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>P</m:mi>
+		  <m:msub>
+		    <m:mi>T</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	being the periodic pulse signal.  The resulting signal, as
+	shown in <link target-id="sampled" strength="2"/>, has nonzero
+	values only during the time intervals
+	<m:math>
+	  <m:interval closure="open">
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>n</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>T</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>Δ</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>  
+		<m:ci>n</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>T</m:mi>
+		    <m:mi>s</m:mi> 
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>Δ</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:interval>
+	</m:math>,  
+
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci>n</m:ci> 
+	    <m:set>
+	      <m:ci>…</m:ci>
+	      <m:cn>-1</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:cn>1</m:cn>
+	      <m:ci>…</m:ci>
+	    </m:set>
+	  </m:apply>
+	</m:math>.
+        <figure id="sampled">
+	<title>Sampled Signal</title>
+	<media id="id21399811" alt="">
+          <image src="../../media/sig17.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig17.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  The waveform of an example signal is shown in the top plot
+	  and its sampled version in the bottom.
+	</caption>
+      </figure>
+For our purposes here, we center the periodic pulse signal
+	about the origin so that its Fourier series coefficients are
+	real (the signal is even).
+	
+	<equation id="real_coefficients"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>p</m:mi>
+		    <m:msub>
+		      <m:mi>T</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>	      
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>k</m:ci></m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>k</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>T</m:mi>
+			  <m:mi>s</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation><equation id="real_coefficients2">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:sin/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:ci>k</m:ci>
+		      <m:ci>Δ</m:ci>
+		    </m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>T</m:mi>
+			<m:mi>s</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:pi/>
+		  <m:ci>k</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+If the properties of   
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	and the periodic pulse signal are chosen properly, we can
+	recover
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> 
+	from  
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> 
+	by filtering.
+      </para>
+
+      <para id="four">
+	To understand how signal values between the samples can be
+	"filled" in, we need to calculate the sampled signal's
+	spectrum. Using the Fourier series representation of the
+	periodic sampling signal,
+
+	<equation id="eq1"> 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">x</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>k</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>T</m:mi>
+			  <m:mi>s</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Considering each term in the sum separately, we need to know
+	the spectrum of the product of the complex exponential and the
+	signal. Evaluating this transform directly is quite easy.
+
+	<equation id="eq2">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+                      <m:apply>
+                        <m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>k</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:ci>           
+			  <m:msub>
+			    <m:mi>T</m:mi>
+			    <m:mi>s</m:mi>
+			  </m:msub>   
+			</m:ci>
+                      </m:apply>
+		    </m:apply> 
+		    <m:apply>
+		      <m:exp/>
+                      <m:apply>
+                        <m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>f</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+                      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+                      <m:apply>
+                        <m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/> 
+			  <m:apply>
+			    <m:minus/>
+			    <m:ci>f</m:ci>
+			    <m:apply>
+			      <m:divide/>
+			      <m:ci>k</m:ci>
+			      <m:ci>
+				<m:msub>
+				  <m:mi>T</m:mi>
+				  <m:mi>s</m:mi>
+				</m:msub>
+			      </m:ci>
+			    </m:apply>
+			  </m:apply>
+			  <m:ci>t</m:ci>
+			</m:apply>
+                      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>S</m:ci> 
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>f</m:ci> 
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>k</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>T</m:mi>
+			<m:mi>s</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Thus, the spectrum of the sampled signal consists of weighted
+	(by the coefficients
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>) 
+	and delayed versions of the signal's spectrum
+	(<link target-id="alias" strength="2"/>).
+	
+	<equation id="eq3">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">X</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>  
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>S</m:ci> 
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>f</m:ci> 
+		    <m:apply>
+		      <m:divide/>
+                      <m:ci>k</m:ci>
+                      <m:ci>
+                        <m:msub>
+                          <m:mi>T</m:mi>
+                          <m:mi>s</m:mi>
+                        </m:msub>
+                      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation> 
+
+	In general, the terms in this sum overlap each other in the
+	frequency domain, rendering recovery of the original signal
+	impossible. This unpleasant phenomenon is known as
+	<term>aliasing</term>.
+     <figure id="alias">
+	<title>aliasing</title>  
+	<media id="id16923073" alt="">
+          <image src="../../media/spectrum9.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/spectrum9.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  The spectrum of some bandlimited (to       
+	  <m:math>
+	    <m:ci>W</m:ci> 
+	  </m:math> Hz) 
+	  signal is shown in the top plot.  If the sampling interval
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>T</m:mi>
+		<m:mi>s</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>
+	  is chosen too large relative to the bandwidth          
+	  <m:math>
+	    <m:ci>W</m:ci> 
+	  </m:math>, 
+	  aliasing will occur. In the bottom plot, the sampling
+	  interval is chosen sufficiently small to avoid
+	  aliasing. Note that if the signal were not bandlimited, the
+	  component spectra would <emphasis>always</emphasis> overlap.
+	</caption>
+      </figure>
+	If, however, we satisfy two conditions:
+
+	<list id="list1"> 
+	  <item> 
+	    The signal   
+	    <m:math>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:math>
+	    is <emphasis>bandlimited</emphasis>—has power in a
+	    restricted frequency range—to
+	    <m:math>
+	      <m:ci>W</m:ci>
+	    </m:math>
+	    Hz, and
+	  </item>
+	  <item> 
+	    the sampling interval   
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>T</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>
+	    is small enough so that the individual components in the
+	    sum do not overlap—
+	    <m:math>
+	      <m:apply>
+		<m:lt/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>T</m:mi>
+		    <m:mi>s</m:mi> 
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn type="rational">1<m:sep/>2</m:cn>
+		  <m:ci>W</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>,
+	  </item>
+	</list>
+
+	aliasing will not occur. In this delightful case, we can
+	recover the original signal by lowpass filtering
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math> 
+	with a filter having a cutoff frequency equal to   
+	<m:math>
+	  <m:ci>W</m:ci> 
+	</m:math> Hz.  	
+	These two conditions ensure the ability to recover a
+	bandlimited signal from its sampled version: We thus have the
+	<term>Sampling Theorem</term>.
+      </para>
+
+
+      <exercise id="exer1">
+	<problem id="id23614337">
+	  <para id="problem">
+	    The Sampling Theorem (as stated) does not mention the
+	    pulse width
+	    <m:math>
+	      <m:ci>Δ</m:ci> 
+	    </m:math>.  
+	    What is the effect of this parameter on our ability to
+	    recover a signal from its samples (assuming the Sampling
+	    Theorem's two conditions are met)?
+	  </para>
+	</problem>
+
+	<solution id="id10497778">
+	  <para id="solution">
+	    The only effect of pulse duration is to unequally weight
+	    the spectral repetitions.  Because we are only concerned
+	    with the repetition centered about the origin, the pulse
+	    duration has no significant effect on recovering a signal
+	    from its samples.  
+	  </para>
+	</solution>
+      </exercise>
+
+
+      <para id="para1"> 
+	The frequency 
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:ci><m:msub>
+		  <m:mi>T</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub></m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+
+	known today as the <term>Nyquist frequency</term> and the
+	<term>Shannon sampling frequency</term>, corresponds to the
+	highest frequency at which a signal can contain energy and
+	remain compatible with the Sampling Theorem. High-quality
+	sampling systems ensure that no aliasing occurs by
+	unceremoniously lowpass filtering the signal (cutoff frequency
+	being slightly lower than the Nyquist frequency) before
+	sampling. Such systems therefore vary the
+	<emphasis>anti-aliasing</emphasis> filter's cutoff frequency
+	as the sampling rate varies. Because such quality features
+	cost money, many sound cards do <emphasis>not</emphasis> have
+	anti-aliasing filters or, for that matter, post-sampling
+	filters. They sample at high frequencies, 44.1 kHz for
+	example, and hope the signal contains no frequencies above the
+	Nyquist frequency (22.05 kHz in our example). If, however, the
+	signal contains frequencies beyond the sound card's Nyquist
+	frequency, the resulting aliasing can be impossible to remove.
+      </para>
+
+
+      <exercise id="exer1fast">
+	<problem id="id18001921">
+	  <para id="prob1">
+	    To gain a better appreciation of aliasing, sketch the
+	    spectrum of a sampled square wave.  For simplicity
+	    consider only the spectral repetitions centered at
+	    <m:math>
+	      <m:apply>
+		  <m:minus/>
+		<m:apply>
+		<m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>T</m:mi>
+		      <m:mi>s</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, 
+
+	    <m:math>
+	      <m:cn>0</m:cn>
+	    </m:math>,
+	    
+	    <m:math>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci><m:msub>
+		    <m:mi>T</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub></m:ci>
+	      </m:apply> 
+	    </m:math>. 
+	    Let the sampling interval
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>T</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>	    
+	    be 1; consider two values for the square wave's period:
+	    3.5 and 4. Note in particular where the spectral lines go
+	    as the period decreases; some will move to the left and
+	    some to the right. What property characterizes the ones
+	    going the same direction?
+	  </para>
+	</problem>
+
+	<solution id="id10097614">
+	  <figure id="spectrum16">
+	    <media id="id18542746" alt="">
+              <image src="../../media/spectrum16.png" mime-type="image/png"/>
+              <image for="pdf" src="../../media/spectrum16.eps" mime-type="application/postscript"/>
+            </media>
+	  </figure>
+
+	  <para id="sol1">
+	    The square wave's spectrum is shown by the bolder set of
+	    lines centered about the origin. The dashed lines
+	    correspond to the frequencies about which the spectral
+	    repetitions (due to sampling with	    
+	    <m:math>
+	      <m:apply>
+		<m:eq/>  
+		<m:ci>
+		  <m:msub>
+		    <m:mi>T</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:math>) 
+	    occur. As the square wave's period decreases, the negative
+	    frequency lines move to the left and the positive
+	    frequency ones to the right.  
+	  </para>
+	</solution>
+      </exercise>
+
+
+      <para id="para2"> 
+	If we satisfy the Sampling Theorem's conditions, the signal
+	will change only slightly during each pulse. As we narrow the
+	pulse, making	
+	<m:math>
+	  <m:ci>Δ</m:ci>
+	</m:math>
+	smaller and smaller, the nonzero values of the signal  
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>p</m:mi>
+		  <m:msub>
+		    <m:mi>T</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>	
+	will simply be
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>n</m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>T</m:mi>
+		  <m:mi>s</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+	the signal's <term>samples</term>. If indeed the Nyquist
+	frequency equals the signal's highest frequency, at least two
+	samples will occur within the period of the signal's highest
+	frequency sinusoid. In these ways, the sampling signal
+	captures the sampled signal's temporal variations in a way
+	that leaves all the original signal's structure intact.
+      </para>
+
+
+      <exercise id="exer2">
+	<problem id="id20382850">
+	  <para id="para3">
+	    What is the simplest bandlimited signal?  Using this
+	    signal, convince yourself that less than two
+	    samples/period will not suffice to specify it.  If the
+	    sampling rate
+	    <m:math>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>T</m:mi>
+		    <m:mi>s</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:math>
+	    is not high enough, what signal would your resulting
+	    undersampled signal become?
+	  </para>
+	</problem>
+	<solution id="id23522634">
+	  <para id="para4">	    
+	    The simplest bandlimited signal is the sine wave. At the
+	    Nyquist frequency, exactly two samples/period would
+	    occur. Reducing the sampling rate would result in fewer
+	    samples/period, and these samples would appear to have
+	    arisen from a lower frequency sinusoid.
+	  </para>
+	</solution>
+      </exercise>
+
+    </section>  
+
+  </content>
+</document>

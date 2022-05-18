@@ -1,0 +1,131 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Digital Channels</title>
+
+  <metadata>
+  <md:content-id>m0102</md:content-id><md:title>Digital Channels</md:title>
+  <md:abstract>An introduction to the components and structure of a digital channel.</md:abstract>
+  <md:uuid>f1c41f2b-7c71-49b8-885a-2885d917d35c</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">
+      Let's review how digital communication systems work within the
+      <link document="m0002" target-id="commsys" strength="2">Fundamental
+      Model of Communication</link>. As shown in <link target-id="digmc" strength="2"/>, the message is a single bit. The entire analog
+      transmission/reception system, which is discussed in <link document="m0519" strength="2">Digital Communication</link>,
+      <link document="m0542" strength="1">Signal Sets</link>, <link document="m0543" strength="1">BPSK Signal Set</link>, <link document="m0544" strength="1">Transmission Bandwidth</link>,
+      <link document="m0545" strength="1">Frequency Shift
+      Keying</link>, <link document="m0520" strength="1">Digital
+      Communication Receivers</link>, <link document="m0546" strength="1">Factors in Receiver Error</link>, <link document="m0547" strength="1">Digital Communication System
+      Properties</link>, and <link document="m0548" strength="1">Error
+      Probability</link>, can be lumped into a single system known as
+      the digital channel.
+    </para>
+
+    <figure id="digmc">
+      <title>DigMC</title>
+      <media id="id1171476978356" alt="">
+        <image src="../../media/sys20.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys20.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The steps in transmitting digital information are shown in the
+	upper system, the Fundamental Model of Communication.  The
+	symbolic-valued signal
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>m</m:ci>
+	  </m:apply>
+	</m:math>
+	forms the message, and it is encoded into a bit sequence
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">b</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math>.  The indices differ because more than one
+	bit/symbol is usually required to represent the message by a
+	bitstream.  Each bit is represented by an analog signal,
+	transmitted through the (unfriendly) channel, and received by
+	a matched-filter receiver.  From the received bitstream
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:mover accent="true">
+		<m:mi>b</m:mi>
+		<m:mo>^</m:mo>
+	      </m:mover>
+	    </m:ci>
+	    <m:ci>n</m:ci>	    
+	  </m:apply>
+	</m:math>
+	the received symbolic-valued signal   
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:mover accent="true">
+		<m:mi>s</m:mi>
+		<m:mo>^</m:mo>
+	      </m:mover>
+	    </m:ci>
+	    <m:ci>m</m:ci>	    
+	  </m:apply>
+	</m:math>
+	is derived.  The lower block diagram shows an equivalent
+	system wherein the analog portions are combined and modeled by
+	a transition diagram, which shows how each transmitted bit
+	could be received.  For example, transmitting a 0 results in
+	the reception of a 1 with probability
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>p</m:mi>
+	      <m:mi>e</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	(an error) or a 0 with probability   
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+	    <m:cn>1</m:cn>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>e</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:math>
+	(no error). 
+      </caption>
+    </figure>
+
+    <para id="para2">
+      Digital channels are described by <term>transition
+      diagrams</term>, which indicate the output alphabet symbols that
+      result for each possible transmitted symbol and the
+      probabilities of the various reception possibilities.  The
+      probabilities on transitions coming from the same symbol must
+      sum to one.  For the matched-filter receiver and the signal sets
+      we have seen, the depicted transition diagram, known as a
+      <term>binary symmetric channel</term>, captures how transmitted
+      bits are received.  The probability of error
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>p</m:mi>
+	    <m:mi>e</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      is the sole parameter of the digital channel, and it
+      encapsulates signal set choice, channel properties, and the
+      matched-filter receiver.  With this simple but entirely accurate
+      model, we can concentrate on how bits are received.
+    </para>
+
+  </content>
+</document>

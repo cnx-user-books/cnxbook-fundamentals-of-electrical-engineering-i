@@ -1,0 +1,149 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Communication Networks</title>
+
+  <metadata>
+  <md:content-id>m0075</md:content-id><md:title>Communication Networks</md:title>
+  <md:abstract>Communication networks have changed a lot over the years, but many aspects of them are still the same.</md:abstract>
+  <md:uuid>c3c668de-3332-465a-9964-58b99d5a1f23</md:uuid>
+</metadata>
+
+<content>
+
+    <para id="p1"> Communication networks elaborate the <link document="m0002" target-id="commsys" strength="2">Fundamental Model
+      of Communications</link>.  The model shown in <link target-id="commnetwork" strength="2"/> describes
+      <term>point-to-point </term>communications well, wherein the
+      link between transmitter and receiver is straightforward, and
+      they have the channel to themselves. One modern example of this
+      communications mode is the modem that connects a personal
+      computer with an information server via a telephone line. The
+      key aspect, some would say flaw, of this model is that the
+      channel is <term>dedicated</term>: Only one communications link
+      through the channel is allowed for all time.  Regardless whether
+      we have a wireline or wireless channel, communication bandwidth
+      is precious, and if it could be shared without significant
+      degradation in communications performance (measured by
+      signal-to-noise ratio for analog signal transmission and by
+      bit-error probability for digital transmission) so much the
+      better.  
+    </para>
+
+    <figure id="commnetwork">
+      <media id="id1171477723836" alt="">
+        <image src="../../media/sys23.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys23.eps" mime-type="application/postscript"/>
+      </media> <caption> The
+      prototypical communications network—whether it be the
+      postal service, cellular telephone, or the
+      Internet—consists of nodes interconnected by links.
+      Messages formed by the source are transmitted within the network
+      by dynamic routing. Two routes are shown. The longer one would
+      be used if the direct link were disabled or congested.
+      </caption>
+    </figure> 
+
+    <para id="p2"> The idea of a network first emerged with perhaps
+      the oldest form of organized communication: the postal
+      service. Most communication networks, even modern ones, share
+      many of its aspects.
+
+      <list id="list"> 
+
+	<item> A user writes a letter, serving in the communications
+	context as the message source.
+	</item>
+	<item> This message is sent to the network by delivery to one
+	  of the network's public entry points.  Entry points in the
+	  postal case are mailboxes, post offices, or your friendly
+	  mailman or mailwoman picking up the letter.
+	</item>
+	<item> The communications network delivers the message in the
+	  most efficient (timely) way possible, trying not to corrupt
+	  the message while doing so.
+	</item>
+	<item> The message arrives at one of the network's exit
+	  points, and is delivered to the recipient (what we have
+	  termed the message sink).
+	</item>
+      </list>
+    </para>
+    
+    <exercise id="exer1">
+      <problem id="id1171479252911">
+	<para id="prob1">Develop the network model for the telephone
+	  system, making it as analogous as possible with the postal
+	  service-communications network metaphor.  
+	</para>
+      </problem>
+      <solution id="id1171485667820">
+	<para id="sol1"> The network entry point is the telephone
+	  handset, which connects you to the nearest station. Dialing
+	  the telephone number informs the network of who will be the
+	  message recipient.  The telephone system forms an electrical
+	  circuit between your handset and your friend's handset.
+	  Your friend receives the message via the same
+	  device—the handset—that served as the network
+	  entry point.
+	  </para>
+      </solution>
+    </exercise>
+    
+    <para id="p2.1"> What is most interesting about the network system
+      is the ambivalence of the message source and sink about how the
+      communications link is made.  What they do care about is message
+      integrity and communications efficiency.  Furthermore, today's
+      networks use heterogeneous links.  Communication paths that form
+      the Internet use wireline, optical fiber, and satellite
+      communication links.
+    </para>
+    <para id="p3">The first <term>electrical
+      </term>communications network was the telegraph. Here the
+      network consisted of telegraph operators who transmitted the
+      message efficiently using Morse code and <emphasis>routed
+      </emphasis>the message so that it took the shortest possible
+      path to its destination while taking into account internal
+      network failures (downed lines, drunken operators).  From
+      today's perspective, the fact that this nineteenth century
+      system handled digital communications is astounding. Morse code,
+      which assigned a sequence of dots and dashes to each letter of
+      the alphabet, served as the source coding algorithm.
+      The signal set consisted of a short and a long pulse. Rather
+      than a matched filter, the receiver was the operator's ear, and
+      he wrote the message (translating from received bits to
+      symbols).
+      <note id="id1857615" type="Note"><label>Note</label>
+	Because of the need for a comma between dot-dash sequences to
+	define letter (symbol) boundaries, the average number of
+	bits/symbol, as described in <link document="m0093" target-id="ex4" strength="2">Subtleties of Coding</link>, exceeded the Source
+	Coding Theorem's <emphasis>upper</emphasis> bound.
+      </note>
+</para>
+    <para id="p4"> Internally, communication networks do have
+      point-to-point communication links between network <term>nodes
+      </term>well described by the Fundamental Model of
+      Communications.  However, many messages share the communications
+      channel between nodes using what we call <term>time-domain
+      multiplexing</term>: Rather than the continuous communications
+      mode implied in the Model as presented, message sequences are
+      sent, sharing in time the channel's capacity. At a grander
+      viewpoint, the network must <term>route</term>
+      messages—decide what nodes and links to use—based on
+      destination information—the
+      <term>address</term>—that is usually separate from the
+      message information. Routing in networks is necessarily dynamic:
+      The complete route taken by messages is formed as the network
+      handles the message, with nodes relaying the message having some
+      notion of the best possible path at the time of
+      transmission. Note that no omnipotent router views the network
+      as a whole and pre-determines every message's route.  Certainly
+      in the case of the postal system dynamic routing occurs, and can
+      consider issues like inoperative and overly busy links. In the
+      telephone system, routing takes place when you place the call;
+      the route is fixed once the phone starts ringing.
+      Modern communication networks strive to achieve the
+      most efficient (timely) and most reliable information delivery
+      system possible.
+    </para>
+
+  </content>
+</document>

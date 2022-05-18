@@ -1,0 +1,139 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Themes</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>83d75e3a-7c79-4143-8933-171f49f82477</md:uuid>
+</metadata>
+
+  <content>
+    <para id="para1">
+      From its beginnings in the late nineteenth century, electrical
+      engineering has blossomed from focusing on electrical circuits
+      for power, telegraphy and telephony to focusing on a much
+      broader range of disciplines.  However, the underlying themes
+      are relevant today: <term>Power</term> creation and transmission
+      and <term>information</term> have been the underlying themes of
+      electrical engineering for a century and a half.  This course
+      concentrates on the latter theme: the <emphasis>representation,
+      manipulation, transmission, and reception of information by
+      electrical means</emphasis>.  This course describes what
+      information is, how engineers quantify information, and how
+      electrical <term>signals</term> represent information.
+    </para>
+    
+    <para id="para2">
+      Information can take a variety of forms.  When you speak to a
+      friend, your thoughts are translated by your brain into motor
+      commands that cause various vocal tract components--the jaw, the
+      tongue, the lips--to move in a coordinated fashion.  Information
+      arises in your thoughts and is represented by speech, which must
+      have a well defined, broadly known structure so that someone
+      else can understand what you say.  Utterances convey information
+      in sound pressure waves, which propagate to your friend's ear.
+      There, sound energy is converted back to neural activity, and,
+      if what you say makes sense, she understands what you say.  Your
+      words could have been recorded on a compact disc (CD), mailed to
+      your friend and listened to by her on her stereo.  Information
+      can take the form of a text file you type into your word
+      processor.  You might send the file via e-mail to a friend, who
+      reads it and understands it.  From an information theoretic
+      viewpoint, all of these scenarios are equivalent, although the
+      forms of the information representation--sound waves, plastic
+      and computer files--are very different.
+    </para>
+
+    <para id="para2a">
+      Engineers, who don't care about information
+      <emphasis>content</emphasis>, categorize information into two
+      different forms: <term>analog</term> and <term>digital</term>.
+      Analog information is continuous valued; examples are audio and
+      video.  Digital information is discrete valued; examples are
+      text (like what you are reading now) and DNA sequences.
+    </para>
+
+    <para id="para3">
+      The conversion of information-bearing signals from one energy
+      form into another is known as <emphasis>energy
+      conversion</emphasis> or <emphasis>transduction</emphasis>.  All
+      conversion systems are inefficient since some input energy is
+      lost as heat, but this loss does not necessarily mean that the
+      conveyed information is lost. Conceptually we could use any form
+      of energy to represent information, but electric signals are
+      uniquely well-suited for information representation,
+      transmission (signals can be broadcast from antennas or sent
+      through wires), and manipulation (circuits can be built to
+      reduce noise and computers can be used to modify information).
+      Thus, we will be concerned with how to
+
+      <list id="goallist">
+	<item>
+	  <emphasis>represent</emphasis> all forms of information with
+	  electrical signals, 
+	</item>
+	<item>
+	  <emphasis>encode</emphasis> information as voltages, currents,
+	  and electromagnetic waves, 
+	</item> 
+	<item>
+	  <emphasis>manipulate</emphasis> information-bearing electric
+	  signals with circuits and computers, and 
+	</item> 
+	<item>
+	  <emphasis>receive</emphasis> electric signals and convert the
+	  information expressed by electric signals back into a useful
+	  form. 
+	</item>
+      </list>
+    </para>
+
+    <para id="para4">
+      Telegraphy represents the earliest electrical information
+      system, and it dates from 1837.  At that time, electrical
+      science was largely empirical, and only those with experience
+      and intuition could develop telegraph systems.  Electrical
+      science came of age when <link url="http://www-groups.dcs.st-andrews.ac.uk/~history/Mathematicians/Maxwell.html">James
+      Clerk Maxwell</link> proclaimed in 1864 a set of equations that
+      he claimed governed all electrical phenomena.  These equations
+      predicted that light was an electromagnetic wave, and that
+      energy could propagate.  Because of the complexity of Maxwell's
+      presentation, the development of the telephone in 1876 was due
+      largely to empirical work.  Once Heinrich Hertz confirmed
+      Maxwell's prediction of what we now call radio waves in about
+      1882, Maxwell's equations were simplified by Oliver Heaviside
+      and others, and were widely read.  This understanding of
+      fundamentals led to a quick succession of inventions--the
+      wireless telegraph (1899), the vacuum tube (1905), and radio
+      broadcasting--that marked the true emergence of the
+      communications age.
+    </para>
+
+    <para id="para5">
+      During the first part of the twentieth century, circuit theory
+      and electromagnetic theory were all an electrical engineer
+      needed to know to be qualified and produce first-rate designs.
+      Consequently, circuit theory served as the foundation and the
+      framework of all of electrical engineering education.  At
+      mid-century, three "inventions" changed the ground rules.  These
+      were the first public demonstration of the first electronic
+      computer (1946), the invention of the transistor (1947), and the
+      publication of <emphasis>A Mathematical Theory of
+      Communication</emphasis> by <link url="http://www.lucent.com/minds/infotheory/">Claude
+      Shannon</link> (1948).  Although conceived separately, these
+      creations gave birth to the information age, in which digital
+      and analog communication systems interact and compete for design
+      preferences.  About twenty years later, the laser was invented,
+      which opened even more design possibilities.  Thus, the primary
+      focus shifted from <emphasis>how</emphasis> to build
+      communication systems (the circuit theory era) to
+      <emphasis>what</emphasis> communications systems were intended
+      to accomplish.  Only once the intended system is specified can
+      an implementation be selected.  Today's electrical engineer must
+      be mindful of the system's ultimate goal, and understand the
+      tradeoffs between digital and analog alternatives, and between
+      hardware and software configurations in designing information
+      systems.
+    </para><note type="Vision Impaired Access" id="idm1535632"><label>Vision Impaired Access</label>Thanks to the translation efforts of <link url="http://www.dss.rice.edu/">Rice University's Disability Support Services</link>, this collection is now available in a Braille-printable version.  Please <link resource="FundElecEngBraille.zip">click here</link> to download a .zip file containing all the necessary .dxb and image files.
+</note>
+
+  </content>
+</document>

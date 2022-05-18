@@ -1,0 +1,339 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Block Channel Coding</title><metadata>
+  <md:content-id>m0094</md:content-id><md:title>Block Channel Coding</md:title>
+  <md:abstract>Repetition codes, a special case of block channel coding, proves not to improve coding efficiency.
+</md:abstract>
+  <md:uuid>e272d0c8-e73c-422e-a18b-74fa6a31ed2c</md:uuid>
+</metadata>
+
+<content> 
+
+    <para id="para2">
+      Because of the higher datarate imposed by the channel coder, the
+    probability of bit error occurring in the digital channel
+    <emphasis>increases</emphasis> relative to the value obtained when
+    no channel coding is used.  The bit interval duration must be
+    reduced by
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>K</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>
+      in comparison to the no-channel-coding situation, which means
+      the energy per bit
+      
+      <m:math display="inline">
+	<m:ci><m:msub>
+	    <m:mi>E</m:mi>
+	    <m:mi>b</m:mi>
+	  </m:msub></m:ci>
+      </m:math>
+      goes <emphasis>down</emphasis> by the same amount.  The bit
+      interval must decrease by a factor of three if the transmitter
+      is to keep up with the data stream, as illustrated <link document="m0071" target-id="rep_figure_1" strength="2">here</link>.
+
+      <note id="id1164547906703" type="Point of Interest"><label>Point of Interest</label>
+	It is unlikely that the transmitter's power could be increased
+	to compensate.  Such is the sometimes-unfriendly nature of the
+	real world.
+      </note>
+      Because of this reduction, the error probability  
+      
+      <m:math display="inline">
+	<m:ci><m:msub>
+	    <m:mi>p</m:mi>
+	    <m:mi>e</m:mi>
+	  </m:msub></m:ci>
+      </m:math>
+      of the digital channel goes up. The question thus becomes does
+      channel coding <emphasis>really</emphasis> help: Is the
+      effective error probability lower with channel coding even
+      though the error probability for each transmitted bit is larger?
+      The answer is <emphasis>no</emphasis>: Using a repetition code
+      for channel coding cannot ultimately reduce the probability that
+      a data bit is received in error. The ultimate reason is the
+      repetition code's inefficiency: transmitting one data bit for
+      every three transmitted is too inefficient for the amount of
+      error correction provided.
+    </para>
+
+    <exercise id="exer2">
+      <problem id="id1164550985157">
+	<para id="prob1.1">Using MATLAB, calculate the probability a
+	  bit is received incorrectly with a three-fold repetition
+	  code.  Show that when the energy per bit
+	  
+	  <m:math display="inline"> 
+	    <m:ci><m:msub>
+		<m:mi>E</m:mi>
+		<m:mi>b</m:mi>
+	      </m:msub></m:ci>
+	  </m:math>
+	  is reduced by 
+	  
+	  <m:math display="inline">
+	    <m:cn type="rational">1<m:sep/>3</m:cn> 
+	  </m:math>
+	  that this probability is larger than the no-coding
+	  probability of error.
+	</para>
+      </problem>
+      <solution id="id1164551719369">
+	<para id="sol1.1">
+	  With no coding, the average bit-error probability
+	  
+	  <m:math display="inline">
+	    <m:ci><m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>e</m:mi>
+	      </m:msub></m:ci>
+	  </m:math>
+	  is given by the 
+	  <link document="m0546" target-id="eq0008" strength="3">
+	    probability of error equation
+	  </link>:
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci><m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		</m:msub></m:ci>
+	      <m:apply>
+		<m:ci type="fn">Q</m:ci>
+		<m:apply>
+		  <m:root/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:apply> 		      
+			<m:power/>
+			<m:ci>α</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:ci><m:msub>
+			  <m:mi>E</m:mi>
+			  <m:mi>b</m:mi>
+			</m:msub></m:ci>
+		    </m:apply>
+		    <m:ci><m:msub>
+			<m:mi>N</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>  	
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  With a threefold repetition code, the bit-error
+	  probability is given by
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>3</m:cn>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msubsup>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		      <m:mo>′</m:mo>
+		    </m:msubsup>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:ci>
+		    <m:msubsup>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		      <m:mo>′</m:mo>
+		    </m:msubsup>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:power/>
+		<m:ci>
+		  <m:msubsup>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		    <m:mo>′</m:mo>
+		  </m:msubsup>
+		</m:ci>
+		<m:cn>3</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, where  
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci><m:msubsup>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		  <m:mo>′</m:mo>
+		</m:msubsup></m:ci>
+	      <m:apply>
+		<m:ci type="fn">Q</m:ci>
+		<m:apply>
+		  <m:root/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:apply>
+			<m:power/>
+			<m:ci>α</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:ci><m:msub>
+			  <m:mi>E</m:mi>
+			  <m:mi>b</m:mi>
+			</m:msub></m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>3</m:cn>
+		      <m:ci><m:msub>
+			  <m:mi>N</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  Plotting this reveals that the increase in
+	  bit-error probability out of the channel because of the
+	  energy reduction is not compensated by the repetition
+	  coding.
+	</para>
+
+	<figure id="codedpe">
+	  <media id="id1164552527613" alt="">
+            <image src="../../media/codedpe.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/codedpe.eps" mime-type="application/postscript"/>
+          </media>
+	</figure>
+      </solution>
+    </exercise>
+
+    <para id="para1"> The <link document="m0071" target-id="repcode" strength="2">repetition code</link> represents a special case of
+      what is known as <term>block channel coding</term>.  For every
+      <m:math display="inline"><m:ci>K</m:ci></m:math> bits that enter
+      the block channel coder, it inserts an additional
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:minus/>
+	  <m:ci>N</m:ci>
+	  <m:ci>K</m:ci>
+	</m:apply>
+      </m:math>
+      error-correction bits to produce a block of <m:math display="inline"><m:ci>N</m:ci></m:math> bits for transmission.
+      We use the notation (N,K) to represent a given block code's
+      parameters.  In the <link document="m0071" target-id="repcode" strength="2">three-fold repetition code</link>,
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>K</m:ci>
+	  <m:cn>1</m:cn>
+	</m:apply>     </m:math> and  
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/> 
+	  <m:ci>N</m:ci> 
+	  <m:cn>3</m:cn> 
+	</m:apply> 
+      </m:math>
+      .  A block code's <term>coding efficiency </term> <m:math display="inline"><m:ci>E</m:ci></m:math> equals the ratio
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>K</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>, and quantifies the overhead introduced by channel
+      coding. The rate at which bits must be transmitted again
+      changes: So-called data bits
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">b</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math> emerge from the source coder at an average rate
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:mean/>
+	  <m:apply>
+	    <m:ci type="fn">B</m:ci>
+	    <m:ci>A</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> and exit the channel at a rate
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:divide/>
+	  <m:cn>1</m:cn>
+	  <m:ci>E</m:ci>
+	</m:apply>
+      </m:math> higher.  We represent the fact that the bits sent
+      through the digital channel operate at a different rate by using
+      the index <m:math display="inline"><m:ci>l</m:ci></m:math> for
+      the channel-coded bit stream
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">c</m:ci>
+	  <m:ci>l</m:ci>
+	</m:apply>
+      </m:math>.  Note that the blocking (framing) imposed by the
+      channel coder does not correspond to symbol boundaries in the
+      bit stream
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">b</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>, especially when we employ variable-length source codes.
+    </para>
+
+    <para id="para3">
+      Does any error-correcting code reduce communication errors when
+      real-world constraints are taken into account?  The answer now is
+      yes. To understand channel coding, we need to develop first a
+      general framework for channel coding, and discover what it takes
+      for a code to be maximally efficient: Correct as many errors as
+      possible using the fewest error correction bits as possible
+      (making the efficiency
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>K</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>
+      as large as possible).
+    </para>
+  </content>
+</document>

@@ -1,0 +1,657 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Designing Transfer Functions</title>
+
+  <metadata>
+  <md:content-id>m0031</md:content-id><md:title>Designing Transfer Functions</md:title>
+  <md:abstract>This module summarizes the key concepts of transfer functions
+and includes examples of using transfer functions.
+</md:abstract>
+  <md:uuid>fae0734d-b659-441c-b405-a58c864f4a51</md:uuid>
+</metadata>
+
+<content>
+    <para id="para8"> If the source consists of two (or more) signals,
+      we know from linear system theory that the output voltage equals
+      the sum of the outputs produced by each signal alone. In short,
+      linear circuits are a special case of linear systems, and
+      therefore superposition applies. In particular, suppose these
+      component signals are complex exponentials, each of which has a
+      frequency different from the others. The transfer function
+      portrays how the circuit affects the amplitude and phase of each
+      component, allowing us to understand how the circuit works on a
+      complicated signal. Those components having a frequency less
+      than the cutoff frequency pass through the circuit with little
+      modification while those having higher frequencies are
+      suppressed. The circuit is said to act as a <term>filter</term>,
+      filtering the source signal based on the frequency of each
+      component complex exponential. Because low frequencies pass
+      through the filter, we call it a <term>lowpass filter</term> to
+      express more precisely its function.
+    </para>
+    
+    <para id="p03"> 
+      We have also found the ease of calculating the output for
+      sinusoidal inputs through the use of the transfer function. Once
+      we find the transfer function, we can write the output directly
+      as indicated by 
+      <link document="m0028" target-id="eq3" strength="3">the output
+      of a circuit for a sinusoidal input</link>.
+    </para>
+
+
+    <example id="example01">
+      <figure id="RL">
+	<title>RL circuit</title>
+	<media id="id1169186906995" alt="">
+          <image src="../../media/circuit16.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circuit16.eps" mime-type="application/postscript"/>
+        </media>
+      </figure> 
+
+      <para id="examplepara01">
+	Let's apply these results to a final example, in which the
+	input is a voltage source and the output is the inductor
+	current.  The source voltage equals
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>V</m:mi>
+                <m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>	    
+	    <m:apply>
+	      <m:plus/>
+              <m:apply>
+                <m:times/>
+		<m:cn>2</m:cn>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:cn>60</m:cn>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+              <m:cn>3</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 	
+	We want the circuit to pass constant (offset) voltage
+	essentially unaltered (save for the fact that the output is a
+	current rather than a voltage) and remove the 60 Hz term.
+	Because the input is the sum of <emphasis>two</emphasis>
+	sinusoids--a constant is a zero-frequency cosine--our approach
+	is
+
+	<list id="list01" list-type="enumerated">
+	  <item>find the transfer function using impedances;</item>
+	  <item>use it to find the output due to each input component;</item>
+	  <item>add the results;</item>
+	  <item>find element values that accomplish our design criteria.</item>
+	</list>
+
+	Because the circuit is a series combination of elements, let's
+	use voltage divider to find the transfer function between
+	<m:math>
+	  <m:ci><m:msub>
+	      <m:mi>V</m:mi>
+              <m:mi>in</m:mi>
+	    </m:msub></m:ci>
+	</m:math>
+	and
+	<m:math>
+	  <m:ci>V</m:ci>
+	</m:math>, 	
+	then use the <emphasis>v-i</emphasis> relation of the inductor
+	to find its current.
+
+	<equation id="eq01">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci><m:msub>
+		    <m:mi>I</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub></m:ci>
+		<m:ci><m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub></m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>L</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>R</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>L</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+                  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>L</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>L</m:ci>
+		  </m:apply>
+		  <m:ci>R</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	where
+
+	<m:math display="block">	  
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>voltage divider</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>L</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>R</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>L</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	and
+
+	<m:math display="block">	  
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>inductor admittance</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>L</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	[Do the units check?] The form of this transfer function
+	should be familiar; it is a lowpass filter, and it will
+	perform our desired function once we choose element values 
+	properly.
+      </para>   
+
+      <para id="examplepara02"> 
+	The constant term is easiest to handle. The output is given by
+	<m:math>
+	  <m:apply>
+	    <m:eq/>	    
+	    <m:apply>
+	      <m:times/>
+              <m:cn>3</m:cn>
+              <m:apply>
+                <m:abs/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:cn>0</m:cn>
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+              <m:cn>3</m:cn>
+              <m:ci>R</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 
+	Thus, the value we choose for the resistance will determine 
+	the scaling factor of how voltage is converted into current. 
+	For the 60 Hz component signal, the output current is  
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>2</m:cn>
+	    <m:apply>
+	      <m:abs/>
+              <m:apply>
+                <m:ci type="fn">H</m:ci>
+                <m:cn>60</m:cn>
+              </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:cos/>
+              <m:apply>
+                <m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:cn>60</m:cn>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:arg/>
+		  <m:apply>
+		    <m:ci type="fn">H</m:ci>
+		    <m:cn>60</m:cn>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 
+	The total output due to our source is 
+
+	<equation id="eq02">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci><m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub></m:ci>
+	      <m:apply>
+		<m:plus/>
+                <m:apply>
+                  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:ci type="fn">H</m:ci>
+		      <m:cn>60</m:cn>
+		    </m:apply>
+		  </m:apply>		  
+		  <m:apply>
+		    <m:cos/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:cn>60</m:cn>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:arg/>
+			<m:apply>
+			  <m:ci type="fn">H</m:ci>
+			  <m:cn>60</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+                </m:apply>		
+                <m:apply>
+                  <m:times/>
+		  <m:cn>3</m:cn>
+		  <m:apply>
+		    <m:ci type="fn">H</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+                </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+        </equation>
+	
+        The cutoff frequency for this filter occurs when the real and
+        imaginary parts of the transfer function's denominator equal
+        each other. Thus,
+        <m:math>
+	  <m:apply>
+	    <m:eq/>	    
+            <m:apply>
+              <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mi>c</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>L</m:ci>
+            </m:apply>	    
+            <m:ci>R</m:ci>    
+	  </m:apply>
+        </m:math>, 
+	which gives 	
+        <m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+	      <m:msub>
+                <m:mi>f</m:mi>
+                <m:mi>c</m:mi>
+              </m:msub>
+	    </m:ci>	    
+            <m:apply>
+              <m:divide/>
+	      <m:ci>R</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>L</m:ci>
+	      </m:apply>
+            </m:apply>
+	  </m:apply>
+        </m:math>. 
+	We want this cutoff frequency to be much less than 60 Hz.
+        Suppose we place it at, say, 10 Hz. This specification would
+        require the component values to be related by
+        <m:math>
+	  <m:apply>
+	    <m:eq/>	    
+            <m:apply>
+              <m:divide/>
+	      <m:ci>R</m:ci>
+	      <m:ci>L</m:ci>
+            </m:apply>
+            <m:apply>
+              <m:times/>
+	      <m:cn>20</m:cn>
+	      <m:pi/>
+            </m:apply>
+            <m:cn>62.8</m:cn>
+	  </m:apply>
+        </m:math>. 
+	The transfer function at 60 Hz would be
+
+        <equation id="eq03">
+	  <m:math>
+	    <m:apply>
+	      <m:approx/>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:divide/>
+                    <m:cn>1</m:cn>
+                    <m:apply>
+                      <m:plus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:cn>60</m:cn>
+			<m:ci>L</m:ci>
+		      </m:apply>
+		      <m:ci>R</m:ci>
+                    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+                    <m:cn>1</m:cn>
+                    <m:ci>R</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:abs/>
+                    <m:apply>
+                      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>6</m:cn>
+			  <m:imaginaryi/>
+			</m:apply>
+			<m:cn>1</m:cn>
+		      </m:apply>
+                    </m:apply>
+		  </m:apply>
+		</m:apply>		
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>R</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:root/>
+                      <m:cn>37</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>	      
+	      <m:apply>
+		<m:times/>
+                <m:cn>0.16</m:cn>
+                <m:apply>
+                  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>R</m:ci>
+                </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+        </equation>
+
+        which yields an attenuation (relative to the gain at zero
+        frequency) of about
+        <m:math>
+	  <m:cn type="rational">1<m:sep/>6</m:cn>
+        </m:math>, 
+	and result in an output amplitude of
+        <m:math>
+	  <m:apply>
+	    <m:divide/>
+            <m:cn>0.3</m:cn>
+            <m:ci>R</m:ci>
+	  </m:apply>
+	</m:math> 
+	relative to the constant term's amplitude of 
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>3</m:cn>
+	    <m:ci>R</m:ci>
+	  </m:apply>
+	</m:math>. 
+	A factor of 10 relative size between the two components seems
+	reasonable. Having a 100 mH inductor would require a 6.28
+	Ω resistor. An easily available resistor value is 6.8
+	Ω; thus, this choice results in cheaply and easily
+	purchased parts. To make the resistance bigger would require a
+	proportionally larger inductor. Unfortunately, even a 1 H
+	inductor is physically large; consequently low cutoff
+	frequencies require small-valued resistors and large-valued
+	inductors. The choice made here represents only one
+	compromise.
+      </para>   
+
+      <para id="examplepara03"> 
+	The phase of the 60 Hz component will very nearly be 
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+            <m:apply>
+	      <m:divide/>
+	      <m:pi/>
+	      <m:cn>2</m:cn>
+            </m:apply>
+	  </m:apply>
+	</m:math>, 
+	leaving it to be 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+              <m:apply>
+                <m:divide/>
+		<m:cn>0.3</m:cn>
+		<m:ci>R</m:ci>
+              </m:apply>	      
+              <m:apply>
+                <m:cos/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:cn>60</m:cn>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:pi/>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+	    </m:apply>	    
+	    <m:apply>
+	      <m:times/>
+              <m:apply>
+                <m:divide/>
+		<m:cn>0.3</m:cn>
+		<m:ci>R</m:ci>
+              </m:apply>
+              <m:apply>
+                <m:sin/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:cn>60</m:cn>
+		  <m:ci>t</m:ci>
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 
+	The waveforms for the input and output are shown in 
+	<link target-id="example" strength="3"/>.
+      </para>
+
+
+      <figure id="example" orient="vertical">
+	<title>Waveforms</title>
+	<media id="id4583923" alt="">
+          <image src="../../media/rlexample.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/rlexample.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  Input and output waveforms for the example  
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>R</m:ci>
+	      <m:ci>L</m:ci>
+	    </m:apply>
+	  </m:math> 
+	  circuit when the element values are 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>R</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn>6.28</m:cn>
+		<m:ci>Ω</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  and 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>L</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn>100</m:cn>
+		<m:ci>mH</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</caption>
+      </figure>
+    </example>
+
+    <para id="p04">
+      Note that the sinusoid's phase has indeed shifted; the lowpass
+      filter not only reduced the 60 Hz signal's amplitude, but also
+      shifted its phase by 90°.
+    </para>
+
+  </content>
+</document>

@@ -1,0 +1,1552 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox:  0 0 280 150 
+%%Title: (systems.CNV) 
+%%Creator: Canvas (7.0.2) 
+%%CreationDate: (07/24/01 @ 08:40 AM) 
+%%DocumentProcSets: Deneba_CanvasCustomColors
+%%+ CVDict
+%%DocumentFonts: 
+%%DocumentNeededFonts: 
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%EndComments
+%%BeginProlog 
+%%BeginResource: procset CVDict
+%%Title: Deneba standard graphics
+%%Version: 1.02
+%%CreationDate: 10/14/99
+%%Copyright: (C) 1994, 1999 Deneba Systems. All Rights Reserved
+userdict /CVDict 200 dict put
+CVDict begin
+/invalidcolortable? true def   
+/level2 /languagelevel where {pop languagelevel 2 ge}{false} ifelse def
+level2 not { /xshow {
+0 currentpoint 5 -1 roll {pop pop moveto dup 1 add 3 1 roll exch dup 4 1 roll exch get 0 rmoveto currentpoint} exch kshow
+pop pop pop pop} def } if
+/initialize
+{CVDict
+{dup xcheck{bind}if pop pop}forall
+currentscreen /_sp exch def /_sa exch def /_sf exch def
+/DefaultScreen{_sf _sa /_sp load}def
+/DefaultScreenProc{ /_sp load}def
+/setstrokeadjust where{pop true}{false}ifelse
+{/sa /setstrokeadjust load def
+/li /lineto load def
+/mt /moveto load def
+/ct /curveto load def
+/lh { currentpoint exch pop lineto}bind def
+/lv { currentpoint pop exch lineto}bind def}
+{/sa{{currentdict StrokeAdjustDict ne{StrokeAdjustDict begin}if}{ currentdict StrokeAdjustDict eq{end}if}ifelse} bind def
+userdict /StrokeAdjustDict 100 dict put
+StrokeAdjustDict begin
+/_xl
+{transform
+.25 sub round .25 add exch
+.25 sub round .25 add exch
+itransform
+}bind def
+/li{ _xl lineto}bind def
+/mt{ _xl moveto}bind def
+/ct{ _xl curveto}bind def
+/lh { dup _xl pop currentpoint exch pop lineto}bind def
+/lv { dup _xl pop currentpoint pop exch lineto}bind def
+/rp{_xl/cv_b xdf/cv_r xdf
+_xl/cv_t xdf/cv_l xdf
+cv_l cv_t moveto
+cv_r cv_t lineto
+cv_r cv_b lineto
+cv_l cv_b lineto
+closepath
+}bind def
+end}ifelse}def
+/terminate
+{userdict /StrokeAdjustDict known {currentdict StrokeAdjustDict eq{end}if}if
+currentdict CVDict eq{end}if}def
+/mxMax 64 def
+/mxStk [mxMax {matrix} repeat]def
+/mxIdx 0 def
+/stm{mxStk mxIdx 0 lt {/mxIdx 0 store}if mxIdx get currentmatrix pop /mxIdx mxIdx 1 add store}def
+/rtm{mxIdx 1 ge {/mxIdx mxIdx 1 sub store mxStk mxIdx get setmatrix}if }def
+/scl { 72 div exch 72 div exch scale } def
+/scli { 72 exch div exch 72 exch div exch scale } def
+/_cvmtx matrix def
+/_txtmtx matrix def
+/_initmtx matrix def
+/xdf{exch def}def
+/min{2 copy gt{exch}if pop}def
+/max{2 copy lt{exch}if pop}def
+/CVvec 256 array def
+/T true def
+/F false def
+/_id 0 def
+/_encodindex 0 def
+/_encodArr 3 array def
+/_fd 0 def
+/_textSave null def
+/_letterSpace 0 def
+/_spaceXtra 0 def
+/_PageSave null def
+/_penh 1.0 def
+/_penv 1.0 def
+/save0 null def
+/_w 0 def
+/_h 0 def
+/_ds 0 def
+/hct false def
+/pw 0 def
+/wdif 0 def
+/temp 0 def
+/currot 0 def
+/savehandler null def
+/ia 0 def
+/ix 0 def
+/ixn 1 def
+/MultipleDataSources false def 
+/debug
+{dup /$eps exch not def{/savehandler errordict /handleerror get def
+errordict
+/handleerror{$error begin
+newerror{/newerror false def
+showpage
+72 72 scale
+/Helvetica findfont .2 scalefont setfont
+.25 9.6 moveto
+(Error: )show
+errorname
+{dup type/stringtype ne
+{(converted error name will end up in this string)cvs}if
+show}exec
+.25 9.4 moveto
+(Offending Command: )show
+/command load
+{dup type/stringtype ne
+{(converted command name will end up in this string)cvs}if
+show}exec
+.25 9.2 moveto
+(Stack: )show
+ostack
+{.25 currentpoint .2 sub exch pop moveto
+dup type/stringtype ne{dup type/integertype eq
+1 index type/realtype eq or
+1 index type/nametype eq or
+not {type}if
+(converted stack will end up in this string)cvs}if
+show}forall
+showpage
+CVDict /savehandler get exec}if
+end}put}if}def
+/lc{setlinecap}def
+/lj{setlinejoin}def
+/lm{setmiterlimit}def
+/lf{setflat}def
+/cp{closepath}def
+/np{newpath}def
+/$psz 30 array def
+/$pix 0 def
+/gs{gsave $psz dup $pix _penh put $pix 1 add _penv put /$pix $pix 2 add def}def
+/gr{grestore/$pix $pix 2 sub def $psz dup $pix get /_penh exch def $pix 1 add get /_penv exch def}def
+/li{lineto} def
+/lh{currentpoint exch pop lineto}def
+/lv{currentpoint pop exch lineto}def
+/mt{moveto} def
+/_cv_mh{currentpoint exch pop moveto}def
+/_cv_mv{currentpoint pop exch moveto}def
+/ct{curveto} def
+/rt{4 -2 roll moveto
+dup 0 exch rlineto
+exch 0 rlineto
+neg 0 exch rlineto
+closepath}def
+/_hr
+{
+{/@err false def currentflat dup{gsave{eoclip}stopped{grestore 2 mul dup setflat dup 200 ge{(%% Canvas:Clip failed\r)print /@err true def pop exit}if}{grestore setflat exit}ifelse}loop @err not {eoclip}if setflat}
+{/@err false def currentflat dup{gsave{clip}stopped{grestore 2 mul dup setflat dup 200 ge{(%% Canvas:Clip failed\r)print /@err true def pop exit}if}{grestore setflat exit}ifelse}loop @err not {clip}if setflat}
+}def
+/_cs null def
+/fg{setgray}def
+/setcmykcolor where {pop true}{false}ifelse
+{/f4{ setcmykcolor}def}{/f4{1 sub 4 1 roll 3{3 index add neg dup 0 lt{pop 0}if 3 1 roll}repeat setrgbcolor pop}def}ifelse
+/setcolorspace where {pop true}{false}ifelse
+{/scs{ dup setcolorspace /_cs exch def}def/f3{ _cs setcolorspace setcolor}def
+}{/f3{ setrgbcolor}def/scs{ pop}def}ifelse
+/$cc 5 array def
+/findcmykcustomcolor where {pop true}{false}ifelse
+not {/findcmykcustomcolor{$cc astore}def}if
+/setcustomcolor where {pop true}{false}ifelse
+not{/setcustomcolor{exch aload pop pop 4{4 index mul 4 1 roll}repeat setcmykcolor pop}def}if
+/fc{6 1 roll findcmykcustomcolor exch setcustomcolor}def
+/setseparationgray where {pop true}{false}ifelse
+not{/setseparationgray {systemdict /setgray get exec} def}if
+/sg{ setseparationgray}def
+/sp{/_penv xdf/_penh xdf}def
+/rp
+{/cv_b xdf/cv_r xdf
+/cv_t xdf/cv_l xdf
+cv_l cv_t moveto
+cv_r cv_t lineto
+cv_r cv_b lineto
+cv_l cv_b lineto
+closepath}def
+/rr{/yradius xdf
+/xradius xdf
+/cv_b xdf
+/cv_r xdf
+/cv_t xdf
+/cv_l xdf
+cv_l xradius add cv_t moveto
+cv_r xradius sub cv_t lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+1 0 1 1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_r cv_b yradius sub lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+0 1 -1 1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_l xradius add cv_b lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+-1 0 -1 -1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_l cv_t yradius add lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+0 -1 1 -1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+closepath}def
+/ep{_cvmtx currentmatrix pop
+translate
+scale
+1 0 moveto
+0 0 1 0 360 arc
+closepath
+_cvmtx setmatrix}def
+/wd{_cvmtx currentmatrix pop
+translate
+scale
+0 0 moveto
+0 0 1 5 -2 roll arcn
+closepath
+_cvmtx setmatrix}def
+/as{_cvmtx currentmatrix pop
+translate
+scale
+0 0 1 5 -2 roll arcn
+_cvmtx setmatrix}def
+/ds
+{_penv _penh ne dup{stm _penh dup 0 le{pop 1}if _penv dup 0 le{pop 1}if scale}{_penh setlinewidth}ifelse stroke {rtm}if}def
+/df{fill}def
+/de{eofill}def
+/_gstk 5 array def
+/_gstkc 0 def
+/_gst{ 9 dict begin level2{/_ccs currentcolorspace def /_cc [currentcolor] def}{/_cc [currentrgbcolor]def}ifelse {currentpoint}stopped {/_cp null def}{ 2 array astore /_cp exch def}ifelse /_cf currentfont def
+/_clw currentlinewidth def /_clc currentlinecap def /_clj currentlinejoin def /_cml currentmiterlimit def currentdict end}def
+/hs{newpath gsave stm}def
+/hc{/_hr load exch get exec newpath}def
+/he{_gstk _gstkc _gst put /_gstkc _gstkc 1 add store 
+grestore rtm /_gstkc _gstkc 1 sub store _gstk _gstkc get level2{dup /_ccs get setcolorspace dup /_cc get aload pop setcolor}{dup /_cc get aload pop setrgbcolor}ifelse dup /_cp get dup null eq 
+not{aload pop moveto}{pop}ifelse dup /_cf get setfont
+dup/_clw get setlinewidth dup/_clc get setlinecap dup/_clj get setlinejoin dup/_cml get setmiterlimit pop}def
+/id{ /_id xdf}def
+/_imatrix{_w 0 0 _h _id 0 ne{neg 0 _h}{0 0}ifelse _cvmtx astore}def
+% Copyright (C) 1990, 1991 by Adobe Systems Incorporated.
+% All rights reserved.
+level2 { save /dontloadlevel1 xdf }if
+/startnoload{{/noload save def} if}def
+/endnoload{{noload restore}if }def
+/testsystemdict{where{systemdict eq{true}{false}ifelse}{false}ifelse}def
+/ncolors 1 def
+/colorimage where{pop true}{false}ifelse{/ncolors 0
+statusdict begin 
+/processcolors where{pop pop processcolors}{/deviceinfo where{pop deviceinfo /Colors known
+{pop {deviceinfo /Colors get}}if}if}ifelse end def
+ncolors 0 ne{/colorimage testsystemdict
+/setcolortransfer testsystemdict
+/currentcolortransfer testsystemdict
+/currentcmykcolor testsystemdict
+and and and not{/ncolors 0 def}if}if}if
+ncolors dup 1 ne exch dup 3 ne exch 4 ne and and {/ncolors 0 def}if
+ncolors 1 eq dup dup not startnoload
+{/doclutimage{[{255 mul round cvi bwclut exch get 255 div} /exec load dup currenttransfer exch] 
+cvx bind settransfer _w _h 8 _imatrix _ds image}def}if
+not endnoload
+ncolors dup 3 eq exch 4 eq or
+dup dup not startnoload
+{/nullproc{{}}def/concatutil{/exec load
+7 -1 roll /exec load}def
+/defsubclut
+{1 add getinterval def}def
+/spconcattransfer   
+{/Dclut exch def/Cclut exch def/Bclut exch def/Aclut exch def/ncompute exch ld
+currentcolortransfer
+[{Aclut ncompute}concatutil] cvx
+[{Bclut ncompute}concatutil] cvx
+[{Cclut ncompute}concatutil] cvx
+[{Dclut ncompute}concatutil] cvx
+setcolortransfer}def
+/setuprgbcluts
+{/bit3x rgbclut length 3 sub def
+/bit1x bit3x 3 idiv def/rclut rgbclut def
+/gclut rclut 1 bit3x defsubclut/bclut rclut 2 bit3x defsubclut}def}if not  
+endnoload ncolors 3 eq dup dup not startnoload
+{/3compute{exch bit3x mul
+round cvi get 255 div}def
+/doclutimage{%/rgbclut xdf pop 
+setuprgbcluts/3compute rclut gclut bclut dup
+spconcattransfer _w _h 8 _imatrix
+[/_ds load /exec load /dup load dup]cvx
+nullproc nullproc true 3 colorimage}def}if not endnoload ncolors 4 eq dup dup not startnoload
+{/stuffclut{cmykindex 3 -1 roll put}def
+/ftoint{1 exch sub 255 mul round cvi}def
+/4compute { exch bit4x mul round cvi get 255 div } def
+/computecmykclut{setuprgbcluts/bit4x rgbclut length 3 idiv 4 mul 4 sub def
+/cmykclut bit4x 4 add string def
+/cclut cmykclut def
+/mclut cclut 1 bit4x defsubclut
+/yclut cclut 2 bit4x defsubclut
+/kclut cclut 3 bit4x defsubclut
+/cmykindex 0 def
+0 1 bit1x
+{dup /cmykindex exch bit1x exch sub 4 mul def
+3 mul dup rclut exch get 255 div exch dup gclut exch get 255 div
+exch bclut exch get 255 div
+setrgbcolor currentcmykcolor
+ftoint kclut stuffclut
+ftoint yclut stuffclut
+ftoint mclut stuffclut
+ftoint cclut stuffclut
+}for}def
+/doclutimage{invalidcolortable?{computecmykclut}if
+/4compute cclut mclut yclut kclut spconcattransfer
+_w _h 8 _imatrix[/_ds load /exec load/dup load dup dup] cvx 
+nullproc nullproc nullproc true 4 colorimage}def}if
+not endnoload
+ncolors 0 eq
+dup dup not startnoload
+{/colorexpand{mystringexp 0 rgbclut
+3 copy
+7 -1 roll
+{3 mul 3 getinterval putinterval exch 3 add exch 3 copy}forall
+pop pop pop pop pop}def
+/createexpandstr{/mystringexp exch st0 length mul string def}def
+/doclutimage{/rgbclut xdf pop 3 createexpandstr _w _h 8 _imatrix
+[/_ds load /exec load /colorexpand load /exec load] cvx
+false 3 colorimage}def}if not endnoload
+level2 { dontloadlevel1 restore }if
+level2 not{ save /dontloadlevel2 xdf }if
+/rgbclut 0 def
+/doclutimage{/hival 255 def 
+[/Indexed /DeviceRGB hival rgbclut] setcolorspace
+_imagedict dup begin 
+/Width _w def 
+/Height _h def  
+/Decode [0 hival] def  
+/ImageMatrix _imatrix def
+/BitsPerComponent 8 def 
+/Interpolate false def
+end image}def
+level2 not{ dontloadlevel2 restore }if
+%%EndProcSet
+/_imagedict 15 dict begin /ImageType 1 def/BitsPerComponent 8 def/Interpolate false def currentdict end def
+/hascolor true def
+/level2 systemdict /languagelevel known
+{languagelevel 2 ge}{false}ifelse def
+/foureq {4 index eq 8 1 roll
+4 index eq 8 1 roll
+4 index eq 8 1 roll
+4 index eq 8 1 roll
+pop pop pop pop and and and} def
+/setupbands{gsave
+/_settransfer systemdict /settransfer get def
+/_currenttransfer systemdict /currenttransfer get def
+/_image systemdict /image get def
+/blank 0 _currenttransfer exec
+1 _currenttransfer exec eq def
+/negative blank{0 _currenttransfer exec 0.5 lt}
+{0 _currenttransfer exec 1 _currenttransfer exec gt}ifelse def
+/inverted? negative def
+/_currentgray systemdict /currentgray get def
+hascolor{/$b 0 def} {/$b 5 def} ifelse
+/setcmykcolor where{pop 1 0 0 0 setcmykcolor _currentgray 1 exch sub
+0 1 0 0 setcmykcolor _currentgray 1 exch sub
+0 0 1 0 setcmykcolor _currentgray 1 exch sub
+0 0 0 1 setcmykcolor _currentgray 1 exch sub
+4 {4 copy} repeat
+1 0 0 0 foureq{/$b 1 store}if
+0 1 0 0 foureq{/$b 2 store}if
+0 0 1 0 foureq{/$b 3 store}if
+0 0 0 1 foureq{/$b 4 store}if
+0 0 0 0 foureq{/$b 6 store}if}if
+blank{/$b 6 store}if
+$b 0 eq $b 5 eq or{/$dt 0 def}if/$dt -1 def grestore}def
+/doimage{
+level2{image}{begin
+Width Height BitsPerComponent ImageMatrix
+Decode length 2 eq
+{/DataSource load end image}{
+Decode length 6 eq
+{MultipleDataSources{DataSource 0 get DataSource 1 get DataSource 2 get}{/DataSource load}ifelse
+MultipleDataSources 3 end DSIColorImage}{
+Decode length 8 eq{MultipleDataSources{DataSource 0 get DataSource 1 get
+DataSource 2 get DataSource 3 get}{/DataSource load}ifelse
+MultipleDataSources 4 end DSIColorImage}if}ifelse
+}ifelse
+}ifelse}def
+/dt{/rgbclut xdf /bwclut xdf}def
+/cl{$i setmatrix translate scale
+/_w _imagedict /Width get def
+/_h _imagedict /Height get def
+/_ds _imagedict /DataSource get def
+doclutimage} def
+/cd{$i setmatrix translate scale
+level2{_imagedict /ColorSpace get setcolorspace}if
+/_w _imagedict /Width get def
+/_h _imagedict /Height get def
+/_ds _imagedict /DataSource get def
+_imagedict begin
+/ImageMatrix _imatrix def
+currentdict end
+doimage} def
+/im{$i setmatrix translate scale 
+level2{/DeviceGray setcolorspace 0 setgray}if
+/_w _imagedict /Width get def
+/_h _imagedict /Height get def
+/_ds _imagedict /DataSource get def
+_imagedict begin
+%/Decode [0 1] def  
+%/Width _w def
+%/Height _h def
+/ImageMatrix _imatrix def
+currentdict end 
+doimage }def
+/colorimage where{pop/DSIColorImage {colorimage} def}{/DSIColorImage{
+/$nc xdf pop /proc0 xdf 3 index 2 index mul 7 add 8 div cvi string /st1 xdf
+$nc 3 eq{{proc0 dup/st0 xdf 0 exch 3 exch length 3 sub
+{dup st0 exch get .3 mul 1 index 1 add st0 exch get .59 mul add 1 index 2 add st0 exch get .11 mul add
+cvi exch 3 div cvi exch st1 3 1 roll put}for st1}}{{proc0 dup/st0 xdf 0 exch 4 exch length 4 sub{dup
+st0 exch get .3 mul
+1 index 1 add st0 exch get .59 mul add
+1 index 2 add st0 exch get .11 mul add
+1 index 3 add st0 exch get add dup 255.0 gt{pop 255.0}if
+255.0 exch sub cvi
+exch 4 div cvi exch
+st1 3 1 roll put}for st1}}ifelse
+image}def}ifelse
+/OPIimage{image}def
+/$i matrix def
+/bi{scale translate $i currentmatrix pop translate scale setupbands}def
+/ei{$i setmatrix}def
+/ik{$i setmatrix translate scale 
+/_w _imagedict /Width get def
+/_h _imagedict /Height get def
+/_ds _imagedict /DataSource get def
+_w _h false _imatrix 5 -1 roll _ds imagemask}def
+/rs{2 copy translate
+3 -1 roll neg rotate
+neg exch neg exch translate
+}def
+/cs{_cvmtx astore concat} def
+/fd{/_fd xdf}def
+/_fontMatrix{1 0 0 _fd 0 ne{-1 0 0}{1 0 0}ifelse _cvmtx astore}def
+/rf{/_encodindex xdf
+FontDirectory exch known {
+findfont dup length 1 add dict begin{1 index/FID ne{def}{pop pop}ifelse}forall
+dup /FontName exch def FontType 0 ne{/Encoding Encoding 256 array copy def
+_encodindex 0 ge{0 _encodArr _encodindex get{dup type/nametype eq{Encoding 2 index 2 index put pop 1 add}
+{exch pop}ifelse}forall pop}if}if
+currentdict end
+definefont pop }{pop pop}ifelse} def
+/cvsf{ findfont ftSize 0 0 ftSize _fd 0 ne{-1 mul}if 0 0 _cvmtx astore 
+makefont setfont}def
+/mf{3 -1 roll findfont 3 1 roll exch ftSize mul exch ftSize mul 0 exch 0 exch 
+_fd 0 ne{-1 mul}if 0 0 _cvmtx astore makefont setfont}def
+/wrk1 ( ) def
+/wdict 16 dict def
+/Work75 75 string def
+/Nmk{Work75 cvs dup}def
+/Npt{put cvn}def
+/dhOdh{Nmk 2 79 Npt}def
+/dhBdh{Nmk 2 111 Npt}def
+/dhSdh{Nmk 2 83 Npt}def
+/sfWidth{gsave 0 0 moveto 0 0 lineto 0 0 lineto 0 0 lineto closepath clip stringwidth grestore}def
+/fts{/ftSize exch def}def
+/mkFT{dup/FontType get 0 eq{dup maxlength dict begin
+{1 index/FID ne 2 index /UniqueID ne and{def}{pop pop}ifelse}forall
+currentdict end
+dup/FDepVector 2 copy get
+[exch 6 index exch 6 index exch{mkFT 3 1 roll}forall pop pop] put dup}{/tempFT 12 dict def
+tempFT begin
+/FontMatrix [1 0 0 1 0 0] def
+/FontType 3 def
+dup/Encoding get/Encoding exch def
+/proc2 2 index def
+dup/ft1 exch def
+/ft2 1 array def
+/FontBBox [0 0 1 1] def
+/BuildChar{CVDict begin
+exch dup/ftdt xdf begin
+wdict begin
+/chr xdf/chrst wrk1 dup 0 chr put def
+ft2 0 get null eq{ft1 dup length 2 add dict begin
+{1 index/FID ne 2 index /UniqueID ne and{def}{pop pop}ifelse}forall
+/PaintType 2 def/StrokeWidth .024 0 FontMatrix idtransform pop def
+currentdict end
+/q exch definefont
+ft2 exch 0 exch put}if
+ftdt/proc2 get exec end end end}def end tempFT}ifelse
+3 index exch
+definefont exch pop}def
+/mb{dup dhBdh FontDirectory 1 index known
+{exch pop}{dup 2 index
+findfont{boldproc} exch
+mkFT pop pop pop exch pop
+}ifelse }def
+/mo{dup dhOdh FontDirectory 1 index known
+{exch pop}{dup 2 index
+findfont{outproc} exch
+mkFT pop pop pop exch pop
+}ifelse }def
+/ms{dup dhSdh FontDirectory 1 index known
+{exch pop}{dup 2 index
+findfont{ShadChar} exch
+mkFT  pop pop pop exch pop
+}ifelse }def
+/outproc{ft1 setfont
+gsave chrst sfWidth grestore
+setcharwidth dblsh}def
+/boldproc{ft1 setfont
+gsave
+chrst sfWidth 1 index 0 ne{exch .05 add exch}if
+grestore
+setcharwidth
+ft1 /PaintType get 2 ne
+{0 0 moveto gsave ft2 0 get setfont chrst show grestore chrst show}
+{0 0 moveto gsave chrst show grestore .05 0 moveto chrst show}ifelse}def
+/dblsh{currentcolor currentcolorspace 1.0 setgray
+chrst 0 0 moveto show setcolorspace setcolor
+ft2 0 get setfont chrst 0 0 moveto show}def
+/ShadChar{
+ft1 setfont
+gsave
+chrst sfWidth 1 index 0 ne{exch .05 add exch}if
+grestore
+setcharwidth
+chrst .06 0 moveto show
+0 .05 translate dblsh}def
+/ts{show}def
+/ta{/_letterSpace xdf/_spaceXtra xdf}def
+/tf{/_textWidth xdf
+/_numSpaces xdf
+/_stringLength xdf
+dup	stringwidth pop
+_letterSpace _stringLength 1 sub mul add
+_spaceXtra _numSpaces mul add
+_textWidth exch sub /wdif xdf
+_spaceXtra 0 32
+wdif _stringLength div
+_letterSpace add
+0 6 -1 roll awidthshow}def
+/pb{/_PageSave save def/showpage{}def}def
+/pe{_PageSave restore}def
+/pm{_pm currentmatrix pop}def
+/_pm matrix def
+/ps{showpage _pm setmatrix}def
+level2{/ef {gsave 6 array astore concat dup execform grestore}def}
+{/ef{gsave 6 array astore concat newpath dup begin Matrix concat
+BBox dup dup 0 get exch 1 get moveto
+dup dup 0 get exch 3 get lineto
+dup dup 2 get exch 3 get lineto
+dup 2 get exch 1 get lineto closepath
+clip newpath PaintProc end grestore}def}ifelse
+/bc{save 11 1 roll 10 dict begin /BBox 5 1 roll 4 array astore def
+/Matrix 7 1 roll 6 array astore def /FormType 1 def/PaintProc{/pp get exec}def}def
+/ec{pop restore}def
+/printvm{1 vmreclaim vmstatus pop exch pop (                         )cvs print (\n)print flush}def
+/setoverprint where {pop}{/setoverprint{pop}def}ifelse
+/sstr { /$sstrs exch def /$sstr exch def /$sstry exch def /$sstrx exch def /Courier findfont $sstrs 
+scalefont setfont $sstrx $sstry mt stm 1 -1 scale $sstr show rtm } def
+/DSIBeginPaintProc{/pp mark{currentfile token not{}if dup/DSIEndPaintProc
+	eq{pop counttomark array astore cvx bind /exec load]cvx def DSIEndPaintProc exit}
+	{counttomark 300 gt{counttomark array astore cvx bind /exec load}if}ifelse}loop}def
+/DSIEndPaintProc{currentdict end}def
+/DSIBeginPaintSubProc {save 11 1 roll 10 dict dup /pD exch def begin 
+	/BBox 5 1 roll 4 array astore def /Matrix 7 1 roll 6 array astore def 
+	/FormType 1 def /PaintProc { /pp get exec } def /pp} def
+/DSIEndPaintSubProc {bind def end pD} def
+/iaa {/ix ix ixn add def} def
+/ias2 {/igap exch def /_st0 ia ix igap add get def _st0} def
+/ias {/st0 ia ix get def iaa st0} def
+/i85s {0 ias2 /ASCII85Decode filter st0 readstring pop iaa} def
+/irles {0 ias2 /ASCII85Decode filter /RunLengthDecode filter st0 readstring pop iaa} def
+initialize
+end
+%%EndResource
+CVDict begin 0 id 1 fd
+_encodArr 0
+[
+39/quotesingle 96/grave
+128/bullet/bullet/quotesinglbase/florin/quotedblbase/ellipsis/dagger/daggerdbl/circumflex/perthousand/Scaron/guilsinglleft/OE/bullet/bullet/bullet
+/bullet/quoteleft/quoteright/quotedblleft/quotedblright/bullet/endash/emdash/tilde/trademark
+/scaron
+/guilsinglright/oe/bullet/bullet/Ydieresis
+/bullet/exclamdown/cent/sterling/currency/yen/brokenbar/section/dieresis/copyright/ordfeminine/guillemotleft/logicalnot/hyphen/registered/macron
+/degree/plusminus/twosuperior/threesuperior/acute/mu/paragraph/periodcentered/cedilla/onesuperior/ordmasculine/guillemotright/onequarter/onehalf/threequarters/questiondown
+/Agrave/Aacute/Acircumflex/Atilde/Adieresis
+/Aring
+/AE/Ccedilla/Egrave/Eacute/Egrave/Edieresis/Igrave/Iacute/Icircumflex/Idieresis
+/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls
+/agrave/aacute/acircumflex/atilde/adieresis
+/aring
+/ae/ccedilla/egrave/eacute/ecircumflex/edieresis
+/igrave
+/iacute
+/icircumflex
+/idieresis
+/eth/ntilde/ograve/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis/yacute/thorn/ydieresis
+] put
+_encodArr 1
+[
+39/quotesingle 96/grave
+128/Adieresis/Aring/Ccedilla/Eacute/Ntilde/Odieresis/Udieresis/aacute
+/agrave/acircumflex/adieresis/atilde/aring/ccedilla/eacute/egrave
+/ecircumflex/edieresis/iacute/igrave/icircumflex/idieresis/ntilde/oacute
+/ograve/ocircumflex/odieresis/otilde/uacute/ugrave/ucircumflex/udieresis
+/dagger/degree/cent/sterling/section/bullet/paragraph/germandbls
+/registered/copyright/trademark/acute/dieresis/notequal/AE/Oslash
+/infinity/plusminus/lessequal/greaterequal/yen/mu/partialdiff/summation
+/product/pi/integral/ordfeminine/ordmasculine/Omega/ae/oslash
+/questiondown/exclamdown/logicalnot/radical/florin/approxequal/Delta/guillemotleft
+/guillemotright/ellipsis/blank/Agrave/Atilde/Otilde/OE/oe
+/endash/emdash/quotedblleft/quotedblright/quoteleft/quoteright/divide/lozenge
+/ydieresis/Ydieresis/fraction/currency/guilsinglleft/guilsinglright/fi/fl
+/daggerdbl/periodcentered/quotesinglbase/quotedblbase/perthousand/Acircumflex/Ecircumflex/Aacute
+/Edieresis/Egrave/Iacute/Icircumflex/Idieresis/Igrave/Oacute/Ocircumflex
+/apple/Ograve/Uacute/Ucircumflex/Ugrave/dotlessi/circumflex/tilde
+/macron/breve/dotaccent/ring/cedilla/hungarumlaut/ogonek/caron
+] put
+end
+%%EndProlog 
+%%BeginSetup 
+CVDict begin
+
+/___FN3 /Helvetica dup  dup findfont dup /CharStrings known {begin CharStrings /Adieresis known {1 }{-1} ifelse end} {pop -1} ifelse rf
+0 id
+1 fd
+0 150 translate
+300 -300 scli
+%%EndSetup 
+%%BeginPageSetup 
+pm
+%%EndPageSetup
+/DeviceCMYK scs
+0 0 0 1. f4
+0.1250 0.1250 sp
+ 0 lc
+ 2 lj
+T sa
+%page rect: 2078 196 2356 345 
+stm
+0 0 0 1. f4
+np
+50.2588 148.9578 mt
+50.2588 146.8745 li
+358.2008 146.8745 li
+358.2008 148.9578 li
+50.2588 148.9578 li
+cp
+df
+gs
+0 0 0 1. f4
+np
+391.9247 148.144 mt
+351.8206 162.4995 li
+351.8206 133.3329 li
+391.9247 148.144 li
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+61.7199 158.3329 mt
+59.6366 158.3329 li
+59.6366 33.7238 li
+61.7199 33.7238 li
+61.7199 158.3329 li
+cp
+df
+gs
+0 0 0 1. f4
+np
+60.9063 -0. mt
+75.2617 40.104 li
+46.0951 40.104 li
+60.9063 -0. li
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+2.0833 2.0833 sp
+14.3 lm
+ 0 lj
+np
+187.7582 148.9578 mt
+187.7582 169.7911 li
+ds
+rtm
+stm
+0 0 0 1. f4
+np
+314.1467 148.9578 mt
+314.1467 169.7911 li
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+4.1667 4.1667 sp
+np
+14.5833 14.5833 60.6755 73.0534 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+41.6666 fts
+/___FN3 cvsf
+0 0 0 1. f4
+F sa
+17.9256 85.2075 mt
+(1)  show
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+397.0913 162.2907 mt
+(n)  show
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+4.1667 4.1667 sp
+np
+14.5833 13.4628 187.7585 149.2525 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+np
+14.5833 14.878 314.8415 74.2527 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+86.6754 41.4576 mt
+(b)  show
+T sa
+rtm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+109.4777 52.4576 mt
+(n)  show
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+17.9256 160.2074 mt
+(0)  show
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+158.5919 206.0406 mt
+(1/R\325) [23.17 11.58 30.09 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+280.4666 206.0406 mt
+(2/R\325) [23.17 11.58 30.09 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0 0 0 0 f4
+np
+487.7578 85.4164 737.7572 197.9161 rp
+de
+0 0 0 1. f4
+4.1667 4.1667 sp
+11.5 lm
+ 0 lj
+np
+487.7578 85.4164 737.7572 197.9161 rp
+ds
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+565.2824 132.0825 mt
+(Digital) [30.09 9.26 23.17 9.26 11.58 23.17 0 ] xshow
+T sa
+rtm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+0 0 0 1. f4
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+517.8378 173.7484 mt
+(Transmitter) [25.45 13.88 23.17 23.17 20.83 34.71 9.26 11.58 11.58 23.17 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+2.0833 2.0833 sp
+14.3 lm
+ 0 lj
+np
+431.2475 147.9162 mt
+483.5911 147.9162 li
+ds
+gs
+0 0 0 1. f4
+np
+445.0501 134.5157 mt
+445.0777 134.4691 li
+482.3137 147.766 li
+482.3137 147.766 453.164 159.4778 445.3269 161.3628 ct
+448.6539 158.8717 455.9379 151.8331 455.9379 148.0407 ct
+455.9379 144.1441 448.5385 137.0203 445.0501 134.5157 ct
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+739.5801 147.9162 mt
+791.9237 147.9162 li
+ds
+gs
+0 0 0 1. f4
+np
+753.3827 134.5157 mt
+753.4103 134.4691 li
+790.6463 147.766 li
+790.6462 147.766 761.4966 159.4778 753.6595 161.3628 ct
+756.9865 158.8717 764.2705 151.8331 764.2705 148.0407 ct
+764.2705 144.1441 756.8711 137.0203 753.3827 134.5157 ct
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+802.3403 147.9183 mt
+802.3403 145.835 li
+1110.2823 145.835 li
+1110.2823 147.9183 li
+802.3403 147.9183 li
+cp
+df
+gs
+0 0 0 1. f4
+np
+1144.0062 147.1045 mt
+1103.9021 161.4599 li
+1103.9021 132.2934 li
+1144.0062 147.1045 li
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+929.4231 159.3745 mt
+929.4231 180.2078 li
+ds
+rtm
+stm
+0 0 0 1. f4
+np
+1055.8116 159.3745 mt
+1055.8116 180.2078 li
+ds
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+891.8818 216.4572 mt
+(T)  show
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+1002.3398 216.4572 mt
+(2T) [23.17 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0.9453 0.6133 0.0078 0 f4
+2.0833 2.0833 sp
+np
+802.3403 70.8331 mt
+927.8609 70.8331 li
+928.9025 222.3952 li
+1056.5064 222.9161 li
+1056.5064 72.9164 li
+1096.0896 72.9164 li
+ds
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+822.6528 54.4785 mt
+(x\(t\)) [20.83 13.88 11.58 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+1144.4853 161.7699 mt
+(t)  show
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+np
+805.4681 232.8119 mt
+803.3848 232.8119 li
+803.3848 44.1405 li
+805.4681 44.1405 li
+805.4681 232.8119 li
+cp
+df
+gs
+0 0 0 1. f4
+np
+804.6545 10.4166 mt
+819.0099 50.5207 li
+789.8433 50.5207 li
+804.6545 10.4166 li
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+800.257 536.4591 mt
+800.257 534.3757 li
+1116.0114 534.3757 li
+1116.0114 536.4591 li
+800.257 536.4591 li
+cp
+df
+gs
+0 0 0 1. f4
+np
+1149.7353 535.6452 mt
+1109.6313 550.0007 li
+1109.6313 520.8341 li
+1149.7353 535.6452 li
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+805.4681 620.3109 mt
+803.3848 620.3109 li
+803.3848 416.0145 li
+805.4681 416.0145 li
+805.4681 620.3109 li
+cp
+df
+gs
+0 0 0 1. f4
+np
+804.6545 382.2907 mt
+819.0099 422.3948 li
+789.8433 422.3948 li
+804.6545 382.2907 li
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+2.0833 2.0833 sp
+np
+931.5064 531.2486 mt
+931.5064 552.0819 li
+ds
+rtm
+stm
+0 0 0 1. f4
+np
+1057.8949 531.2486 mt
+1057.8949 552.0819 li
+ds
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+833.5486 587.8105 mt
+(T)  show
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+877.3401 587.8105 mt
+(3T) [23.17 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+824.7361 426.3526 mt
+(x\(t\)) [20.83 13.88 11.58 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+1148.652 548.2273 mt
+(t)  show
+T sa
+rtm
+rtm
+stm
+0.9453 0.6133 0.0078 0 f4
+2.0833 2.0833 sp
+np
+804.4237 459.3738 mt
+929.9442 459.3738 li
+930.9858 610.9359 li
+1058.5897 611.4568 li
+1058.5897 461.4571 li
+1098.1729 461.4571 li
+ds
+rtm
+stm
+0 0 0 1. f4
+1.0417 1.0417 sp
+11.5 lm
+ 0 lj
+np
+845.9166 458.853 mt
+845.9166 475.5196 li
+845.9166 479.6863 mt
+845.9166 496.3529 li
+845.9166 500.5195 mt
+845.9166 517.1862 li
+845.9166 521.3528 mt
+845.9166 534.8945 li
+845.9166 534.8945 li
+ds
+rtm
+stm
+0 0 0 1. f4
+np
+887.9304 458.853 mt
+887.9304 475.5196 li
+887.9304 479.6863 mt
+887.9304 496.3529 li
+887.9304 500.5195 mt
+887.9304 517.1862 li
+887.9304 521.3528 mt
+887.9304 534.8945 li
+887.9304 534.8945 li
+ds
+rtm
+stm
+0 0 0 1. f4
+np
+972.9995 535.9361 mt
+972.9995 552.6028 li
+972.9995 556.7694 mt
+972.9995 573.436 li
+972.9995 577.6027 mt
+972.9995 594.2693 li
+972.9995 598.436 mt
+972.9995 610.9359 li
+972.9995 610.9359 li
+ds
+rtm
+stm
+0 0 0 1. f4
+np
+1015.0133 535.9361 mt
+1015.0133 552.6028 li
+1015.0133 556.7694 mt
+1015.0133 573.436 li
+1015.0133 577.6027 mt
+1015.0133 594.2693 li
+1015.0133 598.436 mt
+1015.0133 610.9359 li
+1015.0133 610.9359 li
+ds
+rtm
+stm
+0 0 0 1. f4
+np
+1100.0825 461.978 mt
+1100.0008 478.6444 li
+1099.9804 482.811 mt
+1099.8988 499.4774 li
+1099.8784 503.644 mt
+1099.7967 520.3105 li
+1099.7763 524.4771 mt
+1099.7354 532.8111 li
+1099.7354 532.8111 li
+ds
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+1060.673 587.8105 mt
+(6T) [23.17 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+np
+33.5922 536.4569 mt
+33.5922 534.3736 li
+341.5342 534.3736 li
+341.5342 536.4569 li
+33.5922 536.4569 li
+cp
+df
+gs
+0 0 0 1. f4
+np
+375.2581 535.6431 mt
+335.154 549.9985 li
+335.154 520.8319 li
+375.2581 535.6431 li
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+45.0533 545.8319 mt
+42.97 545.8319 li
+42.97 421.2229 li
+45.0533 421.2229 li
+45.0533 545.8319 li
+cp
+df
+gs
+0 0 0 1. f4
+np
+44.2397 387.499 mt
+58.5951 427.6031 li
+29.4285 427.6031 li
+44.2397 387.499 li
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+2.0833 2.0833 sp
+14.3 lm
+ 0 lj
+np
+171.0916 536.4569 mt
+171.0916 557.2902 li
+ds
+rtm
+stm
+0 0 0 1. f4
+np
+297.4801 536.4569 mt
+297.4801 557.2902 li
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+4.1667 4.1667 sp
+np
+14.5833 14.5833 44.0088 461.3004 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+1.259 472.7066 mt
+(1)  show
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+380.4247 549.7897 mt
+(l)  show
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+4.1667 4.1667 sp
+np
+14.5833 13.4628 171.0919 534.6682 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+np
+14.5833 14.878 298.1749 461.3004 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+70.0088 428.9567 mt
+(c)  show
+T sa
+rtm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+90.5088 439.9567 mt
+(l)  show
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+1.259 547.7064 mt
+(0)  show
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+141.9253 593.5396 mt
+(1/R\325) [23.17 11.58 30.09 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+263.8 593.5396 mt
+(2/R\325) [23.17 11.58 30.09 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+4.1667 4.1667 sp
+np
+14.5833 14.5833 89.8421 461.3004 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+np
+14.5833 14.5833 135.6753 461.3004 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+np
+14.5833 13.4628 219.0084 534.6682 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+np
+14.5833 13.4628 266.925 534.6682 ep
+ds
+rtm
+stm
+0.8477 0.5938 0 0.0039 f4
+np
+14.5833 14.878 344.0081 461.3004 ep
+ds
+rtm
+stm
+0 0 0 0 f4
+np
+483.5911 474.9988 733.5905 587.4985 rp
+de
+0 0 0 1. f4
+11.5 lm
+ 0 lj
+np
+483.5911 474.9988 733.5905 587.4985 rp
+ds
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+561.1157 521.6649 mt
+(Digital) [30.09 9.26 23.17 9.26 11.58 23.17 0 ] xshow
+T sa
+rtm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+0 0 0 1. f4
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+513.6712 563.3308 mt
+(Transmitter) [25.45 13.88 23.17 23.17 20.83 34.71 9.26 11.58 11.58 23.17 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+2.0833 2.0833 sp
+14.3 lm
+ 0 lj
+np
+427.0808 535.4152 mt
+479.4245 535.4152 li
+ds
+gs
+0 0 0 1. f4
+np
+440.8835 522.0147 mt
+440.9111 521.9681 li
+478.147 535.2651 li
+478.147 535.2651 448.9973 546.9768 441.1602 548.8618 ct
+444.4873 546.3708 451.7712 539.3322 451.7712 535.5397 ct
+451.7712 531.6432 444.3718 524.5193 440.8835 522.0147 ct
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+735.4134 535.4152 mt
+787.757 535.4152 li
+ds
+gs
+0 0 0 1. f4
+np
+749.216 522.0147 mt
+749.2436 521.9681 li
+786.4796 535.2651 li
+786.4796 535.2651 757.3299 546.9768 749.4928 548.8618 ct
+752.8198 546.3708 760.1038 539.3322 760.1038 535.5397 ct
+760.1038 531.6432 752.7044 524.5193 749.216 522.0147 ct
+cp
+de
+gr
+rtm
+stm
+0 0 0 0 f4
+np
+91.9254 266.666 341.9248 379.1657 rp
+de
+0 0 0 1. f4
+4.1667 4.1667 sp
+11.5 lm
+ 0 lj
+np
+91.9254 266.666 341.9248 379.1657 rp
+ds
+rtm
+stm
+0 0 0 1. f4
+0.1250 0.1250 sp
+0 0 0 1. f4
+stm
+0 0 0 1. f4
+F sa
+149.7357 313.332 mt
+(Channel) [30.09 23.17 23.17 23.17 23.17 23.17 0 ] xshow
+T sa
+rtm
+stm
+F sa
+170.5995 354.998 mt
+(Coder) [30.09 23.17 23.17 23.17 0 ] xshow
+T sa
+rtm
+rtm
+stm
+0 0 0 1. f4
+2.0833 2.0833 sp
+14.3 lm
+ 0 lj
+np
+216.9248 218.7493 mt
+216.9248 269.0096 li
+ds
+gs
+0 0 0 1. f4
+np
+230.3254 230.4686 mt
+230.3719 230.4962 li
+217.075 267.7322 li
+217.075 267.7322 205.3632 238.5825 203.4782 230.7454 ct
+205.9693 234.0724 213.0079 241.3564 216.8003 241.3564 ct
+220.6969 241.3564 227.8207 233.957 230.3254 230.4686 ct
+cp
+de
+gr
+rtm
+stm
+0 0 0 1. f4
+np
+216.9248 379.1656 mt
+216.9248 429.4259 li
+ds
+gs
+0 0 0 1. f4
+np
+230.3254 390.8849 mt
+230.3719 390.9125 li
+217.075 428.1485 li
+217.075 428.1485 205.3632 398.9988 203.4782 391.1617 ct
+205.9693 394.4887 213.0079 401.7727 216.8003 401.7727 ct
+220.6969 401.7727 227.8207 394.3733 230.3254 390.8849 ct
+cp
+de
+gr
+rtm
+terminate

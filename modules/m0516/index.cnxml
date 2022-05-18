@@ -1,0 +1,231 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Channel Models</title>
+  
+  <metadata>
+  <md:content-id>m0516</md:content-id><md:title>Channel Models</md:title>
+  <md:abstract>Both wireline and wireless channels share characteristics, allowing us
+    to use a common model for how the channel affects transmitted signals.</md:abstract>
+  <md:uuid>643a9cdc-cc26-4d93-ad3d-f9397f110400</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">
+      Both wireline and wireless channels share characteristics,
+      allowing us to use a common model for how the channel affects
+      transmitted signals.
+      
+      <list id="list1">
+	<item> The transmitted signal is usually not filtered by the channel.
+	</item>
+	<item> The signal can be attenuated.
+	</item>
+	<item> The signal propagates through the channel at a speed
+	  equal to or less than the speed of light, which means that the
+	  channel delays the transmission.
+	</item>
+	<item> The channel may introduce additive interference and/or noise.
+	</item>
+      </list>
+      
+      Letting <m:math><m:ci>α</m:ci></m:math> represent the
+      attenuation introduced by the channel, the receiver's input
+      signal is related to the transmitted one by
+      
+      <equation id="commmodel">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply><m:ci type="fn">r</m:ci><m:ci>t</m:ci></m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>α</m:ci>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:ci>τ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+	      <m:apply><m:ci type="fn">n</m:ci><m:ci>t</m:ci></m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+ 
+      This expression corresponds to the system model for the channel
+      shown in <link target-id="sys16" strength="3"/>.  In this book, we
+      shall assume that the noise is white.
+    </para>
+    
+    <figure id="sys16" orient="horizontal">
+      <media id="id1168757087763" alt="">
+        <image src="../../media/sys16.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys16.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The channel component of the
+	<link document="m0002" target-id="commsys" strength="3">
+	  fundamental model of communication</link> has the depicted
+	form.  The attenuation is due to propagation loss.  Adding the
+	interference and noise is justified by the linearity property
+	of Maxwell's equations.
+      </caption>
+    </figure>
+    
+    <exercise id="exer1">
+      <problem id="id1168749143840">
+	<para id="prob">Is this model for the channel linear?</para>
+      </problem>
+      <solution id="id1168758143973">
+	<para id="sol">
+	  The additive-noise channel is <emphasis>not </emphasis>linear
+	  because it does not have the zero-input-zero-output property
+	  (even though we might transmit nothing, the receiver's
+	  input consists of noise).
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="p2"> As expected, the signal that emerges from the
+      channel is corrupted, but does contain the transmitted
+      signal. Communication system design begins with detailing the
+      channel model, then developing the transmitter and receiver that
+      best compensate for the channel's corrupting behavior. We
+      characterize the channel's quality by the signal-to-interference
+      ratio (<emphasis>SIR</emphasis>) and the signal-to-noise ratio
+      (<emphasis>SNR</emphasis>). The ratios are computed according to
+      the relative power of each <emphasis>within the transmitted
+      signal's bandwidth</emphasis>. Assuming the signal
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>'s spectrum spans the frequency interval
+      <m:math>
+	<m:interval>
+	  <m:ci><m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mi>l</m:mi>
+	    </m:msub></m:ci>
+	  <m:ci><m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mi>u</m:mi>
+	    </m:msub></m:ci>
+	</m:interval>
+      </m:math>, these ratios can be expressed in terms of power
+      spectra.
+      
+      <equation id="equation1">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>SIR</m:ci>
+	    <m:apply>
+	      <m:divide/> 
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>α</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar><m:ci>f</m:ci></m:bvar>
+		  <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		  <m:uplimit><m:infinity/></m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>P</m:mi><m:mi>x</m:mi></m:msub></m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar><m:ci>f</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:ci><m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>l</m:mi>
+		      </m:msub></m:ci>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci><m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>u</m:mi>
+		      </m:msub></m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>P</m:mi><m:mi>i</m:mi></m:msub></m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      
+      <equation id="equation2">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>SNR</m:ci>
+	    <m:apply>
+	      <m:divide/> 
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>α</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar><m:ci>f</m:ci></m:bvar>
+		  <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		  <m:uplimit><m:infinity/></m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>P</m:mi><m:mi>x</m:mi></m:msub></m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      
+	      <m:apply>
+		<m:times/>
+		<m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci><m:msub><m:mi>f</m:mi><m:mi>u</m:mi></m:msub></m:ci>
+		  <m:ci><m:msub><m:mi>f</m:mi><m:mi>l</m:mi></m:msub></m:ci>
+		</m:apply>    
+	      </m:apply>
+	      
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      In most cases, the interference and noise powers do not vary for a
+      given receiver.  Variations in signal-to-interference and
+      signal-to-noise ratios arise from the attenuation because of
+      transmitter-to-receiver distance variations.
+    </para>
+    
+  </content>
+</document>

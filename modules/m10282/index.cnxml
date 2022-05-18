@@ -1,0 +1,264 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+
+  <title>Digital Communication System Properties</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>4e3be1c7-d87c-4b22-a1f7-542356c056ea</md:uuid>
+</metadata>
+  
+
+  <content>
+
+    <para id="para1">
+      Results from the <link document="m0546" strength="2">Receiver
+      Error module</link> reveals several properties about digital
+      communication systems.
+
+      <list id="list1"> 
+	<item>
+	  As the received signal becomes increasingly noisy, whether
+	  due to increased distance from the transmitter (smaller
+	  <m:math><m:ci>α</m:ci></m:math>) or to increased noise
+	  in the channel (larger
+
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>N</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>), the probability the receiver makes an error
+	  approaches <m:math><m:cn type="rational">1<m:sep/>2</m:cn></m:math>. In such
+	  situations, the receiver performs only slightly better than
+	  the "receiver" that ignores what was transmitted and merely
+	  guesses what bit was transmitted. Consequently, it becomes
+	  almost impossible to communicate information when digital
+	  channels become noisy.
+	</item>
+
+	<item> As the signal-to-noise ratio increases, performance
+	  gains--smaller probability of error  
+
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>e</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math> -- can be easily obtained. At a signal-to-noise
+	  ratio of 12 dB, the probability the receiver makes an error
+	  equals
+	  <m:math>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>10</m:cn>
+	      <m:cn>-8</m:cn>
+	    </m:apply>
+	  </m:math>.  In words, one out of one hundred million bits
+	  will, on the average, be in error.
+	</item>
+
+	<item> Once the signal-to-noise ratio exceeds about 5 dB, the
+	  error probability decreases dramatically. Adding 1 dB
+	  improvement in signal-to-noise ratio can result in a factor
+	  of 10 smaller
+
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>p</m:mi>
+		<m:mi>e</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>.  
+	</item>
+	<item> Signal set choice can make a significant difference in
+	  performance. All BPSK signal sets, baseband or modulated,
+	  yield the same performance for the same bit energy.  The
+	  BPSK signal set does perform much better than the FSK signal
+	  set once the signal-to-noise ratio exceeds about 5 dB.
+	</item>
+      </list>   
+    </para>
+    
+
+    <exercise id="exer1">
+      <problem id="idp32608">
+	<para id="prob1">
+	  Derive the expression for the probability of error that
+	  would result if the FSK signal set were used.
+	</para>
+      </problem>
+
+      <solution id="idp6802240">
+	<para id="sol1">
+	  The noise-free integrator output difference now equals  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>α</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>A</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>α</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>E</m:mi>
+		      <m:mi>b</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>. The noise power remains the same as in the BPSK
+	  case, which from <link document="m0546" target-id="eqn0003" strength="2">the probability of error equation</link> yields
+	  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci><m:msub> <m:mi>p</m:mi> <m:mi>e</m:mi></m:msub></m:ci>
+	      <m:apply><m:ci type="fn">Q</m:ci>
+		<m:apply><m:root/>
+		  <m:apply><m:divide/>
+		    <m:apply><m:times/>
+		      <m:apply><m:power/>
+			<m:ci>α</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:ci><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub></m:ci>
+		    </m:apply>
+		    <m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="para2">
+      The matched-filter receiver provides impressive performance once
+      adequate signal-to-noise ratios occur. You might wonder whether
+      another receiver might be better.  The answer is that the
+      matched-filter receiver is optimal: <emphasis>No other receiver
+      can provide a smaller probability of error than the matched
+      filter regardless of the SNR</emphasis>. Furthermore, no signal
+      set can provide better performance than the BPSK signal set,
+      where the signal representing a bit is the negative of the
+      signal representing the other bit. The reason for this result
+      rests in the dependence of probability of error
+
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>p</m:mi>
+	    <m:mi>e</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+
+      on the difference between the noise-free integrator outputs: For a given 
+      
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>E</m:mi>
+	    <m:mi>b</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>, no other signal set provides a greater difference.
+      </para>
+
+    <para id="para3"> How small should the error probability be? Out
+      of <m:math><m:ci>N</m:ci></m:math> transmitted bits, on the
+      average
+
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:ci>N</m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>p</m:mi>
+	      <m:mi>e</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math> bits will be received in error. Do note the phrase "on
+      the average" here: Errors occur randomly because of the noise
+      introduced by the channel, and we can only predict the
+      probability of occurrence. Since bits are transmitted at a rate
+      <m:math><m:ci>R</m:ci></m:math>, errors occur at an average
+      frequency of
+
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:ci>R</m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>p</m:mi>
+	      <m:mi>e</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>.  Suppose the error probability is an impressively
+      small number like
+
+      <m:math>
+	<m:apply>
+	  <m:power/>
+	  <m:cn>10</m:cn>
+	  <m:cn>-6</m:cn>
+	</m:apply>
+      </m:math>.  Data on a computer network like Ethernet is
+      transmitted at a rate 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>R</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>100</m:cn>
+	    <m:ci>Mbps</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>, which means that errors would occur roughly 100 per
+      second. This error rate is very high, requiring a much smaller
+
+      <m:math>		  
+	<m:ci>
+	  <m:msub>
+	    <m:mi>p</m:mi>
+	    <m:mi>e</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+
+      to achieve a more acceptable average occurrence rate for errors
+      occurring. Because Ethernet is a wireline channel, which means
+      the channel noise is small and the attenuation low, obtaining
+      very small error probabilities is not difficult. We do have some
+      tricks up our sleeves, however, that can essentially reduce the
+      error rate to zero <emphasis>without</emphasis> resorting to
+      expending a large amount of energy at the transmitter.  We need
+      to understand <link document="m0102" strength="3">digital
+      channels</link> and Shannon's <link document="m0073" strength="2">Noisy Channel Coding Theorem</link>.
+    </para>
+
+  </content>
+</document>

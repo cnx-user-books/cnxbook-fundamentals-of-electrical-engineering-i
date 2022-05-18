@@ -1,0 +1,76 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml"> 
+
+  <title>Comparison of Analog and Digital Communication</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>d61e6aa3-a8a9-4f4c-ab0f-5bf6d3e5b372</md:uuid>
+</metadata>
+  <content>
+
+
+    <para id="para1"> Analog communication systems, amplitude
+      modulation (AM) radio being a typifying example, can
+      inexpensively communicate a bandlimited analog signal from one
+      location to another (point-to-point communication) or from one
+      point to many (broadcast).  Although it is not shown here, the
+      <link document="m0518" target-id="fig1000" strength="2">coherent
+      receiver</link> provides the largest possible signal-to-noise
+      ratio for the demodulated message.  <link document="m0541" strength="2">An analysis</link> of this receiver thus indicates
+      that some residual error will <emphasis>always </emphasis>be
+      present in an analog system's output.  
+    </para>
+
+    <para id="para2"> Although analog systems are less expensive in
+      many cases than digital ones for the same application,
+      digital systems offer much
+      more efficiency, better performance, and much greater
+      flexibility.  
+ 
+      <list id="list"><item> <term>Efficiency</term>:  The Source Coding
+	  Theorem allows quantification of just how complex a given
+	  message source is and allows us to exploit that complexity
+	  by source coding (compression).  In analog communication,
+	  the only parameters of interest are message bandwidth and
+	  amplitude.  We cannot exploit signal structure to achieve a
+	  more efficient communication system.
+	</item>
+	<item> <term>Performance</term>: Because of the Noisy Channel
+	  Coding Theorem, we have a specific criterion by which to
+	  formulate error-correcting codes that can bring us as close
+	  to error-free transmission as we might want.  Even though we
+	  may send information by way of a noisy channel, digital
+	  schemes are capable of error-free transmission while analog
+	  ones cannot overcome channel disturbances; see <link document="m10352" target-id="item6.9" strength="2">this
+	  problem</link> for a comparison.
+	</item>
+	<item> <term>Flexibility</term>: Digital communication systems
+	  can transmit real-valued discrete-time signals, which could
+	  be analog ones obtained by analog-to-digital conversion,
+	  <emphasis>and </emphasis>symbolic-valued ones (computer
+	  data, for example).  Any signal that can be transmitted by
+	  analog means can be sent by digital means, with the only
+	  issue being the number of bits used in A/D conversion (how
+	  accurately do we need to represent signal amplitude).
+	  Images can be sent by analog means (commercial television),
+	  but better communication performance occurs when we use
+	  digital systems (HDTV).  In addition to digital
+	  communication's ability to transmit a wider variety of
+	  signals than analog systems, point-to-point digital systems
+	  can be organized into global (and beyond as well) systems
+	  that provide efficient and flexible information
+	  transmission.  <term>Computer networks</term>,
+	  explored in the next section, are what we call such systems
+	  today. Even analog-based networks, such as the telephone
+	  system, employ modern computer networking ideas rather than
+	  the purely analog systems of the past.
+	</item>
+      </list>
+      
+      Consequently, with the increased speed of digital computers, the
+      development of increasingly efficient algorithms, and the
+      ability to interconnect computers to form a communications
+      infrastructure, digital communication is now the best choice for
+      many situations.
+    </para>
+
+  </content>
+</document>

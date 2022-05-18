@@ -1,0 +1,483 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>The Fundamental Signal</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>b64b163b-9da8-4458-b943-7ca267109686</md:uuid>
+</metadata>
+
+  <content>
+    <section id="fundamentalsignal">
+      <title>The Sinusoid</title>
+      
+      <para id="par1">
+	The most ubiquitous and important signal in electrical
+	engineering is the <term>sinusoid</term>.
+	<equation id="test1">
+	  <title>Sine Definition</title>      
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      
+              <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+                      <m:cn>2</m:cn>
+                      <m:pi/>
+                      <m:ci>f</m:ci>
+                      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:cn>φ</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    
+	    <m:mtext>or</m:mtext>
+
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>ω</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:cn>φ</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+            
+	  </m:math>
+	</equation>
+
+	<m:math><m:ci>A</m:ci></m:math> is known as the sinusoid's
+	<term>amplitude</term>, and determines the sinusoid's size.
+	The amplitude conveys the sinusoid's physical units (volts,
+	lumens, etc).  The <term>frequency</term>
+	<m:math><m:ci>f</m:ci></m:math> has units of Hz (Hertz) or
+	<m:math>
+	  <m:apply>
+	    <m:inverse/>
+	    <m:cn>s</m:cn>
+	  </m:apply>
+	</m:math>, and determines how rapidly the sinusoid oscillates
+	per unit time.  The temporal variable <m:math><m:ci>t</m:ci>
+	</m:math> always has units of seconds, and thus the frequency
+	determines how many oscillations/second the sinusoid has.  AM
+	radio stations have carrier frequencies of about 1 MHz (one
+	mega-hertz or
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>10</m:cn>
+	    <m:cn>6</m:cn>
+	  </m:apply>
+	</m:math> Hz), while FM stations have carrier frequencies of
+	about 100 MHz.  Frequency can also be expressed by the symbol
+	<m:math><m:ci>ω</m:ci></m:math>, which has units of
+	radians/second.  Clearly,
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>ω</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  In communications, we most often express frequency in
+	Hertz.  Finally, <m:math><m:ci>φ</m:ci></m:math>
+	is the <term>phase</term>, and determines the sine wave's behavior 
+	at the origin (<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>t</m:ci>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>).  It has units of radians, but we can express it in
+	degrees, realizing that in computations we must convert from
+	degrees to radians. Note that if 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>φ</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:divide/>
+		<m:pi/>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, the sinusoid corresponds to a sine function, having a
+	zero value at the origin.
+	
+	<equation id="test2">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:sin/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:cn>φ</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      
+	      <m:apply>
+		<m:times/>
+		<m:ci>A</m:ci>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:minus/>
+		    
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:cn>φ</m:cn>
+		    </m:apply>
+		    
+		    <m:apply>
+		      <m:divide/>
+		      <m:pi/>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation> 
+	Thus, the only difference between a sine and cosine signal is
+	the phase; we term either a sinusoid.
+      </para>
+      <para id="par2"> 
+	We can also define a discrete-time variant of the sinusoid: 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>A</m:ci>
+	    <m:apply>
+	      <m:cos/>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:cn>φ</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. Here, the independent variable is
+	<m:math><m:ci>n</m:ci></m:math> and represents the
+	integers. Frequency now has no dimensions, and takes on values
+	between 0 and 1.
+      </para>
+      
+      <exercise id="exer1">
+	<problem id="idm8761408">
+	  <para id="probpar1">
+	    Show that 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>f</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, which means that a sinusoid having a frequency
+	    larger than one corresponds to a sinusoid having a frequency
+	    less than one.
+	  </para>
+	</problem>
+	<solution id="idm145776">
+	  <para id="solpar1">
+	    As 
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>α</m:ci>
+		    <m:ci>β</m:ci>
+		  </m:apply>
+		</m:apply>
+
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:cos/>
+		      <m:ci>α</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:cos/>
+		      <m:ci>β</m:ci>
+		    </m:apply>
+		  </m:apply>
+
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:ci>α</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:sin/>
+		      <m:ci>β</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>, 
+
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>f</m:ci>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+
+		<m:apply>
+		  <m:minus/>
+
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:cos/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:cos/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+	  </para>
+	</solution>
+      </exercise>
+      
+      <para id="par6">
+	<note type="Analog or digital?" id="idm1241040"><label>Analog or digital?</label>
+	  Notice that we shall call either sinusoid an analog
+	  signal. Only when the discrete-time signal takes on a finite
+	  set of values can it be considered a digital signal.
+	</note>
+      </para>
+      
+      <exercise id="exer2">
+	<problem id="idm180592">
+	  <para id="probpar2">
+	    Can you think of a simple signal that has a finite number
+	    of values but is defined in continuous time? Such a signal
+	    is also an analog signal.
+	  </para>
+	</problem>
+	<solution id="idm8466320">
+	  <para id="probsol2">
+	    A square wave takes on the values
+	    <m:math>
+	      <m:cn>1</m:cn>
+	    </m:math>
+	    and <m:math>
+	      <m:cn>-1</m:cn>
+	    </m:math>
+	    alternately. See the plot in the module <link document="m0004" target-id="squarewave" strength="2">Elemental Signals</link>.
+	  </para>
+	</solution>
+      </exercise>
+    </section>
+
+    <section id="sec2">
+      <title>Communicating Information with Signals</title>
+      <para id="par3">
+	The basic idea of communication engineering is to use a
+	signal's parameters to represent either real numbers or other
+	signals.  The technical term is to <term>modulate</term> the
+	<term>carrier</term> signal's parameters to transmit
+	information from one place to another. To explore the notion
+	of modulation, we can send a real number (today's temperature,
+	for example) by changing a sinusoid's amplitude accordingly.
+	If we wanted to send the daily temperature, we would keep the
+	frequency constant (so the receiver would know what to expect)
+	and change the amplitude at midnight.
+
+	We could relate temperature to amplitude by the formula 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>A</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci><m:msub><m:mi>A</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>k</m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, where
+	<m:math>
+	  <m:ci><m:msub><m:mi>A</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	</m:math> and 
+	<m:math><m:ci>k</m:ci></m:math> are
+	constants that the transmitter and receiver must
+	<emphasis>both</emphasis> know.</para>
+
+      <para id="par4">
+	If we had two numbers we wanted to send at the same time, we
+	could modulate the sinusoid's frequency as well as its
+	amplitude.   This modulation scheme assumes we can estimate the
+	sinusoid's amplitude and frequency; we shall learn that this is
+	indeed possible.
+      </para>
+      
+      <para id="par5">
+	Now suppose we have a sequence of parameters to send.  We have
+	exploited all of the sinusoid's two parameters.  What we can
+	do is modulate them for a limited time (say
+	<m:math><m:ci>T</m:ci></m:math> seconds), and send two
+	parameters every <m:math><m:ci>T</m:ci></m:math>.  This simple
+	notion corresponds to how a modem works.  Here, typed
+	characters are encoded into eight bits, and the individual
+	bits are encoded into a sinusoid's amplitude and frequency.
+	We'll learn how this is done in subsequent modules, and more
+	importantly, we'll learn what the limits are on such digital
+	communication schemes.
+      </para>
+    </section>
+
+  </content>
+</document>

@@ -1,0 +1,188 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML"> 
+
+  <title>Noisy Channel Coding Theorem</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0073</md:content-id>
+  <md:title>Noisy Channel Coding Theorem</md:title>
+  <md:abstract>Describes the Noisy Channel Coding Theorem.</md:abstract>
+  <md:uuid>f54a1995-481d-41f1-b1b2-31c6c4219215</md:uuid>
+</metadata>
+
+<content>
+    <para id="par1">As the block length becomes larger, more error correction will
+      be needed. Do codes exist that can correct
+      <emphasis>all</emphasis> errors? Perhaps the crowning
+      achievement of Claude
+      Shannon's creation of information theory answers this
+      question.  His result comes in two complementary forms: the
+      Noisy Channel Coding Theorem and its converse.
+    </para><section id="secnoisychannel">
+      <title>Noisy Channel Coding Theorem</title> 
+      <para id="par2">
+	Let <m:math><m:ci>E</m:ci></m:math> denote the efficiency of
+	an error-correcting code: the ratio of the number of data bits
+	to the total number of bits used to represent them.  If the
+	efficiency is less than the <term>capacity</term> of the
+	digital channel, an error-correcting code exists that has the
+	property that as the length of the code increases, the
+	probability of an error occurring in the decoded block
+	approaches zero.
+	<equation id="eqnoisychannel"><m:math>
+	    <m:apply>
+	      <m:forall/>
+	      <m:bvar><m:ci>E</m:ci></m:bvar> 
+	      <m:condition>
+		<m:apply>
+		  <m:lt/>
+		  <m:ci>E</m:ci>
+		  <m:ci>C</m:ci>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/> 
+		<m:apply>
+		  <m:limit/>
+		  <m:bvar><m:ci>N</m:ci></m:bvar>
+		  <m:lowlimit><m:infinity/></m:lowlimit>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		    <m:mtext>block error</m:mtext>
+		  </m:apply>
+		</m:apply>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para> 
+    </section>
+
+    <section id="secconvnoisy"> 
+      <title>Converse to the Noisy Channel Coding Theorem</title>
+      <para id="par3">If  
+	<m:math>
+	  <m:apply><m:gt/>
+	    <m:ci>E</m:ci>
+	    <m:ci>C</m:ci>
+	  </m:apply>
+	</m:math>, the probability of an error in a decoded block must
+	approach one regardless of the code that might be chosen. 
+	<equation id="eqconvnoise"><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:limit/>
+		<m:bvar><m:ci>N</m:ci></m:bvar>
+		<m:lowlimit><m:infinity/></m:lowlimit>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		  <m:mtext>block error</m:mtext>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	These results mean that it is possible to transmit digital
+	information over a noisy channel (one that introduces errors)
+	and receive the information without error
+	<emphasis>if</emphasis> the code is sufficiently
+	<emphasis>inefficient</emphasis> compared to the channel's
+	characteristics.  Generally, a channel's capacity changes with
+	the signal-to-noise ratio: As one increases or decreases, so
+	does the other. The capacity measures the overall error
+	characteristics of a channel—the smaller the capacity
+	the more frequently errors occur—and an overly efficient
+	error-correcting code will not build in enough error
+	correction capability to counteract channel errors.
+      </para>
+      <para id="par4">
+	This result astounded communication engineers when Shannon
+	published it in 1948.  Analog communication always yields a
+	noisy version of the transmitted signal; in digital
+	communication, error correction can be powerful enough to
+	correct all errors as the block length increases. The key for
+	this capability to exist is that the code's efficiency be
+	less than the channel's capacity. For a binary symmetric
+	channel, the capacity is given by 
+	<equation id="eqprerr">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>C</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:ci><m:msub>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		    </m:msub></m:ci>
+		  <m:apply><m:log/> 
+		    <m:logbase><m:cn>2</m:cn></m:logbase>
+		    <m:ci><m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>e</m:mi>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply><m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:ci><m:msub>
+			<m:mi>p</m:mi>
+			<m:mi>e</m:mi>
+		      </m:msub></m:ci>
+		  </m:apply>
+		  <m:apply><m:log/>
+		    <m:logbase><m:cn>2</m:cn></m:logbase>
+		    <m:apply><m:minus/>
+		      <m:cn>1</m:cn>
+		      <m:ci><m:msub>
+			  <m:mi>p</m:mi>
+			  <m:mi>e</m:mi>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>bits/transmission</m:ci>
+	  </m:math>
+	</equation>
+
+	<link target-id="capacity" strength="2"/> shows how capacity
+	varies with error probability.  For example, our (7,4) Hamming
+	code has an efficiency of <m:math>
+	<m:cn>0.57</m:cn></m:math>, and codes having the same
+	efficiency but longer block sizes can be used on additive
+	noise channels where the signal-to-noise ratio exceeds 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>0</m:cn>
+	    <m:ci>dB</m:ci>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <figure id="capacity">
+	<title>capacity of a channel</title>
+	<media id="id1913364" alt="">
+          <image src="../../media/capacity1.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/capacity1.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  The capacity per transmission through a binary symmetric
+	  channel is plotted as a function of the digital channel's
+	  error probability (upper) and as a function of the
+	  signal-to-noise ratio for a BPSK signal set
+	  (lower). </caption>
+      </figure>
+    </section>
+
+  </content>
+</document>

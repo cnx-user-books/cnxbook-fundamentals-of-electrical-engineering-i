@@ -1,0 +1,1692 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Operational Amplifiers</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0036</md:content-id>
+  <md:title>Operational Amplifiers</md:title>
+  <md:abstract>A short description of the workings of an op-amp
+</md:abstract>
+  <md:uuid>ce297e95-63c2-46ed-8950-704e5e5812b7</md:uuid>
+</metadata>
+
+<content>    
+    <figure id="opamp">
+      <title>Op-Amp</title>
+      <media id="id1165854152886" alt="">
+        <image src="../../media/opamp10-c479.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/opamp10.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The op-amp has four terminals to which connections can be
+	made.  Inputs attach to nodes <emphasis>a </emphasis>and
+	<emphasis>b</emphasis>, and the output is node
+	<emphasis>c</emphasis>. As the circuit model on the right
+	shows, the op-amp serves as an amplifier for the difference of
+	the input node voltages.
+      </caption>
+    </figure>
+
+
+    <para id="p01">
+      Op-amps not only have the circuit model shown in 
+      <link target-id="opamp" strength="3"/>,       
+      but their element values are very special.
+
+      <list id="list01"> 
+	<item>
+	  The <term>input resistance</term>, 
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+                <m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>,
+	  is typically <emphasis>large</emphasis>, on the order of
+	  1 MΩ.
+	</item>
+	<item>
+	  The  <term>output resistance</term>,
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>, 	  
+	  is <emphasis>small</emphasis>, usually less than 100 Ω.
+	</item>
+	<item>
+	  The <term>voltage gain</term>,  
+	  <m:math>
+	    <m:ci>G</m:ci>
+	  </m:math>, 
+	  is <emphasis>large</emphasis>, exceeding
+	  <m:math>
+	    <m:apply>
+	      <m:power/>
+              <m:cn>10</m:cn>
+              <m:cn>5</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</item>
+      </list>
+
+      The large gain catches the eye; it suggests that an op-amp could
+      turn a 1 mV input signal into a 100 V one. If you were to build
+      such a circuit--attaching a voltage source to node
+      <emphasis>a</emphasis>, attaching node <emphasis>b</emphasis>
+      to the reference, and looking at the output--you would be
+      disappointed. In dealing with electronic components, you cannot
+      forget the unrepresented but needed power supply.  
+
+      <note id="id2318342" type="Unmodeled limitations imposed by power supplies"><label>Unmodeled limitations imposed by power supplies</label>	
+	It is impossible for electronic components to yield voltages
+	that exceed those provided by the power supply or for them to
+	yield currents that exceed the power supply's rating.
+      </note>
+
+      Typical power supply voltages required for op-amp circuits are
+
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>±</m:mo></m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>15</m:cn>
+	    <m:ci>V</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Attaching the 1 mv signal not only would fail
+      to produce a 100 V signal, the resulting waveform would be
+      severely distorted. While a desirable outcome if you are a rock
+      &amp; roll aficionado, high-quality stereos should not distort
+      signals. Another consideration in designing circuits with
+      op-amps is that these element values are typical: Careful
+      control of the gain can only be obtained by choosing a circuit
+      so that its element values dictate the resulting gain, which
+      must be smaller than that provided by the op-amp.  </para>
+
+
+    <figure id="opampamp"><title>op-amp</title><media id="id1165859726047" alt="">
+        <image src="../../media/opamp9-5534.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/opamp9.eps" mime-type="application/postscript"/>
+      </media>
+      
+    <caption>The top circuit depicts an op-amp in a feedback amplifier
+	configuration.  On the bottom is the equivalent circuit, and
+	integrates the op-amp circuit model into the circuit.
+      </caption></figure><section id="s1">
+      <title>Inverting Amplifier</title>
+      <para id="one"> 
+	The feedback configuration shown in 
+	<link target-id="opampamp" strength="2"/> 	
+	is the most common op-amp circuit for obtaining what is known
+	as an <term>inverting amplifier</term>.
+
+      <equation id="feedop">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>F</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>out</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>out</m:mi>
+			  </m:msub>
+			</m:ci> 
+			<m:apply>
+			  <m:times/>
+			  <m:ci>G</m:ci>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>R</m:mi>
+			      <m:mi>F</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>out</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>in</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>L</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>R</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>in</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>F</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mi>F</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>R</m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	provides the exact input-output relationship. In choosing element
+	values with respect to op-amp characteristics, we can simplify the
+	expression dramatically.
+
+	<list id="listone"> 
+	  <item> Make the load resistance,   
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>L</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>,
+	    much larger than   
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>.
+	    This situation drops the term   
+	    <m:math>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>L</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:math>
+	    from the second factor of 
+	    <link target-id="feedop" strength="2"/>.
+	  </item>
+	  <item> 
+	    Make the resistor, 
+	    <m:math>
+	      <m:ci>R</m:ci>
+	    </m:math>, 
+	    smaller than   
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>, 
+	    which means that the
+	    <m:math>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:math>
+	    term in the third factor is negligible.
+	  </item>
+	</list> 
+
+	With these two design criteria, the expression 
+	(<link target-id="feedop" strength="2"/>) 
+	becomes
+
+	<equation id="two">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>F</m:mi>
+			  </m:msub>
+			</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>out</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>G</m:ci>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>R</m:mi>
+			      <m:mi>F</m:mi>
+			    </m:msub>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>R</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>F</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mi>F</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>R</m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation> 
+
+	Because the gain is large and the resistance   
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mi>out</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math> 
+	is small, the first term becomes   
+      <m:math>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:ci>G</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+	leaving us with   
+
+      <equation id="three">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>G</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>R</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:cn>1</m:cn>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>F</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mi>F</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>R</m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+      <list id="listtwo"> 
+	  <item> 
+	    If we select the values of   
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>F</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>
+	    and   
+	    <m:math>
+	      <m:ci>R</m:ci>
+	    </m:math>
+	    so that   
+	    <m:math>
+	      <m:apply>
+		<m:ci><m:mo>≫</m:mo></m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>G</m:ci>
+		  <m:ci>R</m:ci>
+		</m:apply>		
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>F</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:math>, 	    
+	    this factor will no longer depend on the op-amp's inherent
+	    gain, and it will equal
+	    <m:math>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mi>F</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>.
+	  </item>
+	</list>
+	
+	Under these conditions, we obtain the classic input-output
+	relationship for the op-amp-based inverting amplifier.
+
+      <equation id="four">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mi>F</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>R</m:ci>
+		  </m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>in</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	Consequently, the gain provided by our circuit is entirely
+	determined by our choice of the feedback resistor
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mi>F</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math> 
+	and the input resistor   
+	<m:math>
+	  <m:ci>R</m:ci> 
+	</m:math>.  
+	It is always negative, and can be less than one or greater
+	than one in magnitude. It cannot exceed the op-amp's inherent
+	gain and should not produce such large outputs that distortion
+	results (remember the power supply!). Interestingly, note that
+	this relationship does not depend on the load resistance. This
+	effect occurs because we use load resistances large compared
+	to the op-amp's output resistance. Thus observation means
+	that, if careful, we can place op-amp circuits in cascade,
+	<emphasis>without</emphasis> incurring the effect of
+	succeeding circuits changing the behavior (transfer function)
+	of previous ones; see 
+	<link document="m10349" target-id="i25" strength="2">this problem</link>.
+      </para> 
+    </section>
+
+    <section id="s2">
+      <title>Active Filters</title>
+      <para id="onea"> 	
+	As long as design requirements are met, the input-output
+	relation for the inverting amplifier also applies when the
+	feedback and input circuit elements are impedances (resistors,
+	capacitors, and inductors).  
+      </para>
+
+
+      <figure id="opampb"><title>op-amp</title><media id="id7443070" alt="">
+          <image src="../../media/opamp11.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/opamp11.eps" mime-type="application/postscript"/>
+        </media>
+	
+      <caption><m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>Z</m:mi>
+		      <m:mi>F</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>Z</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</caption></figure><example id="exone">
+	<para id="twoc"> 
+	  Let's design an op-amp circuit that functions as a lowpass
+	  filter. We want the transfer function between the output and
+	  input voltage to be
+
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>K</m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+
+	  where
+	  <m:math>
+	    <m:ci>K</m:ci>
+	  </m:math> 
+	  equals the passband gain and   
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>f</m:mi>
+		<m:mi>c</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>
+	  is the cutoff frequency. Let's assume that the inversion
+	  (negative gain) does not matter.  With the transfer function
+	  of the above op-amp circuit in mind, let's consider some
+	  choices.
+
+	  <list id="listoneb"><item>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>Z</m:mi>
+		      <m:mi>F</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>K</m:ci>
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>Z</m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.  	      
+	      This choice means the feedback impedance is a resistor
+	      and that the input impedance is a series combination of
+	      an inductor and a resistor. In circuit design, we try to
+	      avoid inductors because they are physically bulkier than
+	      capacitors.
+	    </item>
+	    <item>   
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>Z</m:mi>
+		      <m:mi>F</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:plus/>
+		      <m:cn>1</m:cn> 
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:ci>f</m:ci>
+			</m:apply>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>c</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>,
+
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:ci>Z</m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>K</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.	      
+	      Consider the reciprocal of the feedback impedance (its
+	      admittance):
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:inverse/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>Z</m:mi>
+			<m:mi>F</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn> 
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.  	      
+	      Since this admittance is a sum of admittances, this
+	      expression suggests the parallel combination of a
+	      resistor (value = 1 Ω) and a capacitor (value =
+	      <m:math>
+		<m:apply><m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+		  </m:apply>
+	      </m:math> F).  
+	      We have the right idea, but the values (like 1 Ω)
+	      are not right. Consider the general
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>R</m:ci>
+		  <m:ci>C</m:ci>
+		</m:apply>
+	      </m:math> 
+	      parallel combination; its admittance is   
+	      <m:math>  
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mi>F</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+	      Letting the input resistance equal   
+	      <m:math>
+		<m:ci>R</m:ci>
+	      </m:math>,
+	      the transfer function of the op-amp inverting amplifier
+	      now is
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">H</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>F</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:ci>R</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:cn>1</m:cn> 
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>f</m:ci>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>R</m:mi>
+			      <m:mi>F</m:mi>
+			    </m:msub>
+			  </m:ci>
+			  <m:ci>C</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </item>
+	  </list><m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>F</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>R</m:ci>
+	    </m:apply>
+	  </m:math>
+	  and the cutoff frequency   
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>F</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>C</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+
+
+      </example>
+    <para id="fourd">Creating a specific transfer function with op-amps does not have
+	a unique answer. As opposed to design with passive circuits,
+	electronics is more flexible (a cascade of circuits can be built
+	so that each has little effect on the others; see 
+	<link document="m10349" target-id="i25" strength="2"/>) and gain (increase
+	in power and amplitude) can result. To complete our example,
+	let's assume we want a lowpass filter that emulates what the
+	telephone companies do. Signals transmitted over the telephone
+	have an upper frequency limit of about 3 kHz. For the
+	second design choice, we require
+	  <m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>F</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>C</m:ci>
+	    </m:apply>
+	    <m:cn type="e-notation">5.3<m:sep/>-5</m:cn>
+	  </m:apply>
+	</m:math>.  
+	Thus, many choices for resistance and capacitance values are
+	possible. A 1 μF capacitor and a 330 Ω resistor,
+	10 nF and 33 kΩ, and 10 pF and 33 MΩ would
+	all theoretically work. Let's also desire a voltage gain of
+	ten:
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>F</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>R</m:ci>
+	    </m:apply>
+	    <m:cn>10</m:cn>
+	  </m:apply>
+	</m:math>, 
+	which means
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>R</m:ci> 
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>F</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:cn>10</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 
+	Recall that we must have
+	<m:math>
+	  <m:apply>
+	    <m:lt/>
+	    <m:ci>R</m:ci> 
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:math>.  
+	As the op-amp's input impedance is about 1 MΩ, we don't
+	want
+	<m:math>
+	  <m:ci>R</m:ci> 
+	</m:math> 	
+	too large, and this requirement means that the last choice for
+	resistor/capacitor values won't work. We also need to ask for
+	less gain than the op-amp can provide itself.  Because the
+	feedback "element" is an impedance (a parallel resistor
+	capacitor combination), we need to examine the gain
+	requirement more carefully. We must have
+	<m:math>
+	  <m:apply>
+	    <m:lt/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:abs/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>Z</m:mi>
+		    <m:mi>F</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:ci>R</m:ci> 
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>10</m:cn>
+	      <m:cn>5</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+	for all frequencies of interest. Thus,   
+	<m:math>
+	  <m:apply>
+	    <m:lt/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>F</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn> 
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>F</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>R</m:ci> 
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>10</m:cn>
+	      <m:cn>5</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.	
+	As this impedance decreases with frequency, the design
+	specification of
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>F</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>R</m:ci>
+	    </m:apply>
+	    <m:cn>10</m:cn>
+	  </m:apply>
+	</m:math> 
+	
+	means that this criterion is easily met. Thus, the first two
+	choices for the resistor and capacitor values (as well as many
+	others in this range) will work well. Additional
+	considerations like parts cost might enter into the
+	picture. Unless you have a high-power application (this isn't
+	one) or ask for high-precision components, costs don't depend
+	heavily on component values as long as you stay close to
+	standard values. For resistors, having values
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>r</m:ci> 
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>10</m:cn>
+	      <m:ci>d</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+	easily obtained values of   
+	<m:math>
+	  <m:ci>r</m:ci>
+	</m:math>
+	are 1, 1.4, 3.3, 4.7, and 6.8, and the decades span 0-8.
+      </para>
+
+      <exercise id="exer1">
+	<problem id="id1165854929088">
+	  <para id="exer1a">
+	    What is special about the resistor values; why these rather
+	    odd-appearing values for
+	    <m:math>
+	      <m:ci>r</m:ci>
+	    </m:math>?
+	  </para>
+	</problem>
+	<solution id="id6828987">
+	  <para id="exer1b">
+	    The ratio between adjacent values is about  
+	    <m:math>
+	      <m:apply>
+		<m:root/>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:math>.
+	  </para>
+	</solution>
+      </exercise>
+    </section>
+
+    <section id="s3">
+      <title>Intuitive Way of Solving Op-Amp Circuits</title>
+      <para id="oneb">
+	When we meet op-amp design specifications, we can simplify our
+	circuit calculations greatly, so much so that we don't need
+	the op-amp's circuit model to determine the transfer
+	function. Here is our inverting amplifier.
+      </para>
+
+      <figure id="opamp12a"><title>op-amp</title><media id="id8180875" alt="">
+          <image src="../../media/opamp12a.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/opamp12a.eps" mime-type="application/postscript"/>
+        </media>
+      </figure><figure id="opamp12b"><title>op-amp</title><media id="id5296040" alt="">
+          <image src="../../media/opamp12b.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/opamp12b.eps" mime-type="application/postscript"/>
+        </media>
+      </figure><para id="twob"> 
+	When we take advantage of the op-amp's
+	characteristics—large input impedance, large gain, and
+	small output impedance—we note the two following
+	important facts.
+
+	<list id="list1"><item>
+	    The current   
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>
+	    must be very small.  The voltage produced by the dependent
+	    source is
+	    <m:math>
+	      <m:apply>
+		<m:power/>
+		<m:cn>10</m:cn>
+		<m:cn>5</m:cn>
+	      </m:apply>
+	    </m:math>
+	    times the voltage   
+	    <m:math>
+	      <m:ci>v</m:ci>
+	    </m:math>.
+	    Thus, the voltage   
+	    <m:math>
+	      <m:ci>v</m:ci>
+	    </m:math>
+	    must be small, which means that   
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>i</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>v</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mi>in</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    must be tiny. For example, if the output is about 1 V,
+	    the voltage
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>v</m:ci> 
+		  <m:apply>
+		    <m:power/>
+		    <m:cn>10</m:cn>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>5</m:cn>
+		    </m:apply>
+		  </m:apply>
+	      </m:apply>
+	    </m:math> V,
+	    making the current
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>i</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>  
+		</m:ci>
+		  <m:apply>
+		    <m:power/>
+		    <m:cn>10</m:cn>
+		    <m:apply>
+		      <m:minus/>
+		      <m:cn>11</m:cn>
+		    </m:apply>
+		  </m:apply>
+	      </m:apply>
+	    </m:math> A.  Consequently, we can ignore
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>
+	    in our calculations and assume it to be zero.
+	  </item>
+	  <item> 
+	    Because of this assumption—essentially no current
+	    flow through
+	    <m:math>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>—the 
+	    voltage   
+	    <m:math>
+	      <m:ci>v</m:ci>
+	    </m:math>
+	    must also be essentially zero. This means that in op-amp
+	    circuits, the voltage across the op-amp's input is
+	    basically zero.
+	  </item>
+	</list></para>
+
+      <para id="threeb"> 
+	
+	Armed with these approximations, let's return to our original
+	circuit as shown in 
+	<link target-id="opamp12b" strength="2"/>. 
+	The node voltage
+	<m:math>
+	  <m:ci>e</m:ci> 
+	</m:math> 	
+	is essentially zero, meaning that it is essentially tied to
+	the reference node. Thus, the current through the resistor
+	<m:math>
+	  <m:ci>R</m:ci>
+	</m:math>
+	equals   
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>R</m:ci>
+	  </m:apply>
+	</m:math>.  
+	Furthermore, the feedback resistor appears in parallel with
+	the load resistor. Because the current going into the op-amp
+	is zero, all of the current flowing through
+	<m:math>
+	  <m:ci>R</m:ci>
+	</m:math> 
+	flows through the feedback resistor 
+	(<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mi>F</m:mi>
+	      </m:msub>  
+	    </m:ci>
+	    <m:ci>i</m:ci>
+	  </m:apply>
+	</m:math>)! 
+	The voltage across the feedback resistor   
+	<m:math>
+	  <m:ci>v</m:ci>
+	</m:math>
+	equals   
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>F</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:ci>R</m:ci>
+	  </m:apply>
+	</m:math>.   	
+	Because the left end of the feedback resistor is essentially
+	attached to the reference node, the voltage across it equals
+	the negative of that across the output resistor:
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>v</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>in</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mi>F</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>R</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  
+	
+	Using this approach makes analyzing new op-amp circuits much
+	easier. When using this technique, check to make sure the
+	results you obtain are consistent with the assumptions of
+	essentially zero current entering the op-amp and nearly zero
+	voltage across the op-amp's inputs.
+      </para>
+
+
+      <example id="ex1">
+	<figure id="twosource">
+	  <title>Two Source Circuit</title>
+	  <media id="id1165859663380" alt="">
+            <image src="../../media/opamp13.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/opamp13.eps" mime-type="application/postscript"/>
+          </media>
+	  <caption>
+	    Two-source, single-output op-amp circuit example.
+	  </caption>
+	</figure>
+
+	<para id="fourb">
+	  Let's try this analysis technique on a simple extension of
+	  the inverting amplifier configuration shown in 
+	  <link target-id="twosource" strength="2"/>. 
+	  If either of the source-resistor combinations were not
+	  present, the inverting amplifier remains, and we know that
+	  transfer function. By superposition, we know that the
+	  input-output relation is
+
+	  <equation id="eq1e">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>F</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mn>1</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		      <m:ci>
+			<m:msubsup>
+			  <m:mi>v</m:mi>
+			  <m:mi>in</m:mi>
+			  <m:mrow>
+			    <m:mo>(</m:mo>
+			    <m:mn>1</m:mn>
+			    <m:mo>)</m:mo>
+			  </m:mrow>
+			</m:msubsup> 
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>F</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:ci>
+		      <m:msubsup>
+			<m:mi>v</m:mi>
+			<m:mi>in</m:mi>
+			<m:mrow>
+			  <m:mo>(</m:mo>
+			  <m:mn>2</m:mn>
+			  <m:mo>)</m:mo>
+			</m:mrow>
+		      </m:msubsup> 
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  When we start from scratch, the node joining the three
+	  resistors is at the same potential as the reference,
+	  <m:math> 
+	    <m:apply> 
+	      <m:approx/>
+	      <m:ci>e</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>, 	  
+	  and the sum of currents flowing into that node is
+	  zero. Thus, the current
+	  <m:math>
+	    <m:ci>i</m:ci>
+	  </m:math> 
+	  flowing in the resistor   
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mi>F</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>
+	  equals   
+	  <m:math>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msubsup>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		    <m:mrow>
+		      <m:mo>(</m:mo>
+		      <m:mn>1</m:mn>
+		      <m:mo>)</m:mo>
+		    </m:mrow>
+		  </m:msubsup>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msubsup>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		    <m:mrow>
+		      <m:mo>(</m:mo>
+		      <m:mn>2</m:mn>
+		      <m:mo>)</m:mo>
+		    </m:mrow>
+		  </m:msubsup>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  
+	  Because the feedback resistor is essentially in parallel
+	  with the load resistor, the voltages must satisfy
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>v</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  In this way, we obtain the input-output relation given above.
+	</para>
+
+	<para id="five">
+	  What utility does this circuit have? Can the basic notion of the
+	  circuit be extended without bound?
+	</para>
+      </example>    
+    </section>
+  </content>
+</document>

@@ -1,0 +1,555 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Entropy</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0070</md:content-id>
+  <md:title>Entropy</md:title>
+  <md:abstract>Shannon showed the power of probabilistic models for symbolic-valued signals. The dey quantity that characterizes such a signal is the entropy of its alphabet.</md:abstract>
+  <md:uuid>726101e7-a673-41aa-9051-754dff16824f</md:uuid>
+</metadata>
+
+  <content>
+    <para id="p1">Communication theory has been formulated best for
+      symbolic-valued signals. Claude
+      Shannon published in 1948 <cite><cite-title>The Mathematical Theory
+      of Communication</cite-title></cite>, which became the cornerstone of digital
+      communication. He showed the power of <term>probabilistic
+      models</term> for symbolic-valued signals, which allowed him to
+      quantify the information present in a signal. In the simplest
+      signal model, each symbol can occur at index
+      <m:math><m:ci>n</m:ci></m:math> with a probability 
+      <m:math>
+	<m:apply>
+	  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	  <m:ci><m:msub>
+	      <m:mi>a</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub></m:ci>
+	</m:apply>
+      </m:math>,  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>k</m:ci> 
+	  <m:set>
+	    <m:cn>1</m:cn>
+	    <m:ci>…</m:ci>
+	      <m:ci>K</m:ci>
+	  </m:set>
+	</m:apply>
+      </m:math>.  What this model says is that for each signal value a
+      <m:math><m:ci>K</m:ci></m:math>-sided coin is flipped (note that
+      the coin need not be fair). For this model to make sense, the
+      probabilities must be numbers between zero and one and must sum
+      to one. 
+
+      <equation id="eq1">
+	<m:math>
+	  <m:apply>
+	    <m:leq/> 
+	    <m:cn>0</m:cn> 
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub></m:ci>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>
+      </equation>
+      
+      <equation id="eq2">
+	<m:math>   
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar><m:ci>k</m:ci></m:bvar>
+	      <m:lowlimit><m:cn>1</m:cn></m:lowlimit>
+	      <m:uplimit><m:ci>K</m:ci></m:uplimit>  
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mi>k</m:mi></m:msub></m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math></equation>
+
+      This coin-flipping model assumes that symbols occur without
+      regard to what preceding or succeeding symbols were, a false
+      assumption for typed text. Despite this probabilistic
+      model's over-simplicity, the ideas we develop here also
+      work when more accurate, but still probabilistic, models are
+      used. The key quantity that characterizes a symbolic-valued
+      signal is the <term>entropy</term> of its alphabet.  
+
+      <equation id="eq3">
+	<m:math> 
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>A</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>k</m:ci></m:bvar>
+		<m:domainofapplication>
+		  <m:ci>k</m:ci>
+		</m:domainofapplication> 
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		    <m:ci><m:msub>
+			<m:mi>a</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub></m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:log/>
+		    <m:logbase><m:cn>2</m:cn></m:logbase>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		      <m:ci><m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub></m:ci> 
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Because we use the base-2 logarithm, entropy has units of
+      bits. For this definition to make sense, we must take special
+      note of symbols having probability zero of occurring. A
+      zero-probability symbol never occurs; thus, we define
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply><m:times/>
+	    <m:cn>0</m:cn>
+	    <m:apply>
+	      <m:log/>
+	      <m:logbase><m:cn>2</m:cn></m:logbase>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:apply>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math> so that such symbols do not affect the entropy. The
+      maximum value attainable by an alphabet's entropy occurs
+      when the symbols are equally likely
+      (<m:math>
+	<m:apply>
+	    <m:eq/>
+	    <m:apply>
+	    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub></m:ci>
+	    </m:apply>
+	    <m:apply>
+	    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mi>l</m:mi>
+		</m:msub></m:ci>
+	    </m:apply>
+	  </m:apply>
+      </m:math>).  In this case, the entropy equals 
+      <m:math>
+	<m:apply><m:log/>
+	  <m:logbase><m:cn>2</m:cn></m:logbase>
+	  <m:ci>K</m:ci>
+	</m:apply>
+      </m:math>.  The minimum value occurs when only one symbol
+      occurs; it has probability one of occurring and the rest have
+      probability zero. </para><exercise id="exer1">
+      <problem id="id1168850256973">
+	<para id="probP1">Derive the maximum-entropy results, both the
+	    numeric aspect (entropy equals 
+	  <m:math>
+	    <m:apply><m:log/>
+	      <m:logbase><m:cn>2</m:cn></m:logbase>
+	      <m:ci>K</m:ci>
+	    </m:apply>
+	  </m:math>) and the theoretical one (equally likely symbols
+	  maximize entropy). Derive the value of the minimum entropy
+	  alphabet.
+	</para>
+      </problem>
+      <solution id="id1168849214986">
+	<para id="solP1">
+	  Equally likely symbols each have a probability of  
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:ci>K</m:ci>
+	    </m:apply>
+	  </m:math>.  Thus, 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>A</m:ci>
+	      </m:apply>
+	       <m:apply><m:minus/>
+	        <m:apply><m:sum/>
+		<m:bvar><m:ci>k</m:ci></m:bvar>
+		<m:domainofapplication><m:ci>k</m:ci></m:domainofapplication>
+		 <m:apply><m:times/>
+		   <m:apply><m:divide/>
+		    <m:cn>1</m:cn><m:ci>K</m:ci>
+                   </m:apply>
+		   <m:apply><m:log/>
+		     <m:logbase><m:cn>2</m:cn></m:logbase>
+		     <m:apply><m:divide/>
+		      <m:cn>1</m:cn><m:ci>K</m:ci>
+		     </m:apply>
+                   </m:apply>
+		 </m:apply>
+		</m:apply>         
+	       </m:apply>
+	      <m:apply><m:log/>
+		<m:logbase><m:cn>2</m:cn></m:logbase>
+		<m:ci>K</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  To prove that this is the maximum-entropy
+	  probability assignment, we must explicitly take into account
+	  that probabilities sum to one.  Focus on a particular
+	  symbol, say the first.  
+	  <m:math>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+	    </m:apply>
+	  </m:math> appears <emphasis>twice</emphasis> in the entropy
+	  formula: the terms 
+	  <m:math>
+	    <m:apply><m:times/> 
+	      <m:apply>
+		<m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:log/>
+		<m:logbase><m:cn>2</m:cn></m:logbase>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		  <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  and  
+	  <m:math>
+	    <m:apply><m:times/>
+	      <m:apply><m:minus/>
+		<m:cn>1</m:cn>
+		  <m:apply><m:plus/>
+		    <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		      <m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		    </m:apply>
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		    <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		      <m:ci>
+                         <m:msub>
+                          <m:mi>a</m:mi>
+                          <m:mrow><m:mi>K</m:mi><m:mn>-2</m:mn></m:mrow>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+	      </m:apply>
+	      <m:apply><m:log/>
+		<m:logbase><m:cn>2</m:cn></m:logbase>
+	      <m:apply><m:minus/>
+		<m:cn>1</m:cn>
+		  <m:apply><m:plus/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		      <m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		    </m:apply>
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		      <m:ci>
+                         <m:msub>
+                          <m:mi>a</m:mi>
+                          <m:mrow><m:mi>K</m:mi><m:mn>-2</m:mn></m:mrow>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+	      </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  The derivative with respect to this probability
+	  (and all the others) must be zero. The derivative equals 
+	  <m:math> 
+	    <m:apply><m:minus/> 
+	      <m:apply><m:log/>
+		<m:logbase><m:cn>2</m:cn></m:logbase>
+		<m:apply>
+		  <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		  <m:ci><m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply><m:log/>
+		<m:logbase><m:cn>2</m:cn></m:logbase>
+	      <m:apply><m:minus/>
+		<m:cn>1</m:cn>
+		  <m:apply><m:plus/>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		      <m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		    </m:apply>
+		    <m:ci>…</m:ci>
+		    <m:apply>
+		      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		      <m:ci>
+                         <m:msub>
+                          <m:mi>a</m:mi>
+                          <m:mrow><m:mi>K</m:mi><m:mn>-2</m:mn></m:mrow>
+			</m:msub></m:ci>
+		    </m:apply>
+		  </m:apply>
+	      </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, and all other derivatives have the same form
+	  (just substitute your letter's index).  Thus, each
+	  probability must equal the others, and we are done.  For the
+	  minimum entropy answer, one term is
+	  <m:math>
+	    <m:apply>
+	      <m:eq/> 
+	      <m:apply><m:times/> 
+		<m:cn>1</m:cn>
+		<m:apply><m:log/>
+		  <m:logbase><m:cn>2</m:cn></m:logbase>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>, and the others are 
+	  <m:math>
+	    <m:apply><m:times/>
+	      <m:cn>0</m:cn>
+	      <m:apply><m:log/>
+		<m:logbase><m:cn>2</m:cn></m:logbase>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, which we define to be zero also.  The minimum
+	  value of entropy is zero.
+	</para>
+      </solution>
+    </exercise>
+    
+    <example id="ex1">   
+      <para id="p2"> 
+	A four-symbol alphabet has the following probabilities.  
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/><m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+	      </m:apply>
+             </m:apply>
+           </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/><m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>4</m:cn>
+	      </m:apply>
+             </m:apply>
+           </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/><m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>8</m:cn>
+	      </m:apply>
+             </m:apply>
+           </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/><m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>8</m:cn>
+	      </m:apply>
+             </m:apply>
+           </m:math>
+
+	Note that these probabilities sum to one as they should. As  
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply><m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply><m:inverse/>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,  
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply><m:log/>
+	      <m:logbase><m:cn>2</m:cn></m:logbase>
+	      <m:apply><m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>-1</m:cn>
+	  </m:apply>
+	</m:math>. The
+	entropy of this alphabet equals
+	<equation id="eq4">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>A</m:ci>
+	      </m:apply>
+	      <m:apply><m:minus/>
+		<m:apply><m:plus/>
+		  <m:apply><m:times/>
+		    <m:apply><m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply><m:log/>
+		      <m:logbase><m:cn>2</m:cn></m:logbase>
+		      <m:apply><m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply><m:times/>
+		    <m:apply><m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		    <m:apply><m:log/>
+		      <m:logbase><m:cn>2</m:cn></m:logbase>
+		      <m:apply><m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>4</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply><m:times/>
+		    <m:apply><m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>8</m:cn>
+		    </m:apply>
+		    <m:apply><m:log/>
+		      <m:logbase><m:cn>2</m:cn></m:logbase>
+		      <m:apply><m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>8</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply><m:times/>
+		    <m:apply><m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>8</m:cn>
+		    </m:apply>
+		    <m:apply><m:log/>
+		      <m:logbase><m:cn>2</m:cn></m:logbase>
+		      <m:apply><m:divide/>
+			<m:cn>1</m:cn>
+			<m:cn>8</m:cn>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply><m:minus/>
+		<m:apply><m:plus/>
+		  <m:apply><m:times/>
+		    <m:apply><m:divide/><m:cn>1</m:cn><m:cn>2</m:cn></m:apply>
+		    <m:cn>-1</m:cn>
+		  </m:apply>
+		  <m:apply><m:times/>
+		    <m:apply><m:divide/><m:cn>1</m:cn><m:cn>4</m:cn></m:apply>
+		    <m:cn>-2</m:cn>
+		  </m:apply>
+		  <m:apply><m:times/>
+		    <m:apply><m:divide/><m:cn>1</m:cn><m:cn>8</m:cn></m:apply>
+		    <m:cn>-3</m:cn>
+		  </m:apply>
+		  <m:apply><m:times/>
+		    <m:apply><m:divide/><m:cn>1</m:cn><m:cn>8</m:cn></m:apply>
+		    <m:cn>-3</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply><m:times/>
+                <m:cn>1.75</m:cn>
+                <m:ci> bits</m:ci>
+              </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+      </para>
+    </example>
+
+  </content>
+</document>

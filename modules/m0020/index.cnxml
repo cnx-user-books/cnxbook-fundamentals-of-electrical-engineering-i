@@ -1,0 +1,1264 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML"> 
+
+  <title>Equivalent Circuits: Resistors and Sources</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0020</md:content-id>
+  <md:title>Equivalent Circuits: Resistors and Sources</md:title>
+  <md:abstract>Introduction of equivalent circuits, including the function in v-i relation.</md:abstract>
+  <md:uuid>fcc36380-5141-43a9-95b4-87920a48e9ef</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">
+      We have found that the way to think about circuits is to locate
+      and group parallel and series resistor combinations. Those
+      resistors not involved with variables of interest can be
+      collapsed into a single resistance. This result is known as an
+      <term>equivalent circuit</term>: from the viewpoint of a pair of
+      terminals, a group of resistors functions as a single resistor,
+      the resistance of which can usually be found by applying the
+      parallel and series rules.
+    </para>
+    
+    <figure id="eqcircuit">
+      
+      <media id="id15967562" alt="">
+        <image src="../../media/circuit12.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit12.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+
+    <para id="para2">
+      This result generalizes to include sources in a very interesting
+      and useful way. Let's consider our simple attenuator circuit (shown in the <link target-id="eqcircuit">figure</link>)
+      from the viewpoint of the output terminals. We want to find the
+      <emphasis>v-i</emphasis> relation for the output terminal pair,
+      and then find the equivalent circuit for the boxed circuit. To
+      perform this calculation, use the circuit laws and element
+      relations, but do not attach anything to the output
+      terminals. We seek the relation between
+      <m:math><m:ci>v</m:ci></m:math> and
+      <m:math><m:ci>i</m:ci></m:math> that describes the kind of
+      element that lurks within the dashed box. The result is
+      <equation id="eq1">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>v</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci><m:mo>∥</m:mo></m:ci>
+		  <m:ci>
+		    <m:msub>   
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>i</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      If the source were zero, it could be replaced by a short
+      circuit, which would confirm that the circuit does indeed
+      function as a parallel combination of resistors.  However, the
+      source's presence means that the circuit is
+      <emphasis>not</emphasis> well modeled as a resistor.  
+    </para>
+    
+    <figure id="thevenin">
+      
+      <media id="id3729529" alt="">
+        <image src="../../media/thevenin.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/thevenin.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The Thévenin equivalent circuit.
+      </caption>
+    </figure> 
+
+    <para id="para3">
+      If we consider the simple circuit of <link target-id="thevenin" strength="2"/>, we find it has the <emphasis>v-i</emphasis>
+	relation at its terminals of
+      <equation id="eq2">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>v</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>eq</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>i</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation> 
+
+      Comparing the two <emphasis>v-i</emphasis> relations, we find
+      that they have the same form. In this case the
+      <emphasis>Thévenin equivalent resistance</emphasis> is
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mi>eq</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:mo>∥</m:mo>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>      
+      and the  <emphasis>Thévenin equivalent source</emphasis>
+      has voltage  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>eq</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  
+      Thus, from viewpoint of the terminals, you cannot distinguish the
+      two circuits. Because the equivalent circuit has fewer elements,
+      it is easier to analyze and understand than any other
+      alternative.  
+    </para>
+
+    <para id="para2rub"> 
+      For <emphasis>any</emphasis> circuit containing resistors and
+      sources, the <emphasis>v-i</emphasis> relation will be of the
+      form
+
+      <equation id="eq1rub">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>v</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>eq</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>i</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      and the <term>Thévenin equivalent circuit</term> for any
+      such circuit is that of <link target-id="thevenin" strength="2"/>. This equivalence applies no
+      matter how many sources or resistors may be present in the
+      circuit. In the <link target-id="ex1" strength="2">example</link> below,
+      we know the circuit's construction and element values, and
+      derive the equivalent source and resistance.  Because
+      Thévenin's theorem applies in general, we should be able
+      to make measurements or calculations <emphasis>only from the
+	terminals</emphasis> to determine the equivalent circuit.
+    </para>
+
+
+    <para id="para3rub">
+      To be more specific, consider the equivalent circuit of <link target-id="thevenin" strength="2">this figure</link>.  Let the
+      terminals be open-circuited, which has the effect of setting the
+      current <m:math><m:ci>i</m:ci></m:math> to zero.  Because no
+      current flows through the resistor, the voltage across it is
+      zero (remember, Ohm's Law says that
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>v</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>R</m:ci>
+	    <m:ci>i</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>).  
+      Consequently, by applying KVL we have that the so-called
+      open-circuit voltage
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>oc</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      equals the Thévenin equivalent voltage. Now consider the
+      situation when we set the terminal voltage to zero
+      (short-circuit it) and measure the resulting current. Referring
+      to the equivalent circuit, the source voltage now appears
+      entirely across the resistor, leaving the short-circuit current
+      to be
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>i</m:mi>
+	      <m:mi>sc</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.                                               
+      From this property, we can determine the equivalent resistance.
+    </para>   
+
+    <equation id="eq2rub">
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>eq</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>oc</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>
+    </equation>
+
+    <equation id="eq3">
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mi>eq</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>oc</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>sc</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </equation>
+
+    <exercise id="exer1">
+      <problem id="id4221673">
+	<para id="exer1a">
+	  Use the open/short-circuit approach to derive the
+	  Thévenin equivalent of the circuit shown in <link target-id="tworesist" strength="2"/>.
+	</para>
+
+	<figure id="tworesist"><media id="id3956347" alt="">
+  <image src="../../media/circuit12.png" mime-type="image/png"/>
+  <image for="pdf" src="../../media/circuit12.eps" mime-type="application/postscript"/>
+</media>
+	</figure>
+      </problem>
+
+      <solution id="id4320251">
+	<para id="exer1b">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>oc</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> and
+	  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>sc</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>in</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  (resistor
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:math> 	  
+	  is shorted out in this case). Thus,
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math> 
+	  and 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+    
+
+    <example id="ex1"> 
+      <figure id="Thevenincircuit"><media id="id4007487" alt="">
+  <image src="../../media/circuit13.png" mime-type="image/png"/>
+  <image for="pdf" src="../../media/circuit13.eps" mime-type="application/postscript"/>
+</media>
+      </figure> 
+
+      <para id="para4">For the circuit depicted in <link target-id="Thevenincircuit" strength="2"/>, let's derive its Thévenin
+	equivalent two different ways. Starting with the
+	open/short-circuit approach, let's first find the open-circuit
+	voltage
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>oc</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>. 
+	We have a current divider relationship as
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	is in parallel with the series combination of
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math> and
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>3</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>.
+	Thus,  
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>oc</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>i</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>3</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>3</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+	When we short-circuit the terminals, no voltage appears across 
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>3</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>, 	
+	and thus no current flows through it. In short,
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>3</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	does not affect the short-circuit current, and can be eliminated. We
+	again have a current divider relationship:  
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mi>sc</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>i</m:mi>
+		      <m:mi>in</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 
+	Thus, the Thévenin equivalent resistance is
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>3</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>3</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <para id="para5">
+	To verify, let's find the equivalent resistance by reaching
+	inside the circuit and setting the current source to
+	zero. Because the current is now zero, we can replace the
+	current source by an open circuit. From the viewpoint of the
+	terminals, resistor
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>3</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math> 
+	is now in parallel with the series combination of
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math> and
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>.
+	Thus,   
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mi>eq</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:ci><m:mo>∥</m:mo></m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>3</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+	and we obtain the same result.
+      </para>
+    </example>
+
+
+    <figure id="equivalents">
+      <media id="id3487834" alt="">
+        <image src="../../media/equivalents.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/equivalents.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	<emphasis>All</emphasis> circuits containing sources and
+	resistors can be described by simpler equivalent
+	circuits. Choosing the one to use depends on the application,
+	not on what is actually inside the circuit.
+      </caption>
+    </figure> 
+
+    <para id="para1zap">As you might expect, equivalent circuits come in two forms: the
+      voltage-source oriented <link document="m0021" strength="2">Thévenin equivalent</link> and the
+      current-source oriented <term>Mayer-Norton equivalent</term>
+      (<link target-id="equivalents" strength="2"/>).
+      To derive the latter, the  <emphasis>v-i</emphasis> relation for
+      the Thévenin equivalent can be written as
+      
+      <equation id="eq1zap">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>v</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>eq</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>i</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+      </equation>
+      or
+      <equation id="eq2zap">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>i</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>v</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>eq</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      where
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>i</m:mi>
+	      <m:mi>eq</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>eq</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mi>eq</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      is the Mayer-Norton equivalent source. The Mayer-Norton
+      equivalent shown in <link target-id="equivalents" strength="2"/> can be
+      easily shown to have this <emphasis>v-i</emphasis>
+      relation. Note that both variations have the same equivalent
+      resistance. The short-circuit current equals the negative of the
+      Mayer-Norton equivalent source.
+    </para><exercise id="exer1zap">
+      <problem id="id13975188">
+	<para id="exer1azap">
+	  Find the Mayer-Norton equivalent circuit for the circuit below.
+	</para>
+
+	<figure id="Thevenincircuitrub">
+	  <media id="id3135554" alt="">
+            <image src="../../media/circuit13.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/circuit13.eps" mime-type="application/postscript"/>
+          </media>
+	</figure> 
+      </problem>
+
+      <solution id="id11756024">
+	<para id="exer1bzap">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>i</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	  and  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:ci><m:mo>∥</m:mo></m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>3</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="para3stun">       
+      Equivalent circuits can be used in two basic ways. The first is
+      to simplify the analysis of a complicated circuit by realizing
+      the <emphasis>any</emphasis> portion of a circuit can be
+      described by either a Thévenin or Mayer-Norton
+      equivalent. Which one is used depends on whether what is
+      attached to the terminals is a series configuration (making the
+      Thévenin equivalent the best) or a parallel one (making
+      Mayer-Norton the best).
+    </para>
+    
+    <para id="para4stun"> 
+      Another application is modeling. When we buy a flashlight
+      battery, either equivalent circuit can accurately describe
+      it. These models help us understand the limitations of a
+      battery. Since batteries are labeled with a voltage
+      specification, they should serve as voltage sources and the
+      Thévenin equivalent serves as the natural choice. If a
+      load resistance
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mi>L</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      is placed across its terminals, the voltage output can be found using
+      voltage divider:  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>v</m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>L</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>L</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>. If we have a load resistance much larger than the
+      battery's equivalent resistance, then, to a good approximation,
+      the battery does serve as a voltage source. If the load
+      resistance is much smaller, we certainly don't have a voltage
+      source (the output voltage depends directly on the load
+      resistance). Consider now the Mayer-Norton equivalent; the
+      current through the load resistance is given by current divider,
+      and equals
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>i</m:ci>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>i</m:mi>
+		    <m:mi>eq</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>eq</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>L</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>eq</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  For a current that does not vary with the load
+      resistance, this resistance should be much smaller than the
+      equivalent resistance. If the load resistance is comparable to
+      the equivalent resistance, the battery serves
+      <emphasis>neither</emphasis> as a voltage source or a current
+      course. Thus, when you buy a battery, you get a voltage source
+      if its equivalent resistance is much
+      <emphasis>smaller</emphasis> than the equivalent resistance of
+      the circuit to which you attach it. On the other hand, if you
+      attach it to a circuit having a small equivalent resistance, you
+      bought a current source.
+    </para>
+
+    <para id="history">
+      <note id="id14424528" type="Léon Charles Thévenin"><label>Léon Charles Thévenin</label>
+	He was an engineer with France's Postes,
+	Télégraphe et Téléphone. In 1883,
+	he published (twice!)  a proof of what is now called the
+	Thévenin equivalent while developing ways of teaching
+	electrical engineering concepts at the École
+	Polytechnique.  He did not realize that the same result had
+	been published by <link url="http://www-gap.dcs.st-and.ac.uk/~history/Mathematicians/Helmholtz.html">Hermann
+	Helmholtz</link>, the renowned nineteenth century physicist,
+	thiry years earlier.
+      </note>
+
+      <note id="id5382598" type="Hans Ferdinand Mayer"><label>Hans Ferdinand Mayer</label>
+	After earning his doctorate in physics in 1920, he turned to
+	communications engineering when he joined Siemens &amp; Halske
+	in 1922.  In 1926, he published in a German technical journal
+	the Mayer-Norton equivalent. During his interesting career, he
+	rose to lead Siemen's Central Laboratory in 1936,
+	surruptiously leaked to the British all he knew of German
+	warfare capabilities a month after the Nazis invaded Poland,
+	was arrested by the Gestapo in 1943 for listening to BBC radio
+	broadcasts, spent two years in Nazi concentration camps, and
+	went to the United States for four years working for the Air
+	Force and Cornell University before returning to Siemens in
+	1950. He rose to a position on Siemen's Board of
+	Directors before retiring.
+      </note>
+
+      <note id="id8370419" type="Edward L. Norton"><label>Edward L. Norton</label>
+	<link url="http://www.ece.rice.edu/~dhj/norton">Edward
+	Norton</link> was an electrical engineer who worked at Bell
+	Laboratory from its inception in 1922.  In the
+	<emphasis>same</emphasis> month when Mayer's paper appeared,
+	Norton wrote in an internal technical memorandum a paragraph
+	describing the current-source equivalent.  No evidence
+	suggests Norton knew of Mayer's publication.
+      </note>
+    </para>
+  </content>
+</document>

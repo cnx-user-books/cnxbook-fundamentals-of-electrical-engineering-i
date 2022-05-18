@@ -1,0 +1,503 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Power in the Frequency Domain</title>
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>5d64cb3a-c562-4ff2-9d32-8d28f39ad945</md:uuid>
+</metadata>
+  <content>
+    <para id="intro">
+    Recalling that the instantaneous power consumed by a circuit element or an equivalent circuit that represents a collection of elements equals the voltage times the current entering the positive-voltage terminal,
+    <m:math>
+      <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">p</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+          <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+        </m:apply>
+      </m:apply>
+    </m:math>, what is the equivalent expression using impedances?
+    The resulting calculation reveals more about power consumption in circuits and the introduction of the concept of <term>average power</term>.
+    </para>
+    
+    <para id="timetofreq">
+    When all sources produce sinusoids of frequency
+    <m:math>
+      <m:ci>f</m:ci>
+    </m:math>, the voltage and current for any circuit element or collection of elements are sinusoids of the same frequency.
+    <m:math display="block">
+      <m:mtable columnalign="left">
+      <m:mtr>
+      <m:mtd>
+      <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:abs/><m:ci>V</m:ci></m:apply>
+          <m:apply><m:cos/>
+            <m:apply><m:plus/>
+              <m:apply><m:times/>
+                <m:cn>2</m:cn>
+                <m:pi/>
+                <m:ci>f</m:ci>
+                <m:ci>t</m:ci>
+              </m:apply>
+              <m:ci>φ</m:ci>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+      </m:mtd>
+      </m:mtr>
+      
+      <m:mtr>
+      <m:mtd>
+      <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:abs/><m:ci>I</m:ci></m:apply>
+          <m:apply><m:cos/>
+            <m:apply><m:plus/>
+              <m:apply><m:times/>
+                <m:cn>2</m:cn>
+                <m:pi/>
+                <m:ci>f</m:ci>
+                <m:ci>t</m:ci>
+              </m:apply>
+              <m:ci>θ</m:ci>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+    </m:mtd>
+    </m:mtr>
+    </m:mtable>
+    </m:math>
+    
+    Here, the complex amplitude of the voltage
+    <m:math>
+      <m:ci>V</m:ci>
+    </m:math> equals
+    <m:math>
+      <m:apply><m:times/>
+        <m:apply><m:abs/><m:ci>V</m:ci></m:apply>
+      </m:apply>
+      <m:apply><m:exp/>
+        <m:apply><m:times/>
+          <m:imaginaryi/>
+          <m:ci>φ</m:ci>
+        </m:apply>
+      </m:apply>
+    </m:math> and that of the current is
+    <m:math>
+      <m:apply><m:times/>
+        <m:apply><m:abs/><m:ci>I</m:ci></m:apply>
+      </m:apply>
+      <m:apply><m:exp/>
+        <m:apply><m:times/>
+          <m:imaginaryi/>
+          <m:ci>θ</m:ci>
+        </m:apply>
+      </m:apply>
+    </m:math>.
+    We can also write the voltage and current in terms of their complex amplitudes using
+    <link document="m0081" target-id="euler">Euler's formula</link>.
+    <m:math display="block">
+      <m:mtable columnalign="left">
+      <m:mtr>
+      <m:mtd>
+      <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">v</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+            <m:cn>2</m:cn>
+          </m:apply>
+          <m:apply><m:plus/>
+            <m:apply><m:times/>
+              <m:ci>V</m:ci>
+              <m:apply><m:exp/>
+                <m:apply><m:times/>
+                  <m:imaginaryi/>
+                  <m:cn>2</m:cn>
+                  <m:pi/>
+                  <m:ci>f</m:ci>
+                  <m:ci>t</m:ci>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+            <m:apply><m:times/>
+              <m:apply><m:conjugate/><m:ci>V</m:ci></m:apply>
+              <m:apply><m:exp/>
+                <m:apply><m:minus/>
+                  <m:apply><m:times/>
+                    <m:imaginaryi/>
+                    <m:cn>2</m:cn>
+                    <m:pi/>
+                    <m:ci>f</m:ci>
+                    <m:ci>t</m:ci>
+                  </m:apply>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+      </m:mtd>
+      </m:mtr>
+      
+      <m:mtr>
+      <m:mtd>
+      <m:apply><m:eq/>
+        <m:apply><m:ci type="fn">i</m:ci><m:ci>t</m:ci></m:apply>
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+            <m:cn>2</m:cn>
+          </m:apply>
+          <m:apply><m:plus/>
+            <m:apply><m:times/>
+              <m:ci>I</m:ci>
+              <m:apply><m:exp/>
+                <m:apply><m:times/>
+                  <m:imaginaryi/>
+                  <m:cn>2</m:cn>
+                  <m:pi/>
+                  <m:ci>f</m:ci>
+                  <m:ci>t</m:ci>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+            <m:apply><m:times/>
+              <m:apply><m:conjugate/><m:ci>I</m:ci></m:apply>
+              <m:apply><m:exp/>
+                <m:apply><m:minus/>
+                  <m:apply><m:times/>
+                    <m:imaginaryi/>
+                    <m:cn>2</m:cn>
+                    <m:pi/>
+                    <m:ci>f</m:ci>
+                    <m:ci>t</m:ci>
+                  </m:apply>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+    </m:mtd>
+    </m:mtr>
+    </m:mtable>
+    </m:math>
+    
+    Multiplying these two expressions and simplifying gives
+    <m:math display="block">
+      <m:mtable columnalign="left">
+      <m:mtr>
+      <m:mtd>
+        <m:apply><m:ci type="fn">p</m:ci><m:ci>t</m:ci></m:apply>
+      </m:mtd>
+      <m:mtd>
+        <m:mtext>=</m:mtext>
+      </m:mtd>
+      <m:mtd>
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+            <m:cn>4</m:cn>
+          </m:apply>
+          <m:apply><m:plus/>
+            <m:apply><m:times/>
+              <m:ci>V</m:ci>
+              <m:apply><m:conjugate/><m:ci>I</m:ci></m:apply>
+            </m:apply>
+            <m:apply><m:times/>
+              <m:apply><m:conjugate/><m:ci>V</m:ci></m:apply>
+              <m:ci>I</m:ci>
+            </m:apply>
+            <m:apply><m:times/>
+              <m:ci>V</m:ci>
+              <m:ci>I</m:ci>
+              <m:apply><m:exp/>
+                <m:apply><m:times/>
+                  <m:imaginaryi/>
+                  <m:cn>4</m:cn>
+                  <m:pi/>
+                  <m:ci>f</m:ci>
+                  <m:ci>t</m:ci>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+            <m:apply><m:times/>
+              <m:apply><m:conjugate/><m:ci>V</m:ci></m:apply>
+              <m:apply><m:conjugate/><m:ci>I</m:ci></m:apply>
+              <m:apply><m:exp/>
+                <m:apply><m:minus/>
+                  <m:apply><m:times/>
+                    <m:imaginaryi/>
+                    <m:cn>4</m:cn>
+                    <m:pi/>
+                    <m:ci>f</m:ci>
+                    <m:ci>t</m:ci>
+                  </m:apply>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:mtd>
+      </m:mtr>
+        
+      <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mtext>=</m:mtext>
+      </m:mtd>
+      <m:mtd>
+        <m:apply><m:plus/>
+          <m:apply><m:times/>
+            <m:apply><m:divide/>
+              <m:cn>1</m:cn>
+              <m:cn>2</m:cn>
+            </m:apply>
+            <m:apply><m:real/>
+              <m:apply><m:times/>
+                <m:ci>V</m:ci>
+                <m:apply><m:conjugate/><m:ci>I</m:ci></m:apply>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+          <m:apply><m:times/>
+            <m:apply><m:divide/>
+              <m:cn>1</m:cn>
+              <m:cn>2</m:cn>
+            </m:apply>
+            <m:apply><m:real/>
+              <m:apply><m:times/>
+                <m:ci>V</m:ci>
+                <m:ci>I</m:ci>
+                <m:apply><m:exp/>
+                  <m:apply><m:times/>
+                    <m:imaginaryi/>
+                    <m:cn>4</m:cn>
+                    <m:pi/>
+                    <m:ci>f</m:ci>
+                    <m:ci>t</m:ci>
+                  </m:apply>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:mtd>
+      </m:mtr>
+      
+      <m:mtr>
+      <m:mtd/>
+      <m:mtd>
+        <m:mtext>=</m:mtext>
+      </m:mtd>
+      <m:mtd>
+        <m:apply><m:plus/>
+          <m:apply><m:times/>
+            <m:apply><m:divide/>
+              <m:cn>1</m:cn>
+              <m:cn>2</m:cn>
+            </m:apply>
+            <m:apply><m:real/>
+              <m:apply><m:times/>
+                <m:ci>V</m:ci>
+                <m:apply><m:conjugate/><m:ci>I</m:ci></m:apply>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+          <m:apply><m:times/>
+            <m:apply><m:divide/>
+              <m:cn>1</m:cn>
+              <m:cn>2</m:cn>
+            </m:apply>
+            <m:apply><m:abs/><m:ci>V</m:ci></m:apply>
+            <m:apply><m:abs/><m:ci>I</m:ci></m:apply>
+            <m:apply><m:cos/>
+              <m:apply><m:plus/>
+                <m:apply><m:times/>
+                  <m:cn>4</m:cn>
+                  <m:pi/>
+                  <m:ci>f</m:ci>
+                  <m:ci>t</m:ci>
+                </m:apply>
+                <m:ci>φ</m:ci>
+                <m:ci>θ</m:ci>
+              </m:apply>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:mtd>
+      </m:mtr>
+      </m:mtable>
+    </m:math>
+    
+    We define
+    <m:math>
+          <m:apply><m:times/>
+            <m:apply><m:divide/>
+              <m:cn>1</m:cn>
+              <m:cn>2</m:cn>
+            </m:apply>
+            <m:ci>V</m:ci>
+            <m:apply><m:conjugate/><m:ci>I</m:ci></m:apply>
+          </m:apply>
+    </m:math>
+    to be <term>complex power</term>.
+    The real-part of complex power is the first term and since it does not change with time, it represents the power consistently consumed/produced by the circuit.
+    The second term varies with time at a frequency twice that of the source.
+    Conceptually, this term details how power "sloshes" back and forth in the circuit because of the sinusoidal source.
+    </para>
+    
+    <para id="avepower">
+    From another viewpoint, the real-part of complex power represents long-term energy consumption/production.
+    Energy is the integral of power and, as the integration interval increases, the first term appreciates while the time-varying term "sloshes."
+    Consequently, the most convenient definition of the <term>average power</term> consumed/produced by any circuit is in terms of complex amplitudes.
+    <equation id="avepowerdef">
+    <m:math>
+      <m:apply><m:eq/>
+        <m:msub><m:ci>P</m:ci><m:mtext>ave</m:mtext></m:msub>
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+            <m:cn>2</m:cn>
+          </m:apply>
+          <m:apply><m:real/>
+            <m:apply><m:times/>
+              <m:ci>V</m:ci>
+              <m:apply><m:conjugate/><m:ci>I</m:ci></m:apply>
+            </m:apply>
+          </m:apply>
+        </m:apply>
+      </m:apply>
+    </m:math>
+    </equation>
+    </para>
+    
+    <exercise id="phase">
+      <problem id="idp6996624">
+        <para id="ex1p1">
+          Suppose the complex amplitudes of the voltage and current have fixed magnitudes.
+          What phase relationship between voltage and current maximizes the average power?
+          In other words, how are
+          <m:math><m:ci>φ</m:ci></m:math> and <m:math><m:ci>θ</m:ci></m:math> related for maximum power dissipation?
+        </para>
+      </problem>
+      <solution id="idp12654832">
+        <para id="ex1p2">
+          For maximum power dissipation, the imaginary part of complex power should be zero.
+          As the complex power is given by
+          <m:math>
+            <m:apply><m:eq/>
+              <m:apply><m:times/>
+                <m:ci>V</m:ci>
+                <m:apply><m:conjugate/><m:ci>I</m:ci></m:apply>
+              </m:apply>
+              <m:apply><m:times/>
+                <m:apply><m:abs/><m:ci>V</m:ci></m:apply>
+                <m:apply><m:abs/><m:ci>I</m:ci></m:apply>
+                <m:apply><m:exp/>
+                  <m:apply><m:times/>
+                    <m:imaginaryi/>
+                    <m:apply><m:minus/>
+                      <m:ci>φ</m:ci>
+                      <m:ci>θ</m:ci>
+                    </m:apply>
+                  </m:apply>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:math>,
+          zero imaginary part occurs when the phases of the voltage and currents agree.
+        </para>
+      </solution>
+    </exercise>
+    
+    <para id="zpower">
+    Because the complex amplitudes of the voltage and current are related by the equivalent impedance, average power can also be written as
+    <m:math display="block">
+      <m:apply><m:eq/>
+        <m:msub><m:ci>P</m:ci><m:mtext>ave</m:mtext></m:msub>
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+            <m:cn>2</m:cn>
+          </m:apply>
+          <m:apply><m:real/>
+            <m:ci>Z</m:ci>
+          </m:apply>
+          <m:apply><m:power/>
+            <m:apply><m:abs/><m:ci>I</m:ci></m:apply>
+            <m:cn>2</m:cn>
+          </m:apply>
+        </m:apply>
+
+        <m:apply><m:times/>
+          <m:apply><m:divide/>
+            <m:cn>1</m:cn>
+            <m:cn>2</m:cn>
+          </m:apply>
+          <m:apply><m:real/>
+            <m:apply><m:divide/>
+              <m:cn>1</m:cn>
+              <m:ci>Z</m:ci>
+            </m:apply>
+          </m:apply>
+          <m:apply><m:power/>
+            <m:apply><m:abs/><m:ci>V</m:ci></m:apply>
+            <m:cn>2</m:cn>
+          </m:apply>
+        </m:apply>
+        
+      </m:apply>
+    </m:math>
+    
+    These expressions generalize the <link document="m17305" target-id="powerresistor">results</link> we obtained for resistor circuits.
+    We have derived a fundamental result:
+    <emphasis>Only the real part of impedance contributes to long-term power dissipation</emphasis>.
+    Of the circuit elements, <emphasis>only</emphasis> the resistor dissipates power.
+    Capacitors and inductors dissipate no power in the long term.
+    It is important to realize that these statements apply only for sinusoidal sources.
+    If you turn on a constant voltage source in an RC-circuit, charging the capacitor does consume power.
+    </para>
+    
+    <exercise id="rms">
+      <problem id="idp12967232">
+        <para id="ex2p1">
+          In an earlier <link document="m10353" target-id="ex11sec">problem</link>, we found that the rms value of a sinusoid was its amplitude divided by
+          <m:math>
+            <m:apply><m:root/><m:cn>2</m:cn></m:apply>
+          </m:math>.
+          What is average power expressed in terms of the rms values of the voltage and current
+          (<m:math>
+            <m:msub><m:ci>V</m:ci><m:mtext>rms</m:mtext></m:msub>
+          </m:math> and
+          <m:math>
+            <m:msub><m:ci>I</m:ci><m:mtext>rms</m:mtext></m:msub>
+          </m:math> respectively)?
+        </para>
+      </problem>
+      <solution id="idp14166304">
+        <para id="ex2p2">
+          <m:math>
+            <m:apply><m:eq/>
+              <m:msub><m:ci>P</m:ci><m:mtext>ave</m:mtext></m:msub>
+              <m:apply><m:times/>
+                <m:msub><m:ci>V</m:ci><m:mtext>rms</m:mtext></m:msub>
+                <m:msub><m:ci>I</m:ci><m:mtext>rms</m:mtext></m:msub>
+                <m:apply><m:cos/>
+                  <m:apply><m:minus/>
+                    <m:ci>φ</m:ci>
+                    <m:ci>θ</m:ci>
+                  </m:apply>
+                </m:apply>
+              </m:apply>
+            </m:apply>
+          </m:math>. The cosine term is known as the <term>power factor</term>.
+        </para>
+      </solution>
+    </exercise>
+  </content>
+  
+</document>

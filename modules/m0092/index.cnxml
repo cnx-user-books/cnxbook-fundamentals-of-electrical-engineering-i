@@ -1,0 +1,476 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Compression and the Huffman Code</title>
+
+  <metadata>
+  <md:content-id>m0092</md:content-id><md:title>Compression and the Huffman Code</md:title>
+  <md:abstract>The Huffman source coding algorithm is provably maximally efficient.</md:abstract>
+  <md:uuid>d4bc95ee-b7e1-4f3d-a3e4-437ba3a859c6</md:uuid>
+</metadata>
+
+<content>
+
+    <para id="para1">
+      Shannon's <link document="m0091" target-id="eq7" strength="2">Source
+      Coding Theorem</link> has additional applications in <term>data
+      compression</term>.  Here, we have a symbolic-valued signal
+      source, like a computer file or an image, that we want to
+      represent with as few bits as possible.  Compression schemes that
+      assign symbols to bit sequences are known as <term>lossless</term>
+      if they obey the Source Coding Theorem; they are
+      <term>lossy</term> if they use fewer bits than the alphabet's
+      entropy.  Using a lossy compression scheme means that you cannot
+      recover a symbolic-valued signal from its compressed version
+      without incurring some error.  You might be wondering why anyone
+      would want to intentionally create errors, but lossy compression
+      schemes are frequently used where the efficiency gained in
+      representing the signal outweighs the significance of the
+      errors.
+    </para>
+
+    <para id="para2">
+      Shannon's Source Coding Theorem states that symbolic-valued
+      signals require <emphasis>on the average</emphasis> at least
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">H</m:ci>
+	  <m:ci>A</m:ci>
+	</m:apply>
+      </m:math>
+      
+      number of bits to represent each of its values, which are
+      symbols drawn from the alphabet <m:math><m:ci>A</m:ci></m:math>.
+      In the module on the <link document="m0091" strength="2">Source
+      Coding Theorem</link> we find that using a so-called <term>fixed
+      rate</term> source coder, one that produces a fixed number of
+      bits/symbol, may not be the most efficient way of encoding
+      symbols into bits.  What is not discussed there is a procedure
+      for designing an efficient source coder: one
+      <emphasis>guaranteed</emphasis> to produce the fewest
+      bits/symbol on the average.  That source coder is not unique,
+      and one approach that does achieve that limit is the
+      <term>Huffman source coding algorithm</term>.
+      <note id="id1171478823127" type="Point of Interest"><label>Point of Interest</label>
+	In the early years of information theory, the race was on to
+	be the first to find a <emphasis>provably</emphasis> maximally
+	efficient source coding algorithm.  The race was won by then
+	MIT graduate student David Huffman in 1954, who worked on the
+	problem as a project in his information theory course.  We're
+	pretty sure he received an “A.”
+      </note>
+      <list id="Huffmethod" list-type="bulleted"><item>Create a vertical table for the symbols, the best
+	  ordering being in decreasing order of probability.
+	</item>
+	<item>Form a binary tree to the right of the table.  A binary
+	  tree always has two branches at each node. Build the tree by
+	  merging the two lowest probability symbols at each level,
+	  making the probability of the node equal to the sum of the
+	  merged nodes' probabilities.  If more than two nodes/symbols
+	  share the lowest probability at a given level, pick any two;
+	  your choice won't affect
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:mean/>
+	      <m:apply>
+		<m:ci type="fn">B</m:ci>
+		<m:ci>A</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</item>
+	<item>At each node, label each of the emanating branches with
+	  a binary number.  The bit sequence obtained from passing
+	  from the tree's root to the symbol is its Huffman code.
+	</item>
+      </list>
+    </para>
+    
+    <example id="ex3">
+      <para id="para3">
+	The simple four-symbol alphabet used in the <link document="m0070" target-id="ex1" strength="2">Entropy</link> and
+	<link document="m0091" target-id="ex2" strength="2">Source
+	Coding</link> modules has a four-symbol alphabet with the
+	following probabilities,
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/><m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+	      </m:apply>
+             </m:apply>
+           </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/><m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>4</m:cn>
+	      </m:apply>
+             </m:apply>
+           </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/><m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>8</m:cn>
+	      </m:apply>
+             </m:apply>
+           </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/><m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+		<m:ci><m:msub><m:mi>a</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+	      </m:apply>
+	      <m:apply><m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>8</m:cn>
+	      </m:apply>
+             </m:apply>
+           </m:math>
+
+	
+	and an <link document="m0070" target-id="ex1" strength="2">entropy
+	of 1.75 bits</link>.  This alphabet has the Huffman coding
+	tree shown in <link target-id="huffman" strength="3"/>.
+      </para>
+
+      <figure id="huffman">
+	<title>Huffman Coding Tree</title>
+	<media id="id1171477810248" alt="">
+          <image src="../../media/sys21-8f7a.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sys21.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  We form a Huffman code for a four-letter alphabet having the
+	  indicated probabilities of occurrence.  The binary tree
+	  created by the algorithm extends to the right, with the root
+	  node (the one at which the tree begins) defining the
+	  codewords.  The bit sequence obtained by traversing the tree
+	  from the root to the symbol defines that symbol's binary
+	  code.
+	</caption>
+      </figure>
+      
+      <para id="para3.1">
+	The code thus obtained is not unique as we could have labeled
+	the branches coming out of each node differently. The average
+	number of bits required to represent this alphabet equals
+	
+	<m:math>
+	  <m:cn>1.75</m:cn></m:math> bits, which is the Shannon
+	entropy limit for this source alphabet.  If we had the
+	symbolic-valued signal
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>m</m:ci>
+	    </m:apply>
+	    <m:set>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>3</m:mn>
+		</m:msub></m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>4</m:mn>
+		</m:msub></m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+	      <m:ci>…</m:ci>
+	    </m:set>
+	  </m:apply>
+	</m:math>, our Huffman code would produce the bitstream
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">b</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:ci>101100111010…</m:ci>
+	  </m:apply>
+	</m:math>.
+      </para>
+      
+      <para id="para4">
+	If the alphabet probabilities were different, clearly a
+	different tree, and therefore different code, could well
+	result. Furthermore, we may not be able to achieve the entropy
+	limit. If our symbols had the probabilities
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>   
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>   
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>,
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>3</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>   
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:cn>5</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, and  
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://cnx.rice.edu/cd/cnxmath.ocd#probability"/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>4</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>   
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:cn>20</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, the average number of bits/symbol resulting from
+	the Huffman coding algorithm would equal
+	
+	<m:math display="inline">
+	  <m:cn>1.75</m:cn></m:math> bits.  However, the entropy limit is
+	1.68 bits.  The Huffman code does satisfy the Source
+	Coding Theorem—its average length is within one bit of the
+	alphabet's entropy—but you might wonder if a better code
+	existed.  David Huffman showed mathematically that no other
+	code could achieve a shorter average code than his.  We can't
+	do better.
+      </para>
+    </example>
+    
+    <exercise id="exer1">
+      <problem id="id3387305">
+	<para id="prob1">Derive the Huffman code for this second set
+	of probabilities, and verify the claimed average code length
+	and alphabet entropy.
+	</para>
+      </problem>
+      <solution id="id1171477940194">
+	<para id="sol1">The Huffman coding tree for the second set of
+	  probabilities is <emphasis>identical</emphasis> to that for
+	  the first (<link target-id="huffman" strength="2"/>).  The
+	  average code length is
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>4</m:cn>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>  
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>5</m:cn>
+		  </m:apply>
+		  <m:cn>3</m:cn>
+		</m:apply> 
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>20</m:cn>
+		  </m:apply>
+		  <m:cn>3</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>1.75</m:ci>
+	    </m:apply>
+	  </m:math> bits.  The entropy calculation is straightforward:
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>A</m:ci>
+	      </m:apply>
+                <m:apply><m:minus/>
+                <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:log/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>4</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:log/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>4</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>    
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>5</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:log/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>5</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>20</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:log/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>20</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+            </m:apply>
+	  </m:math>,
+	  which equals  
+	  
+	  <m:math>
+	    <m:cn>1.68</m:cn>
+	  </m:math> bits.
+	</para>
+      </solution>
+    </exercise>
+
+
+  </content>
+</document>

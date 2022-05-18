@@ -1,0 +1,1918 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Series and Parallel Circuits</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10674</md:content-id>
+  <md:title>Series and Parallel Circuits</md:title>
+  <md:abstract>A brief look at series and parallel circuits.  Also defines
+      voltage and current divider.</md:abstract>
+  <md:uuid>3b9989db-bc5b-4c84-9dd6-33d04f5b1996</md:uuid>
+</metadata>
+
+<content>
+    <figure id="simplecircuitgwar" orient="horizontal">
+      <subfigure id="id1167984964108">
+	<media id="id2650563" alt="">
+          <image src="../../media/circuit4-a704.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circuit4.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure>
+      <subfigure id="id1167986446874">
+	<media id="id6799089" alt="">
+          <image src="../../media/circuit4a-3191.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circuit4a.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure> 
+      <caption>
+	The circuit shown is perhaps the simplest circuit that
+	performs a signal processing function. The input is provided
+	by the voltage source
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>in</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	and the output is the voltage
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>out</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>  
+	across the resistor labelled 
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>.
+      </caption>
+    </figure>
+
+
+    <para id="para1gwar">
+      The results shown in other modules 
+      (<link document="m0014" strength="3">circuit elements</link>, 
+      <link document="m0014" strength="3">KVL and KCL</link>, 
+      <link document="m0014" strength="3">interconnection laws</link>) 
+      with regard to <link target-id="simplecircuitgwar" strength="3">this
+      circuit</link>, and the values of other currents and voltages in this
+      circuit as well, have profound implications.
+      </para>
+
+    <para id="voltdivide">
+      Resistors connected in such a way that current from one must
+      flow <emphasis>only</emphasis> into another—currents in
+      all resistors connected this way have the same
+      magnitude—are said to be connected in
+      <term>series</term>.  For the two series-connected resistors in
+      the example, <emphasis>the voltage across one resistor equals
+      the ratio of that resistor's value and the sum of resistances
+      times the voltage across the series combination</emphasis>. This
+      concept is so pervasive it has a name: <term>voltage
+      divider</term>.
+    </para>
+    
+    <para id="iorelationship"> 
+      The <term>input-output relationship</term> for this system,
+      found in this particular case by voltage divider, takes the form
+      of a ratio of the output voltage to the input voltage.
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+            <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      In this way, we express how the components used to build the
+      system affect the input-output relationship.  Because this
+      analysis was made with ideal circuit elements, we might expect
+      this relation to break down if the input amplitude is too high
+      (Will the circuit survive if the input changes from 1 volt to
+      one million volts?) or if the source's frequency becomes too
+      high. In any case, this important way of expressing input-output
+      relationships—as a ratio of output to
+      input—pervades circuit and system theory.
+    </para>
+    
+    <para id="currentwra">
+      The current 
+      <m:math>
+        <m:ci>
+          <m:msub>
+            <m:mi>i</m:mi>
+            <m:mn>1</m:mn>
+          </m:msub>
+        </m:ci>
+      </m:math>
+      is the current flowing out of the voltage source. Because it equals 
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>i</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>, 
+      we have that 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:apply>
+            <m:divide/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+          </m:apply>
+          <m:apply>
+            <m:plus/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+          </m:apply>
+	</m:apply>
+      </m:math>:
+
+      <note id="id7952266" type="Resistors in series"><label>Resistors in series</label>
+	The series combination of two resistors acts, as far as the
+	voltage source is concerned, as a single resistor having a
+	value equal to the sum of the two resistances.
+      </note> 
+
+      This result is the first of several <link document="0020" strength="2">equivalent circuit ideas</link>: In many cases, a
+      complicated circuit when viewed from its terminals (the two
+      places to which you might attach a source) appears to be a
+      single circuit element (at best) or a simple combination of
+      elements at worst. Thus, the equivalent circuit for a series
+      combination of resistors is a single resistor having a
+      resistance equal to the sum of its component resistances.
+    </para>
+
+    <figure id="eqcircuit">
+      <media id="id1167984654793" alt="">
+        <image src="../../media/circuit4b-02a3.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit4b.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The resistor (on the right) is equivalent to the two resistors
+	(on the left) and has a resistance equal to the sum of the
+	resistances of the other two resistors.
+      </caption>
+    </figure>
+    
+    <para id="conclusion">
+      Thus, the circuit the voltage source "feels" (through the
+      current drawn from it) is a single resistor having resistance
+      <m:math>
+	<m:apply>
+	  <m:plus/>
+          <m:ci>
+            <m:msub>
+              <m:mi>R</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+          </m:ci>
+          <m:ci>
+            <m:msub>
+              <m:mi>R</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+          </m:ci>
+	</m:apply>
+      </m:math>.
+      Note that in making this equivalent circuit, the output voltage
+      can no longer be defined: The output resistor labeled
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      no longer appears. Thus, this equivalence is made strictly from
+      the voltage source's viewpoint.
+    </para>     
+
+    <figure id="simpleparallel"> 
+      <media id="id8526825" alt="">
+        <image src="../../media/circuit25-70b6.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit25.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	A simple parallel circuit.
+      </caption>
+    </figure>
+
+
+     <para id="para1lit2">
+      One interesting simple circuit 
+      (<link target-id="simpleparallel" strength="2"/>) 
+      has two resistors connected side-by-side, what we will term a
+      <term>parallel</term> connection, rather than in series.
+      Here, applying KVL reveals that all the voltages are identical:
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>v</m:ci>
+	</m:apply>
+      </m:math>
+      and
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>v</m:ci>
+	</m:apply>
+      </m:math>.
+      This result typifies parallel connections. To write the KCL
+      equation, note that the top node consists of the entire upper
+      interconnection section. The KCL equation is
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>.
+      Using the <emphasis>v-i</emphasis> relations, we find that
+ 
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+    </para>
+
+
+    <exercise id="exer1wra">
+      <problem id="id1167986628716">
+	<para id="exer1awar">
+	  Suppose that you replaced the current source in 
+	  <link target-id="simpleparallel" strength="2"/> 
+	  by a voltage source.  How would 
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>
+	  be related to the source voltage?  Based on this result,
+	  what purpose does this revised circuit have?
+	</para>
+      </problem>
+
+      <solution id="id1167985077558">
+	<para id="exer1bwra">
+	  Replacing the current source by a voltage source does not
+	  change the fact that the voltages are
+	  identical. Consequently,
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+              <m:ci>
+                <m:msub>
+                  <m:mi>v</m:mi>
+                  <m:mi>in</m:mi>
+                </m:msub>
+              </m:ci>
+              <m:apply>
+                <m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>i</m:mi>
+		    <m:mi>out</m:mi>
+		  </m:msub>
+		</m:ci>
+              </m:apply>
+	    </m:apply>
+	  </m:math> 
+	  or
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+              <m:ci>
+                <m:msub>
+                  <m:mi>i</m:mi>
+                  <m:mi>out</m:mi>
+                </m:msub>
+              </m:ci>
+              <m:apply>
+                <m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+              </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  This result does not depend on the resistor
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>, 
+	  which  means  that  we  simply  have  a  resistor
+	  (<m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>)
+	  across a voltage source. The two-resistor circuit has no
+	  apparent use.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="para3lit2">This circuit highlights some important properties of parallel
+      circuits. You can easily show that the parallel combination of
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      and
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      has the <emphasis>v-i</emphasis> relation of a resistor having
+      resistance
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:apply>
+            <m:power/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+          </m:apply>
+          <m:apply>
+            <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+          </m:apply>
+	</m:apply>
+      </m:math>.
+      A shorthand notation for this quantity is  
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>∥</m:mo></m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>.  As the reciprocal of resistance is <link document="m0012" target-id="res" strength="2">conductance</link>,
+      we can say that
+      <emphasis>for a parallel combination of resistors, the equivalent
+	conductance is the sum of the conductances</emphasis>.
+    </para><figure id="parallelR">
+      <media id="id1167988951837" alt="">
+        <image src="../../media/parallelR-9a5e.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/parallelR.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+    
+    <para id="para4lit2">
+      Similar to <link target-id="voltdivide" strength="2">voltage
+      divider</link> for series resistances, we have <term>current
+      divider</term> for parallel resistances.  The current through a
+      resistor in parallel with another is the ratio of the
+      conductance of the first to the sum of the conductances. Thus,
+      for the depicted circuit,
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>i</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>G</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>G</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>G</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>i</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Expressed in terms of resistances, current divider
+      takes the form of the resistance of the
+      <emphasis>other</emphasis> resistor divided by the sum of
+      resistances:
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>i</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>i</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+    
+    <figure id="circuit14">
+      <media id="id4950701" alt="">
+        <image src="../../media/circuit14-e52d.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit14.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+    
+    <figure id="attenscope">
+      <media id="id5277825" alt="">
+        <image src="../../media/circuit4c-ae32.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit4c.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The <link target-id="simplecircuitgwar" strength="2">simple
+        attenuator circuit</link> is attached to an oscilloscope's
+        input.  The input-output relation for the above circuit
+        without a load is: <m:math> <m:apply> <m:eq/> <m:ci> <m:msub>
+        <m:mi>v</m:mi> <m:mi>out</m:mi> </m:msub> </m:ci> <m:apply>
+        <m:times/> <m:apply> <m:divide/> <m:ci> <m:msub>
+        <m:mi>R</m:mi> <m:mn>2</m:mn> </m:msub> </m:ci> <m:apply>
+        <m:plus/> <m:ci> <m:msub> <m:mi>R</m:mi> <m:mn>1</m:mn>
+        </m:msub> </m:ci> <m:ci> <m:msub> <m:mi>R</m:mi>
+        <m:mn>2</m:mn> </m:msub> </m:ci> </m:apply> </m:apply> <m:ci>
+        <m:msub> <m:mi>v</m:mi> <m:mi>in</m:mi> </m:msub> </m:ci>
+        </m:apply> </m:apply> </m:math>.
+      </caption>
+    </figure>
+
+    <para id="para1rub">
+      Suppose we want to pass the output signal into a voltage
+      measurement device, such as an oscilloscope or a voltmeter. In
+      system-theory terms, we want to pass our circuit's output to a
+      sink. For most applications, we can represent these measurement
+      devices as a resistor, with the current passing through it
+      driving the measurement device through some type of display.
+      In circuits, a sink is called a <term>load</term>; thus, we
+      describe a system-theoretic sink as a load resistance
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mi>L</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>.
+      Thus, we have a complete system built from a cascade of three
+      systems: a source, a signal processing system (simple as it is),
+      and a sink. 
+    </para>
+    
+    <para id="para3fir2">We must analyze afresh how this revised circuit, shown in 
+      <link target-id="attenscope" strength="2"/>, 
+      works. Rather than defining eight variables and solving for the
+      current in the load resistor, let's take a hint from
+      other analysis
+      (<link target-id="voltdivide" strength="2">series rules</link>, 
+      <link target-id="para3lit2" strength="2">parallel rules</link>). 
+      Resistors  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      and
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mi>L</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      are in a <term>parallel</term> configuration: The voltages
+      across each resistor are the same while the currents are
+      not. Because the voltages are the same, we can find the current
+      through each from their <emphasis>v-i</emphasis> relations:
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:ci>
+            <m:msub>
+              <m:mi>i</m:mi>
+              <m:mn>2</m:mn>
+            </m:msub>
+          </m:ci>
+          <m:apply>
+            <m:divide/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+          </m:apply>
+	</m:apply>
+      </m:math> 
+      and
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:ci>
+            <m:msub>
+              <m:mi>i</m:mi>
+              <m:mi>L</m:mi>
+            </m:msub>
+          </m:ci>
+          <m:apply>
+            <m:divide/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mi>L</m:mi>
+	      </m:msub>
+	    </m:ci>
+          </m:apply>
+	</m:apply>
+      </m:math>.
+      Considering the node where all three resistors join, KCL says
+      that the sum of the three currents must equal zero. Said another
+      way, the current entering the node through
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      must equal the sum of the other two currents leaving the
+      node. Therefore,
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:ci>
+            <m:msub>
+              <m:mi>i</m:mi>
+              <m:mn>1</m:mn>
+            </m:msub>
+          </m:ci>
+          <m:apply>
+            <m:plus/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>i</m:mi>
+		<m:mi>L</m:mi>
+	      </m:msub>
+	    </m:ci>
+          </m:apply>
+	</m:apply>
+      </m:math>,
+      which means that  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:ci>
+            <m:msub>
+              <m:mi>i</m:mi>
+              <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>L</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <para id="para4"> 
+      Let  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mi>eq</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      denote the equivalent resistance of the parallel combination of  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>  
+      and  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mi>L</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>. Using 
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>'s  
+      <emphasis>v-i</emphasis> relation, the voltage across it is  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mi>eq</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      The KVL equation written around the leftmost loop has  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>in</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mn>1</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>;
+      substituting for  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>,
+      we find      
+                                                   
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>in</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mi>eq</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      or
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>eq</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+    </para>   
+
+    <para id="para5"> 
+      Thus, we have the input-output relationship for our entire
+      system having the form of voltage divider, but it does
+      <emphasis>not</emphasis> equal the input-output relation of the
+      circuit without the voltage measurement device. We can not
+      measure voltages reliably unless the measurement device has
+      little effect on what we are trying to measure. We should look
+      more carefully to determine if any values for the load
+      resistance would lessen its impact on the circuit. Comparing the
+      input-output relations before and after, what we need is
+      <m:math>
+	<m:apply>
+	  <m:approx/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mi>eq</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>. 
+      As  
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mi>eq</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:power/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>L</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, 
+      the approximation would apply if 
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>≫</m:mo></m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mi>L</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      or   
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>≪</m:mo></m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mi>2</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mi>L</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>.
+      This is the condition we seek:  
+
+      <note id="id1167983153430" type="Voltage measurement"><label>Voltage measurement</label>
+	Voltage measurement devices must have large resistances
+	compared with that of the resistor across which the voltage is
+	to be measured.
+      </note>
+    </para>
+
+    <exercise id="exer1lit2">
+      <problem id="id5096498">
+	<para id="exer1alit2">
+	  Let's be more precise: How much larger would a load
+	  resistance need to be to affect the input-output relation by
+	  less than 10%? by less than 1%?
+	</para>
+      </problem>
+
+      <solution id="id6925111">
+	<para id="exer1blit2"> 
+	  <m:math> 
+	    <m:apply>
+	      <m:eq/>
+              <m:ci>
+                <m:msub>
+                  <m:mi>R</m:mi>
+                  <m:mi>eq</m:mi>
+                </m:msub>
+              </m:ci>
+              <m:apply>
+                <m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mi>L</m:mi>        
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  Thus, a 10% change means that the ratio  
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+              <m:ci>
+                <m:msub>
+                  <m:mi>R</m:mi>
+                  <m:mn>2</m:mn>
+                </m:msub>
+              </m:ci>
+              <m:ci>
+                <m:msub>
+                  <m:mi>R</m:mi>
+                  <m:mi>L</m:mi>
+                </m:msub>
+              </m:ci>
+	    </m:apply>
+	  </m:math>
+	  must be less than 0.1. A 1% change means that  
+	  <m:math>
+	    <m:apply>
+	      <m:lt/>
+              <m:apply>
+                <m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mi>L</m:mi>
+		  </m:msub>
+		</m:ci>
+              </m:apply>
+              <m:cn>0.01</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <example id="ex1">
+
+      <figure id="fg2">
+	<media id="id4992238" alt="">
+          <image src="../../media/circuit15-3621.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circuit15.eps" mime-type="application/postscript"/>
+        </media>
+      </figure>
+
+      <para id="para6"> 
+	We want to find the total resistance of the example
+	circuit. To apply the series and parallel combination rules,
+	it is best to first determine the circuit's structure: What is
+	in series with what and what is in parallel with what at both
+	small- and large-scale views. We have
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math> 
+	in parallel with  
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>3</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>;
+	this combination is in series with  
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>4</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>.
+	This series combination is in parallel with 
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>R</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>.
+	Note that in determining this structure, we started
+	<emphasis>away </emphasis>from the terminals, and worked
+	toward them. In most cases, this approach works well; try it
+	first. The total resistance expression mimics the structure:
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>T</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<!-- not actual relation used for || (parallel) -->
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci><m:mo>∥</m:mo></m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci><m:mo>∥</m:mo></m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>4</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mi>T</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>4</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>4</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>4</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>4</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	Such complicated expressions typify circuit "simplifications."
+	A simple check for accuracy is the units: Each component of
+	the numerator should have the same units (here
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:ci>Ω</m:ci>
+	    <m:cn>3</m:cn>
+	  </m:apply>
+	</m:math>)
+	as well as in the denominator
+	(<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:ci>Ω</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:math>).
+	The entire expression is to have units of resistance; thus,
+	the ratio of the numerator's and denominator's units should be
+	ohms. Checking units does not guarantee accuracy, but can
+	catch many errors.      
+      </para>
+    </example>        
+    
+
+    <para id="para7">
+      Another valuable lesson emerges from this example concerning the
+      difference between cascading systems and cascading circuits. In
+      system theory, systems can be cascaded without changing the
+      input-output relation of intermediate systems. In cascading
+      circuits, this ideal is rarely true <emphasis>unless</emphasis>
+      the circuits are so
+      <emphasis>designed</emphasis>. Design is in the hands of the
+      engineer; he or she must recognize what have come to be known as
+      loading effects. In our simple circuit, you might think that
+      making the resistance
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mi>L</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      large enough would do the trick. Because the resistors
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      and  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      can have virtually any value, you can never make the resistance
+      of your voltage measurement device big enough. Said another way,
+      <emphasis>a circuit cannot be designed in isolation that will
+      work in cascade with all other circuits</emphasis>. Electrical
+      engineers deal with this situation through the notion of
+      <emphasis>specifications</emphasis>: Under what conditions will
+      the circuit perform as designed? Thus, you will find that
+      oscilloscopes and voltmeters have their internal resistances
+      clearly stated, enabling you to determine whether the voltage
+      you measure closely equals what was present before they were
+      attached to your circuit. Furthermore, since our resistor
+      circuit functions as an attenuator, with the attenuation (a
+      fancy word for gains less than one) depending only on the ratio
+      of the two resistor values
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:power/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>, 
+      we can select <emphasis>any</emphasis> values for the two
+      resistances we want to achieve the desired attenuation. The
+      designer of this circuit must thus specify not only what the
+      attenuation is, but also the resistance values employed so that
+      integrators—people who put systems together from
+      component systems—can combine systems together and have a
+      chance of the combination working.
+    </para>
+
+    <para id="one"> 
+      <link target-id="combo" strength="2"/> 
+      summarizes the series and parallel combination results.  These
+      results are easy to remember and very useful. Keep in mind that
+      for series combinations, voltage and resistance are the key
+      quantities, while for parallel combinations current and
+      conductance are more important. In series combinations, the
+      currents through each element are the same; in parallel ones,
+      the voltages are the same.      
+    </para>
+
+
+    <figure id="combo" orient="horizontal">
+      <title>series and parallel combination rules</title>
+      <subfigure id="comboa">
+	<title>series combination rule</title>
+	<media id="id4378015" alt="">
+          <image src="../../media/seriesex-e201.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/seriesex.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:ci>R</m:ci>
+		  <m:ci>T</m:ci> 
+		</m:msub>
+	      </m:ci>    
+	      <m:apply>
+		<m:sum/>
+                <m:bvar>
+                  <m:ci>n</m:ci>
+                </m:bvar>
+                <m:lowlimit>
+                  <m:cn>1</m:cn>
+                </m:lowlimit>
+                <m:uplimit>
+                  <m:ci>N</m:ci>
+                </m:uplimit>
+                <m:apply>
+                  <m:ci>
+                    <m:msub>
+                      <m:ci>R</m:ci>
+                      <m:ci>n</m:ci>
+                    </m:msub>
+                  </m:ci>
+                </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>  
+	    
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:ci>v</m:ci>
+		  <m:ci>n</m:ci>
+		</m:msub>
+	      </m:ci> 
+	      <m:apply>
+		<m:times/>
+                <m:apply>
+                  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:ci>R</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:ci>R</m:ci>
+		      <m:ci>T</m:ci> 
+		    </m:msub>
+		  </m:ci>
+                </m:apply>
+                <m:ci>v</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</caption>
+      </subfigure>
+      <subfigure id="combob">
+	<title>parallel combination rule</title>  
+	<media id="id1167985578342" alt="">
+          <image src="../../media/parallelex-f7bb.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/parallelex.eps" mime-type="application/postscript"/>
+        </media>
+	<caption> 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:ci>G</m:ci>
+		  <m:ci>T</m:ci> 
+		</m:msub>    
+	      </m:ci>
+	      <m:apply>
+		<m:sum/>
+                <m:bvar>
+                  <m:ci>n</m:ci>
+                </m:bvar>
+                <m:lowlimit>
+                  <m:cn>1</m:cn>
+                </m:lowlimit>
+                <m:uplimit>
+                  <m:ci>N</m:ci>
+                </m:uplimit>
+                <m:ci>
+                  <m:msub>
+                    <m:ci>G</m:ci>
+                    <m:ci>n</m:ci>
+                  </m:msub>
+                </m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>  
+	                                       
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:ci>i</m:ci>
+		  <m:ci>n</m:ci>
+		</m:msub>
+	      </m:ci> 
+	      <m:apply>
+		<m:times/>
+                <m:apply>
+                  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:ci>G</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:ci>G</m:ci>
+		      <m:ci>T</m:ci> 
+		    </m:msub>
+		  </m:ci>
+                </m:apply>
+                <m:ci>i</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</caption>
+      </subfigure>
+      <caption> 
+	Series and parallel combination rules.
+      </caption>
+    </figure>  
+
+                                                              
+    <exercise id="exer1ice2">
+      <problem id="id2149239">
+	<para id="exer1aice2">
+	  Contrast a series combination of resistors with a parallel
+	  one. Which variable (voltage or current) is the same for
+	  each and which differs? What are the equivalent resistances?
+	  When resistors are placed in series, is the equivalent
+	  resistance bigger, in between, or smaller than the component
+	  resistances? What is this relationship for a parallel
+	  combination?
+	</para>
+      </problem>
+
+      <solution id="id1945628">
+	<para id="exer1bice2">
+	  In a series combination of resistors, the current is the
+	  same in each; in a parallel combination, the voltage is the
+	  same. For a series combination, the equivalent resistance is
+	  the sum of the resistances, which will be larger than any
+	  component resistor's value; for a parallel combination, the
+	  equivalent conductance is the sum of the component
+	  conductances, which is larger than any component
+	  conductance.  The equivalent resistance is therefore smaller
+	  than any component resistance.
+	</para>                                                             
+      </solution>
+    </exercise>    
+  </content>  
+</document>

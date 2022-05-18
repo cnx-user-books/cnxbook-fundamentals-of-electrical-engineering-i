@@ -1,0 +1,1143 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Discrete Fourier Transforms (DFT)</title>
+  
+  <metadata>
+  <md:content-id>m10249</md:content-id><md:title>Discrete Fourier Transforms (DFT)</md:title>
+  <md:abstract>The Fourier transform can be computed in discrete-time despite the
+    complications caused by a finite signal and continuous frequency.</md:abstract>
+  <md:uuid>69df730d-ffe2-4508-b644-f45c6c252af4</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1"> The discrete-time Fourier transform (and the
+      continuous-time transform as well) can be evaluated when we have
+      an analytic expression for the signal. Suppose we just have a
+      signal, such as the speech signal used in the previous chapter,
+      for which there is no formula. How then would you compute the
+      spectrum?  For example, how did we compute a spectrogram such as
+      the one shown in the <link document="m0049" target-id="spectrogram" strength="2">speech signal example</link>?  The Discrete Fourier
+      Transform (DFT) allows the computation of spectra from
+      discrete-time data.  While in discrete-time we can
+      <emphasis>exactly</emphasis> calculate spectra, for analog
+      signals no similar exact spectrum computation exists. For
+      analog-signal spectra, use must build special devices, which
+      turn out in most cases to consist of A/D converters and
+      discrete-time computations. Certainly discrete-time spectral
+      analysis is more flexible than continuous-time spectral
+      analysis.
+    </para>
+    
+    <para id="p2">
+      The formula for the 
+      <link document="m10247" target-id="eqn1" strength="2">DTFT</link>      
+      is a sum, which conceptually can be easily computed save for two
+      issues.  
+    </para>    
+    
+    <list id="l1"><item>
+	<emphasis>Signal duration</emphasis>.
+	The sum extends over the signal's duration, which must be
+	finite to compute the signal's spectrum. It is exceedingly
+	difficult to store an infinite-length signal in any case, so
+	we'll assume that the signal extends over	
+	<m:math>
+	    <m:interval closure="closed">
+	      <m:cn>0</m:cn>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>N</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:interval>
+	</m:math>.
+      </item>
+      
+      <item> <emphasis>Continuous frequency</emphasis>.  Subtler than
+	the signal duration issue is the fact that the frequency
+	variable is continuous: It may only need to span one period,
+	like
+	<m:math>
+	    <m:interval closure="closed">
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:interval>
+	</m:math>
+	or 
+	<m:math>
+	    <m:interval closure="closed">
+	      <m:cn>0</m:cn>
+	      <m:cn>1</m:cn>
+	    </m:interval>
+	</m:math>, 
+	but the DTFT formula as it stands requires evaluating the
+	spectra at <emphasis>all</emphasis> frequencies within a
+	period. Let's compute the spectrum at a few frequencies; the
+	most obvious ones are the equally spaced ones
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>f</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>k</m:ci>
+	      <m:ci>K</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+	
+	<m:math>
+	  <m:apply>
+	    <m:in/>
+	    <m:ci>k</m:ci>
+	    <m:set>
+	      <m:cn>0</m:cn>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>K</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:set>
+	  </m:apply>
+	</m:math>.
+      </item>
+    </list>
+    
+    <para id="p3"> 
+      We thus define the <term>discrete Fourier transform</term> (DFT)
+      to be  
+      
+      <equation id="eqn1">
+	<m:math>
+	  <m:apply>
+	    <m:forall/>
+	    <m:bvar>
+	      <m:ci>k</m:ci>
+	    </m:bvar>
+	    <m:condition>
+	      <m:apply>
+		<m:in/>
+		<m:ci>k</m:ci>
+		<m:set>
+		  <m:ci>0</m:ci>
+		  <m:ci>…</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>K</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:set>
+	      </m:apply>
+	    </m:condition>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">S</m:ci>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>n</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>N</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn> 
+			  <m:pi/> 
+			  <m:ci>n</m:ci> 
+			  <m:ci>k</m:ci>
+			</m:apply>
+			<m:ci>K</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      Here, 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">S</m:ci>
+	  <m:ci>k</m:ci>
+	</m:apply>
+      </m:math>
+      is shorthand for      
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">S</m:ci>
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>k</m:ci>
+		<m:ci>K</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  
+    </para>
+
+    
+    <para id="intro">We can compute the spectrum at as many equally spaced
+      frequencies as we like.  Note that you can think about this
+      computationally motivated choice as <term>sampling</term> the
+      spectrum; more about this interpretation later.  The issue now
+      is how many frequencies are enough to capture how the spectrum
+      changes with frequency.  One way of answering this question is
+      determining an inverse discrete Fourier transform formula: given
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">S</m:ci>
+	  <m:ci>k</m:ci>
+	</m:apply>
+      </m:math>,
+
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>k</m:ci>
+	  <m:set>
+	    <m:ci>0</m:ci>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>K</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:set>
+	</m:apply>
+      </m:math>
+       how do we find 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>,
+      
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>n</m:ci>
+	  <m:set>
+	    <m:ci>0</m:ci>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>N</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:set>
+	</m:apply>
+      </m:math>? 
+      Presumably, the formula will be of the form      
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:sum/>
+	    <m:bvar>
+	      <m:ci>k</m:ci>
+	    </m:bvar>
+	    <m:lowlimit>
+	      <m:cn>0</m:cn>
+	    </m:lowlimit>
+	    <m:uplimit>
+	      <m:apply>       
+		<m:minus/>
+		<m:ci>K</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:uplimit>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">S</m:ci>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>n</m:ci>
+		    <m:ci>k</m:ci>
+		  </m:apply>
+		  <m:ci>K</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      Substituting the DFT formula in this prototype inverse transform
+      yields       
+      
+      <equation id="zerozerozerotwo">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>k</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:cn>0</m:cn>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>K</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:uplimit>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>m</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>N</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>m</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:apply>
+			  <m:divide/>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>m</m:ci>
+			    <m:ci>k</m:ci>
+			  </m:apply>
+			  <m:ci>K</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+			<m:ci>K</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+      </equation>
+      
+      Note that the orthogonality relation we use so often has a
+      different character now.  
+      
+      <equation id="zerozerozerothree">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>k</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:cn>0</m:cn>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>K</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>k</m:ci>
+			  <m:ci>m</m:ci>
+			</m:apply>
+			<m:ci>K</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>k</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:ci>K</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:piecewise>
+	      <m:piece>
+		<m:ci>K</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:eq/>
+		    <m:ci>m</m:ci>
+		      <m:set>			
+			<m:ci>n</m:ci>
+			<m:apply>
+			  <m:ci><m:mo>±</m:mo></m:ci>
+			  <m:ci>n</m:ci>
+			  <m:ci>K</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:ci><m:mo>±</m:mo></m:ci>		  
+			  <m:ci>n</m:ci>
+			  <m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:ci>K</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:ci>…</m:ci>
+		    </m:set>
+		  </m:apply>
+		</m:apply>
+	      </m:piece>
+	      <m:otherwise>
+		<m:cn>0</m:cn>
+	      </m:otherwise>
+	    </m:piecewise>
+	  </m:apply>
+	</m:math> 
+      </equation>
+      
+      We obtain nonzero value whenever the two indices differ by multiples
+      of <m:math><m:ci>K</m:ci></m:math>. We can express this result as       
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:ci>K</m:ci>
+	  <m:apply>
+	    <m:sum/>
+	    <m:bvar>
+	      <m:ci>l</m:ci>
+	    </m:bvar>
+	    <m:condition>
+	      <m:ci>l</m:ci>
+	    </m:condition>
+	    <m:apply>
+	      <m:ci type="fn">δ</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>m</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>l</m:ci>
+		  <m:ci>K</m:ci> 
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  
+
+      Thus, our formula becomes 
+      <equation id="zerozerozerofour"> 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>m</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:cn>0</m:cn>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>m</m:ci>
+		</m:apply>
+		<m:ci>K</m:ci>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar>
+		    <m:ci>l</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">δ</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>m</m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:ci>l</m:ci>
+			<m:ci>K</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math> 
+      </equation>
+
+      The integers <m:math><m:ci>n</m:ci></m:math> and
+      <m:math><m:ci>m</m:ci></m:math> both range over
+      <m:math>
+	<m:apply>
+        <m:set>
+	  <m:cn>0</m:cn>	
+	  <m:ci>…</m:ci>	
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci>N</m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+        </m:set>
+        </m:apply>
+      </m:math>.        
+      To have an inverse transform, we need the sum to be a
+      <emphasis>single</emphasis> unit sample for
+      <m:math>
+	<m:ci>m</m:ci>
+      </m:math>, 
+
+      <m:math>
+	<m:ci>n</m:ci>
+      </m:math> 
+      in this range. If it did not, then
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>      
+      would equal a sum of values, and we would not have a valid
+      transform: Once going into the frequency domain, we could not
+      get back unambiguously!  Clearly, the term
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>l</m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>       
+      always provides a unit sample (we'll take care of the factor of
+      <m:math>
+	<m:ci>K</m:ci>
+      </m:math>      
+      soon).  If we evaluate the spectrum at
+      <emphasis>fewer</emphasis> frequencies than the signal's
+      duration, the term corresponding to
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>m</m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>n</m:ci>
+	    <m:ci>K</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math> 
+      will also appear for some values of 
+      <m:math>
+	<m:ci>m</m:ci>
+      </m:math>, <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>n</m:ci>
+           <m:apply>
+	    <m:set>
+	      <m:cn>0</m:cn>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>N</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:set>
+	  </m:apply>
+	</m:apply>
+      </m:math>. 
+      This situation means that our prototype transform equals 
+      <m:math>
+	<m:apply>
+	  <m:plus/>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>n</m:ci>
+	      <m:ci>K</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math> 
+      for some values of 
+      <m:math>
+	<m:ci>n</m:ci>
+      </m:math>.  
+      The only way to eliminate this problem is to require 
+      <m:math>
+	<m:apply>
+	  <m:geq/>
+	  <m:ci>K</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>:        
+      We <emphasis>must</emphasis> have at least as many frequency samples as
+      the signal's duration.  In this way, we can return from the
+      frequency domain we entered via the DFT.
+    </para>
+
+    <exercise id="exer1a">
+      <problem id="id1167777116414">
+	<para id="tester1">
+	  When we have fewer frequency samples than the signal's
+	  duration, some discrete-time signal values equal the sum of
+	  the original signal values.  Given the sampling
+	  interpretation of the spectrum, characterize this effect a
+	  different way.
+	</para>
+      </problem>
+      <solution id="id1167777116432">
+	<para id="tester2">
+	  This situation amounts to aliasing in the time-domain.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="eqnintro"> 
+      Another way to understand this requirement is to use the theory
+      of linear equations.  If we write out the expression for the DFT
+      as a set of linear equations,
+
+      <equation id="zerozerozerofivea">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:cn>0</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">S</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:apply>       
+	</m:math>
+      </equation>
+
+      
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		    </m:apply>
+		    <m:ci>K</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>K</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">S</m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      
+      <m:math display="block">
+	<m:ci>⋮</m:ci>
+      </m:math>      
+
+      
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>K</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>K</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:imaginaryi/>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>K</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:ci>K</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">S</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>K</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>      
+
+      we have 
+      <m:math>
+	<m:ci>K</m:ci>
+      </m:math>
+      equations in 
+      <m:math>
+	<m:ci>N</m:ci>
+      </m:math>      
+      unknowns if we want to find the signal from its sampled
+      spectrum.  This requirement is impossible to fulfill if
+      <m:math>
+	<m:apply>
+	  <m:lt/>
+	  <m:ci>K</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>; 
+      we must have 
+      <m:math>
+	<m:apply>
+	  <m:geq/>
+	  <m:ci>K</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>.        
+      Our orthogonality relation essentially says that if we have a
+      sufficient number of equations (frequency samples), the
+      resulting set of equations can indeed be solved.  
+    </para>
+    
+    <para id="conventional">
+      By convention, the number of DFT frequency values
+      <m:math>
+	<m:ci>K</m:ci>
+      </m:math> 
+      is chosen to equal the signal's duration   
+      <m:math>
+	<m:ci>N</m:ci>
+      </m:math>.  
+      The discrete Fourier transform pair consists of
+
+      <equation id="zerozerozerosixa">
+	<title>Discrete Fourier Transform Pair</title>
+	<m:math>
+	<m:mtable columnalign="left">
+	<m:mtr>
+	<m:mtd>
+	  <m:apply><m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">S</m:ci>
+	      <m:ci>k</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>n</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:cn>0</m:cn>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply><m:minus/>
+                     <m:apply><m:times/>
+		      <m:imaginaryi/>
+		      <m:apply><m:divide/>
+		        <m:apply><m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+		        </m:apply>
+		        <m:ci>N</m:ci>
+		      </m:apply>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+      </m:mtd>
+      </m:mtr>
+      
+      <m:mtr>
+      <m:mtd>
+      <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>N</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar>
+		  <m:ci>k</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:cn>0</m:cn>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>N</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>k</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>n</m:ci>
+			  <m:ci>k</m:ci>
+			</m:apply>
+			<m:ci>N</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  </m:mtd>
+	  </m:mtr>
+	  </m:mtable>
+	</m:math>
+      </equation>
+    </para>
+
+    <example id="analysis_demo"><para id="analysis_demo_1">
+	Use this demonstration to perform DFT analysis of a signal.
+      </para>
+	<media id="id1167777117273" alt="" display="block"><labview src="DFTanalysis.llb" viname="DFT Analysis.vi" version="8.0" mime-type="application/x-labviewrpvi80" height="500" width="800"><param name="lvfppviname" value="DFT Analysis.vi"/></labview></media>
+</example>
+
+    <example id="synthesis_demo"><para id="synthesis_demo_1">
+	Use this demonstration to synthesize a signal from a DFT sequence.
+      </para>
+	<media id="id1167777117320" alt="" display="block"><labview src="DFT_Component_Manipulation.llb" viname="dft_synthesis.viinfo" version="7.0" mime-type="application/x-labview-llb"><param name="viinfo" value="dft_synthesis.viinfo"/></labview></media>
+</example>
+
+  </content>
+</document>

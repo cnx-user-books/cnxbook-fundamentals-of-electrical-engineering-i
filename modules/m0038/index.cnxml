@@ -1,0 +1,43 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml"> 
+<title>Introduction to the Frequency Domain</title>
+
+<metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>00dd6589-75ea-4bca-bc94-6afbe65953b3</md:uuid>
+</metadata>
+
+  <content>
+    <para id="p01"> In developing ways of analyzing linear circuits,
+      we invented the impedance method because it made solving
+      circuits easier.  Along the way, we developed the notion of a
+      circuit's frequency response or transfer function. This notion,
+      which also applies to all linear, time-invariant systems,
+      describes how the circuit responds to a sinusoidal input when we
+      express it in terms of a complex exponential. We also learned
+      the Superposition Principle for linear systems: The system's
+      output to an input consisting of a sum of two signals is the sum
+      of the system's outputs to each individual component.  </para>
+    
+    <para id="p02">The study of the frequency domain combines these
+      two notions--a system's sinusoidal response is easy to find and
+      a linear system's output to a sum of inputs is the sum of the
+      individual outputs--to develop the crucial idea of a signal's
+      <term>spectrum</term>.  We begin by finding that those signals
+      that can be represented as a sum of sinusoids is very large. In
+      fact, <emphasis>all signals can be expressed as a superposition
+      of sinusoids</emphasis>.
+    </para>
+
+    <para id="p03"> As this story unfolds, we'll see that information
+      systems rely heavily on spectral ideas. For example, radio,
+      television, and cellular telephones transmit over different
+      portions of the spectrum. In fact, spectrum is so important that
+      communications systems are regulated as to which portions of the
+      spectrum they can use by the Federal Communications Commission
+      in the United States and by International Treaty for the world
+      (see <link document="m0083" strength="3">Frequency
+      Allocations</link>).  Calculating the spectrum is easy: The
+      <term>Fourier transform </term> defines how we can find a
+      signal's spectrum.
+  </para>
+
+  </content>
+</document>

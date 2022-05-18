@@ -1,0 +1,229 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Discrete-Time Filtering of Analog Signals</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0511</md:content-id>
+  <md:title>Discrete-Time Filtering of Analog Signals</md:title>
+  <md:abstract>A brief introduction on how to filter digital signals
+</md:abstract>
+  <md:uuid>e6f6660b-e3e3-4f7f-aeb1-5f112b7c0a2b</md:uuid>
+</metadata>
+
+<content>
+    <para id="intro">
+      Because of the <link document="m0050" target-id="first_sampling_section" strength="3">Sampling
+      Theorem</link>, we can process, in particular filter, analog
+      signals "with a computer" by constructing the system shown in
+      <link target-id="fig1000" strength="3"/>.  To use this system, we
+      are assuming that the input signal has a lowpass spectrum and
+      can be bandlimited without affecting important signal aspects.
+      Bandpass signals can also be filtered digitally, but require a
+      more complicated system.  Highpass signals cannot be filtered
+      digitally. Note that the input and output filters must be analog
+      filters; trying to operate without them can lead to potentially
+      very inaccurate digitization.
+    </para>
+
+    <figure id="fig1000"><media id="id7094576" alt="">
+        <image src="../../media/sys12.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys12.eps" mime-type="application/postscript"/>
+      </media>
+      
+    <caption>To process an analog signal digitally, the signal 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply> </m:math>
+	must be filtered with an anti-aliasing filter (to ensure a
+	bandlimited signal) before A/D conversion.  This lowpass
+	filter (LPF) has a cutoff frequency of
+	<m:math><m:ci>W</m:ci></m:math> Hz, which determines allowable
+	sampling intervals 
+	<m:math>
+	  <m:ci><m:msub>
+	      <m:mi>T</m:mi>
+	      <m:mi>s</m:mi>
+	    </m:msub></m:ci>
+	</m:math>.  The greater the number of bits in the amplitude
+	quantization portion
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn" class="discrete">Q</m:ci>
+	    <m:ci>·</m:ci>
+	  </m:apply>
+	</m:math> of the A/D
+	converter, the greater the accuracy of the entire system.  The
+	resulting digital signal 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math> can now be filtered in the time-domain with a
+	difference equation or in the frequency domain with Fourier
+	transforms.  The resulting output 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>n</m:ci>
+	  </m:apply>
+	</m:math> then
+	drives a D/A converter and a second anti-aliasing filter
+	(having the same bandwidth as the first one).
+      </caption></figure><para id="para2">
+      Another implicit assumption is that the digital filter can operate
+      in <emphasis>real time</emphasis>: The computer and the filtering
+      algorithm must be sufficiently fast so that outputs are computed
+      faster than input values arrive. The sampling interval, which is
+      determined by the analog signal's bandwidth, thus determines how long
+      our program has to compute <emphasis>each</emphasis> output 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">y</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>.  The computational complexity for calculating each
+      output with a <link document="m10251" target-id="eq3" strength="3">difference equation</link> is
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">O</m:ci>
+	  <m:apply>
+	    <m:plus/>
+	    <m:ci>p</m:ci>
+	    <m:ci>q</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Frequency domain implementation of the filter is
+      also possible.  The idea begins by computing the Fourier
+      transform of a length-<m:math><m:ci>N</m:ci></m:math> portion of
+      the input
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">x</m:ci>
+	  <m:ci>n</m:ci>
+	</m:apply>
+      </m:math>, multiplying it by the filter's transfer function, and
+      computing the inverse transform of the result.  This approach
+      seems overly complex and potentially inefficient. Detailing the
+      complexity, however, we have 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">O</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>N</m:ci>
+	    <m:apply>
+	      <m:log/>
+	      <m:ci>N</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      for the two transforms (computed using the FFT algorithm) and
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">O</m:ci>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math> for the multiplication by the transfer function, which makes
+      the total complexity 
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">O</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>N</m:ci>
+	    <m:apply>
+	      <m:log/>
+	      <m:ci>N</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      <emphasis>for <m:math><m:mi>N</m:mi></m:math> input
+	values</emphasis>.  A frequency domain implementation thus
+	requires
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">O</m:ci>
+	  <m:apply>
+	    <m:log/>
+	    <m:ci>N</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      computational complexity for each output value. The complexities
+      of time-domain and frequency-domain implementations depend on
+      different aspects of the filtering: The time-domain
+      implementation depends on the combined orders of the filter
+      while the frequency-domain implementation depends on the
+      logarithm of the Fourier transform's length.
+    </para>
+    <para id="para3">It could well be that in some problems the time-domain version
+      is more efficient (more easily satisfies the real time
+      requirement), while in others the frequency domain approach is
+      faster. In the latter situations, it is the FFT algorithm for
+      computing the Fourier transforms that enables the
+      superiority of frequency-domain implementations. Because complexity
+      considerations only express how algorithm running-time increases
+      with system parameter choices, we need to detail both
+      implementations to determine which will be more suitable for any
+      given filtering problem. Filtering with a difference equation is
+      straightforward, and the number of computations that must be
+      made for each output value is
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:cn>2</m:cn>
+	  <m:apply><m:plus/>
+	    <m:ci>p</m:ci>
+	    <m:ci>q</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <exercise id="exer1">
+      <problem id="id7108902">
+	<para id="exer1a">Derive this value for the number of computations for the general
+	  <link document="m10251" target-id="eq3" strength="3">difference
+	  equation</link>.
+	</para>
+      </problem>
+      <solution id="id7108923">
+	<para id="sol">
+	  We have 
+	  <m:math>
+	    <m:apply>
+	      <m:plus/> 
+	      <m:ci>p</m:ci>
+	      <m:ci>q</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math>
+	  multiplications and 
+	  <m:math>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply><m:plus/>
+		<m:ci>p</m:ci><m:ci>q</m:ci>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:math>
+	  additions. Thus, the total number of arithmetic operations equals  
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:apply>
+		<m:plus/><m:ci>p</m:ci><m:ci>q</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+  </content>
+</document>

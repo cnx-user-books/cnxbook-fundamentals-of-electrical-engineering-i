@@ -1,0 +1,178 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Capacity of a Channel</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0ef00b47-b384-4561-8718-9c34faf53c31</md:uuid>
+</metadata>
+
+  <content>
+
+    <para id="par1">In addition to the <link document="m0073" strength="2">Noisy
+	Channel Coding Theorem and its converse</link>, Shannon also
+	derived the capacity for a bandlimited (to <m:math display="inline"><m:ci>W</m:ci></m:math> Hz) additive
+	white noise channel.  For this case, the signal set is
+	unrestricted, even to the point that more than one bit can be
+	transmitted each "bit interval."  Instead of constraining
+	channel code efficiency, the revised Noisy Channel Coding
+	Theorem states that some error-correcting code exists such
+	that as the block length increases, error-free transmission is
+	possible if the source coder's datarate,
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:mean/>
+	    <m:apply>
+	      <m:ci type="fn">B</m:ci>
+	      <m:ci>A</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:ci>R</m:ci>
+	</m:apply>
+      </m:math>, is less than capacity.
+
+      <equation id="eq0001"><m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>C</m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>W</m:ci>
+	      <m:apply>
+		<m:log/>
+		<m:logbase>
+		  <m:cn>2</m:cn>
+		</m:logbase>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:ci>SNR</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:mtext>
+		 bits/s
+	      </m:mtext>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      
+      This result sets the maximum datarate of the source
+      coder's output that can be transmitted through the bandlimited
+      channel with no error. <footnote id="idm1586672">The bandwidth
+      restriction arises not so much from channel properties, but from
+      spectral regulation, especially for wireless channels.</footnote>
+      Shannon's proof of his theorem was very clever, and did not
+      indicate what this code might be; it has never been found.
+      Codes such as the Hamming code work quite well in practice to
+      keep error rates low, but they remain greater than zero.  Until
+      the "magic" code is found, more important in communication
+      system design is the converse.  It states that if your data rate
+      exceeds capacity, errors will overwhelm you no matter what
+      channel coding you use.  For this reason, capacity calculations
+      are made to understand the fundamental limits on transmission rates.
+    </para>
+    <exercise id="exer1">
+      <problem id="idp5909024">
+	<para id="prob1">
+	  The first definition of capacity applies only for binary
+	  symmetric channels, and represents the number of
+	  bits/transmission. The second result states capacity more
+	  generally, having units of bits/second. How would you
+	  convert the first definition's result into units of
+	  bits/second?
+	</para>
+      </problem>
+      <solution id="idp584752">
+	<para id="sol1">
+	  To convert to bits/second, we divide the capacity stated in
+	  bits/transmission by the bit interval duration <m:math display="inline"><m:ci>T</m:ci></m:math>.
+	</para>
+      </solution>
+    </exercise>
+    <example id="ex01">
+      <para id="par2">
+	The telephone channel has a bandwidth of 3 kHz and a
+	signal-to-noise ratio exceeding 30 dB (at least they promise
+	this much).  The maximum data rate a modem can produce for
+	this wireline channel and hope that errors will not become
+	rampant is the capacity.
+
+	<equation id="eq0002"><m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>C</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn type="e-notation">3<m:sep/>3</m:cn>
+		<m:apply>
+		  <m:log/>
+		  <m:logbase>
+		    <m:cn>2</m:cn>
+		  </m:logbase>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:power/>
+		      <m:cn>10</m:cn>
+		      <m:cn>3</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:mtext>29.901 kbps</m:mtext>
+	    </m:apply>
+	  </m:math>
+	</equation> 
+	
+	Thus, the so-called 33 kbps modems operate right at the
+	capacity limit.
+      </para>
+    </example>
+
+    <para id="par3">
+      Note that the data rate allowed by the capacity can exceed the
+      bandwidth when the signal-to-noise ratio exceeds 0 dB.  Our
+      results for BPSK and FSK indicated the bandwidth they require
+      exceeds
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:divide/>
+	  <m:cn>1</m:cn>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>.  What kind of signal sets might be used to achieve
+      capacity?  Modem signal sets send more than one bit/transmission
+      using a number, one of the most popular of which is
+      <term>multi-level signaling</term>.  Here, we can transmit
+      several bits during one transmission interval by representing
+      bit by some signal's amplitude.  For example, two bits can be
+      sent with a signal set comprised of a sinusoid with amplitudes
+      of
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci><m:mo>±</m:mo></m:ci>
+	  <m:ci>A</m:ci>
+	</m:apply>
+      </m:math>
+
+      and  
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci><m:mo>±</m:mo></m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>A</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+  </content>
+</document>

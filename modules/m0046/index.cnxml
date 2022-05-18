@@ -1,0 +1,3239 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Derivation of the Fourier Transform</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0046</md:content-id>
+  <md:title>Derivation of the Fourier Transform</md:title>
+  <md:abstract>This module shows how to derive the scintillating and useful Fourier transform.</md:abstract>
+  <md:uuid>af44bff4-fc3a-4a5c-be0c-cfe379df2e0e</md:uuid>
+</metadata>
+
+<content>
+    <para id="introduction">
+      Fourier series clearly open the frequency domain as an
+      interesting and useful way of determining how circuits and
+      systems respond to <emphasis>periodic</emphasis> input signals.
+      Can we use similar techniques for nonperiodic signals? What is
+      the response of the filter to a single pulse?  Addressing these
+      issues requires us to find the Fourier spectrum of all signals,
+      both periodic and nonperiodic ones.  We need a definition for
+      <emphasis>the</emphasis> Fourier spectrum of a signal, periodic
+      or not.  This spectrum is calculated by what is known as the
+      <term>Fourier transform</term>.
+    </para>
+
+    <para id="madmath"> 
+      Let   
+      <m:math> 
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mi>T</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+      be a periodic signal having period
+      <m:math>
+	<m:ci>T</m:ci>
+      </m:math>.      
+      We want to consider what happens to this signal's spectrum as we
+      let the period become longer and longer.  We denote the spectrum
+      for any assumed value of the period by
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>.
+      We calculate the spectrum according to the familiar formula  
+
+      <equation id="spectcalc">
+	<m:math> 
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>c</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>T</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>T</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mi>T</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:divide/>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>k</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      where we have used a symmetric placement of the integration
+      interval about the origin for subsequent derivational
+      convenience.  Let <m:math><m:ci>f</m:ci></m:math> be a
+      <emphasis>fixed</emphasis> frequency equaling
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>k</m:ci>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>;
+      we vary the frequency index   
+      <m:math> 
+	<m:ci>k</m:ci>
+      </m:math>
+      proportionally as we increase the period. Define
+
+      <equation id="stdefine">
+	<m:math> 
+	  <m:apply>
+	    <m:equivalent/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>S</m:mi>
+		  <m:mi>T</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>T</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>k</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:apply> 
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>t</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>T</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>T</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>s</m:mi>
+			<m:mi>T</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      making the corresponding Fourier series
+
+      <equation id="correseries">
+	<m:math> 
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mi>T</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>k</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>S</m:mi>
+		      <m:mi>T</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>    
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      As the period increases, the spectral lines become closer
+      together, becoming a continuum.  Therefore,
+
+      <equation id="continuum">
+	<m:math> 
+	  <m:apply>
+	    <m:equivalent/>
+	    <m:apply>
+	      <m:limit/>
+	      <m:bvar>
+		<m:ci>T</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:infinity/>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>s</m:mi>
+		    <m:mi>T</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>f</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>  
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>     
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      with
+
+      <equation id="ft2">
+	<m:math> 
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">S</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>         
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>     
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <m:math> 
+	<m:apply>
+	  <m:ci type="fn">S</m:ci>
+	  <m:ci>f</m:ci>
+	</m:apply>
+      </m:math> 
+      is the Fourier transform of   
+      <m:math> 
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math> (the Fourier transform is symbolically denoted by the
+      uppercase version of the signal's symbol) and is defined
+      for <emphasis>any</emphasis> signal for which the integral (<link target-id="ft2" strength="3"/>) converges.
+    </para>
+
+    <example id="newex1">
+      <para id="exp1">Let's calculate the Fourier transform of the <link document="m0004" target-id="pulsedef" strength="2">pulse
+	signal</link>,
+	
+	<m:math display="inline">
+	  <m:apply>
+	    <m:ci type="fn">p</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>.
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">P</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">p</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:cn>0</m:cn>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:ci>Δ</m:ci>
+	      </m:uplimit>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/> 
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>Δ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply><m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">P</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>Δ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:sin/>
+		  <m:apply>
+		    <m:times/>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>Δ</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	
+	Note how closely this result resembles the expression for
+	<link document="m0042" target-id="eqn2" strength="2">Fourier
+	series coefficients of the periodic pulse signal</link>.
+      </para>
+    </example>
+
+    <figure id="spectrum">
+      <title>Spectrum</title> 
+      <media id="id2626304" alt="">
+         <image src="../../media/spectrum4.png" mime-type="image/png"/>
+         <image for="pdf" src="../../media/spectrum4.eps" mime-type="application/postscript"/>
+       </media> 
+      <caption> 	
+	The upper plot shows the magnitude of the Fourier series
+	spectrum for the case of	
+	<m:math>
+	  <m:apply><m:eq/>
+	    <m:ci>T</m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>
+	with the Fourier transform of
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">p</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	shown as a dashed line.  For the bottom panel, we expanded the
+	period to
+	<m:math>
+	  <m:apply><m:eq/>
+	    <m:ci>T</m:ci>
+	    <m:cn>5</m:cn>
+	  </m:apply>
+	</m:math>,
+	keeping the pulse's duration fixed at 0.2, and computed its
+	Fourier series coefficients.
+      </caption>
+    </figure>
+
+
+    <para id="para2">
+      <link target-id="spectrum" strength="3"/> shows how increasing the
+      period does indeed lead to a continuum of coefficients, and that
+      the Fourier transform does correspond to what the continuum
+      becomes. The quantity
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:apply>
+	    <m:sin/>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>      
+      has a special name, the <term>sinc</term> (pronounced "sink")
+      function, and is denoted by      
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">sinc</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.
+      Thus, the magnitude of the pulse's Fourier transform equals
+      <m:math>
+	<m:apply>
+	  <m:abs/>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>Δ</m:ci>
+	    <m:apply>
+	      <m:ci type="fn">sinc</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>Δ</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <para id="para1smoke">
+      The Fourier transform relates a signal's time and frequency
+      domain representations to each other. The direct Fourier
+      transform (or simply the Fourier transform) calculates a
+      signal's frequency domain representation from its time-domain
+      variant (<link target-id="ftrans" strength="2"/>).  The inverse
+      Fourier transform (<link target-id="invftrans" strength="3"/>)
+      finds the time-domain representation from the frequency
+      domain. Rather than explicitly writing the required integral, we
+      often symbolically express these transform calculations as
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">ℱ</m:ci>
+	  <m:ci>s</m:ci>
+	</m:apply>
+      </m:math>
+      and 
+      <m:math display="inline">
+	<m:apply>
+	  <m:apply>
+	    <m:inverse/>
+	    <m:ci type="fn">ℱ</m:ci>
+	  </m:apply>
+	  <m:ci>S</m:ci>
+	</m:apply>
+      </m:math>,
+      respectively.
+
+      <equation id="ftrans">
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">ℱ</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">S</m:ci>
+	      <m:ci>f</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>		    
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>		      
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <equation id="invftrans">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:apply>
+		<m:inverse/>
+		<m:ci type="fn">ℱ</m:ci>
+	      </m:apply>
+	      <m:ci>S</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar><m:ci>f</m:ci></m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>		  
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      We must have
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:apply>
+	      <m:inverse/>
+	      <m:ci type="fn">ℱ</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">ℱ</m:ci>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>      
+      and 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">S</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">ℱ</m:ci>
+	    <m:apply>
+	      <m:apply><m:inverse/>
+		<m:ci type="fn">ℱ</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">S</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>,
+      and these results are indeed valid with minor exceptions.
+
+      <note id="id1164865272747"> 
+	Recall that the Fourier series for a square wave gives a value
+	for the signal at the discontinuities equal to the average
+	value of the jump.  This value may differ from how the signal
+	is <emphasis>defined</emphasis> in the time domain, but being
+	unequal at a point is indeed minor.
+      </note>
+
+      Showing that you "get back to where you started" is difficult
+      from an analytic viewpoint, and we won't try here. Note that the
+      direct and inverse transforms differ only in the sign of the
+      exponent.
+    </para>
+
+    <exercise id="exer1">
+      <problem id="id1164862565939">
+	<para id="probpara1">
+	  The differing exponent signs means that some curious results
+	  occur when we use the wrong sign. What is
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">ℱ</m:ci>
+	      <m:apply>
+		<m:ci type="fn">S</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>?
+	  In other words, use the wrong exponent sign in evaluating
+	  the inverse Fourier transform.
+	</para>
+      </problem>
+      <solution id="id1164861397255">
+	<para id="solpara1">
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">ℱ</m:ci>
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>f</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>		    
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>f</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="introductionsmoke">
+      Properties of the Fourier transform and some useful transform
+      pairs are provided in the accompanying tables (<link target-id="table1" strength="3"/> and <link target-id="table2" strength="3"/>).
+      Especially
+      important among these properties is <term>Parseval's
+      Theorem</term>, which states that power computed in either
+      domain equals the power in the other.
+
+      <equation id="parseval">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>t</m:ci>
+	      </m:bvar>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:power/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>f</m:ci>
+	      </m:bvar>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:power/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>  
+	</m:math>
+      </equation>
+
+      Of practical importance is the conjugate symmetry property: When
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">s</m:ci> 
+	  <m:ci>t</m:ci> 
+	</m:apply> 
+      </m:math>
+      is real-valued, the spectrum at negative frequencies equals the
+      complex conjugate of the spectrum at the corresponding positive
+      frequencies.  Consequently, we need only plot the positive
+      frequency portion of the spectrum (we can easily determine the
+      remainder of the spectrum).
+    </para>
+
+    <exercise id="exs">
+      <problem id="id1164856063651">
+	<para id="frstprob">
+	  How many Fourier transform operations need to be applied to
+	  get the original signal back: 
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">ℱ</m:ci>
+		<m:apply>
+		  <m:ci type="fn">⋯</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">ℱ</m:ci> 
+		    <m:ci>s</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply> 
+	  </m:math>?
+	</para>
+      </problem>
+      <solution id="id7162608">
+	<para id="frstprobsoln">
+	  <m:math> 
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">ℱ</m:ci>
+		<m:apply>
+		  <m:ci type="fn">ℱ</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">ℱ</m:ci>
+		    <m:apply>
+		      <m:ci type="fn">ℱ</m:ci>
+		      <m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  We know that
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">ℱ</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>f</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>       
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>   
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>f</m:ci>
+		</m:bvar>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+                    <m:exp/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:times/>      
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+                </m:apply>
+	      </m:apply>    
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.  Therefore, two Fourier transforms applied to
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:math>
+	  yields
+	  <m:math> 
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  We need two more to get us back where we started.
+	</para>
+      </solution>
+    </exercise> 
+
+
+    <para id="TimeToFrequency">
+      Note that the mathematical relationships between the time domain
+      and frequency domain versions of the same signal are termed
+      <term>transforms</term>.  We are transforming (in the
+      nontechnical meaning of the word) a signal from one
+      representation to another. We express Fourier transform
+      <emphasis>pairs</emphasis> as
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>↔</m:mo></m:ci>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>      
+	  <m:apply>
+	    <m:ci type="fn">S</m:ci> 
+	    <m:ci>f</m:ci> 
+	  </m:apply>
+	</m:apply>
+      </m:math>.  A signal's time and frequency domain representations
+      are uniquely related to each other. A signal thus "exists" in
+      both the time and frequency domains, with the Fourier transform
+      bridging between the two. We can define an information carrying
+      signal in either the time or frequency domains; it behooves the
+      wise engineer to use the simpler of the two.
+    </para>
+
+    <para id="Naivety">
+      A common misunderstanding is that while a signal exists in both
+      the time and frequency domains, a single formula expressing a
+      signal must contain <emphasis>only</emphasis> time or frequency:
+      Both cannot be present simultaneously. This situation mirrors
+      what happens with complex amplitudes in circuits: As we reveal
+      how communications systems work and are designed, we will define
+      signals entirely in the frequency domain without explicitly
+      finding their time domain variants. This idea is shown in <link document="m0043" strength="2">another module</link> where we
+      define Fourier series coefficients according to letter to be
+      transmitted. Thus, a signal, though most familiarly defined in
+      the time-domain, really can be defined equally as well (and
+      sometimes more easily) in the frequency domain. For example,
+      impedances depend on frequency and the time variable cannot
+      appear.
+    </para>
+
+    <para id="LTI">
+      We <link document="m0048" strength="2">will learn</link> that
+      finding a linear, time-invariant system's output in the time
+      domain can be most easily calculated by determining the input
+      signal's spectrum, performing a simple calculation in the
+      frequency domain, and inverse transforming the result.
+      Furthermore, understanding communications and information
+      processing systems requires a thorough understanding of signal
+      structure and of how systems work in <emphasis>both</emphasis>
+      the time and frequency domains.
+    </para>
+
+    <para id="TransformDifficulty">
+      The only difficulty in calculating the Fourier transform of any
+      signal occurs when we have periodic signals (in either
+      domain). Realizing that the Fourier series is a special case of
+      the Fourier transform, we simply calculate the Fourier series
+      coefficients instead, and plot them along with the spectra of
+      nonperiodic signals on the same frequency axis.
+    </para>
+
+
+    <table id="table1" frame="all" summary="Table of Fourier transform pairs"><title>Short Table of Fourier Transform Pairs</title>
+<tgroup cols="2" align="left" colsep="1" rowsep="1"><thead valign="top">
+	  <row>	      
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	</thead>
+	<tbody valign="top">
+	  <row>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>a</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">u</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		    <m:ci>a</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply><m:minus/>
+		      <m:apply><m:times/>
+		        <m:ci>a</m:ci>
+		        <m:apply><m:abs/>
+		          <m:ci>t</m:ci>
+		        </m:apply>
+		      </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:ci>a</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>4</m:cn>
+		      <m:apply>
+			<m:power/>
+			<m:pi/>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		      <m:apply>
+			<m:power/>
+			<m:ci>f</m:ci>
+			<m:cn>2</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>a</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">p</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:piecewise>
+		    <m:piece>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:lt/>
+			<m:apply>
+			  <m:abs/>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>Δ</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:piece>
+		    <m:piece>
+		      <m:cn>0</m:cn>
+		      <m:apply>
+			<m:gt/>
+			<m:apply>
+			  <m:abs/>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>Δ</m:ci>
+			  <m:cn>2</m:cn>
+			</m:apply>
+		      </m:apply>
+		    </m:piece>
+		  </m:piecewise>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>Δ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>W</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:pi/>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:piecewise>
+		    <m:piece>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:lt/>
+			<m:apply>
+			  <m:abs/>
+			  <m:ci>f</m:ci>
+			</m:apply>
+			<m:ci>W</m:ci>
+		      </m:apply>
+		    </m:piece>
+		    <m:piece>
+		      <m:cn>0</m:cn>
+		      <m:apply>
+			<m:gt/>
+			<m:apply>
+			  <m:abs/>
+			  <m:ci>f</m:ci>
+			</m:apply>
+			<m:ci>W</m:ci>
+		      </m:apply>
+		    </m:piece>
+		  </m:piecewise>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	</tbody>
+      
+
+</tgroup>
+</table><table id="table2" frame="all" summary="">
+      <title>Fourier Transform Properties</title>
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+	<thead valign="top">
+	  <row>
+	    <entry>
+
+	    </entry>
+	    <entry>
+	      Time-Domain
+	    </entry>
+	    <entry>
+	      Frequency Domain
+	    </entry>
+	  </row>
+	</thead>
+	<tbody valign="top">
+	  <row>
+	    <entry>
+	      Linearity
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:mi>s</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:mi>S</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:ci type="fn">
+			<m:msub>
+			  <m:mi>S</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Conjugate Symmetry
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:in/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:reals/>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:conjugate/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Even Symmetry
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Odd Symmetry
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Scale Change
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>a</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:abs/>
+		      <m:ci>a</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>f</m:ci>
+		      <m:ci>a</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Time Delay
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>t</m:ci>
+		    <m:ci>τ</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>τ</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Complex Modulation
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Amplitude Modulation by Cosine
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:cos/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>f</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Amplitude Modulation by Sine
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>f</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:imaginaryi/>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Differentiation
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:diff/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Integration
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>α</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:ci>t</m:ci>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>α</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      if
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Multiplication by <m:math><m:ci>t</m:ci></m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>t</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:diff/>
+		    <m:bvar>
+		      <m:ci>f</m:ci>
+		    </m:bvar>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Area
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Value at Origin
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:cn>0</m:cn>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>f</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      Parseval's Theorem
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>t</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:ci type="fn">s</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	    <entry>
+	      <m:math>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>f</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:abs/>
+		      <m:apply>
+			<m:ci type="fn">S</m:ci>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	    </entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+
+    
+    <example id="ampmod">
+      <para id="AmplitudeModulation"> 
+	In communications, a very important operation on a signal  
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	is to <term>amplitude modulate</term> it. Using this operation
+	more as an example rather than elaborating the communications
+	aspects here, we want to compute the Fourier transform —
+	the spectrum — of
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:cos/>	    
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	Thus, 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>c</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>	      
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	For the spectrum of
+	<m:math>
+	  <m:apply>
+	    <m:cos/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mi>c</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, 
+	we use the Fourier series. Its period is 
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>f</m:mi>
+		<m:mi>c</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:math>, 
+	and its only nonzero Fourier coefficients are   
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>c</m:mi>
+		<m:mrow>
+		  <m:mo>±</m:mo>
+		  <m:mn>1</m:mn>
+		</m:mrow>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+	The second term is <emphasis>not</emphasis> periodic unless 
+	<m:math>
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	</m:math>
+	has the same period as the sinusoid. Using Euler's relation,
+	the spectrum of the second term can be derived as
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:int/>
+		<m:bvar>
+		  <m:ci>f</m:ci>
+		</m:bvar>
+		<m:lowlimit>
+		  <m:apply>
+		    <m:minus/>
+		    <m:infinity/>
+		  </m:apply>
+		</m:lowlimit>
+		<m:uplimit>
+		  <m:infinity/>
+		</m:uplimit>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:cos/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	Using Euler's relation for the cosine,
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>c</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>f</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/> 
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:apply>
+			  <m:plus/>
+			  <m:ci>f</m:ci>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>f</m:mi>
+			      <m:mi>c</m:mi>
+			    </m:msub>
+			  </m:ci>			
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>f</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:apply>
+			  <m:minus/>
+			  <m:ci>f</m:ci>
+			  <m:ci>
+			    <m:msub>
+			      <m:mi>f</m:mi>
+			      <m:mi>c</m:mi>
+			    </m:msub>
+			  </m:ci>			
+			</m:apply>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>		
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>c</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>		
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>f</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>c</m:mi>
+			  </m:msub>
+			</m:ci>			
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar>
+		    <m:ci>f</m:ci>
+		  </m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/>
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit>
+		    <m:infinity/>
+		  </m:uplimit>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>f</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>c</m:mi>
+			  </m:msub>
+			</m:ci>			
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:cos/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>c</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:int/>
+	      <m:bvar>
+		<m:ci>f</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/> 
+		</m:apply>
+	      </m:lowlimit>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>f</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>c</m:mi>
+			  </m:msub>
+			</m:ci>			
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">S</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>f</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>c</m:mi>
+			  </m:msub>
+			</m:ci>			
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	
+	Exploiting the uniqueness property of the Fourier transform,
+	we have
+
+	<equation id="eq7">
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">ℱ</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:cos/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>f</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci>			
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">S</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>f</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:ci>f</m:ci>
+			  <m:ci>c</m:ci>
+			</m:msub>
+		      </m:ci>			
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	This component of the spectrum consists of the original
+	signal's spectrum delayed and advanced <emphasis>in
+	frequency</emphasis>.  The spectrum of the amplitude modulated
+	signal is shown in <link target-id="modulated" strength="2"/>.
+      </para>
+
+      <figure id="modulated">
+	<media id="id2945897" alt="">
+          <image src="../../media/spectrum5.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/spectrum5.eps" mime-type="application/postscript"/>
+        </media> 
+	<caption>	  
+	  A signal which has a triangular shaped spectrum is shown in
+	  the top plot.  Its highest frequency — the largest
+	  frequency containing power — is
+	  <m:math>
+	    <m:ci>W</m:ci>      
+	  </m:math>
+	  Hz.  Once amplitude modulated, the resulting spectrum
+	  has "lines" corresponding to the Fourier series components
+	  at 
+	  <m:math>
+	    <m:apply>
+	      <m:ci><m:mo>±</m:mo></m:ci>
+	      <m:ci>
+		<m:msub> 
+		  <m:mi>f</m:mi> 
+		  <m:mi>c</m:mi> 
+		</m:msub>
+	      </m:ci>
+	    </m:apply> 
+	  </m:math> 
+	  and the original triangular spectrum shifted to components
+	  at
+	  <m:math>
+	    <m:apply>
+	      <m:ci><m:mo>±</m:mo></m:ci>
+	      <m:ci>
+		<m:msub>	
+		  <m:mi>f</m:mi>	
+		  <m:mi>c</m:mi>	
+		</m:msub>
+	      </m:ci>
+	    </m:apply>	
+	  </m:math> 
+	  and scaled by   
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>	
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>.
+	</caption>
+      </figure>
+ 
+      <para id="MoreFreqDomain">
+	Note how in this figure the signal   
+	<m:math>         
+	  <m:apply>
+	    <m:ci type="fn">s</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>      
+	</m:math>
+	is defined in the frequency domain.  To find its time domain
+	representation, we simply use the inverse Fourier transform.
+      </para>
+    </example>
+
+    <exercise id="ex1">
+      <problem id="id6303333">
+	<para id="ex1a">
+	  What is the signal 
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>      
+	  </m:math>
+	  that corresponds to the spectrum shown in the upper panel of
+	  <link target-id="modulated" strength="3"/>?
+	</para>
+      </problem>
+      <solution id="id1164858311545">
+	<para id="ex1b"> 
+	  The signal is the inverse Fourier transform of the
+	  triangularly shaped spectrum, and equals
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">s</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>W</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:pi/>
+			<m:ci>W</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:pi/>
+		      <m:ci>W</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>      
+	  </m:math>                                                              
+	</para>        
+      </solution>
+    </exercise>
+
+    <exercise id="ex2">
+      <problem id="id1164865374844">
+	<para id="ex2a">
+	  What is the power in 
+	  <m:math display="inline">         
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>      
+	  </m:math>,
+	  the amplitude-modulated signal? Try the calculation in
+	  both the time and frequency domains.
+	</para>
+      </problem>
+      <solution id="id1164862653399">
+	<para id="ex2b">
+	  The result is most easily found in the spectrum's formula:
+	  the power in the signal-related part of
+	  <m:math>
+	    <m:apply>
+	      <m:ci type="fn">x</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>      
+	  </m:math>
+	  is half the power of the signal   
+	  <m:math>         
+	    <m:apply>
+	      <m:ci type="fn">s</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>      
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="baseband">   
+      In this example, we call the signal   
+      <m:math>         
+	<m:apply>
+	  <m:ci type="fn">s</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>      
+      </m:math>
+      a <term>baseband signal</term> because its power is contained at
+      low frequencies. Signals such as speech and the Dow Jones
+      averages are baseband signals. The baseband signal's
+      <term>bandwidth</term> equals <m:math><m:ci>W</m:ci></m:math>,
+      the highest frequency at which it has power. Since <m:math>
+	<m:apply>
+	  <m:ci type="fn">x</m:ci> 
+	  <m:ci>t</m:ci> 
+	</m:apply>
+      </m:math>'s       
+      spectrum is confined to a frequency band not close to the origin
+      (we assume
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>≫</m:mo></m:ci>
+	  <m:ci>
+	    <m:msub>	
+	      <m:mi>f</m:mi>	
+	      <m:mi>c</m:mi>	
+	    </m:msub>
+	  </m:ci>	
+	  <m:ci>W</m:ci>
+	</m:apply>
+      </m:math>), we have a <term>bandpass signal</term>. The
+      bandwidth of a bandpass signal is <emphasis>not</emphasis> its
+      highest frequency, but the range of positive frequencies where
+      the signal has power. Thus, in this example, the bandwidth is
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:cn>2</m:cn>
+	  <m:ci>W</m:ci>
+	  <m:ci>Hz</m:ci>
+	</m:apply>
+      </m:math>.  Why a signal's bandwidth should depend on
+      its spectral shape will become clear once we develop
+      communications systems.
+    </para>
+
+  </content>
+</document>

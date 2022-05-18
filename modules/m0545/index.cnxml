@@ -1,0 +1,434 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+
+  <title>Frequency Shift Keying</title>
+
+  <metadata>
+  <md:content-id>m0545</md:content-id><md:title>Frequency Shift Keying</md:title>
+  <md:abstract>Frequency Shift Keying uses the bit to affect the frequency of a carrier sinusoid.</md:abstract>
+  <md:uuid>8a37fd6e-198f-4004-88ef-9ffa1277683f</md:uuid>
+</metadata>
+
+<content>
+     <para id="para1">
+      In <term>frequency-shift keying</term> (FSK), the bit
+      affects the frequency of a carrier sinusoid.
+
+      <equation id="eq0003">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>T</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sin/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>s</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>A</m:ci>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>T</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>t</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:sin/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+    </para>
+
+    <figure id="fig1004">
+      <media id="id8334936" alt="">
+        <image src="../../media/sig31.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig31.eps" mime-type="application/postscript"/>
+      </media>
+    </figure> 
+
+    <para id="para1.1">
+      The frequencies
+      <m:math display="inline">
+	<m:ci>
+	  <m:msub>
+	    <m:mi>f</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>, 
+
+      <m:math display="inline">
+	<m:ci>
+	  <m:msub>
+	    <m:mi>f</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+
+      are usually harmonically related to the bit interval.  In the
+      depicted example,
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>3</m:cn>
+	    <m:ci>T</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      and 
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>4</m:cn>
+	    <m:ci>T</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  As can be seen from the transmitted signal for our
+      example bit stream (<link target-id="fig1005" strength="3"/>), the
+      transitions at bit interval boundaries are smoother than those
+      of <link document="m0543" target-id="fig1001" strength="2">BPSK</link>.
+    </para>
+    
+    <figure id="fig1005">
+      <media id="id8328186" alt="">
+        <image src="../../media/sig32.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig32.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	This plot shows the FSK waveform for same bitstream used in
+	the <link document="m10280" target-id="fig1001" strength="3">BPSK
+	example</link>.
+      </caption>
+    </figure>
+
+    <para id="para2">To determine the bandwidth required by this signal set, we again
+      consider the alternating bit stream.  Think of it as two signals
+      added together: The first comprised of the signal
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>, the zero signal,
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>, zero, <foreign>etc.</foreign>, and the second having
+      the same structure but interleaved with the first and containing
+<m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub>
+	      <m:mi>s</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math> (<link target-id="fig1006" strength="3"/>).
+    </para>
+    
+    <figure id="fig1006">
+      <media id="id8319922" alt="">
+        <image src="../../media/sig33.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sig33.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The depicted decomposition of the FSK-modulated alternating
+	bit stream into its frequency components simplifies the
+	calculation of its bandwidth.
+      </caption>
+    </figure>
+
+    <para id="para2.1">
+      Each component can be thought of as a fixed-frequency sinusoid
+      multiplied by a square wave of period
+      <m:math display="inline">
+	<m:apply><m:times/>
+	    <m:cn>2</m:cn>
+	    <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>
+
+      that alternates between one and zero.  This baseband square wave
+      has the same Fourier spectrum as our BPSK example, but with the
+      addition of the constant term
+      <m:math display="inline">
+	<m:ci>
+	  <m:msub>
+	    <m:mi>c</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>.  This quantity's presence changes the number of
+      Fourier series terms required for the 90% bandwidth: Now we need
+      only include the zero and first harmonics to achieve it.  The
+      bandwidth thus equals, with
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:lt/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>,
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  If the two frequencies are harmonics of the
+      bit-interval duration,
+    <m:math>
+      <m:apply><m:eq/>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>f</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+	<m:apply><m:divide/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>k</m:mi>
+	      <m:mn>0</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:apply>
+    </m:math> and
+    <m:math>
+      <m:apply><m:eq/>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>f</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+	<m:apply><m:divide/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>k</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:apply>
+    </m:math> with
+    <m:math>
+      <m:apply><m:gt/>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>k</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+	<m:ci>
+	  <m:msub>
+	<m:mi>k</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:apply>
+    </m:math>, the bandwidth equals
+    <m:math>
+      <m:apply><m:divide/>
+        <m:apply><m:plus/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>k</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply><m:minus/>
+            <m:ci>
+              <m:msub>
+	        <m:mi>k</m:mi>
+	        <m:mn>0</m:mn>
+	      </m:msub>
+	    </m:ci>
+          </m:apply>
+          <m:cn>1</m:cn>
+         </m:apply>
+         <m:ci>T</m:ci>
+      </m:apply>
+    </m:math>.  If the difference between harmonic numbers is
+     <m:math><m:cn>1</m:cn></m:math>, then the FSK bandwidth is
+     <emphasis>smaller</emphasis> than the BPSK bandwidth.  If the
+     difference is <m:math><m:cn>2</m:cn></m:math>, the bandwidths are
+     equal and larger differences produce a transmission bandwidth
+     larger than that resulting from using a BPSK signal set.
+    </para>
+
+  </content>
+</document>

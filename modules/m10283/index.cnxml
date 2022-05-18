@@ -1,0 +1,985 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">     
+
+  <title>Error-Correcting Codes: Hamming Distance</title>
+
+  <metadata>
+  <md:content-id>m10283</md:content-id><md:title>Error-Correcting Codes: Hamming Distance</md:title>
+  <md:abstract>So-called linear codes create error-correction bits by combining the data bits linearly. Topics discussed include generator matrices and the Hamming distance.</md:abstract>
+  <md:uuid>6162e109-7d4a-4ee2-947c-0de06d354477</md:uuid>
+</metadata>
+
+<content>
+    <para id="para1">
+      So-called <term>linear codes</term> create error-correction bits
+      by combining the data bits linearly. The phrase "linear
+      combination" means here single-bit binary arithmetic.
+    <table id="andor" frame="all" summary="">
+	<tgroup cols="4" align="left" colsep="1" rowsep="1">
+	  <tbody valign="top">
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:xor/>
+		      <m:cn>0</m:cn>
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:xor/>
+		      <m:cn>1</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:xor/>
+		      <m:cn>0</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:xor/>
+		      <m:cn>1</m:cn>
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+	    <row>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci><m:mo>·</m:mo></m:ci>
+		      <m:cn>0</m:cn>
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci><m:mo>·</m:mo></m:ci>
+		      <m:cn>1</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci><m:mo>·</m:mo></m:ci>
+		      <m:cn>0</m:cn>
+		      <m:cn>1</m:cn>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	      <entry>
+		<m:math>
+		  <m:apply>
+		    <m:eq/>
+		    <m:apply>
+		      <m:ci><m:mo>·</m:mo></m:ci>
+		      <m:cn>1</m:cn>
+		      <m:cn>0</m:cn>
+		    </m:apply>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:math>
+	      </entry>
+	    </row>
+	  </tbody>
+	</tgroup>
+      </table>
+      For example, let's consider the specific (3, 1) error correction
+      code described by the following coding table and, 
+      more concisely, by the succeeding matrix expression.
+
+      <m:math display="block">
+	<m:mtable class="array" frame="none">
+	  <m:mtr><m:mtd>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">b</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  
+	  <m:mtr><m:mtd>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">b</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  
+	  <m:mtr><m:mtd>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>3</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">b</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	</m:mtable>
+      </m:math>
+      or
+      <m:math display="block">
+	<m:mtable>
+	  <m:mtr>
+	    <m:mtd>
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">c</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:ci type="matrix">G</m:ci>
+		  <m:ci type="vector">b</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	</m:mtable>
+      </m:math>
+      where
+      <m:math display="block">
+	<m:mtable>               
+	  <m:mtr><m:mtd>
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="matrix">G</m:ci>
+		<m:matrix>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		  <m:matrixrow>
+		    <m:cn>1</m:cn>
+		  </m:matrixrow>
+		</m:matrix>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+
+	  <m:mtr><m:mtd>
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">c</m:ci>
+		<m:vector>
+		  <m:apply>
+		    <m:ci type="fn">c</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">c</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:ci type="fn">c</m:ci>
+		    <m:cn>3</m:cn>
+		  </m:apply>
+		</m:vector>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  <m:mtr><m:mtd>
+	      <m:apply>
+		<m:eq/>
+		<m:ci type="vector">b</m:ci>
+		<m:vector>
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:vector>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	</m:mtable>
+      </m:math>
+    </para>
+
+    <para id="para1.1">
+      The length-<m:math><m:ci>K</m:ci></m:math> (in this simple
+      example
+      <m:math><m:apply><m:eq/><m:ci>K</m:ci><m:cn>1</m:cn></m:apply></m:math>)
+      block of data bits is represented by the vector <m:math><m:ci type="vector">b</m:ci></m:math>, and the
+      length-<m:math><m:ci>N</m:ci></m:math> output block of the
+      channel coder, known as a <term>codeword</term>, by
+      <m:math><m:ci class="vector">c</m:ci></m:math>.  The
+      <term>generator matrix</term> <m:math><m:ci type="matrix">G</m:ci></m:math> defines all block-oriented
+      linear channel coders.
+    </para>
+
+    <para id="para2"> As we consider other block codes, the simple
+      idea of the decoder taking a majority vote of the received bits
+      won't generalize easily.  We need a broader view that takes into
+      account the <emphasis>distance</emphasis> between codewords.  A
+      length-<m:math><m:ci>N</m:ci></m:math> codeword means that the
+      receiver must decide among the
+	
+      <m:math>
+	<m:apply>
+	  <m:power/>
+	  <m:cn>2</m:cn><m:ci>N</m:ci>
+	</m:apply>
+      </m:math> possible datawords to select which of the 
+      
+      <m:math>
+	<m:apply>
+	  <m:power/>
+	  <m:cn>2</m:cn><m:ci>K</m:ci>
+	</m:apply>
+      </m:math> codewords was actually transmitted.  As shown in <link target-id="fig3" strength="3"/>, we can think of the datawords
+      geometrically.  We define the <term>Hamming distance</term>
+      between binary datawords
+
+      <m:math>
+	<m:ci>
+	  <m:msub>   
+	    <m:mi>c</m:mi>
+	    <m:mn>1</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      
+      and  
+      <m:math>
+	<m:ci>
+	  <m:msub>   
+	    <m:mi>c</m:mi>
+	    <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>, denoted by  
+	
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">d</m:ci>
+	  <m:ci>
+	    <m:msub>     
+	      <m:mi>c</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>
+	    <m:msub>     
+	      <m:mi>c</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>
+	
+      to be the minimum number of bits that must be "flipped" to go
+      from one word to the other.  For example, the distance between
+      codewords is 3 bits.  In our table of binary arithmetic, we
+      see that adding a 1 corresponds to flipping a bit.  Furthermore,
+      subtraction and addition are equivalent.  We can express the
+      Hamming distance as
+	
+      <equation id="Hamdist">
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">d</m:ci>
+	      <m:ci>
+		<m:msub>     
+		  <m:mi>c</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>     
+		  <m:mi>c</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">sum</m:ci>
+	      <m:apply>
+		<m:xor/>          
+		<m:ci>
+		  <m:msub>     
+		    <m:mi>c</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>     
+		    <m:mi>c</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para>   
+
+    <exercise id="quest6.29">
+      <problem id="id11467401">
+	<para id="exercise6.29">Show that adding the error vector
+	  col[1,0,...,0] to a codeword flips the codeword's leading
+	  bit and leaves the rest unaffected.
+	</para>
+      </problem>
+	
+      <solution id="id11470420">
+	<para id="empty">In binary arithmetic (see <link target-id="andor" strength="2"/>), adding 0 to a
+	  binary value results in that binary value while adding 1
+	  results in the opposite binary value.
+	</para>
+      </solution>
+    </exercise>  
+
+    <para id="new1">
+      The probability of one bit being flipped anywhere in a codeword
+      is 
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:ci>N</m:ci>
+	  <m:ci>
+	    <m:msub><m:mi>p</m:mi><m:mi>e</m:mi></m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:power/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	      <m:ci>
+		<m:msub><m:mi>p</m:mi><m:mi>e</m:mi></m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>N</m:ci><m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  The number of errors the channel introduces equals
+      the number of ones in <m:math><m:ci class="vector">e</m:ci></m:math>; the probability of any
+      particular error vector decreases with the number of errors.
+    </para>
+
+    <figure id="fig3">
+      <media id="id11485944" alt="">
+        <image src="../../media/sys33.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys33.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	In a (3,1) repetition code, only 2 of the possible 8 three-bit
+	data blocks are codewords.  We can represent these bit
+	patterns geometrically with the axes being bit positions in
+	the data block.  In the left plot, the filled circles
+	represent the codewords [0 0 0] and [1 1 1], the only possible
+	codewords.  The unfilled ones correspond to the transmission.
+	The center plot shows that the distance between codewords is
+	3.  Because distance corresponds to flipping a bit,
+	calculating the Hamming distance geometrically means following
+	the axes rather than going "as the crow flies".  The right
+	plot shows the datawords that result when one error occurs as
+	the codeword goes through the channel.  The three datawords
+	are unit distance from the original codeword.  Note that the
+	received dataword groups do not overlap, which means the code
+	can correct all single-bit errors.
+      </caption>
+    </figure>
+
+    <para id="new2">
+      To perform decoding when errors occur, we want to find the
+      codeword (one of the filled circles in <link target-id="fig3" strength="3"/>) that has the highest probability of occurring:
+      the one closest to the one received.  Note that if a dataword
+      lies a distance of 1 from two codewords, it is
+      <emphasis>impossible</emphasis> to determine which codeword was
+      actually sent.  This criterion means that if any two codewords
+      are two bits apart, then the code <emphasis>cannot</emphasis>
+      correct the channel-induced error.  <emphasis>Thus, to have a
+      code that can correct all single-bit errors, codewords must have
+      a minimum separation of three.</emphasis> Our repetition code
+      has this property.
+    </para>
+ 
+    <para id="new3">
+      Introducing code bits increases the probability that any bit
+      arrives in error (because bit interval durations decrease).
+      However, using a well-designed error-correcting code corrects
+      bit reception errors. Do we win or lose by using an
+      error-correcting code?  The answer is that we can win
+      <emphasis>if</emphasis> the code is well-designed.  The (3,1)
+      repetition code demonstrates that we can lose (<link document="m0094" target-id="exer2" strength="2"/>). To develop good
+      channel coding, we need to develop first a general framework for
+      channel codes and discover what it takes for a code to be
+      maximally efficient: Correct as many errors as possible using
+      the fewest error correction bits as possible (making the
+      efficiency
+      <m:math><m:apply><m:divide/><m:ci>K</m:ci><m:ci>N</m:ci></m:apply></m:math>
+      as large as possible.)  We also need a systematic way of finding
+      the codeword closest to any received dataword.  A much better
+      code than our (3,1) repetition code is the following (7,4) code.
+      
+      <m:math display="block">
+	<m:mtable class="array" frame="none">
+	  <m:mtr><m:mtd>
+	      <m:apply> 
+		<m:eq/>
+		<m:apply> 
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply> 
+		<m:apply>
+		  <m:ci type="fn">b</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply> 
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  
+	  <m:mtr><m:mtd>
+	      <m:apply> 
+		<m:eq/>
+		<m:apply> 
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply> 
+		<m:apply>
+		  <m:ci type="fn">b</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply> 
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  
+	  <m:mtr><m:mtd>
+	      <m:apply> 
+		<m:eq/>
+		<m:apply> 
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>3</m:cn>
+		</m:apply> 
+		<m:apply>
+		  <m:ci type="fn">b</m:ci>
+		  <m:cn>3</m:cn>
+		</m:apply> 
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  
+	  <m:mtr><m:mtd>
+	      <m:apply> 
+		<m:eq/>
+		<m:apply> 
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>4</m:cn>
+		</m:apply> 
+		<m:apply>
+		  <m:ci type="fn">b</m:ci>
+		  <m:cn>4</m:cn>
+		</m:apply> 
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  
+	  <m:mtr><m:mtd>
+	      <m:apply> 
+		<m:eq/>
+		<m:apply> 
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>5</m:cn>
+		</m:apply> 
+		<m:apply>
+		  <m:xor/> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>3</m:cn>
+		  </m:apply> 
+		</m:apply>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  
+	  <m:mtr><m:mtd>
+	      <m:apply> 
+		<m:eq/>
+		<m:apply> 
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>6</m:cn>
+		</m:apply> 
+		<m:apply>
+		  <m:xor/> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>3</m:cn>
+		  </m:apply> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>4</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	  
+	  <m:mtr><m:mtd>
+	      <m:apply> 
+		<m:eq/>
+		<m:apply> 
+		  <m:ci type="fn">c</m:ci>
+		  <m:cn>7</m:cn>
+		</m:apply> 
+		<m:apply>
+		  <m:xor/> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply> 
+		  <m:apply>
+		    <m:ci type="fn">b</m:ci>
+		    <m:cn>4</m:cn>
+		  </m:apply> 
+		</m:apply>
+	      </m:apply>
+	    </m:mtd></m:mtr>
+	</m:mtable>
+      </m:math>
+      where the generator matrix is
+      <m:math display="block">
+	<m:apply> 
+	  <m:eq/>
+	  <m:ci type="matrix">G</m:ci>
+	  <m:matrix>
+	    <m:matrixrow>
+	      <m:cn>1</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:cn>0</m:cn>
+	    </m:matrixrow>
+	    <m:matrixrow>
+	      <m:cn>0</m:cn>
+	      <m:cn>1</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:cn>0</m:cn>
+	    </m:matrixrow>
+	    <m:matrixrow>
+	      <m:cn>0</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:cn>1</m:cn>
+	      <m:cn>0</m:cn>
+	    </m:matrixrow>
+	    <m:matrixrow>
+	      <m:cn>0</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:cn>1</m:cn>
+	    </m:matrixrow>
+	    <m:matrixrow>
+	      <m:cn>1</m:cn>
+	      <m:cn>1</m:cn>
+	      <m:cn>1</m:cn>
+	      <m:cn>0</m:cn>
+	    </m:matrixrow>
+	    <m:matrixrow>
+	      <m:cn>0</m:cn>
+	      <m:cn>1</m:cn>
+	      <m:cn>1</m:cn>
+	      <m:cn>1</m:cn>
+	    </m:matrixrow>
+	    <m:matrixrow>
+	      <m:cn>1</m:cn>
+	      <m:cn>1</m:cn>
+	      <m:cn>0</m:cn>
+	      <m:cn>1</m:cn>
+	    </m:matrixrow>
+	  </m:matrix> 
+	</m:apply>
+      </m:math>
+      In this (7,4) code, 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>2</m:cn><m:cn>4</m:cn>
+	    </m:apply>
+	    <m:cn>16</m:cn>
+	  </m:apply>
+	</m:math>
+	of the 
+	
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>2</m:cn><m:cn>7</m:cn>
+	    </m:apply>
+	    <m:cn>128</m:cn>
+	  </m:apply>
+	</m:math>
+	
+	possible blocks at the channel decoder correspond to error-free
+	transmission and reception.
+      </para>
+      
+
+      <para id="para3">       
+        Error correction amounts to searching for the codeword  
+	<m:math><m:ci type="vector">c</m:ci></m:math> closest to the
+	received block  <m:math>
+     	<m:ci type="vector"><m:mover accent="true">
+    	    <m:mi>c</m:mi>
+    	    <m:mo>^</m:mo>
+    	  </m:mover>
+    	</m:ci>
+          </m:math>
+	in terms of the Hamming distance between the two. The error
+	correction capability of a channel code is limited by how
+	close together any two error-free blocks are. Bad codes would
+	produce blocks close together, which would result in ambiguity
+	when assigning a block of data bits to a received block. The
+	quantity to examine, therefore, in designing code error
+	correction codes is the minimum distance between codewords.
+	
+	<!-- this is sort-of ghetto rigged to make min a function
+	because i didn't like the way it presented --> 
+	<equation id="dmin">       
+	  <m:math display="block">   
+	    <m:apply>
+	      <m:forall/>
+	      <m:condition>
+		<m:apply>
+		  <m:neq/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>c</m:mi>
+		      <m:mi>j</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:condition>
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>d</m:mi>
+		      <m:mi>min</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">min</m:ci>
+		  <m:apply>
+		    <m:ci type="fn">d</m:ci>
+		    <m:ci>        
+		      <m:msub>     
+			<m:mi>c</m:mi>
+			<m:mi>i</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>     
+			<m:mi>c</m:mi>
+			<m:mi>j</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+	
+	To have a channel code that can correct all single-bit errors,
+	<m:math>
+	  <m:apply>
+	    <m:geq/>
+	    <m:ci>
+	      <m:msub><m:mi>d</m:mi><m:mi>min</m:mi></m:msub>
+	    </m:ci>
+	    <m:cn>3</m:cn>
+	  </m:apply>
+	</m:math>. 
+      </para>
+
+      <exercise id="exer3">
+	<problem id="id12744118">
+	  <para id="prob3.1">
+	    Suppose we want a channel code to have an error-correction
+	    capability of <m:math><m:ci>n</m:ci></m:math> bits. What
+	    must the minimum Hamming distance between codewords
+	    
+	    <m:math>
+	      <m:ci><m:msub>     
+		  <m:mi>d</m:mi>     
+		  <m:mi>min</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:math>
+	    be?
+	  </para>
+	</problem>
+	
+	<solution id="id12648272"><para id="sol3.1">
+	    <m:math display="block">
+	      <m:apply>
+		<m:eq/>
+		<m:ci>
+		  <m:msub>     
+		    <m:mi>d</m:mi>     
+		    <m:mi>min</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </para>
+	</solution>
+      </exercise>
+      
+
+    <para id="para4">
+      How do we calculate the minimum distance between codewords?
+      Because we have
+
+      <m:math>
+	<m:apply>
+	  <m:power/>
+	  <m:cn>2</m:cn>
+	  <m:ci>K</m:ci>
+	</m:apply>
+      </m:math>
+      
+      codewords, the number of possible unique pairs equals  
+	
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>2</m:cn>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>K</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>2</m:cn>
+	      <m:ci>K</m:ci>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>, which can be a large number. Recall that our channel
+	coding procedure is linear, with
+
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci type="vector">c</m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci type="matrix">G</m:ci>
+	    <m:ci type="vector">b</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Therefore  
+
+      <m:math>
+	<m:declare type="matrix">
+	  <m:ci>G</m:ci>
+	</m:declare>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:xor/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>i</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>c</m:mi>
+		<m:mi>j</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">G</m:ci>
+	    <m:apply>
+	      <m:xor/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mi>i</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mi>j</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Because
+	
+      <m:math>
+	<m:apply>
+	  <m:xor/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>b</m:mi>
+	      <m:mi>i</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>b</m:mi>
+	      <m:mi>j</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math>
+      always yields another block of <emphasis>data</emphasis> bits,
+	we find that the difference between any two codewords is
+	another codeword! Thus, to find
+      <m:math>
+	<m:ci>
+	  <m:msub>     
+	    <m:mi>d</m:mi>     
+	    <m:mi>min</m:mi>
+	  </m:msub></m:ci>
+      </m:math>
+
+      we need only compute the number of ones that comprise all
+      non-zero codewords. Finding these codewords is easy once we
+      examine the coder's generator matrix. Note that the columns of
+      <m:math><m:ci type="matrix">G</m:ci></m:math> are codewords (why
+      is this?), and that all codewords can be found by all possible
+      pairwise sums of the columns. To find
+
+      <m:math>
+	<m:ci>
+	  <m:msub>     
+	    <m:mi>d</m:mi>     
+	    <m:mi>min</m:mi>
+	  </m:msub></m:ci>
+      </m:math>
+      , we need only count the number of bits in each column and sums
+      of columns. For our example (7, 4), <m:math><m:ci type="matrix">G</m:ci></m:math>'s first column has three ones,
+      the next one four, and the last two three. Considering sums of
+      column pairs next, note that because the upper portion of
+      <m:math><m:ci type="matrix">G</m:ci></m:math> is an identity
+      matrix, the corresponding upper portion of all column sums must
+      have exactly two bits.  Because the bottom portion of each
+      column differs from the other columns in at least one place, the
+      bottom portion of a sum of columns must have at least one bit.
+      Triple sums will have at least three bits because the upper
+      portion of <m:math><m:ci type="matrix">G</m:ci></m:math> is an
+      identity matrix.  Thus, no sum of columns has fewer than three
+      bits, which means that
+	
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>       
+	      <m:mi>d</m:mi>       
+	      <m:mi>min</m:mi>
+	    </m:msub></m:ci>
+	  <m:cn>3</m:cn>
+	</m:apply>
+      </m:math>,
+      and we have a channel coder that can correct all occurrences
+      of one error within a received <m:math><m:cn>7</m:cn></m:math>-bit
+      block.
+    </para>
+  </content>
+</document>

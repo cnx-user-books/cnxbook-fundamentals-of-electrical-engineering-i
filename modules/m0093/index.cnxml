@@ -1,0 +1,624 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  
+  <title>Subtleties of Source Coding</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>46849a92-c1de-49fe-bc4f-7ad93768ffe8</md:uuid>
+</metadata>
+
+  <content>
+    <para id="para1">
+      In the Huffman code, the bit sequences that represent individual
+      symbols can have differing lengths so the bitstream index
+      <m:math><m:ci>m</m:ci></m:math> does not increase in lock step
+      with the symbol-valued signal's index <m:math display="inline"><m:ci>n</m:ci></m:math>.  To capture how often
+      bits must be transmitted to keep up with the source's production
+      of symbols, we can only compute averages.  If our source code
+      averages
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:mean/>
+	  <m:apply>
+	    <m:ci type="fn">B</m:ci>
+	    <m:ci>A</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      
+      bits/symbol and symbols are produced at a rate <m:math display="inline"><m:ci>R</m:ci></m:math>, the average bit rate
+      equals
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:mean/>
+	    <m:apply>
+	      <m:ci type="fn">B</m:ci>
+	      <m:ci>A</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:ci>R</m:ci>
+	</m:apply>
+      </m:math>,
+      and this quantity determines the bit interval duration  
+      <m:math display="inline"><m:ci>T</m:ci></m:math>.
+    </para>                                     
+    
+    <exercise id="exer1">
+      <problem id="idm1523792">
+	<para id="prob1.1">
+	  Calculate what the relation between <m:math display="inline"><m:ci>T</m:ci></m:math> and the average bit
+	  rate
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:mean/>
+		<m:apply>
+		  <m:ci type="fn">B</m:ci>
+		  <m:ci>A</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:ci>R</m:ci>
+	    </m:apply>
+	  </m:math>
+	  
+	  is.
+	</para>
+      </problem>
+      <solution id="idp4645888">
+	<para id="sol1.1">
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>T</m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:mean/>
+		    <m:apply>
+		      <m:ci type="fn">B</m:ci>
+		      <m:ci>A</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>R</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="para2">
+      A subtlety of source coding is whether we need "commas" in the
+      bitstream.  When we use an unequal number of bits to represent
+      symbols, how does the receiver determine when symbols begin and
+      end?  If you created a source code that
+      <emphasis>required</emphasis> a separation marker in the
+      bitstream between symbols, it would be very inefficient since
+      you are essentially requiring an extra symbol in the
+      transmission stream.
+      <note type="point of interest" id="idm12297984"><label>Point of interest</label>
+	A good example of this need is the Morse Code: Between each
+	letter, the telegrapher needs to insert a pause to inform the
+	receiver when letter boundaries occur.
+      </note>
+      As shown in this <link document="m0092" target-id="ex3" strength="2">example</link>, no commas are placed in the
+      bitstream, but you can unambiguously decode the sequence of
+      symbols from the bitstream.  Huffman showed that his (maximally
+      efficient) code had the <term>prefix</term> property: No code
+      for a symbol began another symbol's code.  Once you have the
+      prefix property, the bitstream is <emphasis>partially</emphasis>
+      self-synchronizing: Once the receiver knows where the bitstream
+      starts, we can assign a unique and correct symbol sequence to
+      the bitstream.
+    </para>
+    <exercise id="exer2">
+      <problem id="idm12691520">
+	<para id="prob2.1">
+	  Sketch an argument that prefix coding, whether derived from
+	a Huffman code or not, will provide unique decoding when an
+	unequal number of bits/symbol are used in the code.
+	</para>
+      </problem>
+      <solution id="idp6895712">
+	<para id="sol2.1">
+	  Because no codeword begins with another's codeword, the
+	  first codeword encountered in a bit stream must be the right
+	  one.  Note that we must start at the beginning of the bit
+	  stream; jumping into the middle does not guarantee perfect
+	  decoding.  The end of one codeword and the beginning of
+	  another could be a codeword, and we would get lost.
+	  </para>
+      </solution>
+    </exercise>
+
+    <para id="para3">
+      However, having a prefix code does not guarantee total
+      synchronization: After hopping into the middle of a bitstream,
+      can we always find the correct symbol boundaries?  The
+      self-synchronization issue does mitigate the use of efficient
+      source coding algorithms.
+    </para>
+    
+    <exercise id="exer3">
+      <problem id="idp562832">
+	<para id="prob3.1">Show by example that a bitstream produced
+	by a Huffman code is not necessarily self-synchronizing. Are
+	fixed-length codes self synchronizing?
+	</para>
+      </problem>
+      <solution id="idp478272">
+	<para id="sol3.1">
+	  Consider the bitstream …0110111… taken from
+	  the bitstream 0|10|110|110|111|….  We would decode
+	  the initial part incorrectly, then would synchronize. If we
+	  had a fixed-length code (say 00,01,10,11), the situation is
+	  <emphasis>much</emphasis> worse.  Jumping into the middle
+	  leads to no synchronization at all!
+	  </para>
+      </solution>
+    </exercise>
+
+    <para id="para4">
+      Another issue is bit errors induced by the digital channel; if
+      they occur (and they will), synchronization can easily be lost
+      even if the receiver started "in synch" with the source.
+      Despite the small probabilities of error offered by good signal
+      set design and the matched filter, an infrequent error can
+      devastate the ability to translate a bitstream into a symbolic
+      signal.  We need ways of reducing reception errors
+      <emphasis>without </emphasis>demanding that
+      
+      <m:math display="inline">
+	<m:ci>
+	  <m:msub>
+	    <m:mi>p</m:mi>
+	    <m:mi>e</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      be smaller.
+    </para>
+
+    <example id="ex4">
+      <para id="para5"> The first electrical communications
+	system—the telegraph—was digital.  When first
+	deployed in 1844, it communicated text over wireline
+	connections using a binary code—the Morse code—to
+	represent individual letters.  To send a message from one place
+	to another, telegraph operators would tap the message using a
+	telegraph key to another operator, who would relay the message
+	on to the next operator, presumably getting the message closer
+	to its destination.  In short, the telegraph relied on a
+	<term>network </term>not unlike the basics of modern computer
+	networks. To say it presaged modern communications would be an
+	understatement.  It was also far ahead of some needed
+	technologies, namely the Source Coding Theorem.  The Morse
+	code, shown in <link target-id="huffmancode" strength="3"/>, was
+	not a prefix code.  To separate codes for each letter, Morse
+	code required that a space—a pause—be inserted
+	between each letter.  In information theory, that space counts
+	as another code letter, which means that the Morse code
+	encoded text with a three-letter source code: dots, dashes and
+	space.  The resulting source code is not within a bit of
+	entropy, and is grossly inefficient (about 25%).  <link target-id="huffmancode" strength="3"/> shows a Huffman code for
+	English text, which as we know <emphasis>is</emphasis>
+	efficient.
+      </para>
+
+      <table frame="all" id="huffmancode" summary="">
+	  <title>Morse and Huffman Code Table</title>
+	  <tgroup cols="4" align="left" colsep="1" rowsep="1">
+	    <thead valign="top">
+	      <row>
+		<entry>
+
+		</entry>
+		<entry>
+		  %
+		</entry>
+		<entry>
+		  Morse Code
+		</entry>
+		<entry>
+		  Huffman Code
+		</entry>
+	      </row>
+	    </thead>
+	    <tbody valign="top">
+	      <row>
+		<entry>
+		  A
+		</entry>
+		<entry>
+		  6.22
+		</entry>
+		<entry>
+		  .-
+		</entry>
+		<entry>
+		  1011
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  B
+		</entry>
+		<entry>
+		  1.32
+		</entry>
+		<entry>
+		  -...
+		</entry>
+		<entry>
+		  010100
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  C
+		</entry>
+		<entry>
+		  3.11
+		</entry>
+		<entry>
+		  -.-.
+		</entry>
+		<entry>
+		  10101
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  D
+		</entry>
+		<entry>
+		  2.97
+		</entry>
+		<entry>
+		  -..
+		</entry>
+		<entry>
+		  01011
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  E
+		</entry>
+		<entry>
+		  10.53
+		</entry>
+		<entry>
+		  .
+		</entry>
+		<entry>
+		  001
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  F
+		</entry>
+		<entry>
+		  1.68
+		</entry>
+		<entry>
+		  ..-.
+		</entry>
+		<entry>
+		  110001
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  G
+		</entry>
+		<entry>
+		  1.65
+		</entry>
+		<entry>
+		  --.
+		</entry>
+		<entry>
+		  110000
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  H
+		</entry>
+		<entry>
+		  3.63
+		</entry>
+		<entry>
+		  ....
+		</entry>
+		<entry>
+		  11001
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  I
+		</entry>
+		<entry>
+		  6.14
+		</entry>
+		<entry>
+		  ..
+		</entry>
+		<entry>
+		  1001
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  J
+		</entry>
+		<entry>
+		  0.06
+		</entry>
+		<entry>
+		  .---
+		</entry>
+		<entry>
+		  01010111011
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  K
+		</entry>
+		<entry>
+		  0.31
+		</entry>
+		<entry>
+		  -.-
+		</entry>
+		<entry>
+		  01010110
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  L
+		</entry>
+		<entry>
+		  3.07
+		</entry>
+		<entry>
+		  .-..
+		</entry>
+		<entry>
+		  10100
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  M
+		</entry>
+		<entry>
+		  2.48
+		</entry>
+		<entry>
+		  --
+		</entry>
+		<entry>
+		  00011
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  N
+		</entry>
+		<entry>
+		  5.73
+		</entry>
+		<entry>
+		  -.
+		</entry>
+		<entry>
+		  0100
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  O
+		</entry>
+		<entry>
+		  6.06
+		</entry>
+		<entry>
+		  ---
+		</entry>
+		<entry>
+		  1000
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  P
+		</entry>
+		<entry>
+		  1.87
+		</entry>
+		<entry>
+		  .--.
+		</entry>
+		<entry>
+		  00000
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  Q
+		</entry>
+		<entry>
+		  0.10
+		</entry>
+		<entry>
+		  --.-
+		</entry>
+		<entry>
+		  0101011100
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  R
+		</entry>
+		<entry>
+		  5.87
+		</entry>
+		<entry>
+		  .-.
+		</entry>
+		<entry>
+		  0111
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  S
+		</entry>
+		<entry>
+		  5.81
+		</entry>
+		<entry>
+		  ...
+		</entry>
+		<entry>
+		  0110
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  T
+		</entry>
+		<entry>
+		  7.68
+		</entry>
+		<entry>
+		  -
+		</entry>
+		<entry>
+		  1101
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  U
+		</entry>
+		<entry>
+		  2.27
+		</entry>
+		<entry>
+		  ..-
+		</entry>
+		<entry>
+		  00010
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  V
+		</entry>
+		<entry>
+		  0.70
+		</entry>
+		<entry>
+		  ...-
+		</entry>
+		<entry>
+		  0101010
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  W
+		</entry>
+		<entry>
+		  1.13
+		</entry>
+		<entry>
+		  .--
+		</entry>
+		<entry>
+		  000011
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  X
+		</entry>
+		<entry>
+		  0.25
+		</entry>
+		<entry>
+		  -..-
+		</entry>
+		<entry>
+		  010101111
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  Y
+		</entry>
+		<entry>
+		  1.07
+		</entry>
+		<entry>
+		  -.--
+		</entry>
+		<entry>
+		  000010
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  Z
+		</entry>
+		<entry>
+		  0.06
+		</entry>
+		<entry>
+		  --..
+		</entry>
+		<entry>
+		  0101011101011
+		</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	<caption>
+	  Morse and Huffman Codes for American-Roman Alphabet.  The %
+	  column indicates the average probability (expressed in
+	  percent) of the letter occurring in English.  The entropy
+	  
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:ci>A</m:ci>
+	    </m:apply>
+	  </m:math>
+	  
+	  of the this source is 4.14 bits.  The average Morse codeword
+	  length is 2.5 symbols.  Adding one more symbol for the letter
+	  separator and converting to bits yields an average codeword
+	  length of 5.56 bits.  The average Huffman codeword length is
+	  4.35 bits.
+	</caption></table>
+    </example>
+
+  </content>
+</document>

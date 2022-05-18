@@ -1,0 +1,892 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml"> 
+
+  <title>Signal-to-Noise Ratio of an Amplitude-Modulated Signal</title>
+
+   <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>71f7f1ec-79ee-426b-aa11-09b0ab939f64</md:uuid>
+</metadata>
+
+
+  <content>
+    <para id="para1">
+      When we consider the much more realistic situation when we have
+      a channel that introduces attenuation and noise, we can make use
+      of the just-described receiver's linear nature to directly
+      derive the receiver's output.  The attenuation affects the output
+      in the same way as the transmitted signal: It scales the output
+      signal by the same amount.  The white noise, on the other hand,
+      should be filtered from the received signal before
+      demodulation.  We must thus insert a bandpass filter having
+      bandwidth
+      <m:math display="inline">
+	<m:apply>
+	  <m:times/>
+	  <m:cn>2</m:cn>
+	  <m:ci>W</m:ci>
+	</m:apply>
+      </m:math> 
+
+      and center frequency 
+
+      <m:math display="inline">
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>f</m:mi>
+	      <m:mi>c</m:mi>
+	    </m:msub>
+	  </m:ci>
+      </m:math>: This filter has no effect on the received
+      signal-related component, but does remove out-of-band noise
+      power. As shown in the <link document="m0518" target-id="fig1000" strength="2">triangular-shaped signal spectrum</link>, we apply
+      coherent receiver to this filtered signal, with the result that
+      the demodulated output contains noise that cannot be removed: It
+      lies in the same spectral band as the signal.
+    </para>
+
+    <para id="para2">
+      As we derive the signal-to-noise ratio in the demodulated
+      signal, let's also calculate the signal-to-noise ratio of the
+      bandpass filter's output
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:mover accent="true">
+	      <m:mi>r</m:mi>
+	      <m:mo>˜</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.  The signal component of
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:mover accent="true">
+	      <m:mi>r</m:mi>
+	      <m:mo>˜</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+
+      equals
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:times/>
+	  <m:ci>α</m:ci>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>A</m:mi>
+	      <m:mi>c</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:ci type="fn">m</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:cos/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>f</m:mi>
+		  <m:mi>c</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  This signal's Fourier transform equals
+
+      <equation id="eq0004">
+	<m:math display="block">
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>α</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>A</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:ci type="fn">M</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">M</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>  
+
+      making the power spectrum, 
+
+      <equation id="eq0005">
+	<m:math display="block">
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>α</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:power/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:ci type="fn">M</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>f</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:power/>
+		<m:apply>
+		  <m:abs/>
+		  <m:apply>
+		    <m:ci type="fn">M</m:ci>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>f</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>	   
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>  
+    </para>
+
+    <exercise id="exer1">
+      <problem id="idm1010400">
+	<para id="prob1">
+	  If you calculate the magnitude-squared of the first
+	  equation, you don't obtain the second unless you make an
+	  assumption.  What is it?
+	</para>
+      </problem>
+      <solution id="idm1753680">
+	<para id="sol1">
+	  The key here is that the two spectra  
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">M</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>f</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>,
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:ci type="fn">M</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>f</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  do not overlap because we have assumed that the carrier frequency  
+	  <m:math display="inline">
+	    <m:ci>
+	      <m:msub>
+		<m:mi>f</m:mi> 
+		<m:mi>c</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>
+	  
+	  is much greater than the signal's highest frequency.
+	  Consequently, the term
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">M</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">M</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  normally obtained in computing the magnitude-squared equals
+	  zero.
+	</para>
+      </solution>
+    </exercise>
+    
+    <para id="para2.1">
+      Thus, the total signal-related power in 
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:mover accent="true">
+	      <m:mi>r</m:mi>
+	      <m:mo>˜</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+
+      is
+      <m:math display="inline">
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>α</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:power/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>A</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	  <m:apply>
+	    <m:ci type="fn">power</m:ci>
+	    <m:ci>m</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  
+
+      The noise power equals the integral of the noise power spectrum;
+      because the power spectrum is constant over the transmission
+      band, this integral equals the noise amplitude
+      <m:math display="inline">
+	<m:ci>
+	  <m:msub>
+	    <m:mi>N</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      times the filter's bandwidth
+      <m:math display="inline">
+	<m:apply>
+	  <m:times/>
+	  <m:cn>2</m:cn>
+	  <m:ci>W</m:ci>
+	</m:apply>
+      </m:math>.  The so-called <emphasis>received signal-to-noise
+      ratio</emphasis> — the signal-to-noise ratio after the
+      <foreign>de rigeur</foreign> front-end bandpass filter and
+      before demodulation — equals
+
+      <equation id="eq0006">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>SNR</m:mi>
+		<m:mi>r</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>α</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">power</m:ci>
+		  <m:ci>m</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>4</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>N</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>W</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para> 
+
+    <para id="para3">The demodulated signal
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">
+	      <m:mover accent="true">
+		<m:mi>m</m:mi>
+		<m:mo>^</m:mo>
+	      </m:mover>
+	    </m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>α</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>A</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">
+		<m:msub>
+		  <m:mi>n</m:mi>
+		  <m:mtext>out</m:mtext>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  Clearly, the signal power equals 
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:divide/>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>α</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>A</m:mi>
+		  <m:mi>c</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci type="fn">power</m:ci>
+	      <m:ci>m</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:cn>4</m:cn>
+	</m:apply>
+      </m:math>.  To determine the noise power, we must understand how
+      the coherent demodulator affects the bandpass noise found in
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:mover accent="true">
+	      <m:mi>r</m:mi>
+	      <m:mo>˜</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.  Because we are concerned with noise, we must deal
+      with the power spectrum since we don't have the Fourier
+      transform available to us.  Letting
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub>
+	      <m:mi>P</m:mi>
+	      <m:mi>ñ</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:ci>f</m:ci>
+	</m:apply>
+      </m:math>
+
+      denote the power spectrum of
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:mover accent="true">
+	      <m:mi>r</m:mi>
+	      <m:mo>˜</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>'s noise component, the power spectrum after
+      multiplication by the carrier has the form
+
+      <equation id="eq0007">
+	<m:math display="block">
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>P</m:mi>
+		    <m:mo>ñ</m:mo>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">
+		  <m:msub>
+		    <m:mi>P</m:mi>
+		    <m:mo>ñ</m:mo>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>4</m:cn>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      The delay and advance in frequency indicated here results in two
+      spectral noise bands falling in the low-frequency region of
+      lowpass filter's passband.  Thus, the total noise power in this
+      filter's output equals
+
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply><m:mo>·</m:mo>
+	    <m:cn>2</m:cn>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>N</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+            <m:ci>W</m:ci>
+            <m:cn>2</m:cn>
+	    <m:apply><m:divide/>
+               <m:cn>1</m:cn>
+               <m:cn>4</m:cn>
+	    </m:apply>
+	  </m:apply>
+
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>N</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>W</m:ci>
+	    </m:apply>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      The signal-to-noise ratio of the receiver's output thus equals
+
+      <equation id="eq0008">
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>SNR</m:mi>
+		<m:mover accent="true">
+		  <m:mi>m</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>α</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:ci type="fn">power</m:ci>
+		  <m:ci>m</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>N</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>W</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>SNR</m:mi>
+		  <m:mi>r</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para> 
+
+    <para id="para4">
+      Let's break down the components of this signal-to-noise ratio to
+      better appreciate how the channel and the transmitter parameters
+      affect communications performance.  Better performance, as
+      measured by the <emphasis>SNR</emphasis>, occurs as it
+      increases.
+
+      <list id="list1">
+	<item> More transmitter power — increasing 
+	  <m:math display="inline">
+	    <m:ci>
+	      <m:msub>
+		<m:mi>A</m:mi>
+		<m:mi>c</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math> — increases the signal-to-noise
+	  ratio proportionally.
+	</item>
+	<item> The carrier frequency 
+	  <m:math display="inline">
+	    <m:ci>
+	      <m:msub>
+		<m:mi>f</m:mi>
+		<m:mi>c</m:mi>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>
+	  has no effect on SNR, but we have assumed that
+
+	  <m:math display="inline">
+	    <m:apply>
+	    <m:ci><m:mo>≫</m:mo></m:ci>
+	      <m:ci>
+		<m:msub>
+		<m:mi>f</m:mi>
+		  <m:mi>c</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>W</m:ci>
+	    </m:apply>
+	  </m:math>.
+	</item>
+	<item> The signal bandwidth <m:math display="inline"><m:ci>W</m:ci></m:math> enters the
+	  signal-to-noise expression in two places: implicitly through
+	  the signal power and explicitly in the expression's
+	  denominator.  <emphasis>If the signal spectrum had a
+	  constant amplitude</emphasis> as we increased the bandwidth,
+	  signal power would increase proportionally. On the other
+	  hand, our transmitter enforced the criterion that <link document="m0540" strength="2"> signal amplitude was
+	  constant</link>.  Signal amplitude essentially equals the
+	  integral of the magnitude of the signal's spectrum.
+	  <note type="Note" id="idm19079984"><label>Note</label>
+	    This result isn't exact, but we do know that
+	    <m:math display="inline">
+	      <m:apply>
+		<m:eq/>
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:cn>0</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar><m:ci>f</m:ci></m:bvar>
+		  <m:lowlimit>
+		    <m:apply>
+		      <m:minus/> 
+		      <m:infinity/>
+		    </m:apply>
+		  </m:lowlimit>
+		  <m:uplimit><m:infinity/></m:uplimit>
+		  <m:apply>
+		    <m:ci type="fn">M</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	    .</note>
+
+	  Enforcing the signal amplitude specification means that as
+	  the signal's bandwidth increases we must decrease the
+	  spectral amplitude, with the result that the signal power
+	  remains constant.  Thus, increasing signal bandwidth does
+	  indeed decrease the signal-to-noise ratio of the receiver's
+	  output.
+	</item>
+	<item> Increasing channel attenuation — moving the
+	  receiver farther from the transmitter — decreases the
+	  signal-to-noise ratio as the square.  Thus, signal-to-noise
+	  ratio decreases as distance-squared between transmitter and
+	  receiver.
+	</item>
+	<item> Noise added by the channel adversely affects the
+	  signal-to-noise ratio.
+	</item>
+      </list>  
+    </para>
+
+    <para id="para5">
+      In summary, amplitude modulation provides an effective means for
+      sending a bandlimited signal from one place to another.  For
+      wireline channels, using baseband or amplitude modulation makes
+      little difference in terms of signal-to-noise ratio.  For
+      wireless channels, amplitude modulation is the only
+      alternative.  The one AM parameter that does not affect
+      signal-to-noise ratio is the carrier frequency
+      <m:math display="inline">
+	<m:ci>
+	  <m:msub>
+	    <m:mi>f</m:mi>
+	    <m:mi>c</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>: We can choose any value we want so long as the
+      transmitter and receiver use the same value.  However, suppose
+      someone else wants to use AM and chooses the same carrier
+      frequency.  The two resulting transmissions will add, and
+      <emphasis>both</emphasis> receivers will produce the sum of the
+      two signals. What we clearly need to do is talk to the other
+      party, and agree to use separate carrier frequencies. As more
+      and more users wish to use radio, we need a forum for agreeing
+      on carrier frequencies and on signal bandwidth.  On earth, this
+      forum is the government.  In the United States, the Federal
+      Communications Commission (FCC) strictly controls the use of the
+      electromagnetic spectrum for communications.  Separate frequency
+      bands are allocated for commercial AM, FM, cellular telephone
+      (the analog version of which is AM), short wave (also AM), and
+      satellite communications.
+    </para>
+
+    <exercise id="exer2">
+      <problem id="idm6162608">
+	<para id="prob2">
+	  Suppose all users agree to use the same signal bandwidth.
+	  How closely can the carrier frequencies be while avoiding
+	  communications crosstalk?  What is the signal bandwidth for
+	  commercial AM?  How does this bandwidth compare to the
+	  speech bandwidth?
+	</para>
+      </problem>
+      <solution id="idm2832704">
+	<para id="sol2">
+	  Separation is   
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:ci>W</m:ci>
+	    </m:apply>
+	  </m:math>.  Commercial AM signal bandwidth is   
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>5</m:cn>
+	      <m:ci>kHz</m:ci>
+	    </m:apply>
+	  </m:math>.  Speech is well contained in this bandwidth, much
+	  better than in the telephone!
+	</para>
+      </solution>
+    </exercise>
+    
+  </content>
+</document>

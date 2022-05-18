@@ -1,0 +1,40 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Ideal and Real-World Circuit Elements</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>efdc1a42-56a5-41c8-9998-a1dcc1ed9b51</md:uuid>
+</metadata>
+
+  <content>
+    <para id="para1">
+      Source and linear circuit elements are
+      <emphasis>ideal</emphasis> circuit elements.  One central notion
+      of circuit theory is combining the ideal elements to describe
+      how physical elements operate in the real world. For example,
+      the 1 kΩ resistor you can hold in your hand is not
+      exactly an ideal 1 kΩ resistor. First of all, physical
+      devices are manufactured to close tolerances (the tighter the
+      tolerance, the more money you pay), but never have exactly their
+      advertised values. The fourth band on resistors specifies their
+      tolerance; 10% is common. More pertinent to the current
+      discussion is another deviation from the ideal: If a sinusoidal
+      voltage is placed across a physical resistor, the current will
+      not be exactly proportional to it as frequency becomes high, say
+      above 1 MHz. At very high frequencies, the way the resistor
+      is constructed introduces inductance and capacitance
+      effects. Thus, the smart engineer must be aware of the frequency
+      ranges over which his ideal models match reality well.
+    </para>
+    <para id="para2">
+      On the other hand, physical circuit elements can be readily
+      found that well approximate the ideal, but they will always
+      deviate from the ideal in some way. For example, a flashlight
+      battery, like a C-cell, roughly corresponds to a 1.5 V
+      voltage source.  However, it ceases to be modeled by a voltage
+      source capable of supplying <emphasis>any</emphasis> current
+      (that's what ideal ones can do!) when the resistance of the
+      light bulb is too small.
+    </para>
+
+  </content>
+</document>

@@ -1,0 +1,2846 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:q="http://cnx.rice.edu/qml/1.0">
+  
+  <title>Information Communication Problems</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10352</md:content-id>
+  <md:title>Information Communication Problems</md:title>
+  <md:abstract>Problems Dealing with Information Communication.</md:abstract>
+  <md:uuid>c1dced85-2fdb-4f73-a3f4-9ad86bb929b4</md:uuid>
+</metadata>
+
+<content>
+    <q:problemset>
+      <q:item type="text-response" id="item6.1a">
+        <q:question>
+	  <section id="s1a">
+	    <title>Signals on Transmission Lines</title>
+	    <para id="para6.1a">
+	      A modulated signal needs to be sent over a transmission
+	      line having a characteristic impedance of 
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>Z</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <!-- Check to see how units should be marked-up; mathml suggested as below -->
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:cn>50</m:cn>
+		      <m:ci>Ω</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.  So that the signal does not interfere with
+	      signals others may be transmitting, it must be bandpass
+	      filtered so that its bandwidth is 1 MHz and centered at
+	      3.5 MHz.  The filter's gain should be one in
+	      magnitude. An <link target-id="fig1a_F1" strength="3">op-amp filter</link> is proposed.
+	    </para>
+	    
+	    <figure id="fig1a_F1">
+	      <media id="id4886106" alt="">
+                <image src="../../media/opamp20.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/opamp20.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+	    <list id="list6.1a" list-type="enumerated">
+	      <item> What is the transfer function between the input
+		voltage and the voltage across the transmission line?
+	      </item>
+	      
+	      <item> Find values for the resistors and capacitors so
+		that design goals are met.  </item>
+	    </list>
+	  </section> 
+	</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="item6.1">
+        <q:question>
+	  <section id="s1">
+	    <title>Noise in AM Systems</title>
+	    <para id="para6.1">
+	      The signal
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn"><m:mover>
+		      <m:mi>s</m:mi>
+		      <m:mo>^</m:mo>
+		    </m:mover></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> 
+	      emerging from an AM communication system consists of two parts:
+	      the message signal,
+	      
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>, and additive noise.  The <link target-id="fig1" strength="3">plot</link> shows the message spectrum
+	      
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">S</m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:math> 
+	      
+	      and noise power spectrum
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn"><m:msub>
+		      <m:mi>P</m:mi>
+		      <m:mi>N</m:mi>
+		    </m:msub></m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:math>.  The noise power spectrum lies completely
+	      within the signal's band, and has a constant value there
+	      of
+	  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:divide/>
+		  <m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:math>.
+	    </para>
+
+	    <figure id="fig1">
+	      <media id="id6600872" alt="">
+                <image src="../../media/spectrum15.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/spectrum15.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+	    <list id="list6.1" list-type="enumerated">
+	      <item>What is the message signal's power?  What is the
+		signal-to-noise ratio?</item>
+	      
+	      <item>Because the power in the message decreases with
+		frequency, the signal-to-noise ratio is not constant
+		within subbands.  What is the signal-to-noise ratio in
+		the upper half of the frequency band?</item>
+	    
+	      <item>A clever 241 student suggests filtering the
+		message before the transmitter modulates it so that
+		the signal spectrum is <emphasis>balanced</emphasis>
+		(constant) across frequency.  Realizing that this
+		filtering affects the message signal, the student
+		realizes that the receiver must also compensate for
+		the message to arrive intact.  Draw a block diagram of
+		this communication system.  How does this system's
+		signal-to-noise ratio compare with that of the usual
+		AM radio? </item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item id="iF3" type="text-response">
+        <q:question>
+	  <section id="sF3">
+	    <title>Complementary Filters</title>
+	    <para id="pF3">
+	      <term>Complementary filters</term> usually have
+	      “opposite” filtering characteristics (like a
+	      lowpass and a highpass) and have transfer functions that
+	      add to one. Mathematically,
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn"><m:msub>
+		      <m:mi>H</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:math> and
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn"><m:msub>
+		      <m:mi>H</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:math> are complementary if
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub>
+			  <m:mi>H</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn"><m:msub>
+			  <m:mi>H</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:math>
+	      We can use complementary filters to separate a signal
+	      into two parts by passing it through each filter. Each
+	      output can then be transmitted separately and the
+	      original signal reconstructed at the receiver. Let's
+	      assume the message is bandlimited to
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>W</m:ci>
+		  <m:ci>Hz</m:ci>
+		</m:apply>
+	      </m:math> and that
+	      <m:math>
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn"><m:msub>
+			<m:mi>H</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>a</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+	    </para>
+
+	    <list id="lF3" list-type="enumerated">
+	      <item>What circuits would be used to produce the
+	      complementary filters?
+	      </item>
+
+	      <item>Sketch a block diagram for a communication system
+	      (transmitter and receiver) that employs complementary
+	      signal transmission to send a message
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">m</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>.
+	      </item>
+	      
+	      <item>What is the receiver's signal-to-noise ratio? How
+	      does it compare to the standard system that sends the
+	      signal by simple amplitude modulation?
+	      </item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+      
+      <q:item type="text-response" id="item6.2">
+        <q:question>
+	  <section id="s2">
+	    <title>Phase Modulation</title>
+	    <para id="para6.2">
+	      A message signal
+	      
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> 
+	  
+	      <term>phase modulates</term> a carrier if the
+	      transmitted signal equals
+	  
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>A</m:ci>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub>
+			      <m:mi>f</m:mi>
+			      <m:mi>c</m:mi>
+			    </m:msub></m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:ci><m:msub>
+			      <m:mi>φ</m:mi>
+			      <m:mi>d</m:mi>
+			    </m:msub></m:ci>     
+			  <m:apply>
+			    <m:ci type="fn">m</m:ci>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math> where 
+	  
+	      <m:math display="inline">
+		<m:ci><m:msub><m:mi>φ</m:mi><m:mi>d</m:mi></m:msub></m:ci>
+	      </m:math>
+	  
+	      is known as the phase deviation.  In this problem, the
+	      phase deviation is small.  As with all analog modulation
+	      schemes, assume that
+	  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:lt/>
+		  <m:apply>
+		    <m:abs/>
+		    <m:apply>
+		      <m:ci type="fn">m</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:math>, the message is bandlimited to
+	      <m:math><m:ci>W</m:ci></m:math> Hz, and the carrier
+	      frequency
+	  
+	      <m:math display="inline">
+		<m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci> 
+	      </m:math>
+	  
+	      is much larger than <m:math><m:ci>W</m:ci></m:math>.
+	  
+	      <list id="list6.2" list-type="enumerated">
+		<item>What is the transmission bandwidth?</item>
+		<item>Find a receiver for this modulation
+		  scheme.</item>
+		<item>What is the signal-to-noise ratio of the
+		  received signal?</item>
+	      </list>
+		  
+	      <note id="id1172133365136" type="hint"><label>Hint</label>
+		Use the facts that
+	  
+		<m:math display="inline">
+		  <m:apply>
+		    <m:approx/>
+		    <m:apply>
+		      <m:cos/>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:math>
+		and
+		
+		<m:math display="inline">
+		  <m:apply>
+		    <m:approx/>
+		    <m:apply>
+		      <m:sin/>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		    <m:ci>x</m:ci>
+		  </m:apply>
+		</m:math>
+	  
+		for small <m:math><m:ci>x</m:ci></m:math>.
+	      </note>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item id="iq3.2" type="text-response">
+        <q:question>
+	  <section id="sq3.2">
+	    <title>Digital Amplitude Modulation</title>
+	    
+	    <para id="pq3.2">
+	      Two ELEC 241 students disagree about a homework
+	      problem. The issue concerns the discrete-time signal
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:cos/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci><m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mn>0</m:mn>
+			</m:msub></m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>, where the signal
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math> has no special characteristics and the
+	      modulation frequency
+	      <m:math>
+		<m:ci><m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub></m:ci>
+	      </m:math> is known. Sammy says that he can recover
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">s</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math> from its amplitude-modulated version by the
+	      same approach used in analog communications. Samantha
+	      says that approach won't work.
+	    </para>
+
+	    <list id="lq3.2" list-type="enumerated">
+	      <item>What is the spectrum of the modulated signal?</item>
+
+	      <item>Who is correct? Why?</item>
+
+	      <item>The teaching assistant does not want to take
+	      sides. He tells them that if
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:cos/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+		and 
+		<m:math>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>n</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:sin/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub></m:ci>
+			<m:ci>n</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math> were both available, 
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>n</m:ci>
+		  </m:apply>
+		</m:math> can be recovered. What does he have in mind?
+	      </item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <!-- From final 2, 2001 -->
+      <q:item id="if2" type="text-response"> <!-- problem 15 -->
+        <q:question>
+	  <section id="sf2">
+	    <title>Anti-Jamming</title>
+	    <para id="pf2">
+	      One way for someone to keep people from receiving an AM
+	      transmission is to transmit noise at the same carrier
+	      frequency. Thus, if the carrier frequency is
+	      <m:math>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mi>c</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:math>
+	      so that the transmitted signal is 
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mi>T</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:ci type="fn">m</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:sin/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci> 
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      the <emphasis>jammer</emphasis> would transmit
+	      <m:math>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>A</m:mi>
+		      <m:mi>J</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:ci type="fn">n</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		    <m:apply><m:sin/>
+		      <m:apply><m:plus/>
+                        <m:apply><m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub>
+			    <m:mi>f</m:mi>
+			    <m:mi>c</m:mi>
+			    </m:msub>
+			  </m:ci> 
+			  <m:ci>t</m:ci>
+		        </m:apply>
+		      <m:ci>φ</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>.
+	      The noise 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">n</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>
+	      has a constant power density spectrum over the bandwidth
+	      of the message
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>.
+	      The channel adds white noise of spectral height
+	      <m:math>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>N</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:math>.
+	      
+	      <list id="lf2" list-type="enumerated">
+		<item>
+		  What would be the output of a traditional AM
+		  receiver tuned to the carrier frequency
+		  <m:math>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>c</m:mi>
+		      </m:msub>
+		    </m:ci> 
+		  </m:math>?
+		</item>
+		<item>
+		  RU Electronics proposes to counteract jamming by
+		  using a different modulation scheme.  The scheme's
+		  transmitted signal has the form 
+		  <m:math>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>A</m:mi>
+			  <m:mi>T</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:cn>1</m:cn>
+			<m:apply>
+			  <m:ci type="fn">m</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:ci type="fn">c</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>		      
+		    </m:apply>
+		  </m:math>
+		  where 
+		  <m:math>
+		    <m:apply>
+		      <m:ci type="fn">c</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>	
+		  </m:math>
+		  is a periodic carrier signal (period 
+		  <m:math>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>f</m:mi>
+			  <m:mi>c</m:mi>
+			</m:msub>
+		      </m:ci> 
+		    </m:apply>
+		  </m:math>) having the 
+		  <link target-id="f2fig" strength="3">
+		    indicated waveform </link>.  What is the spectrum
+		  of the transmitted signal with the proposed scheme?
+		  Assume the message bandwidth
+		  <m:math><m:ci>W</m:ci></m:math> is much less than
+		  the fundamental carrier frequency
+		  <m:math>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>c</m:mi>
+		      </m:msub>
+		    </m:ci> 
+		  </m:math>.
+		</item>
+		<item>
+		  The jammer, unaware of the change, is transmitting
+		  with a carrier frequency of 
+		  <m:math>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>f</m:mi>
+			<m:mi>c</m:mi>
+		      </m:msub>
+		    </m:ci> 
+		  </m:math>,
+		  while the receiver tunes a standard AM receiver to a
+		  harmonic of the carrier frequency.  What is the
+		  signal-to-noise ratio of the receiver tuned to the
+		  harmonic having the largest power that does not
+		  contain the jammer?
+		</item>
+	      </list>
+	    </para>
+	    
+	    <figure id="f2fig">
+	      <media id="id1481822" alt="">
+                <image src="../../media/sig46.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig46.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+	    
+	  </section>
+	</q:question>
+      </q:item>
+
+      <!-- Quiz 3.3 2001 -->
+      <q:item id="iq3.3" type="text-response"> <!-- problem 19 -->
+        <q:question>
+	  <section id="sq3.3">
+	    <title>Secret Comunications</title>
+	    <para id="pq3.3">
+	      A system for hiding AM transmissions has the transmitter
+	      randomly switching between two carrier frequencies
+	      <m:math>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math>
+	      and 
+	      <m:math>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>f</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:math>.  "Random switching" means that one carrier
+	      frequency is used for some period of time, switches to
+	      the other for some other period of time, back to the
+	      first, etc.  The receiver knows what the carrier
+	      frequencies are but not when carrier frequency switches
+	      occur.  Consequently, the receiver must be designed to
+	      receive the transmissions regardless of which carrier
+	      frequency is used.  Assume the message signal has
+	      bandwidth <m:math><m:ci>W</m:ci></m:math>.  The channel
+	      adds white noise of spectral height
+	      <m:math>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>N</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:math>.
+
+	      <list id="lq3.3" list-type="enumerated">
+		<item> 
+		  How different should the carrier frequencies be so
+		  that the message could be received?
+		</item>		
+		<item> 
+		  What receiver would you design?
+		</item>
+		<item>
+		  What signal-to-noise ratio for the demodulated
+		  signal does your receiver yield?
+		</item>
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="item6.3">
+        <q:question>
+	  <section id="s3">
+	    <title>AM Stereo</title>
+	    <para id="para6.3">
+	      Stereophonic radio transmits two signals simultaneously
+	      that correspond to what comes out of the left and right
+	      speakers of the receiving radio.  While FM stereo is
+	      commonplace, AM stereo is not, but is much simpler to
+	      understand and analyze.  An amazing aspect of AM stereo
+	      is that both signals are transmitted within the same
+	      bandwidth as used to transmit just one.  Assume the left
+	      and right signals are bandlimited to
+	      <m:math><m:ci>W</m:ci></m:math> Hz.
+
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>A</m:ci>
+		      <m:apply>
+			<m:plus/>
+			<m:cn>1</m:cn>
+			<m:apply>
+			  <m:ci type="fn"><m:msub><m:mi>m</m:mi><m:mi>l</m:mi></m:msub></m:ci> 
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:cos/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>A</m:cn>
+		      <m:apply>
+			<m:ci type="fn"><m:msub><m:mi>m</m:mi><m:mi>r</m:mi></m:msub></m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+
+	      <list id="list6.3" list-type="enumerated">
+		<item>Find the Fourier transform of
+	      
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>.  What is the transmission bandwidth and
+		  how does it compare with that of standard AM?</item>
+	  
+		<item>Let us use a coherent demodulator as the
+		  receiver, shown in <link target-id="fig3" strength="3"/>.  Show that this receiver
+		  indeed works: It produces the left and right signals
+		  separately.</item>
+	  
+		<item>Assume the channel adds white noise to the
+		  transmitted signal. Find the signal-to-noise ratio
+		  of each signal.</item>
+	      </list>
+	    </para>
+	  
+	    <figure id="fig3">
+	      <media id="id1172128177191" alt="">
+                <image src="../../media/sys4.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sys4.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+	  
+	  </section>
+	</q:question>
+      </q:item>
+      
+      <q:item type="text-response" id="item6.4">
+        <q:question>
+	  <section id="s4">
+	    <title>A Novel Communication System</title>
+	    <para id="para6.4">
+	      A clever system designer claims that the <link target-id="dizznods" strength="3">depicted
+              transmitter</link> has, despite its complexity,
+              advantages over the usual amplitude modulation system.
+              The message signal
+	      
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>
+	  
+	      is bandlimited to <m:math><m:ci>W</m:ci></m:math> Hz, and
+	      the carrier frequency
+	  
+
+	  <!-- USES PRESENTATION LANGUAGE (for >> operator) -->
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci><m:mo>≫</m:mo></m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>f</m:mi><m:mi>c</m:mi>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>W</m:ci>
+		</m:apply>
+	      </m:math>.  The channel attenuates the transmitted signal
+	  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>
+	      and adds white noise of spectral height
+	  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:divide/>
+		  <m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:math>.
+	    </para>
+	  
+	    <figure id="dizznods">
+	      <media id="id8756493" alt="">
+                <image src="../../media/sys5.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sys5.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+	    <para id="wutang">
+	      The transfer function 
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+	      </m:math>
+	  
+	      is given by
+	      <m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">H</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		  <m:piecewise>
+		    <m:piece>
+		      <m:imaginaryi/>
+		      <m:apply>
+			<m:lt/>
+			<m:ci>f</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:piece>
+		    <m:piece>
+		      <m:apply>
+			<m:minus/>
+			<m:imaginaryi/>
+		      </m:apply>		      
+		      <m:apply>
+			<m:gt/>
+			<m:ci>f</m:ci>
+			<m:cn>0</m:cn>
+		      </m:apply>
+		    </m:piece>
+		  </m:piecewise>
+		</m:apply>
+	      </m:math>
+	  
+	      <list id="list6.4" list-type="enumerated">
+		<item>Find an expression for the spectrum of
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">x</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>. 
+		  Sketch your answer. </item>
+	  
+		<item>Show that the usual coherent receiver
+		  demodulates this signal.</item>
+		
+		<item>Find the signal-to-noise ratio that results
+		  when this receiver is used.</item>
+		
+		<item>Find a superior receiver (one that yields a
+		  better signal-to-noise ratio), and analyze its
+		  performance.</item>
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="item6.5">
+        <q:question>
+	  <section id="s5">
+	    <title>Multi-Tone Digital Communication</title>
+	    <para id="para6.5">
+	      In a so-called multi-tone system, several bits are
+	      gathered together and transmitted simultaneously on
+	      different carrier frequencies during a
+	      <m:math><m:ci>T</m:ci></m:math> second interval.  For
+	      example, <m:math><m:ci>B</m:ci></m:math> bits would be
+	      transmitted according to
+	      <equation id="eqnp10">
+		<m:math>
+		  <m:apply>
+		    <m:forall/>
+		    <m:bvar><m:ci>t</m:ci></m:bvar>
+		    <m:condition>
+		      <m:apply>
+			<m:lt/>
+			<m:apply>
+			  <m:leq/>
+			  <m:cn>0</m:cn>
+			  <m:ci>t</m:ci>
+			</m:apply>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:condition>
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">x</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:ci>A</m:ci>
+			<m:apply>
+			  <m:sum/>
+			  <m:bvar><m:ci>k</m:ci></m:bvar>
+			  <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+			  <m:uplimit>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>B</m:ci>
+			      <m:cn>1</m:cn>
+			    </m:apply>
+			  </m:uplimit>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci><m:msub><m:mi>b</m:mi><m:mi>k</m:mi></m:msub></m:ci>
+			    <m:apply>
+			      <m:sin/>
+			      <m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+				<m:apply>
+				  <m:plus/>
+				  <m:ci>k</m:ci>
+				  <m:cn>1</m:cn>
+				</m:apply>
+				<m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:math>
+	      </equation>
+	  
+	      Here, 
+	      <m:math display="inline">
+		<m:ci><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:ci>
+	      </m:math>
+	      is the frequency offset for each bit and it is
+	      harmonically related to the bit interval
+	      <m:math><m:ci>T</m:ci></m:math>.  The value of
+	      <m:math display="inline">
+		<m:ci><m:msub><m:mi>b</m:mi><m:mi>k</m:mi></m:msub></m:ci>
+	      </m:math>
+	      is either
+	      <m:math><m:apply><m:minus/><m:cn>1</m:cn></m:apply></m:math> or
+	      <m:math><m:apply><m:plus/><m:cn>1</m:cn></m:apply></m:math>.
+	  
+	      <list id="list6.5" list-type="enumerated">
+		<item>Find a receiver for this transmission scheme.</item>
+	    
+		<item>An ELEC 241 almuni likes digital systems so much
+		  that he decides to produce a discrete-time version.  He
+		  samples the received signal (sampling interval
+		  
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:ci><m:msub><m:mi>T</m:mi><m:mi>s</m:mi></m:msub></m:ci>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>T</m:ci>
+			<m:ci>N</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>).  How should
+		  <m:math><m:ci>N</m:ci></m:math> be related to
+		  <m:math><m:ci>B</m:ci></m:math>, the number of
+		  simultaneously transmitted bits?</item>
+
+		<item>The alumni wants to find a simple form for the
+		  receiver so that his software implementation runs as
+		  <emphasis>efficiently</emphasis> as possible.  How
+		  would you recommend he implement the
+		  receiver?</item>
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="item6.6">
+        <q:question>
+	  <section id="s6">
+	    <title>City Radio Channels</title>
+	    <para id="para6.6">
+	      In addition to additive white noise, metropolitan
+	      cellular radio channels also contain multipath: the
+	      attenuated signal and a delayed, further attenuated
+	      signal are received superimposed.  As shown in
+              <link target-id="fig6" strength="3"/>, multipath occurs
+	      because the buildings reflect the signal and the
+	      reflected path length between transmitter and receiver
+	      is longer than the direct path.
+	    </para>
+
+	    <figure id="fig6">
+	      <media id="id2199787" alt="">
+                <image src="../../media/sys6.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sys6.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+	    
+	    <list id="list6.6" list-type="enumerated">
+	      <item>Assume that the length of the direct path is
+		<m:math><m:ci>d</m:ci></m:math> meters and the
+		reflected path is 1.5 times as long.  What is the
+		model for the channel, including the multipath and the
+		additive noise?</item>
+
+	      <item>Assume <m:math><m:ci>d</m:ci></m:math> is 1 km.
+		Find and sketch the magnitude of the transfer function
+		for the multipath component of the channel.  How would
+		you characterize this transfer function?</item>
+
+	      <item>Would the multipath affect AM radio?  If not, why
+		not; if so, how so?  Would analog cellular telephone,
+		which operates at much higher carrier frequencies (800
+		MHz vs. 1 MHz for radio), be affected or not?  Analog
+		cellular telephone uses amplitude modulation to
+		transmit voice.</item>
+		
+	      <item>How would the usual AM receiver be modified to
+		minimize multipath effects?  Express your modified
+		receiver as a block diagram.</item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+      
+      <q:item type="text-response" id="item6.7">
+        <q:question>
+	  <section id="s7">
+	    <title>Downlink Signal Sets</title>
+	    <para id="para6.7">
+	      In digital cellular telephone systems, the base station
+	      (transmitter) needs to relay different voice signals to
+	      several telephones at the same time.  Rather than send
+	      signals at different frequencies, a clever Rice engineer
+	      suggests using a different signal set for each data
+	      stream.  For example, for two simultaneous data streams,
+	      she suggests BPSK signal sets that have the <link target-id="fig7" strength="3">depicted basic
+	      signals</link>.
+	    </para>
+
+	    <figure id="fig7">
+	      <media id="id1172135408173" alt="">
+                <image src="../../media/sig12.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig12.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+	    
+	    <para id="fortheloveofgodivebeenhereforever">
+	      Thus, bits are represented in data stream 1 by
+	      
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn"><m:msub><m:mi>s</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>
+	      and
+	  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>s</m:mi><m:mn>1</m:mn> </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      and in data stream 2 by
+	  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn"><m:msub><m:mi>s</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>
+	      and
+	  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub><m:mi>s</m:mi><m:mn>2</m:mn> </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:math>, each of which are modulated by 900 MHz
+	      carrier.  The transmitter sends the two data streams so
+	      that their bit intervals align.  Each receiver uses a
+	      matched filter for its receiver.  The requirement is
+	      that each receiver <emphasis>not</emphasis> receive the
+	      other's bit stream.
+	  
+	      <list id="list6.7" list-type="enumerated">
+		<item>What is the block diagram describing the proposed
+		  system?</item>
+
+		<item>What is the transmission bandwidth required by
+		  the proposed system?</item>
+
+		<item>Will the proposal work?  Does the fact that the
+		  two data streams are transmitted in the same
+		  bandwidth at the same time mean that each receiver's
+		  performance is affected?  Can each bit stream be
+		  received without interference from the other?</item>
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="item6.8">
+        <q:question>
+	  <section id="s8">
+	    <title>Mixed Analog and Digital Transmission</title>
+	    <para id="para6.8">
+	      A signal
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>
+	      is transmitted using amplitude modulation in the usual
+	      way.  The signal has bandwidth
+	      <m:math><m:ci>W</m:ci></m:math> Hz, and the carrier
+	      frequency is
+
+	      <m:math display="inline">
+		<m:ci><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:ci>
+	      </m:math>.  In addition to sending this analog signal,
+	      the transmitter also wants to send ASCII text in an
+	      <term>auxiliary band</term> that lies slightly above the
+	      analog transmission band.  Using an 8-bit representation
+	      of the characters and a simple baseband BPSK signal set
+	      (the constant signal +1 corresponds to a 0, the constant
+	      -1 to a 1), the data signal
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">d</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> representing the text is transmitted as the
+	      same time as the analog signal
+	  
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">m</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>.  The transmission signal spectrum is as <link target-id="fig8" strength="3">shown</link>, and has a
+		total bandwidth <m:math><m:ci>B</m:ci></m:math>.
+	    </para>
+
+	    <figure id="fig8">
+	      <media id="id1172135612103" alt="">
+                <image src="../../media/spectrum14.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/spectrum14.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+	  
+	    <list id="list6.8" list-type="enumerated">
+	      <item>Write an expression for the time-domain version
+		of the transmitted signal in terms of
+	      
+		<m:math display="inline">
+		  <m:apply>
+		    <m:ci type="fn">m</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>
+		and the digital signal  
+		<m:math display="inline">
+		  <m:apply>
+		    <m:ci type="fn">d</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>.</item>
+	      <item>What is the maximum datarate the scheme can
+		provide in terms of the available bandwidth?</item>
+	      <item>Find a receiver that yields both the analog
+		signal and the bit stream.</item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+      
+      
+      <q:item id="iqq3.3" type="text-response">
+        <q:question>
+	  <section id="sqq3.3">
+	    <title>Digital Stereo</title>
+
+	    <para id="pqq3.3">
+	      Just as with analog communication, it should be possible
+	      to send two signals simultaneously over a digital
+	      channel. Assume you have two CD-quality signals (each
+	      sampled at 44.1 kHz with 16 bits/sample). One
+	      suggested transmission scheme is to use a quadrature
+	      BPSK scheme. If
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn"><m:msup>
+		      <m:mi>b</m:mi>
+		      <m:mfenced>
+			<m:mn>1</m:mn>
+		      </m:mfenced>
+		    </m:msup></m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>
+	      and
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn"><m:msup>
+		      <m:mi>b</m:mi>
+		      <m:mfenced>
+			<m:mn>2</m:mn>
+		      </m:mfenced>
+		    </m:msup></m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math> each represent a bit stream, the transmitted
+	      signal has the form
+	      <m:math display="block">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">x</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>A</m:ci>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar>
+			<m:ci>n</m:ci>
+		      </m:bvar>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:ci type="fn"><m:msup>
+				<m:mi>b</m:mi>
+				<m:mfenced>
+				  <m:mn>1</m:mn>
+				</m:mfenced>
+			      </m:msup></m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:sin/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:pi/>
+			      <m:ci><m:msub>
+				  <m:mi>f</m:mi>
+				  <m:mi>c</m:mi>
+				</m:msub></m:ci>
+			      <m:apply>
+				<m:minus/>
+				<m:ci>t</m:ci>
+				<m:apply>
+				  <m:times/>
+				  <m:ci>n</m:ci>
+				  <m:ci>T</m:ci>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci type="fn">p</m:ci>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>t</m:ci>
+			      <m:apply>
+				<m:times/>
+				<m:ci>n</m:ci>
+				<m:ci>T</m:ci>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:ci type="fn"><m:msup>
+				<m:mi>b</m:mi>
+				<m:mfenced>
+				  <m:mn>2</m:mn>
+				</m:mfenced>
+			      </m:msup></m:ci>
+			    <m:ci>n</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:cos/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:pi/>
+			      <m:ci><m:msub>
+				  <m:mi>f</m:mi>
+				  <m:mi>c</m:mi>
+				</m:msub></m:ci>
+			      <m:apply>
+				<m:minus/>
+				<m:ci>t</m:ci>
+				<m:apply>
+				  <m:times/>
+				  <m:ci>n</m:ci>
+				  <m:ci>T</m:ci>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			  <m:apply>
+			    <m:ci type="fn">p</m:ci>
+			    <m:apply>
+			      <m:minus/>
+			      <m:ci>t</m:ci>
+			      <m:apply>
+				<m:times/>
+				<m:ci>n</m:ci>
+				<m:ci>T</m:ci>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>
+	      where
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">p</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> is a unit-amplitude pulse having duration
+	      <m:math><m:ci>T</m:ci></m:math> and
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn"><m:msup>
+		      <m:mi>b</m:mi>
+		      <m:mfenced>
+			<m:mn>1</m:mn>
+		      </m:mfenced>
+		    </m:msup></m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>,
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn"><m:msup>
+		      <m:mi>b</m:mi>
+		      <m:mfenced>
+			<m:mn>2</m:mn>
+		      </m:mfenced>
+		    </m:msup></m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:math>
+	      equal either +1 or -1 according to the bit being
+	      transmitted for each signal. The channel adds white
+	      noise and attenuates the transmitted signal.
+	    </para>
+
+	    <list id="lqq3.3" list-type="enumerated">
+	      <item>What value would you choose for the carrier frequency
+		<m:math>
+		  <m:ci><m:msub>
+		      <m:mi>f</m:mi>
+		      <m:mi>c</m:mi>
+		    </m:msub></m:ci>
+		</m:math>?</item>
+
+	      <item>What is the transmission bandwidth?</item>
+
+	      <item>What receiver would you design that would yield
+	      both bit streams?
+	      </item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="item6.9">
+        <q:question>
+	  <section id="s6.9">
+	    <title>Digital and Analog Speech Communication</title>
+	    <para id="para6.9">
+	      Suppose we transmit speech signals over comparable
+	      digital and analog channels.  We want to compare the
+	      resulting quality of the received signals.  Assume the
+	      transmitters use the same power, and the channels
+	      introduce the same attenuation and additive white noise.
+	      Assume the speech signal has a 4 kHz bandwidth and, in
+	      the digital case, is sampled at an 8 kHz rate with
+	      eight-bit A/D conversion.  Assume simple binary source
+	      coding and a modulated BPSK transmission scheme.
+	      
+	      <list id="list6.9" list-type="enumerated">
+		<item>
+		  What is the transmission bandwidth of the analog
+		  (AM) and digital schemes?</item>
+		<item>
+		  Assume the speech signal's amplitude has a magnitude
+		  less than one.  What is maximum amplitude
+		  quantization error introduced by the A/D
+		  converter?</item>
+		<item>
+		  In the digital case, each bit in quantized speech
+		  sample is received in error with probability
+		  
+		  <m:math display="inline">
+		    <m:ci><m:msub><m:mi>p</m:mi><m:mi>e</m:mi></m:msub></m:ci> 
+		  </m:math>
+		  that depends on signal-to-noise ratio
+	  
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub></m:ci> 
+		      <m:ci><m:msub><m:mi>N</m:mi><m:mn>0</m:mn></m:msub></m:ci> 
+		    </m:apply>
+		  </m:math>.  However, errors in each bit have a
+		  different impact on the error in the reconstructed
+		  speech sample.  Find the mean-squared error between
+		  the transmitted and received amplitude.</item>
+
+		<item>In the digital case, the recovered speech signal can
+		  be considered to have two noise sources added to each
+		  sample's true value: One is the A/D amplitude quantization
+		  noise and the second is due to channel errors.  Because
+		  these are separate, the total noise power equals the sum
+		  of these two.  What is the signal-to-noise ratio of the
+		  received speech signal as a function of
+		  <m:math display="inline">
+		    <m:ci><m:msub><m:mi>p</m:mi><m:mi>e</m:mi></m:msub></m:ci>
+		  </m:math>?
+		</item>
+		<item>Compute and plot the received signal's
+		  signal-to-noise ratio for the two transmission
+		  schemes as a function of channel signal-to-noise
+		  ratio.</item>
+		
+		<item>Compare and evaluate these systems.</item>
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+      
+      <q:item type="text-response" id="item6.13">
+        <q:question>
+	  <section id="s13">
+	    <title>Source Compression</title>
+	    <para id="para6.13">
+	      Consider the following 5-letter source.
+	    </para>
+
+	    <table id="table6.10" frame="all" summary="">
+	      <tgroup cols="2" align="center" colsep="1" rowsep="1">
+		<thead valign="top">
+		  <row>
+		    <entry>
+		      Letter
+		    </entry>
+		    <entry>
+		      Probability
+		    </entry>
+		  </row>
+		</thead>
+		<tbody valign="top">
+		  <row>
+		    <entry>
+		      a
+		    </entry>
+		    <entry>
+		      0.5
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      b
+		    </entry>
+		    <entry>
+		      0.25
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      c
+		    </entry>
+		    <entry>
+		      0.125
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      d
+		    </entry>
+		    <entry>
+		      0.0625
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      e
+		    </entry>
+		    <entry>
+		      0.0625
+		    </entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </table>
+	    
+	    <list id="list6.10" list-type="enumerated">
+	      <item>Find this source's entropy.</item> 
+
+	      <item>Show that the simple binary coding is
+		inefficient.</item>
+	      
+	      <item>Find an unequal-length codebook for this sequence
+		that satisfies the Source Coding Theorem.  Does your
+		code achieve the entropy limit?</item>
+
+	      <item>How much more efficient is this code than the
+		simple binary code?</item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="i6.14">
+        <q:question>
+	  <section id="s14">
+	    <title>Source Compression</title>
+	    <para id="para6.14">
+	      Consider the following 5-letter source.
+	    </para>
+	    <table id="table6.11" frame="all" summary="">
+	      <tgroup cols="2" align="center" colsep="1" rowsep="1">
+		<thead valign="top">
+		  <row>
+		    <entry>
+		      Letter
+		    </entry>
+		    <entry>
+		      Probability
+		    </entry>
+		  </row>
+		</thead>
+		<tbody valign="top">
+		  <row>
+		    <entry>
+		      a
+		    </entry>
+		    <entry>
+		      0.4
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      b
+		    </entry>
+		    <entry>
+		      0.2
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      c
+		    </entry>
+		    <entry>
+		      0.15
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      d
+		    </entry>
+		    <entry>
+		      0.15
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      e
+		    </entry>
+		    <entry>
+		      0.1
+		    </entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </table>
+	    
+	    <list id="list6.11" list-type="enumerated">
+	      <item>Find this source's entropy.</item>
+	      <item>Show that the simple binary coding is
+		inefficient.</item>
+	      <item>Find the Huffman code for this source.
+		What is its average code length?</item>
+	    </list>
+	  </section>
+	</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="item6.15">
+        <q:question>
+	  <section id="s15">
+	    <title>Speech Compression</title>
+	    <para id="para6.15"> When we sample a signal, such as
+	      speech, we quantize the signal's amplitude to a set of
+	      integers.  For a <m:math><m:ci>b</m:ci></m:math>-bit
+	      converter, signal amplitudes are represented by
+          
+	      <m:math display="inline">
+		<m:apply>
+		  <m:power/>
+		  <m:cn>2</m:cn>
+		  <m:ci>b</m:ci>
+		</m:apply>
+	      </m:math>
+	      integers.  Although these integers could be represented
+	      by a binary code for digital transmission, we should
+	      consider whether a Huffman coding would be more
+	      efficient.
+	      
+	      <list id="list6.12" list-type="enumerated">
+		<item>Load into Matlab the segment of speech contained
+	      in <code>y.mat</code>.  Its sampled values lie in the
+	      interval (-1, 1).  To simulate a 3-bit converter, we use
+	      Matlab's round function to create quantized amplitudes
+	      corresponding to the integers <code>[0 1 2 3 4 5 6
+	      7]</code>.
+	  
+		  <list id="sublist1">
+                  <item>
+                    <code>
+		    y_quant = round(3.5*y + 3.5);
+		  </code>
+                  </item>
+                  </list>
+
+	      Find the relative frequency of occurrence of quantized
+	      amplitude values.  The following Matlab program computes
+	      the number of times each quantized value occurs.
+
+	      <list id="sublist2">
+		<item>
+		  <code>
+		    for n=0:7;
+		    count(n+1) = sum(y_quant == n);
+		    end;
+		  </code>
+		</item>
+	      </list>
+
+	      Find the entropy of this source. 
+	    </item>
+	    <item>Find the Huffman code for this source.  How
+	      would you characterize this source code in
+	      words?</item>
+	    <item>How many fewer bits would be used in
+	      transmitting this speech segment with your Huffman
+	      code in comparison to simple binary coding?</item>
+	  </list>
+	</para>
+</section>
+</q:question>
+      </q:item>
+
+      <q:item type="text-response" id="item6.16">
+        <q:question>
+	  <section id="s16">
+	    <title>Digital Communication</title>
+	    <para id="para6.16">
+	      In a digital cellular system, a signal bandlimited to 5
+	      kHz is sampled with a two-bit A/D converter at its
+	      Nyquist frequency.  The sample values are found to have
+	      the shown relative frequencies.
+	    </para>
+	    
+	    <table id="table6.13" frame="all" summary="">
+	      <tgroup cols="2" align="left" colsep="1" rowsep="1">
+		<thead valign="top">
+		  <row>
+		    <entry>
+		      Sample
+		      Value
+		    </entry>
+		    <entry>
+		      Probability
+		    </entry>
+		  </row>
+		</thead>
+		<tbody valign="top">
+		  <row>
+		    <entry>
+		      0
+		    </entry>
+		    <entry>
+		      0.15
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      1
+		    </entry>
+		    <entry>
+		      0.35
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      2
+		    </entry>
+		    <entry>
+		      0.3
+		    </entry>
+		  </row>
+		  <row>
+		    <entry>
+		      3
+		    </entry>
+		    <entry>
+		      0.2
+		    </entry>
+		  </row>
+		</tbody>
+	      </tgroup>
+	    </table>
+	<para id="whyme"> We send the bit stream consisting of
+	  Huffman-coded samples using one of the two <link target-id="fig12" strength="3">depicted signal sets</link>.
+	</para>
+
+	<figure id="fig12">
+	  <media id="id1172125515073" alt="">
+            <image src="../../media/sig11.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/sig11.eps" mime-type="application/postscript"/>
+          </media>
+	</figure>
+	    
+	<list id="list6.12andahalf" list-type="enumerated">
+	  <item>What is the datarate of the compressed
+	    source?</item> 
+
+	  <item>Which choice of signal set maximizes the
+	    communication system's performance?</item>
+	  
+	  <item>With no error-correcting coding, what
+	    signal-to-noise ratio would be needed for your chosen
+	    signal set to guarantee that the bit error probability
+	    will not exceed
+		
+	    <m:math display="inline">
+	      <m:apply>
+		<m:power/>
+		<m:cn>10</m:cn>
+		<m:cn>-3</m:cn>
+	      </m:apply>
+	    </m:math>?
+
+	    If the receiver moves twice as far from the transmitter
+	    (relative to the distance at which the
+	  
+	    <m:math display="inline">
+	      <m:apply>
+		<m:power/>
+		<m:cn>10</m:cn>
+		<m:cn>-3</m:cn>
+	      </m:apply>
+	    </m:math>
+	    error rate was obtained), how does the performance change?
+	    </item>
+	</list>
+      </section>
+    </q:question>	
+  </q:item>
+
+  <q:item type="text-response" id="item6.17a">
+    <q:question>
+      <section id="s17a">
+	<title>Signal Compression</title>
+	<para id="para6.17a">
+	  Letters drawn from a four-symbol alphabet have the
+	  indicated probabilities.
+	</para>
+
+	<table id="table6.17a" frame="all" summary="">
+	  <tgroup cols="2" align="left" colsep="1" rowsep="1">
+	    <thead valign="top">
+	      <row>
+		<entry>
+		  Letter
+		</entry>
+		<entry>
+		  Probability
+		</entry>
+	      </row>
+	    </thead>
+	    <tbody valign="top">
+	      <row>
+		<entry>
+		  a
+		</entry>
+		<entry>
+		  1/3
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  b
+		</entry>
+		<entry>
+		  1/3
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  c
+		</entry>
+		<entry>
+		  1/4
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  d
+		</entry>
+		<entry>
+		  1/12
+		</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>  
+	    
+	<list id="list6.17a" list-type="enumerated">
+	  <item>What is the average number of bits necessary to
+	    represent this alphabet?</item>
+	  
+	  <item>Using a simple binary code for this alphabet, a
+	    two-bit block of data bits naturally emerges.  Find an
+	    error correcting code for two-bit data blocks that
+	    corrects all single-bit errors.</item>
+	  
+	  <item>How would you modify your code so that the
+	    probability of the letter
+	    <m:math><m:ci>a</m:ci></m:math> being confused with the
+	    letter <m:math><m:ci>d</m:ci></m:math> is minimized?  If
+	    so, what is your new code; if not, demonstrate that this
+	    goal cannot be achieved.</item>
+	</list>
+	      
+      </section>
+    </q:question>	
+  </q:item>
+
+  <q:item type="text-response" id="item6.17">
+    <q:question>
+      <section id="s17">
+	<title>Universal Product Code</title>
+	<para id="para6.17">
+	  The Universal Product Code (UPC), often known as a bar
+	  code, labels virtually every sold good.  An
+	  <link target-id="fig17" strength="3">example</link> of a
+	  portion of the code is shown.
+	</para>
+
+	<figure id="fig17">
+	  <media id="id1172131045455" alt="">
+            <image src="../../media/sig37.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/sig37.eps" mime-type="application/postscript"/>
+          </media>
+	</figure>
+
+	<para id="barq">
+	  Here a sequence of black and white bars, each having width
+	  <m:math><m:ci>d</m:ci></m:math>, presents an 11-digit number
+	  (consisting of decimal digits) that uniquely identifies the
+	  product.  In retail stores, laser scanners read this code,
+	  and after accessing a database of prices, enter the price
+	  into the cash register.
+	      
+	  <list id="list6.14" list-type="enumerated">
+	    <item>How many bars must be used to represent a single
+	      digit?</item> 
+	    
+	    <item>A complication of the laser scanning system is that
+	      the bar code must be read either forwards or backwards.
+	      Now how many bars are needed to represent each
+	      digit?</item>
+
+	    <item>What is the probability that the 11-digit code is
+	      read correctly if the probability of reading a single
+	      bit incorrectly is
+		  
+	      <m:math display="inline">
+		<m:ci><m:msub><m:mi>p</m:mi><m:mi>e</m:mi></m:msub></m:ci> 
+	      </m:math>?
+	    </item>
+	  
+	    <item>How many error correcting bars would need to be
+	      present so that any single bar error occurring in the
+	      11-digit code can be corrected?</item>
+	  </list>
+	</para>
+      </section>
+    </q:question>
+  </q:item>
+
+  <q:item type="text-response" id="item6.18">
+    <q:question>
+      <section id="s18">
+	<title>Error Correcting Codes</title>
+	<para id="para6.18">
+	  A code maps pairs of information bits into codewords of
+	  length 5 as follows.</para>
+
+	<table id="table6.15" frame="all" summary="">
+	  <tgroup cols="2" align="center" colsep="1" rowsep="1">
+	    <thead valign="top">
+	      <row>
+		<entry>
+		  Data
+		</entry>
+		<entry>
+		  Codeword
+		</entry>
+	      </row>
+	    </thead>
+	    <tbody valign="top">
+	      <row>
+		<entry>
+		  00
+		</entry>
+		<entry>
+		  00000
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  01
+		</entry>
+		<entry>
+		  01101
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  10
+		</entry>
+		<entry>
+		  10111
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  11
+		</entry>
+		<entry>
+		  11010
+		</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+	    
+	<list id="list6.18" list-type="enumerated">
+	  <item>What is this code's efficiency?</item> 
+
+	      <item>Find the generator matrix <m:math><m:ci type="matrix">G</m:ci></m:math> and parity-check
+	        matrix <m:math><m:ci type="matrix">H</m:ci></m:math>
+	        for this code.</item>
+	  
+	  <item>Give the decoding table for this code.  How many
+	    patterns of 1, 2, and 3 errors are correctly
+	    decoded?</item> <item>What is the block error
+	    probability (the probability of any number of errors
+	    occurring in the decoded codeword)?</item>
+          
+        </list>
+      </section>
+    </q:question>
+  </q:item>
+
+  <q:item type="text-response" id="digcomm1">
+    <q:question>
+      <section id="digcomm1s1">
+	<title>Digital Communication</title>
+	<para id="digcomm1p1">
+	A digital source produces sequences of nine letters with the following probabilities.
+	</para>
+	
+	<table id="digcomm1tab1" frame="all" summary="">
+	  <tgroup cols="10" align="center" colsep="1" rowsep="1">
+	    <tbody>
+	      <row>
+		    <entry>letter</entry>
+		    <entry>a</entry>
+		    <entry>b</entry>
+		    <entry>c</entry>
+		    <entry>d</entry>
+		    <entry>e</entry>
+		    <entry>f</entry>
+		    <entry>g</entry>
+		    <entry>h</entry>
+		    <entry>i</entry>
+		  </row>
+		  <row>
+		    <entry>probability</entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>4</m:cn></m:apply></m:math></entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>8</m:cn></m:apply></m:math></entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>8</m:cn></m:apply></m:math></entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>8</m:cn></m:apply></m:math></entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>8</m:cn></m:apply></m:math></entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>16</m:cn></m:apply></m:math></entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>16</m:cn></m:apply></m:math></entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>16</m:cn></m:apply></m:math></entry>
+		    <entry><m:math><m:apply><m:divide/><m:cn>1</m:cn><m:cn>16</m:cn></m:apply></m:math></entry>
+		  </row>
+		</tbody>
+      </tgroup>
+	</table>
+	
+	<list id="digcommparts" list-type="enumerated">
+	  <item>
+	    Find a Huffman code that compresses this source.
+	    How does the resulting code compare with the best possible code?
+	  </item>
+	  
+	  <item>
+	    A clever engineer proposes the following (6,3) code to correct errors after transmission through a digital channel.
+        <table id="digcomm1code" frame="none" summary="">
+          <tgroup cols="2" align="left" colsep="0" rowsep="0">
+            <tbody>
+              <row>
+                <entry>
+                <m:math>
+                  <m:apply><m:eq/>
+                    <m:ci><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                    <m:ci><m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                  </m:apply>
+                </m:math>
+                </entry>
+                <entry>
+                <m:math>
+                  <m:apply><m:eq/>
+                    <m:ci><m:msub><m:mi>c</m:mi><m:mn>4</m:mn></m:msub></m:ci>
+                    <m:apply><m:xor/>
+                      <m:ci><m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                      <m:ci><m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                      <m:ci><m:msub><m:mi>d</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+                    </m:apply>
+                  </m:apply>
+                </m:math>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                <m:math>
+                  <m:apply><m:eq/>
+                    <m:ci><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                    <m:ci><m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                  </m:apply>
+                </m:math>
+                </entry>
+                <entry>
+                <m:math>
+                  <m:apply><m:eq/>
+                    <m:ci><m:msub><m:mi>c</m:mi><m:mn>5</m:mn></m:msub></m:ci>
+                    <m:apply><m:xor/>
+                      <m:ci><m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+                      <m:ci><m:msub><m:mi>d</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+                    </m:apply>
+                  </m:apply>
+                </m:math>
+                </entry>
+              </row>
+              <row>
+                <entry>
+                <m:math>
+                  <m:apply><m:eq/>
+                    <m:ci><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+                    <m:ci><m:msub><m:mi>d</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+                  </m:apply>
+                </m:math>
+                </entry>
+                <entry>
+                <m:math>
+                  <m:apply><m:eq/>
+                    <m:ci><m:msub><m:mi>c</m:mi><m:mn>6</m:mn></m:msub></m:ci>
+                    <m:ci><m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+                  </m:apply>
+                </m:math>
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        What is the error correction capability of this code?
+	  </item>
+	  
+	  <item>
+	  The channel's bit error probability is 1/8.
+	  What kind of code should be used to transmit data over this channel?
+	  </item>
+	</list>
+	</section>
+	</q:question>
+   </q:item>
+
+
+  <q:item type="text-response" id="item6.19">
+    <q:question>
+      <section id="s19">
+	<title>Overly Designed Error Correction Codes</title>
+	<para id="para6.19">
+	  An Aggie engineer wants not only to have codewords for his
+	  data, but also to hide the information from Rice engineers
+	  (no fear of the UT engineers).  He decides to represent
+	  3-bit data with 6-bit codewords in which none of the data
+	  bits appear explicitly.
+	      
+	  <table id="codetab" frame="none" summary="">
+	    <tgroup cols="2" align="left" colsep="0" rowsep="0">
+	      <tbody>
+	        <row>
+	          <entry>
+	            <m:math>
+	              <m:apply><m:eq/>
+	                <m:ci><m:msub><m:mi>c</m:mi><m:mn>1</m:mn></m:msub></m:ci> 
+	                <m:apply><m:xor/>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	                </m:apply>
+	              </m:apply>
+	            </m:math>
+	          </entry>
+	          
+	          <entry>
+	          	<m:math>
+	              <m:apply><m:eq/>
+	                <m:ci><m:msub><m:mi>c</m:mi><m:mn>4</m:mn></m:msub></m:ci> 
+	                <m:apply><m:xor/>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+	                </m:apply>
+	              </m:apply>
+	            </m:math>
+	          </entry>
+	        </row>
+	        
+	        <row>
+	          <entry>
+	          	<m:math>
+	              <m:apply><m:eq/>
+	                <m:ci><m:msub><m:mi>c</m:mi><m:mn>2</m:mn></m:msub></m:ci> 
+	                <m:apply><m:xor/>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+	                </m:apply>
+	              </m:apply>
+	            </m:math>
+	          </entry>
+	          
+	          <entry>
+	          	<m:math>
+	              <m:apply><m:eq/>
+	                <m:ci><m:msub><m:mi>c</m:mi><m:mn>5</m:mn></m:msub></m:ci> 
+	                <m:apply><m:xor/>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+	                </m:apply>
+	              </m:apply>
+	            </m:math>
+	          </entry>
+	        </row>
+	        
+	        <row>
+	          <entry>
+	          	<m:math>
+	              <m:apply><m:eq/>
+	                <m:ci><m:msub><m:mi>c</m:mi><m:mn>3</m:mn></m:msub></m:ci> 
+	                <m:apply><m:xor/>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+	                </m:apply>
+	              </m:apply>
+	            </m:math>
+	          </entry>
+	          
+	          <entry>
+	          	<m:math>
+	              <m:apply><m:eq/>
+	                <m:ci><m:msub><m:mi>c</m:mi><m:mn>6</m:mn></m:msub></m:ci> 
+	                <m:apply><m:xor/>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>1</m:mn></m:msub></m:ci>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>2</m:mn></m:msub></m:ci>
+		              <m:ci><m:msub><m:mi>d</m:mi><m:mn>3</m:mn></m:msub></m:ci>
+	                </m:apply>
+	              </m:apply>
+	            </m:math>
+	          </entry>
+	        </row>
+	      </tbody>
+	    </tgroup>
+	  </table>
+	  
+	  <list id="list6.19" list-type="enumerated">
+	    <item>Find the generator matrix <m:math><m:ci type="matrix">G</m:ci></m:math> and parity-check matrix
+	     <m:math><m:ci type="matrix">H</m:ci></m:math> for this
+	     code.</item>
+	  
+	  <item>Find a 
+	  <m:math>
+	    <m:cn>3</m:cn>
+	    <m:mo>×</m:mo>
+	    <m:cn>6</m:cn>
+	  </m:math> matrix that recovers the data bits from the
+	  codeword.</item>
+	  
+	  <item>What is the error correcting capability of the
+	    code?</item>
+	  
+	  </list>
+	</para>
+      </section>
+    </q:question>
+  </q:item>
+
+  <q:item type="text-response" id="item6.20">
+    <q:question>
+      <section id="s20">
+	<title>Error Correction?</title>
+	<para id="para6.20">
+	  It is important to realize that when more transmission
+	  errors than can be corrected, error correction algorithms
+	  believe that a smaller number of errors have occurred and
+	  correct accordingly.  For example, consider a (7,4) Hamming
+	  code having the generator matrix
+	      
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci type="matrix">G</m:ci>
+	      <m:matrix>
+		<m:matrixrow>
+		  <m:cn>1</m:cn><m:cn>0</m:cn><m:cn>0</m:cn><m:cn>0</m:cn>
+		</m:matrixrow>   <m:matrixrow>
+		  <m:cn>0</m:cn><m:cn>1</m:cn><m:cn>0</m:cn><m:cn>0</m:cn>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:cn>0</m:cn><m:cn>0</m:cn><m:cn>1</m:cn><m:cn>0</m:cn>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:cn>0</m:cn><m:cn>0</m:cn><m:cn>0</m:cn><m:cn>1</m:cn>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:cn>1</m:cn><m:cn>1</m:cn><m:cn>1</m:cn><m:cn>0</m:cn>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:cn>0</m:cn><m:cn>1</m:cn><m:cn>1</m:cn><m:cn>1</m:cn>
+		</m:matrixrow>
+		<m:matrixrow>
+		  <m:cn>1</m:cn><m:cn>0</m:cn><m:cn>1</m:cn><m:cn>1</m:cn>
+		</m:matrixrow>
+	      </m:matrix>
+	    </m:apply>
+	  </m:math>
+	  This code corrects all single-bit error, but if a double bit error
+	  occurs, it corrects using a single-bit error correction approach.
+	  
+	  <list id="list6.17" list-type="enumerated">
+	    <item>How many double-bit errors can occur in a
+	      codeword?</item> 
+	    
+	    <item>For each double-bit error pattern, what is the
+	      result of channel decoding?  Express your result as a
+	      binary error sequence for the data bits.</item>
+	  </list>
+	</para>
+      </section>
+    </q:question>
+  </q:item>    
+      
+  <q:item type="text-response" id="item6.21">
+    <q:question>
+      <section id="s21">
+	<title>Selective Error Correction</title>
+	<para id="para6.21">
+	  We have found that digital transmission errors occur with a
+	  probability that remains constant no matter how "important"
+	  the bit may be.  For example, in transmitting digitized
+	  signals, errors occur as frequently for the most significant
+	  bit as they do for the least significant bit.  Yet, the
+	  former errors have a much larger impact on the overall
+	  signal-to-noise ratio than the latter.  Rather than applying
+	  error correction to each sample value, why not concentrate
+	  the error correction on the most important bits?  Assume
+	  that we sample an 8 kHz signal with an 8-bit A/D converter.
+	  We use single-bit error correction on the most significant
+	  four bits and none on the least significant four.  Bits are
+	  transmitted using a modulated BPSK signal set over an
+	  additive white noise channel.
+	      
+	  <list id="list6.18d" list-type="enumerated">
+	    <item>How many error correction bits must be added to
+	      provide single-bit error correction on the most
+	      significant bits?</item> 
+
+	    <item>How large must the signal-to-noise ratio of the
+	      received signal be to insure reliable
+	      communication?</item>
+
+	    <item>Assume that once error correction is applied, only
+	      the least significant 4 bits can be received in error.
+	      How much would the output signal-to-noise ratio improve
+	      using this error correction scheme?</item>
+	  </list>
+	</para>
+      </section>
+    </q:question>
+  </q:item>
+      
+  <q:item type="text-response" id="item6.22">
+    <q:question>
+      <section id="s22">
+	<title>Compact Disk</title>
+	<para id="para6.22">
+	  Errors occur in reading audio compact disks.  Very few
+	  errors are due to noise in the compact disk player; most
+	  occur because of dust and scratches on the disk surface.
+	  Because scratches span several bits, a single-bit error is
+	  rare; several <emphasis>consecutive</emphasis> bits in error
+	  are much more common.  Assume that scratch and dust-induced
+	  errors are four or fewer consecutive bits long.  The audio
+	  CD standard requires 16-bit, 44.1 kHz analog-to-digital
+	  conversion of each channel of the stereo analog signal.
+	      
+	  <list id="list6.19effe" list-type="enumerated">
+	    <item>How many error-correction bits are required to
+	      correct scratch-induced errors for each 16-bit
+	      sample?</item>
+		
+	    <item>Rather than use a code that can correct several
+	      errors in a codeword, a clever 241 engineer proposes
+	      <emphasis>interleaving</emphasis> consecutive coded
+	      samples.  As the <link target-id="curvacious" strength="3">cartoon</link> shows, the bits representing
+	      coded samples are interpersed before they are written on
+	      the CD.  The CD player de-interleaves the coded data,
+	      then performs error-correction. Now, evaluate this
+	      proposed scheme with respect to the non-interleaved
+	      one. </item>
+	  </list>
+	</para>
+	    
+	<figure id="curvacious">
+	  <media id="id2347646" alt="">
+            <image src="../../media/sig43.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/sig43.eps" mime-type="application/postscript"/>
+          </media>
+	</figure>
+	    
+      </section>
+    </q:question>
+  </q:item>
+      
+  <q:item type="text-response" id="item6.23">
+    <q:question>
+      <section id="s23">
+	<title>Communication System Design</title>
+	<para id="para6.23">
+	  RU Communication Systems has been asked to design a
+	  communication system that meets the following requirements.
+	      
+	  <list id="list6.20">
+	    <item>The baseband message signal has a bandwidth of
+	      10 kHz.</item> 
+
+	    <item>The RUCS engineers find that the entropy
+	      <m:math><m:ci>H</m:ci></m:math> of the sampled message
+	      signal depends on how many bits
+	      <m:math><m:ci>b</m:ci></m:math> are used in the A/D
+	      converter (see table below).</item>
+
+	    <item>The signal is to be sent through a noisy channel
+	      having a bandwidth of 25 kHz channel centered at 2 MHz
+	      and a signal-to-noise ration within that band of 10
+	      dB.</item>
+
+	    <item>Once received, the message signal must have a
+	      signal-to-noise ratio of at least 20 dB.</item>
+	  </list>
+	</para>
+
+	<table id="table6.20" frame="all" summary="">
+	  <tgroup cols="2" align="center" colsep="1" rowsep="1">
+	    <thead valign="top">
+	      <row>
+		<entry>
+		  b
+		</entry>
+		<entry>
+		  H
+		</entry>
+	      </row>
+	    </thead>
+	    <tbody valign="top">
+	      <row>
+		<entry>
+		  3
+		</entry>
+		<entry>
+		  2.19
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  4
+		</entry>
+		<entry>
+		  3.25
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  5
+		</entry>
+		<entry>
+		  4.28
+		</entry>
+	      </row>
+	      <row>
+		<entry>
+		  6
+		</entry>
+		<entry>
+		  5.35
+		</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+	<para id="afdasdfasasd">
+	  Can these specifications be met? Justify your answer.  
+	</para>
+      </section>
+    </q:question>
+  </q:item>
+
+  <q:item type="text-response" id="item6.24">
+    <q:question>
+      <section id="s24">
+	<title>HDTV</title>
+	<para id="para6.24">
+	  As HDTV (high-definition television) was being developed,
+	  the FCC restricted this digital system to use in the same
+	  bandwidth (6 MHz) as its analog (AM) counterpart.  HDTV
+	  video is sampled on a
+	      
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>1035</m:cn>
+	      <m:cn>1840</m:cn>
+	    </m:apply>
+	  </m:math> raster at 30 images per second for each of the
+	  three colors.  The least-acceptable picture received by
+	  television sets located at an analog station's broadcast
+	  perimeter has a signal-to-noise ratio of about 10 dB.
+	      
+	  <list id="list6.21" list-type="enumerated">
+	    <item>Using signal-to-noise ratio as the criterion, how
+	      many bits per sample must be used to guarantee that a
+	      high-quality picture, which achieves a signal-to-noise
+	      ratio of 20 dB, can be received by any HDTV set within
+	      the same broadcast region?</item>
+
+	    <item>Assuming the digital television channel has the same
+	      characteristics as an analog one, how much compression
+	      must HDTV systems employ?</item>
+	  </list>
+	</para>
+      </section>
+    </q:question>
+  </q:item>
+
+  <q:item type="text-response" id="item6.25a">
+    <q:question>
+      <section id="s25a">
+	<title>Digital Cellular Telephones</title>
+	<para id="para6.25a">
+	  In designing a digital version of a wireless telephone, you
+	  must first consider certain fundamentals.  First of all, the
+	  quality of the received signal, as measured by the
+	  signal-to-noise ratio, must be at least as good as that
+	  provided by wireline telephones (30 dB) and the message
+	  bandwidth must be the same as wireline telephone.  The
+	  signal-to-noise ratio of the allocated wirelss channel,
+	  which has a 5 kHz bandwidth, measured 100 meters from the
+	  tower is 70 dB.  The desired range for a cell is 1 km.  Can
+	  a digital cellphone system be designed according to these
+	  criteria?
+	</para>
+      </section>
+    </q:question>
+  </q:item>
+
+  <q:item type="text-response" id="item6.25">
+    <q:question>
+      <section id="s25">
+	<title>Optimal Ethernet Random Access Protocols</title>
+	<para id="para6.25">
+	  Assume a population of <m:math><m:ci>N</m:ci></m:math>
+          computers want to transmit information on a random access
+          channel.  The access algorithm works as follows.
+          
+          <list id="list6.22a">
+	    <item>Before transmitting, flip a coin that has
+	      probability <m:math><m:ci>p</m:ci></m:math> of coming up
+	      heads</item>
+
+	    <item>If only one of the <m:math><m:ci>N</m:ci></m:math>
+	      computer's coins comes up heads, its transmission occurs
+	      successfully, and the others must wait until that
+	      transmission is complete and then resume the
+	      algorithm.</item>
+
+	    <item>If none or more than one head comes up, the
+	      <m:math><m:ci>N</m:ci></m:math> computers will either
+	      remain silent (no heads) or a collision will occur (more
+	      than one head).  This unsuccessful transmission
+	      situation will be detected by all computers once the
+	      signals have propagated the length of the cable, and the
+	      algorithm resumes (return to the beginning).</item>
+	  </list>
+          
+          <list id="list6.22b" list-type="enumerated">
+	    <item>What is the optimal probability to use for flipping
+	      the coin?  In other words, what should
+	      <m:math><m:ci>p</m:ci></m:math> be to maximize the
+	      probability that exactly one computer transmits?</item>
+	      <item>What is the probability of one computer
+	      transmitting when this optimal value of
+	      <m:math><m:ci>p</m:ci></m:math> is used as the number of
+	      computers grows to infinity?</item> <item>Using this
+	      optimal probability, what is the average number of coin
+	      flips that will be necessary to resolve the access so
+	      that one computer successfully transmits?</item>
+	      <item>Evaluate this algorithm. Is it realistic? Is it
+	      efficient?</item>
+	  </list>
+        </para>
+      </section>
+    </q:question>
+  </q:item>
+
+  <q:item id="iF5" type="text-response">
+    <q:question>
+      <section id="sF5">
+	<title>Repeaters</title> <para id="pF5">Because signals
+	attenuate with distance from the transmitter,
+	<term>repeaters</term> are frequently employed for both analog
+	and digital communication. For example, let's assume that the
+	transmitter and receiver are
+	  <m:math>
+	    <m:ci>D</m:ci> </m:math> m apart, and a repeater is
+	  positioned halfway between them (<link target-id="figF5" strength="3"/>). What the repater does is amplify its
+	  received signal to exactly cancel the attenuation
+	  encountered along the first leg and to re-transmit the
+	  signal to the ultimate receiver. However, the signal the
+	  repeater receives contains white noise as well as the
+	  transmitted signal. The receiver experiences the same amount
+	  of white noise as the repeater.
+	</para>
+
+	<figure id="figF5">
+	  <media id="id1172128236041" alt="">
+            <image src="../../media/sys35.png" mime-type="image/png"/>
+            <image for="pdf" src="../../media/sys35.eps" mime-type="application/postscript"/>
+          </media>
+	</figure>
+
+	<list id="lF5" list-type="enumerated">
+	  <item>What is the block diagram for this system?</item>
+	  
+	  <item>For an amplitude-modulation communication system, what
+	    is the signal-to-noise ratio of the demodulated signal at
+	    the receiver? Is this better or worse than the
+	    signal-to-noise ratio when no repeater is present?
+	  </item>
+
+	  <item>For digital communication, we must consider the
+	    system's capacity. Is the capacity larger with the
+	    repeater system than without it? If so, when; if not, why
+	    not?
+	  </item>
+	</list>
+      </section>
+    </q:question>
+  </q:item>
+
+
+  <q:item id="speech" type="text-response">
+    <q:question>
+      <section id="speechs1">
+	<title>Designing a Speech Communication System</title>
+	
+	<para id="speechp1">
+	We want to examine both analog and digital communication alternatives for a dedicated speech transmission system.
+	Assume the speech signal has a 5 kHz bandwidth.
+	The wireless link between transmitter and receiver is such that 200 watts of power can be received at a pre-assigned carrier frequency.
+	We have some latitude in choosing the transmission bandwidth, but the noise power added by the channel increases with bandwidth with a proportionality constant of 0.1 watt/kHz.
+	
+	<list id="speechparts" list-type="enumerated">
+	  <item>
+	  Design an analog system for sending speech under this scenario.
+	  What is the received signal-to-noise ratio under these design constraints?
+	  </item>
+	  
+      <item>
+      How many bits must be used in the A/D converter to achieve the same signal-to-noise ratio?
+      </item>
+      
+      <item>
+      Is the bandwidth required by the digital channel to send the samples without error greater or smaller than the analog bandwidth?
+	  </item>
+	</list>
+	</para>
+	</section>
+	</q:question>
+  </q:item>
+
+  <q:item id="dvsa" type="text-response">
+    <q:question>
+      <section id="dvsas1">
+	<title>Digital vs. Analog</title>
+	<para id="dvsap1">
+	You are the Chairman/Chairwoman of the FCC.
+	The frequency band 3 MHz to 3.5 MHz has been allocated for a new “high-quality” AM band.
+	Each station licensed for this band will transmit signals having a bandwidth of 10 kHz, twice the message bandwidth of what current stations can send.
+	</para>
+	
+	<list id="dvsaparts" list-type="enumerated">
+	  <item>
+	  How many stations can be allocated to this band and with what carrier frequencies?
+	  </item>
+	  
+	  <item>
+	  Looking ahead, conversion to digital transmission is not far in the future.
+	  The characteristics of the new digital radio system need to be established and you are the boss!
+	  Detail the characteristics of the analog-to-digital converter that must be used to prevent aliasing and ensure a signal-to-noise ratio of 25 dB.
+	  </item>
+	  
+	  <item>
+	  Without employing compression, how many digital radio stations could be allocated to the band if each station used BPSK modulation?
+	  Evaluate this design approach.
+	  </item>
+	</list>
+    </section>
+    </q:question>
+  </q:item>
+
+
+</q:problemset>
+
+  </content>
+</document>

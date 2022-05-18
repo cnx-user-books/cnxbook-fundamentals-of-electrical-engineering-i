@@ -1,0 +1,529 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>The Diode</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0037</md:content-id>
+  <md:title>The Diode</md:title>
+  <md:abstract>A brief description of a diode and its inner workings.
+</md:abstract>
+  <md:uuid>73737408-b81f-457b-88a7-8ccdddc29291</md:uuid>
+</metadata>
+
+<content>
+    <figure id="diode">
+      <title>Diode</title>
+      <media id="id1165116789225" alt="">
+        <image src="../../media/diode.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/diode.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	<emphasis>v-i</emphasis> relation and schematic symbol for the
+	diode. Here, the diode parameters were room temperature and
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>I</m:mi>
+		<m:mn>0</m:mn>
+              </m:msub>
+            </m:ci>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>1</m:cn>
+	      <m:ci> μA</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </caption>
+    </figure>
+
+    <para id="p01">The resistor, capacitor, and inductor are linear circuit
+      elements in that their <emphasis>v-i</emphasis> relations are
+      linear in the mathematical sense. Voltage and current sources
+      are (technically) nonlinear devices: stated simply, doubling the
+      current through a voltage source does not double the voltage. A
+      more blatant, and very useful, nonlinear circuit element is the
+      diode (<link document="m1004" strength="2">learn more</link>). 
+      Its input-output relation has an exponential form.
+
+      <equation id="eqn01">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">i</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+              <m:ci>
+                <m:msub>
+                  <m:mi>I</m:mi>
+		  <m:mn>0</m:mn>
+                </m:msub>
+              </m:ci>
+              <m:apply>
+                <m:minus/>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>q</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>k</m:ci>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:ci type="fn">v</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:cn>1</m:cn>
+              </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Here, the quantity
+      <m:math>
+	<m:ci>q</m:ci>
+      </m:math>
+      represents the charge of a single electron in coulombs,  
+      <m:math>
+	<m:ci>k</m:ci>
+      </m:math>
+      is Boltzmann's constant, and
+      <m:math>
+	<m:ci>T</m:ci>
+      </m:math>
+      is the diode's temperature in
+      <m:math>
+	<m:ci>K</m:ci>
+      </m:math>. 
+      At room temperature, the ratio   
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:apply>
+            <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>k</m:ci>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	    <m:ci>q</m:ci>
+          </m:apply>
+	    <m:cn>25</m:cn>
+	</m:apply>
+      </m:math> mV. 
+      The constant
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>I</m:mi>
+            <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      is the leakage current, and is usually very small. Viewing this
+      <emphasis>v-i</emphasis> relation in
+      <link target-id="diode" strength="3"/>, 
+      the nonlinearity becomes obvious. When the voltage is positive,
+      current flows easily through the diode. This situation is known
+      as <term>forward biasing</term>. When we apply a negative
+      voltage, the current is quite small, and equals
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>I</m:mi>
+            <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>,
+      known as the <term>leakage</term> or <term>reverse-bias</term>
+      current. A less detailed model for the diode has any positive
+      current flowing through the diode when it is forward biased, and
+      no current when negative biased. Note that the diode's schematic
+      symbol looks like an arrowhead; the direction of current flow
+      corresponds to the direction the arrowhead points.
+    </para><figure id="float1">
+      <title>diode circuit</title>
+      <media id="id1165112437671" alt="">
+        <image src="../../media/diode1.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/diode1.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+
+    <para id="one">Because of the diode's nonlinear nature, we
+      <emphasis>cannot</emphasis> use impedances nor series/parallel
+      combination rules to analyze circuits containing them. The reliable
+      node method can always be used; it only relies on KVL for its
+      application, and KVL is a statement about voltage drops around a
+      closed path <emphasis>regardless</emphasis> of whether the
+      elements are linear or not.  Thus, for this simple circuit we
+      have
+
+      <equation id="eq2">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>R</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>I</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:exp/>
+                  <m:apply>
+                    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>q</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>k</m:ci>
+			<m:ci>T</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>v</m:mi>
+			  <m:mi>in</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>v</m:mi>
+			  <m:mi>out</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      This equation <emphasis>cannot</emphasis> be solved in closed
+      form. We must understand what is going on from basic principles,
+      using computational and graphical aids. As an approximation,
+      when
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      is positive, current flows through the diode so long as the
+      voltage  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>out</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      is smaller than 
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      (so the diode is forward biased). If the source is negative or 
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>out</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      "tries" to be bigger than   
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>,
+      the diode is reverse-biased, and the reverse-bias current flows
+      through the diode. Thus, at this level of analysis, positive
+      input voltages result in positive output voltages with negative
+      ones resulting in
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>v</m:mi>
+	      <m:mi>out</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+              <m:ci>R</m:ci>
+              <m:ci>
+                <m:msub>
+                  <m:mi>I</m:mi>
+                  <m:mn>0</m:mn>
+                </m:msub>
+              </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para><figure id="diode2">
+      <title>diode circuit</title>
+      <media id="id1165114478640" alt="">
+        <image src="../../media/diode2.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/diode2.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>    
+
+                                                            
+    <para id="two">
+      We need to detail the exponential nonlinearity to determine how
+      the circuit distorts the input voltage waveform. We can of
+      course numerically solve <link target-id="float1" strength="2"/> to
+      determine the output voltage when the input is a sinusoid. To
+      learn more, let's express this equation graphically. We plot
+      each term as a function of
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>out</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      for various values of the input voltage   
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>; where they intersect gives us the output voltage. The
+      left side, the current through the output resistor, does not
+      vary itself with
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>, 
+      and thus we have a fixed straight line. As for the right side,
+      which expresses the diode's <emphasis>v-i</emphasis> relation,
+      the point at which the curve crosses the
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>out</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      axis gives us the value of   
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>.
+      Clearly, the two curves will always intersect just once for any
+      value of
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>,
+      and for positive  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      the intersection occurs at a value for   
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>out</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      <emphasis>smaller</emphasis> than   
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>.      
+      This reduction is smaller if the straight line has a shallower
+      slope, which corresponds to using a bigger output resistor. For
+      negative
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>,
+      the diode is reverse-biased and the output voltage equals  
+      <m:math>
+	<m:apply>
+	  <m:minus/>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>R</m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>I</m:mi>
+		<m:mn>0</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <para id="three"> 
+      What utility might this simple circuit have? The diode's
+      nonlinearity cannot be escaped here, and the clearly evident
+      distortion must have some practical application if the circuit
+      were to be useful. This circuit, known as a <term>half-wave
+      rectifier</term>, is present in virtually every AM radio
+      <emphasis>twice</emphasis> and each serves very different
+      functions! We'll learn what functions later.
+    </para>
+
+
+    <figure id="diode3">
+      <title>diode circuit</title>
+      <media id="id1165123140951" alt="">
+        <image src="../../media/diode3.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/diode3.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+
+
+    <para id="oneb"> 
+      Here is a circuit involving a diode that is actually simpler to
+      analyze than the previous one. We know that the current through
+      the resistor must equal that through the diode. Thus, the
+      diode's current is proportional to the input voltage. As the
+      voltage across the diode is related to the logarithm of its
+      current, we see that the input-output relation is
+
+      <equation id="eq1">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>v</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub> 
+	    </m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+                  <m:apply>
+                    <m:times/>
+		    <m:ci>k</m:ci>
+		    <m:ci>T</m:ci>
+                  </m:apply>
+                  <m:ci>q</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:ln/>
+                  <m:apply>
+                    <m:plus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>v</m:mi>
+			  <m:mi>in</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:ci>R</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>I</m:mi>
+			    <m:mn>0</m:mn>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>1</m:cn>
+                  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Clearly, the name <term>logarithmic amplifier</term> is
+      justified for this circuit.
+    </para>
+
+  </content>
+</document>

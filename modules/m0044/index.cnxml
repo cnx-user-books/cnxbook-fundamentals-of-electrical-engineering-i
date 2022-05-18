@@ -1,0 +1,443 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Filtering Periodic Signals</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0044</md:content-id>
+  <md:title>Filtering Periodic Signals</md:title>
+  <md:abstract>This module demonstrates the effect that a time-invariant filter can have on periodic waveforms.</md:abstract>
+  <md:uuid>6ec17c02-61c8-410f-8bb1-56d63bccc18a</md:uuid>
+</metadata>
+
+<content>
+    <para id="introduction">The Fourier series representation of a periodic signal makes it
+      easy to determine how a linear, time-invariant filter reshapes
+      such signals <emphasis>in general</emphasis>.  The fundamental
+      property of a linear system is that its input-output relation
+      obeys superposition:
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">L</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:ci type="fn">L</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:ci type="fn">L</m:ci>
+		<m:apply>
+		  <m:ci type="fn">
+		    <m:msub>
+		      <m:mi>s</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      Because the Fourier series represents a periodic signal as a
+      linear combination of complex exponentials, we can exploit the
+      superposition property.  Furthermore, we found for linear
+      circuits that their output to a complex exponential input is
+      just the frequency response evaluated at the signal's frequency
+      times the complex exponential.  Said mathematically, if
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:exp/>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>k</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply> 
+	</m:apply>
+      </m:math>,
+      then the output   
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">y</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:ci type="fn">H</m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>k</m:ci>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:exp/>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>k</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:ci>T</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply> 
+      </m:math>
+      because 
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>f</m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>k</m:ci>
+	    <m:ci>T</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      Thus, if   
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+      is periodic thereby having a Fourier series, a linear circuit's
+      output to this signal will be the superposition of the output to
+      each component.
+
+      <equation id="output">  
+	<m:math> 
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">y</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:sum/>
+	      <m:bvar>
+		<m:ci>k</m:ci>
+	      </m:bvar>
+	      <m:uplimit>
+		<m:infinity/>
+	      </m:uplimit>
+	      <m:lowlimit>
+		<m:apply>
+		  <m:minus/>
+		  <m:infinity/>
+		</m:apply>
+	      </m:lowlimit>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>c</m:mi>
+		    <m:mi>k</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:ci type="fn">H</m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>k</m:ci>
+		    <m:ci>T</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>k</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:ci>T</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Thus, the output has a Fourier series, which means that it too
+      is periodic. Its Fourier coefficients equal
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>c</m:mi>
+	      <m:mi>k</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:ci type="fn">H</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>k</m:ci>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.
+      <emphasis>To obtain the spectrum of the output, we simply multiply the
+	input spectrum by the frequency response</emphasis>.      
+      The circuit modifies the magnitude and phase of each Fourier
+      coefficient.  Note especially that while the Fourier
+      coefficients do not depend on the signal's period, the circuit's
+      transfer function does depend on frequency, which means that the
+      circuit's output will differ as the period varies.
+    </para><figure id="filter" orient="vertical"><title>Filtering a periodic signal</title><subfigure id="id11250992">
+	<media id="id14032398" alt="">
+          <image src="../../media/sig14.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig14.eps" mime-type="application/postscript"/>
+        </media> 
+	<caption>Periodic pulse signal</caption> 
+      </subfigure> 
+      <subfigure id="id3973627"> 
+	<media id="id14370156" alt="">
+          <image src="../../media/sig16.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/sig16.eps" mime-type="application/postscript"/>
+        </media>
+	<caption>
+	  Top plots show the pulse signal's spectrum for various
+	  cutoff frequencies.  Bottom plots show the filter's output
+	  signals.
+	</caption>
+      </subfigure>
+      
+    <caption>A periodic pulse signal, such as shown on the left part 
+	(<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>Δ</m:ci>
+	      <m:ci>T</m:ci>
+	    </m:apply>
+	    <m:cn>0.2</m:cn>
+	  </m:apply>
+	</m:math>),
+	serves as the input to an   
+	<m:math>
+	  <m:apply>
+	    <m:times/> 
+	    <m:ci>R</m:ci>
+	    <m:ci>C</m:ci>
+	  </m:apply>
+	</m:math>
+	lowpass filter.  The input's period was 1 ms (millisecond).
+	The filter's cutoff frequency was set to the various values
+	indicated in the top row, which display the output signal's
+	spectrum and the filter's transfer function.  The bottom row
+	shows the output signal derived from the Fourier series
+	coefficients shown in the top row.
+      </caption></figure> 
+
+
+    <example id="diagramsolved">
+      <para id="exampleparagraph">
+	The periodic pulse signal shown on the left above serves as
+	the input to a
+	<m:math>
+	  <m:apply>
+	    <m:times/> 
+	    <m:ci>R</m:ci>
+	    <m:ci>C</m:ci>
+	  </m:apply>
+	</m:math>-circuit that has the transfer function (calculated
+	<link document="m0028" target-id="magphase" strength="3">elsewhere</link>)
+
+	<equation id="transferfunction">  
+	  <m:math> 
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	</equation>
+
+	<link target-id="filter" strength="3"/> shows the output changes
+	as we vary the filter's cutoff frequency.  Note how the
+	signal's spectrum extends well above its fundamental
+	frequency.  Having a cutoff frequency ten times higher than
+	the fundamental does perceptibly change the output waveform,
+	rounding the leading and trailing edges.  As the cutoff
+	frequency decreases (center, then left), the rounding becomes
+	more prominent, with the leftmost waveform showing a small
+	ripple.
+      </para>
+    </example>
+
+
+    <exercise id="exer1">
+      <problem id="id9156168">
+	<para id="frstprob">
+	  What is the average value of each output waveform?  The
+	  correct answer may surprise you.
+	</para>
+      </problem>
+      <solution id="id11961815">
+	<para id="frstprobsoln">
+	  Because the filter's gain at zero frequency equals one, the
+	  average output values equal the respective average input
+	  values.
+	</para>
+      </solution>
+    </exercise>
+
+    
+    <para id="finalconclusion"> 
+      This example also illustrates the impact a lowpass filter can
+      have on a waveform.  The simple
+      <m:math>
+	<m:apply> 
+	  <m:times/>
+	  <m:ci>R</m:ci>
+	  <m:ci>C</m:ci>
+	</m:apply>
+      </m:math>
+      filter used here has a rather gradual frequency response, which
+      means that higher harmonics are smoothly suppressed. Later, we
+      will describe filters that have much more rapidly varying
+      frequency responses, allowing a much more dramatic selection of
+      the input's Fourier coefficients.  
+    </para>
+
+    <para id="conclusion">       
+      More importantly, we have calculated the output of a circuit to
+      a periodic input <emphasis>without</emphasis> writing, much less
+      solving, the differential equation governing the circuit's
+      behavior.  Furthermore, we made these calculations entirely in
+      the frequency domain.  Using Fourier series, we can calculate
+      how <emphasis>any</emphasis> linear circuit will respond to a
+      periodic input.
+    </para>    
+
+  </content>
+</document>

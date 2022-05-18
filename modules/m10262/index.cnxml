@@ -1,0 +1,540 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Permutations and Combinations</title>
+
+  <metadata><md:content-id>undefined</md:content-id><md:title/><md:uuid>0ca4520b-9c01-4bff-97f5-03176589ce3e</md:uuid>
+</metadata>
+  <content>
+
+    <section id="sect_1">
+      <title>Permutations and Combinations</title>
+      
+      <para id="intro_para">
+	The lottery "game" consists of picking
+	<m:math><m:ci>k</m:ci></m:math> numbers from a pool of
+	<m:math><m:ci>n</m:ci></m:math>.  For example, you select
+<m:math><m:cn>6</m:cn></m:math> numbers out of
+<m:math><m:cn>60</m:cn></m:math>.
+        To win, the order in which you pick the numbers doesn't matter;
+        you only have to
+	choose the right set of <m:math><m:cn>6</m:cn></m:math> numbers.  The chances of winning equal the number of
+different length-<m:math><m:ci>k</m:ci></m:math> sequences that can be
+chosen.
+A related, but different, problem is selecting the batting lineup for a
+baseball team. Now the order matters, and many more choices are possible
+than when order does not matter.
+       </para>
+
+       <para id="intro_para1">
+	Answering such questions occurs in many applications beyond
+games.  In
+	digital communications, for example, you might ask how many
+	possible double-bit errors can occur in a codeword.  Numbering the 
+bit positions from <m:math><m:cn>1</m:cn></m:math> to
+<m:math><m:ci>N</m:ci></m:math>, the answer
+is the same as the lottery problem with
+        <m:math><m:apply><m:eq/><m:ci>k</m:ci><m:cn>6</m:cn></m:apply></m:math>.
+        Solving these kind of problems amounts to understanding <term>permutations</term> - the
+	number of ways of choosing things when order matters as in baseball
+lineups - and
+	<term>combinations</term> - the number of ways of choosing
+	things when order does not matter as in lotteries and bit errors.
+      </para>
+      
+      <para id="permutations">
+	Calculating permutations is the easiest.  If we are to pick
+	<m:math><m:ci>k</m:ci></m:math> numbers from a pool of
+	<m:math><m:ci>n</m:ci></m:math>, we have <m:math><m:ci>n</m:ci></m:math>
+	choices for the first one.  For the second choice, we have
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+	    <m:ci>n</m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>.  The number of length-two ordered sequences is
+	therefore be 
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>n</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>n</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  Continuing to choose until we make
+	<m:math><m:ci>k</m:ci></m:math> choices means the number of
+	permutations is
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>n</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>n</m:ci>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>n</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:ci>…</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	      <m:cn>1</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  This result can be written in terms of factorials as
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:factorial/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:factorial/>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, with
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:factorial/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>n</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:ci>…</m:ci>
+	      <m:apply>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  For mathematical convenience, we define
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:factorial/>
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <para id="combinations">
+	When order does not matter, the number of combinations
+	equals the number of permutations divided by
+	the number of orderings. The number of ways a
+	pool of <m:math><m:ci>k</m:ci></m:math> things can be ordered equals <m:math><m:apply><m:factorial/>
+	    <m:ci>k</m:ci></m:apply></m:math>.  Thus, once we choose the
+	nine starters for our baseball game, we have 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:factorial/>
+	      <m:cn>9</m:cn>
+	    </m:apply>
+	    <m:cn>362,880</m:cn>
+	  </m:apply>
+	</m:math> different lineups!  The symbol for the combination of
+	<m:math><m:ci>k</m:ci></m:math> things drawn from a pool of
+	<m:math><m:ci>n</m:ci></m:math> is 
+	<m:math>
+	  <m:apply>
+	    <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+	    <m:ci>n</m:ci> 
+	    <m:ci>k</m:ci> 
+	  </m:apply>
+	</m:math> and equals
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:factorial/>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:factorial/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>n</m:ci>
+		  <m:ci>k</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:factorial/>
+		<m:ci>k</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <exercise id="lottery">
+	<problem id="idp20726096">
+	  <para id="lotteryprob">
+	    What are the chances of winning the lottery? Assume you pick
+<m:math><m:cn>6</m:cn></m:math> numbers from the numbers
+<m:math><m:cn>1</m:cn></m:math>-<m:math><m:cn>60</m:cn></m:math>.
+	  </para>
+	</problem>
+	<solution id="idp12542896">
+	  <para id="lotterysoln">
+	  <m:math>
+	   <m:apply><m:eq/>
+             <m:apply>
+	     <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+	      <m:ci>60</m:ci> 
+	      <m:ci>6</m:ci> 
+	     </m:apply>
+	     <m:apply>
+	      <m:divide/>
+		<m:apply>
+		  <m:factorial/>
+		  <m:ci>60</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:factorial/>
+		      <m:ci>54</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:factorial/>
+		    <m:ci>6</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>50,063,860</m:cn>
+            </m:apply>
+	    </m:math>.
+	  </para>
+	</solution>
+      </exercise> 
+
+      <para id="combinatorial_occurences">
+	Combinatorials occur in interesting places. For example, Newton
+	derived that the <m:math><m:ci>n</m:ci></m:math>-th power of a
+	sum obeyed the formula
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>x</m:ci>
+		<m:ci>y</m:ci>
+	      </m:apply>
+	      <m:ci>n</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:cn>0</m:cn> 
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>x</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:cn>1</m:cn> 
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>x</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:ci>y</m:ci>
+	      </m:apply>
+
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:cn>2</m:cn> 
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>x</m:ci>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>y</m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	      
+	      <m:ci>…</m:ci>
+
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:ci>n</m:ci> 
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>y</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+	      
+	    </m:apply>
+	  </m:apply>
+	</m:math>.
+      </para>
+
+      <exercise id="twotothen">
+	<problem id="idp15915360">
+	  <para id="prob">
+	    What does the sum of binomial coefficients equal?
+	    In other words, what is
+	    <m:math display="block">
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>k</m:ci></m:bvar>
+		<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		<m:uplimit><m:ci>n</m:ci></m:uplimit>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:ci>k</m:ci> 
+		</m:apply>
+	      </m:apply>
+	      
+	    </m:math>
+	  </para>
+	</problem>
+	<solution id="idp11790336">
+	  <para id="probsoln">
+	    Because of Newton's binomial theorem, the sum equals
+	    <m:math>
+              <m:apply><m:eq/>
+                <m:apply><m:power/>
+                  <m:apply><m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:cn>1</m:cn>
+                  </m:apply>
+		  <m:ci>n</m:ci>
+                </m:apply>
+	        <m:apply><m:power/>
+		  <m:cn>2</m:cn>
+		  <m:ci>n</m:ci>
+	        </m:apply>
+              </m:apply>
+	    </m:math>.
+	  </para>
+	</solution>
+      </exercise>
+
+      <para id="codeword_error_prob">A related problem is calculating the probability that
+	<emphasis>any</emphasis> two bits are in error in a
+	length-<m:math><m:ci>n</m:ci></m:math> codeword when
+	<m:math><m:ci>p</m:ci></m:math> is the probability of any bit
+	being in error.  The probability of any particular two-bit error
+	sequence is
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>p</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:minus/>
+		<m:cn>1</m:cn>
+		<m:ci>p</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  The probability of a two-bit error occurring
+	anywhere equals this probability times the number of
+	combinations:
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+	      <m:ci>n</m:ci> 
+	      <m:cn>2</m:cn> 
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>p</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:minus/>
+		<m:cn>1</m:cn>
+		<m:ci>p</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>n</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>.  Note that the probability that zero or one or two,
+	etc. errors occurring must be one; in other words, something must happen to the
+	codeword!  That means that we must have
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:cn>0</m:cn> 
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:ci>p</m:ci>
+		  </m:apply>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:cn>1</m:cn> 
+		</m:apply>
+		<m:ci>p</m:ci>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:ci>p</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>1</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:cn>2</m:cn> 
+		</m:apply>
+		<m:apply><m:power/><m:ci>p</m:ci><m:cn>2</m:cn></m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:cn>1</m:cn>
+		    <m:ci>p</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>n</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+
+	      <m:ci>…</m:ci>
+
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:csymbol definitionURL="http://www.openmath.org/cd/combinat1.ocd"/> 
+		  <m:ci>n</m:ci> 
+		  <m:ci>n</m:ci> 
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>p</m:ci>
+		  <m:ci>n</m:ci>
+		</m:apply>
+	      </m:apply>
+
+	    </m:apply>
+	    
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>.  Can you prove this?
+      </para>
+    </section>
+
+  </content>
+</document>

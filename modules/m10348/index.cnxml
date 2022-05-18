@@ -1,0 +1,1000 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:q="http://cnx.rice.edu/qml/1.0">
+
+  <title>Signals and Systems Problems</title>
+  
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m10348</md:content-id>
+  <md:title>Signals and Systems Problems</md:title>
+  <md:abstract>(Blank Abstract)</md:abstract>
+  <md:uuid>a5421044-f69a-43a3-bfc4-6a6dbc451a34</md:uuid>
+</metadata>
+
+<content>    
+    
+    <q:problemset>
+	
+      <q:item id="c3" type="text-response">
+      <q:question>
+        <section id="pc3"><title>Complex Number Arithmetic</title>
+        <para id="parac3">
+ 	       Find the real part, imaginary part, the magnitude and angle of the complex numbers given by the following expressions.
+        </para>
+        <list id="p1" list-type="enumerated">
+          <item>
+            <m:math><m:cn>-1</m:cn></m:math>
+          </item>
+          
+          <item>
+            <m:math>
+              <m:apply><m:divide/>
+                <m:apply><m:plus/>
+                  <m:cn>1</m:cn>
+                  <m:apply><m:times/>
+                    <m:apply><m:root/>
+                      <m:cn>3</m:cn>
+                    </m:apply>
+                    <m:imaginaryi/>
+                  </m:apply>
+                </m:apply>
+                <m:cn>2</m:cn>
+              </m:apply>
+            </m:math>
+          </item>
+          
+          <item>
+            <m:math>
+              <m:apply><m:plus/>
+                <m:cn>1</m:cn>
+                <m:imaginaryi/>
+                <m:apply><m:exp/>
+                  <m:apply><m:times/>
+                    <m:imaginaryi/>
+                    <m:apply><m:divide/>
+                      <m:pi/>
+                      <m:cn>2</m:cn>
+                    </m:apply>
+                  </m:apply>
+                </m:apply>
+              </m:apply>
+            </m:math>
+          </item>
+          
+          <item>
+            <m:math>
+              <m:apply><m:plus/>
+                <m:apply><m:exp/>
+                  <m:apply><m:times/>
+                    <m:imaginaryi/>
+                    <m:apply><m:divide/>
+                      <m:pi/>
+                      <m:cn>3</m:cn>
+                    </m:apply>
+                  </m:apply>
+                </m:apply>
+                <m:apply><m:exp/>
+                  <m:apply><m:times/>
+                    <m:imaginaryi/>
+                    <m:pi/>
+                  </m:apply>
+                </m:apply>
+                <m:apply><m:exp/>
+                  <m:apply><m:minus/>
+                    <m:apply><m:times/>
+                      <m:imaginaryi/>
+                      <m:apply><m:divide/>
+                        <m:pi/>
+                        <m:cn>3</m:cn>
+                      </m:apply>
+                    </m:apply>
+                  </m:apply>
+                </m:apply>
+              </m:apply>
+            </m:math>
+          </item>
+          
+        </list>
+        </section>
+      </q:question>
+      </q:item>
+      
+      <q:item id="c2" type="text-response">
+      <q:question>
+        <section id="pc2"><title>Discovering Roots</title>
+        <para id="parac2">
+        	Complex numbers expose all the roots of real (and complex) numbers.
+	        For example, there should be two square-roots, three cube-roots, etc. of any number.
+	        Find the following roots.
+	</para>
+	  <list id="prob2" list-type="enumerated">
+	  <item>
+	    What are the cube-roots of 27? In other words, what is
+	    <m:math>
+	      <m:apply><m:power/>
+	        <m:cn>27</m:cn>
+	        <m:apply><m:divide/>
+	          <m:cn>1</m:cn>
+	          <m:cn>3</m:cn>
+	        </m:apply>
+	      </m:apply>
+	    </m:math>?
+	  </item>
+	  <item>
+	    What are the fifth roots of 3 (<m:math>
+	      <m:apply><m:power/>
+	        <m:cn>3</m:cn>
+	        <m:apply><m:divide/>
+	          <m:cn>1</m:cn>
+	          <m:cn>5</m:cn>
+	        </m:apply>
+	      </m:apply>
+	    </m:math>)?
+	  </item>
+	  <item>
+	    What are the fourth roots of one?
+	  </item>
+	  </list>
+        </section>
+      </q:question>
+      </q:item>
+      
+      <q:item id="c4" type="text-response">
+      <q:question>
+        <section id="pc4"><title>Cool Exponentials</title>
+        <para id="parac4">
+          Simplify the following (cool) expressions.
+        </para>
+	   <list id="prob4" list-type="enumerated">
+	     <item>
+	       <m:math>
+	         <m:apply><m:power/>
+	           <m:imaginaryi/>
+	           <m:imaginaryi/>
+	         </m:apply>
+	       </m:math>
+	     </item>
+	     <item>
+	       <m:math>
+	         <m:apply><m:power/>
+	           <m:imaginaryi/>
+	           <m:apply><m:times/>
+	             <m:cn>2</m:cn>
+	             <m:imaginaryi/>
+	           </m:apply>
+	         </m:apply>
+	       </m:math>
+	     </item>
+	     <item>
+	       <m:math>
+	         <m:apply><m:power/>
+	           <m:imaginaryi/>
+	           <m:apply><m:power/>
+	             <m:imaginaryi/>
+	             <m:imaginaryi/>
+	           </m:apply>
+	         </m:apply>
+	       </m:math>
+	     </item>
+	   </list>
+        </section>
+      </q:question>
+      </q:item>
+      
+      <q:item id="qitemfix1" type="text-response">
+	<q:question>
+	  <section id="ex21sec">
+	    <title>Complex-valued Signals</title>
+	    <para id="q1para">
+	      Complex numbers and phasors play a very important role
+	      in electrical engineering. Solving systems for complex
+	      exponentials is much easier than for sinusoids, and
+	      linear systems analysis is particularly easy.
+	      
+	      <list id="list2.1" list-type="enumerated">
+		<item> 
+		  Find the phasor representation for each, and
+		  re-express each as the real and imaginary parts of a
+		  complex exponential. What is the frequency (in Hz)
+		  of each?  In general, are your answers unique? If
+		  so, prove it; if not, find an alternative answer for
+		  the complex exponential representation.
+		  
+		  
+		  <list id="list2.1a" list-type="enumerated">		    
+		    <item>
+		      <m:math display="inline">
+			<m:apply>
+			  <m:times/>
+			  <m:cn>3</m:cn>
+			  <m:apply>
+			    <m:sin/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>24</m:cn>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:math>
+		    </item>
+		    
+		    <item>
+		      <m:math display="inline">
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:root/>
+			    <m:cn>2</m:cn>
+			  </m:apply>
+			  <m:apply>
+			    <m:cos/>
+			    <m:apply>
+			      <m:plus/>
+			      <m:apply>
+				<m:times/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+				<m:cn>60</m:cn>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			      <m:apply>
+				<m:divide/>
+				<m:pi/>
+				<m:cn>4</m:cn>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:math>
+		    </item>
+		    
+		    <item>
+		      <m:math display="inline">
+			<m:apply>
+			  <m:plus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:apply>
+			      <m:cos/>
+			      <m:apply>
+				<m:plus/>
+				<m:ci>t</m:ci>
+				<m:apply>
+				  <m:divide/>
+				  <m:pi/>
+				  <m:cn>6</m:cn>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>4</m:cn>
+			    <m:apply>
+			      <m:sin/>
+			      <m:apply>
+				<m:minus/>
+				<m:ci>t</m:ci>
+				<m:apply>
+				  <m:divide/>
+				  <m:pi/>
+				  <m:cn>3</m:cn>
+				</m:apply>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:math>
+		    </item>		    
+		  </list>
+		</item>
+		<item>
+		  Show that for linear systems having real-valued
+		  outputs for real inputs, that when the input is the
+		  real part of a complex exponential, the output is
+		  the real part of the system's output to the complex
+		  exponential (see <link target-id="fig1" strength="3"/>).
+		  
+		  <m:math display="block">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn" class="functional">S</m:ci>
+			<m:apply>
+			  <m:real/>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>A</m:ci>
+			    <m:apply>
+			      <m:exp/>
+			      <m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+				<m:ci>f</m:ci>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:real/>
+			<m:apply>
+			  <m:ci type="fn" class="functional">S</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:ci>A</m:ci>
+			    <m:apply>
+			      <m:exp/>
+			      <m:apply>
+				<m:times/>
+				<m:imaginaryi/>
+				<m:cn>2</m:cn>
+				<m:pi/>
+				<m:ci>f</m:ci>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+	      </list>
+	    </para>
+
+	    
+	    <figure id="fig1">
+	      <media id="id15432702" alt="">
+                <image src="../../media/sys28.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sys28.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+
+	  </section>
+	</q:question>
+      </q:item>
+
+
+
+      <q:item id="ex22q" type="text-response">
+	<q:question>
+	  <section id="ex22sec">
+	    
+	    <para id="q22para">
+	      For each of the indicated voltages, write it as the real
+	      part of a complex exponential
+
+	      (<m:math display="inline">
+		<m:apply>
+		  <m:eq/>
+		  <m:apply>
+		    <m:ci type="fn">v</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:real/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>V</m:ci>
+		      <m:apply>
+			<m:exp/>
+			<m:apply>
+			  <m:times/>
+			  <m:ci>s</m:ci>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:math>).
+	      
+	      Explicitly indicate the value of the complex amplitude
+	      <m:math display="inline"><m:ci>V</m:ci></m:math> 	      
+	      and the complex frequency
+	      <m:math><m:ci>s</m:ci></m:math>. 
+	      Represent each complex amplitude as a vector in the
+	      <m:math><m:ci>V</m:ci></m:math>-plane, and indicate the
+	      location of the frequencies in the complex
+	      <m:math><m:ci>s</m:ci></m:math>-plane.
+	      
+	      <list id="list2.2" list-type="enumerated">		
+		<item> <!-- #1 -->
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">v</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:cos/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>5</m:cn>
+			  <m:ci>t</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>		
+
+		<item> <!-- #2 -->
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">v</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:sin/>
+			<m:apply>
+			  <m:plus/>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>8</m:cn>
+			    <m:ci>t</m:ci>
+			  </m:apply>
+			  <m:apply>
+			    <m:divide/>
+			    <m:pi/>
+			    <m:cn>4</m:cn>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+		
+		<item>  <!-- #3 -->
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">v</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:exp/>
+			<m:apply><m:minus/><m:ci>t</m:ci></m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+		
+		<item>  <!-- #4 -->
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">v</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:minus/>
+                       <m:apply><m:times/><m:cn>3</m:cn><m:ci>t</m:ci></m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:sin/>
+			  <m:apply>
+			    <m:plus/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>4</m:cn>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			    <m:apply>
+			      <m:divide/>
+			      <m:apply>
+				<m:times/>
+				<m:cn>3</m:cn>
+				<m:pi/>
+			      </m:apply>
+			      <m:cn>4</m:cn>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+		
+		<item>  <!-- #5 --> 
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">v</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:cn>5</m:cn>
+			<m:apply>
+			  <m:exp/>
+			  <m:apply>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:sin/>
+			  <m:apply>
+			    <m:plus/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>8</m:cn>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:pi/>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+		
+		<item>  <!-- #6 -->  
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">v</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:cn>-2</m:cn>
+		    </m:apply>
+		  </m:math>
+		</item>
+		
+		<item>  <!-- #7 -->
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">v</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>4</m:cn>
+			  <m:apply>
+			    <m:sin/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>3</m:cn>
+			  <m:apply>
+			    <m:cos/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			  </m:apply>  
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>
+		
+		<item>  <!-- #8 --> 
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:eq/>
+		      <m:apply>
+			<m:ci type="fn">v</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:minus/>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:apply>
+			    <m:cos/>
+			    <m:apply>
+			      <m:plus/>
+			      <m:apply>
+				<m:times/>
+				<m:cn>100</m:cn>
+				<m:pi/>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			      <m:apply>
+				<m:divide/>
+				<m:pi/>
+				<m:cn>6</m:cn>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:apply>
+			  <m:times/>
+			  <m:apply>
+			    <m:root/>
+			    <m:cn>3</m:cn>
+			  </m:apply>
+			  <m:apply>
+			    <m:sin/>
+			    <m:apply>
+			      <m:plus/>
+			      <m:apply>
+				<m:times/>
+				<m:cn>100</m:cn>
+				<m:pi/>
+				<m:ci>t</m:ci>
+			      </m:apply>
+			      <m:apply>
+				<m:divide/>
+				<m:pi/>
+				<m:cn>2</m:cn>
+			      </m:apply>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:math>
+		</item>		
+	      </list>
+	    </para>
+	  </section>
+	</q:question>
+      </q:item>
+
+
+
+      <q:item id="ex23item1" type="text-response">
+        <q:question>
+	  <section id="ex23sec">
+	    
+	    <para id="q23para">
+	      Express each of the
+              <link target-id="q23figures" strength="3">following signals</link>
+              as a linear
+	      combination of delayed and weighted step functions and
+	      ramps (the integral of a step).
+	    </para>
+
+	    
+	    <figure id="q23figures" orient="vertical">	      
+	      
+	      <subfigure id="q23fig1">
+		<media id="id15641467" alt="">
+                  <image src="../../media/sig1.png" mime-type="image/png"/>
+                  <image for="pdf" src="../../media/sig1.eps" mime-type="application/postscript"/>
+                </media>
+	      </subfigure>
+	      <subfigure id="q23fig2">
+		<media id="id12451826" alt="">
+                  <image src="../../media/sig2.png" mime-type="image/png"/>
+                  <image for="pdf" src="../../media/sig2.eps" mime-type="application/postscript"/>
+                </media>
+	      </subfigure>
+	      <subfigure id="q23fig3">
+		<media id="id4842640" alt="">
+                  <image src="../../media/sig3.png" mime-type="image/png"/>
+                  <image for="pdf" src="../../media/sig3.eps" mime-type="application/postscript"/>
+                </media>
+	      </subfigure>
+	      <subfigure id="q23fig4">
+		<media id="id14677053" alt="">
+                  <image src="../../media/sig4.png" mime-type="image/png"/>
+                  <image for="pdf" src="../../media/sig4.eps" mime-type="application/postscript"/>
+                </media>
+	      </subfigure>
+	      <subfigure id="q23fig5">
+		<media id="id4990335" alt="">
+                  <image src="../../media/sig5.png" mime-type="image/png"/>
+                  <image for="pdf" src="../../media/sig5.eps" mime-type="application/postscript"/>
+                </media>
+	      </subfigure>
+	    </figure>
+
+	    
+	  </section>  
+	</q:question>
+      </q:item>
+
+
+
+      <q:item id="ex24item1" type="text-response">
+        <q:question>
+	  <section id="ex24sec">
+	    <title>Linear, Time-Invariant Systems</title>
+	    <para id="q24para">
+	      When the input to a linear, time-invariant system is the
+	      signal	      
+	      <m:math display="inline">
+		<m:apply> 
+		  <m:ci type="fn">x</m:ci><m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>, 
+	      the output is the signal	      
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> (<link target-id="ex24figure00" strength="3"/>).	      
+	    </para>
+
+	    
+	    <figure id="ex24figure00" orient="vertical">
+	      <media id="id10169454" alt="">
+                <image src="../../media/sig34a.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig34a.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+	    
+	    <para id="crap1">
+	      <list id="list2.4" list-type="enumerated">
+		<item>
+		  Find and sketch this system's output when the input
+		  is the
+                  <link target-id="ex24figure001" strength="3">depicted signal</link>.
+		</item>
+		<item>
+		  Find and sketch this system's output when the input
+		  is a unit step.
+		</item>
+	      </list>
+	    </para>
+	    
+	    <figure id="ex24figure001" orient="vertical">
+	      <media id="id4581110" alt="">
+                <image src="../../media/sig34b.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig34b.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+	    
+	  </section>	  
+	</q:question>
+      </q:item>
+
+
+
+      <q:item id="q25item1" type="text-response">
+        <q:question><section id="ex25sec">
+	    <title>Linear Systems</title>
+	    <para id="q25para">
+	      The <link target-id="ex25fig000" strength="3">depicted input</link>
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">x</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>	      
+	      to a linear, time-invariant system yields the output	      
+	      <m:math display="inline">
+		<m:apply>
+		  <m:ci type="fn">y</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:math>.
+	    </para>
+
+	    
+	    <figure id="ex25fig000" orient="vertical">
+	      <media id="id5585275" alt="">
+                <image src="../../media/sig39.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig39.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+
+	    <para id="ex25parag">
+	      <list id="list2.5" list-type="enumerated">
+		<item>
+		  What is the system's output to a unit step input
+		  <m:math display="inline">
+		    <m:apply>
+		      <m:ci type="fn">u</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		  </m:math>?
+		</item> 
+		<item>
+		  What will the output be when the input is the
+		  <link target-id="ex25fig001" strength="3">depicted square wave</link>?
+		</item>
+	      </list>
+	    </para>
+
+	    
+	    <figure id="ex25fig001" orient="vertical">
+	      <media id="id5086948" alt="">
+                <image src="../../media/sig40.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig40.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+	    
+	  </section>
+        </q:question>
+      </q:item>
+
+
+      
+      <q:item id="Q1_1" type="text-response">
+	<q:question>
+	  <section id="secQ1_1">
+	    <title>Communication Channel</title>
+	    <para id="goat">
+	      A particularly interesting communication channel can be
+	      modeled as a linear, time-invariant system.  When the
+	      transmitted signal 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">x</m:ci><m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> 
+	      is a pulse, the received signal 
+	      <m:math>
+		<m:apply>
+		  <m:ci type="fn">r</m:ci><m:ci>t</m:ci>
+		</m:apply>
+	      </m:math> 
+	      is <link target-id="figQ1_1" strength="3">as shown</link>.
+	    </para>
+
+	    
+  	    <figure id="figQ1_1" orient="vertical">
+	      <media id="id15610572" alt="">
+                <image src="../../media/sig45a.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig45a.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+
+	    <list id="list_q11" list-type="enumerated">
+	      <item>
+		What will be the received signal when the transmitter
+		sends the <link target-id="fig2Q1_1" strength="3">pulse sequence</link>		
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math>?
+	      </item>
+
+	      <item>
+		What will be the received signal when the transmitter
+		sends the <link target-id="fig2Q1_1" strength="3">pulse signal</link>
+		<m:math>
+		  <m:apply>
+		    <m:ci type="fn">
+		      <m:msub>
+			<m:mi>x</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		</m:math> 
+		that has half the duration as the original?
+	      </item>
+	    </list>
+
+
+  	    <figure id="fig2Q1_1" orient="vertical">
+	      <media id="id5855276" alt="">
+                <image src="../../media/sig45b.png" mime-type="image/png"/>
+                <image for="pdf" src="../../media/sig45b.eps" mime-type="application/postscript"/>
+              </media>
+	    </figure>
+
+	  </section>
+	</q:question>
+      </q:item>
+      
+    <q:item id="analog" type="text-response">
+	  <q:question>
+	    <section id="secanalog">
+	    <title>Analog Computers</title>
+	    <para id="anap1">
+	    So-called <term>analog computers</term> use circuits to solve mathematical problems, particularly when they involve differential equations.
+	    Suppose we are given the following differential equation to solve.
+	    <m:math display="block">
+          <m:apply><m:eq/>
+            <m:apply><m:plus/>
+              <m:apply><m:diff/>
+	            <m:bvar><m:ci>t</m:ci></m:bvar>
+	            <m:apply><m:ci type="fn">y</m:ci><m:ci>t</m:ci></m:apply>
+              </m:apply>
+              <m:apply><m:times/>
+                <m:ci>a</m:ci>
+	            <m:apply><m:ci type="fn">y</m:ci><m:ci>t</m:ci></m:apply>
+              </m:apply>
+            </m:apply>
+	        <m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply>
+          </m:apply>
+	    </m:math>
+        In this equation,
+        <m:math><m:ci>a</m:ci></m:math> is a constant.
+        </para>
+        
+        <list id="list_analist" list-type="enumerated">
+          <item>
+          When the input is a unit step
+          (<m:math>
+            <m:apply><m:eq/>
+              <m:apply><m:ci type="fn">x</m:ci><m:ci>t</m:ci></m:apply>
+              <m:apply><m:ci type="fn">u</m:ci><m:ci>t</m:ci></m:apply>
+            </m:apply>
+          </m:math>), the output is given by
+          <m:math>
+            <m:apply><m:eq/>
+              <m:apply><m:ci type="fn">y</m:ci><m:ci>t</m:ci></m:apply>
+              <m:apply><m:times/>
+                <m:apply><m:minus/>
+                  <m:ci>1</m:ci>
+                  <m:apply><m:exp/>
+                    <m:apply><m:minus/>
+                      <m:apply><m:times/>
+                        <m:ci>a</m:ci><m:ci>t</m:ci>
+                      </m:apply>
+                    </m:apply>
+                  </m:apply>
+                </m:apply>
+                <m:apply><m:ci type="fn">u</m:ci><m:ci>t</m:ci></m:apply>
+              </m:apply>
+            </m:apply>
+          </m:math>.
+What is the total energy expended by the input?
+         </item>
+         
+         <item>
+         Instead of a unit step, suppose the input is a unit pulse (unit-amplitude, unit-duration) delivered to the circuit at time
+         <m:math>
+           <m:apply><m:eq/>
+             <m:ci>t</m:ci>
+             <m:cn>10</m:cn>
+           </m:apply>
+         </m:math>.
+What is the output voltage in this case?
+Sketch the waveform.
+         </item>
+         
+        </list>
+	    </section>
+	  </q:question>
+	</q:item>
+
+
+    </q:problemset>
+  </content>
+</document>

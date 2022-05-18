@@ -1,0 +1,2594 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Wireline Channels</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0100</md:content-id>
+  <md:title>Wireline Channels</md:title>
+  <md:abstract>The analysis and transfer characteristics of wireline channels.</md:abstract>
+  <md:uuid>5437fb8a-a927-42ce-b720-858c61f3102d</md:uuid>
+</metadata>
+
+<content>
+    <para id="p1">
+      Wireline channels were the first used for electrical
+      communications in the mid-nineteenth century for the telegraph.
+      Here, the channel is one of several wires connecting transmitter
+      to receiver.  The transmitter simply creates a voltage related
+      to the message signal and applies it to the wire(s).  We must
+      have a circuit—a closed path—that supports current flow.  In the
+      case of single-wire communications, the earth is used as the
+      current's return path.  In fact, the term <term>ground</term>
+      for the reference node in circuits originated in single-wire
+      telegraphs.  You can imagine that the earth's electrical
+      characteristics are highly variable, and they are.  Single-wire
+      metallic channels cannot support high-quality signal
+      transmission having a bandwidth beyond a few hundred Hertz over
+      any appreciable distance.
+    </para>
+
+    <figure id="wireline" orient="horizontal">
+      <title>Coaxial Cable Cross-section</title>
+      <media id="id1167949803794" alt="">
+        <image src="../../media/sys14.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys14.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	Coaxial cable consists of one conductor wrapped around the
+	central conductor.  This type of cable supports broader
+	bandwidth signals than twisted pair, and finds use in cable
+	television and Ethernet.
+      </caption>
+    </figure>
+
+    <para id="p1.5">Consequently, most wireline channels today essentially consist
+      of pairs of conducting wires (<link target-id="wireline" strength="3"/>), and the transmitter applies a message-related
+      voltage across the pair.  How these pairs of wires are
+      physically configured greatly affects their transmission
+      characteristics.  One example is <term>twisted pair</term>,
+      wherein the wires are wrapped about each other.  Telephone
+      cables are one example of a twisted pair channel.  Another is
+      <term>coaxial cable</term>, where a concentric conductor
+      surrounds a central wire with a dielectric material in between.
+      Coaxial cable, fondly called "co-ax" by engineers, is what
+      Ethernet uses as its channel.  In either case, wireline channels
+      form a dedicated circuit between transmitter and receiver.  As
+      we shall find subsequently, several transmissions can share the
+      circuit by amplitude modulation techniques; commercial cable TV
+      is an example.  These information-carrying circuits are designed
+      so that interference from nearby electromagnetic sources is
+      minimized.  Thus, by the time signals arrive at the receiver,
+      they are relatively interference- and noise-free.
+    </para><para id="p2">      
+      Both twisted pair and co-ax are examples of <term>transmission
+	lines</term>, which all have the circuit model shown in
+      <link target-id="xmissionlinemodel" strength="3"/>       
+      for an infinitesimally small length.  This circuit model arises
+      from solving Maxwell's equations for the particular
+      transmission line geometry.
+     <figure id="xmissionlinemodel" orient="horizontal">
+      <title>Circuit Model for a Transmission Line</title>
+      <media id="id1167949792324" alt="">
+        <image src="../../media/sys15.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/sys15.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The so-called distributed parameter model for two-wire cables
+	has the depicted circuit model structure.  Element values
+	depend on geometry and the properties of materials used to
+	construct the transmission line.
+      </caption>
+    </figure>
+      The series resistance comes from the
+      conductor used in the wires and from the conductor's geometry.
+      The inductance and the capacitance derive from transmission line
+      geometry, and the parallel conductance from the medium between
+      the wire pair.  Note that all the circuit elements have values
+      expressed by the product of a constant times a length; this
+      notation represents that element values here have
+      per-unit-length units.  For example, the series resistance
+      <m:math>
+	<m:ci>
+	  <m:mover accent="true">
+	    <m:mi>R</m:mi>
+	    <m:mo>∼</m:mo>
+	  </m:mover>
+	</m:ci>
+      </m:math>
+      has units of ohms/meter.  For coaxial cable, the element values
+      depend on the inner conductor's radius
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>r</m:mi>
+	    <m:mi>i</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>, 
+      the outer radius of the dielectric 
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>r</m:mi>
+	    <m:mi>d</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>, 
+      the conductivity of the conductors
+      <m:math><m:ci>σ</m:ci></m:math>, 
+      and the conductivity
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>σ</m:mi>
+	    <m:mi>d</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>, 
+      dielectric constant 
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>ε</m:mi>
+	    <m:mi>d</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>, 
+      and magnetic permittivity 
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>μ</m:mi>
+	    <m:mi>d</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      of the dielectric as
+      
+      <equation id="eq1">
+	<m:math>
+	  <m:apply> 
+	    <m:eq/> 
+	    <m:ci>
+	      <m:mover accent="false">
+		<m:mi>R</m:mi>
+		<m:mo>∼</m:mo>
+	      </m:mover>
+	    </m:ci> 
+	    <m:apply> 
+	      <m:times/> 
+	      <m:apply> 
+		<m:divide/>
+		<m:cn>1</m:cn> 
+		<m:apply> 
+		  <m:times/> 
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>δ</m:ci> 
+		  <m:ci>σ</m:ci>
+		</m:apply> 
+	      </m:apply> 
+	      <m:apply> 
+		<m:plus/> 
+		<m:apply> 
+		  <m:divide/>
+		  <m:cn>1</m:cn> 
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>r</m:mi>
+		      <m:mi>d</m:mi>
+		    </m:msub>
+		  </m:ci> 
+		</m:apply>
+		<m:apply> 
+		  <m:divide/> 
+		  <m:cn>1</m:cn> 
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>r</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub>
+		  </m:ci> 
+		</m:apply>
+	      </m:apply> 
+	    </m:apply> 
+	  </m:apply>
+	</m:math>
+      </equation>
+      
+      <m:math display="block"> 
+	<m:apply>
+	  <m:eq/> 
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>C</m:mi>
+	      <m:mo>∼</m:mo>
+	    </m:mover>
+	  </m:ci> 
+	  <m:apply> 
+	    <m:divide/> 
+	    <m:apply> 
+	      <m:times/>
+	      <m:cn>2</m:cn> 
+	      <m:pi/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>ε</m:mi>
+		  <m:mi>d</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply> 
+	    <m:apply> 
+	      <m:ln/> 
+	      <m:apply> 
+		<m:divide/> 
+		<m:ci>
+		  <m:msub>
+		    <m:mi>r</m:mi>
+		    <m:mi>d</m:mi>
+		  </m:msub>
+		</m:ci> 
+		<m:ci>
+		  <m:msub>
+		    <m:mi>r</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci> 
+	      </m:apply>
+	    </m:apply> 
+	  </m:apply> 
+	</m:apply>
+      </m:math>
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/> 
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>G</m:mi>
+	      <m:mo>∼</m:mo>
+	    </m:mover>
+	  </m:ci> 
+	  <m:apply> 
+	    <m:divide/> 
+	    <m:apply> 
+	      <m:cn>2</m:cn>
+	      <m:pi/> 
+	      <m:ci>
+		<m:msub>
+		  <m:mi>σ</m:mi>
+		  <m:mi>d</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply> 
+	    <m:apply> 
+	      <m:ln/> 
+	      <m:apply> 
+		<m:divide/> 
+		<m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>r</m:mi>
+		      <m:mi>d</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply> 
+		<m:apply> 
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>r</m:mi>
+		      <m:mi>i</m:mi>
+		    </m:msub>
+		  </m:ci> 
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>L</m:mi>
+	      <m:mo>∼</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>μ</m:mi>
+		  <m:mi>d</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ln/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>r</m:mi>
+		    <m:mi>d</m:mi>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>r</m:mi>
+		    <m:mi>i</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+
+      For twisted pair, having a separation
+      <m:math><m:ci>d</m:ci></m:math> between the conductors that have
+      conductivity <m:math><m:ci>σ</m:ci></m:math> and common
+      radius <m:math><m:ci>r</m:ci></m:math> and that are immersed in
+      a medium having dielectric and magnetic properties, the element
+      values are then
+
+      <equation id="eq2">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:mover accent="true">
+		<m:mi>R</m:mi>
+		<m:mo>∼</m:mo>
+	      </m:mover>
+	    </m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:times/>
+		<m:pi/>
+		<m:ci>r</m:ci>
+		<m:ci>δ</m:ci>
+		<m:ci>σ</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>C</m:mi>
+	      <m:mo>∼</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:pi/>
+	      <m:ci>ε</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:arccosh/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>d</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>r</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>G</m:mi>
+	      <m:mo>∼</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:pi/>
+	      <m:ci>σ</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:arccosh/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>d</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>r</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>L</m:mi>
+	      <m:mo>∼</m:mo>
+	    </m:mover>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>μ</m:ci>
+	      <m:pi/>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>δ</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:ci>r</m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:arccosh/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>d</m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:ci>r</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+    </para>
+
+    <para id="p4">
+      The voltage between the two conductors and the current flowing
+      through them will depend on distance
+      <m:math><m:ci>x</m:ci></m:math> along the transmission line as
+      well as time.  We express this dependence as
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">v</m:ci>
+	  <m:ci>x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>
+      and
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">i</m:ci>
+	  <m:ci>x</m:ci>
+	  <m:ci>t</m:ci>
+	</m:apply>
+      </m:math>.  
+      When we place a sinusoidal source at one end of the transmission
+      line, these voltages and currents will also be sinusoidal because the
+      transmission line model consists of linear circuit elements.  As
+      is customary in analyzing linear circuits, we express voltages
+      and currents as the real part of complex exponential signals,
+      and write circuit variables as a complex amplitude—here
+      dependent on distance—times a complex exponential:
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">v</m:ci>
+	    <m:ci>x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:real/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      and
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">i</m:ci>
+	    <m:ci>x</m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:real/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">I</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>t</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  
+      Using the transmission line circuit model, we find from KCL,
+      KVL, and v-i relations the equations governing the complex
+      amplitudes.
+
+      <equation id="eq3">
+	<title>KCL at Center Node</title>
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">I</m:ci>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:ci type="fn">I</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>x</m:ci>
+		  <m:apply>
+		    <m:ci><m:mo>Δ</m:mo></m:ci>
+		    <m:ci>x</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci type="fn">V</m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>G</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>C</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:ci><m:mo>Δ</m:mo></m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <equation id="eq4">
+	<title>V-I relation for RL series</title>
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>x</m:ci>
+		  <m:apply>
+		    <m:ci><m:mo>Δ</m:mo></m:ci>
+		    <m:ci>x</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci type="fn">I</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>R</m:mi>
+		    <m:mo>∼</m:mo>
+		  </m:mover>
+		</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>L</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci><m:mo>Δ</m:mo></m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Rearranging and taking the limit
+      <m:math>
+	<m:apply>
+	  <m:tendsto/>
+	  <m:apply>
+	    <m:ci><m:mo>Δ</m:mo></m:ci>
+	    <m:ci>x</m:ci>
+	  </m:apply>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>
+      yields the so-called <term>transmission line equations</term>.
+
+      <equation id="eq5">
+	<m:math>
+	  <m:apply><m:eq/>
+	    <m:apply><m:diff/>
+	      <m:bvar><m:ci>x</m:ci></m:bvar>
+	      <m:apply><m:ci type="fn">I</m:ci><m:ci>x</m:ci></m:apply>
+	    </m:apply>
+	    <m:apply><m:minus/>
+	      <m:apply><m:times/>
+		    <m:apply><m:plus/>
+		      <m:ci>
+		        <m:mover accent="true"><m:mi>G</m:mi><m:mo>∼</m:mo></m:mover>
+		      </m:ci>
+		      <m:apply><m:times/>
+		        <m:imaginaryi/>
+		        <m:cn>2</m:cn>
+		        <m:pi/>
+		        <m:ci>f</m:ci>
+		        <m:ci>
+                 <m:mover accent="true"><m:mi>C</m:mi><m:mo>∼</m:mo></m:mover>
+		        </m:ci>
+		      </m:apply>
+		    </m:apply>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:diff/>
+	      <m:bvar><m:ci>x</m:ci></m:bvar>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply><m:minus/>
+	    <m:apply><m:times/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>R</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>L</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      <m:apply>
+		<m:ci type="fn">I</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+    </para>
+
+    <para id="p5">
+      By combining these equations, we can obtain a single equation
+      that governs how the voltage's or the current's complex
+      amplitude changes with position along the transmission line.
+      Taking the derivative of the second equation and plugging the
+      first equation into the result yields the equation governing the
+      voltage.
+
+      <equation id="eq7">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:diff/>
+	      <m:bvar>
+		<m:ci>x</m:ci>
+		<m:degree>
+		  <m:cn>2</m:cn>
+		</m:degree>
+	      </m:bvar>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>G</m:mi>
+		    <m:mo>∼</m:mo>
+		  </m:mover>
+		</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>C</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>R</m:mi>
+		    <m:mo>∼</m:mo>
+		  </m:mover>
+		</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>L</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      This equation's solution is 
+
+      <equation id="eq8">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">V</m:ci>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>V</m:mi>
+		      <m:mo>+</m:mo>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>γ</m:ci>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>V</m:mi>
+		      <m:mo>-</m:mo>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>γ</m:ci>
+		    <m:ci>x</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Calculating its second derivative and comparing the result with
+      our equation for the voltage can check this solution.
+
+      <equation id="eq9">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:diff/>
+	      <m:bvar>
+		<m:ci>x</m:ci>
+		<m:degree>
+		  <m:cn>2</m:cn>
+		</m:degree>
+	      </m:bvar>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>γ</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>V</m:mi>
+			<m:mo>+</m:mo>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:exp/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:ci>γ</m:ci>
+			<m:ci>x</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply> 
+		<m:apply> 
+		  <m:times/>
+		  <m:apply>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>V</m:mi>
+			<m:mo>-</m:mo>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply> 
+		    <m:exp/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>γ</m:ci>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>γ</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:cn>x</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Our solution works so long as the quantity
+      <m:math><m:ci>γ</m:ci></m:math> satisfies 
+      <equation id="eq10">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>γ</m:ci>
+	    <m:apply>
+	      <m:ci><m:mo>±</m:mo></m:ci>
+	      <m:apply>
+		<m:root/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>G</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>
+			<m:mover accent="true">
+			  <m:mi>C</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>R</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>
+			<m:mover accent="true">
+			  <m:mi>L</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	    <m:ci><m:mo>±</m:mo></m:ci>
+	      <m:apply><m:plus/>
+		<m:apply><m:ci type="fn">a</m:ci>
+		  <m:ci>f</m:ci>
+		</m:apply>
+		<m:apply><m:times/>
+		  <m:imaginaryi/>
+		  <m:apply><m:ci type="fn">b</m:ci>
+		    <m:ci>f</m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Thus, <m:math><m:ci>γ</m:ci></m:math> depends on
+      frequency, and we express it in terms of real and imaginary
+      parts as indicated.  The quantities
+      <m:math>
+	<m:ci><m:msub>
+	    <m:mi>V</m:mi>
+	    <m:mo>+</m:mo>
+	  </m:msub></m:ci>
+      </m:math> 
+      and 
+      <m:math>
+	<m:ci>
+	  <m:msub> 
+	    <m:mi>V</m:mi> 
+	    <m:mo>-</m:mo> 
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      are constants determined by the source and physical
+      considerations.  For example, let the spatial origin be the
+      middle of the transmission line model
+      <link target-id="xmissionlinemodel" strength="2"/>.  
+      Because the circuit model contains simple circuit elements,
+      physically possible solutions for voltage amplitude cannot
+      increase with distance along the transmission line.  Expressing
+      <m:math><m:ci>γ</m:ci></m:math> in terms of its real and
+      imaginary parts in our solution shows that such increases are a
+      (mathematical) possibility.
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci type="fn">V</m:ci>
+	    <m:ci>x</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mo>+</m:mo>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci>a</m:ci>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:ci>b</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mo>-</m:mo>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:exp/>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>a</m:ci>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:ci>b</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      The voltage cannot increase without limit; because
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">a</m:ci>
+	  <m:ci>f</m:ci>
+	</m:apply>
+      </m:math>
+      is always positive, we must segregate the solution for negative
+      and positive <m:math><m:ci>x</m:ci></m:math>.  The first term
+      will increase exponentially for
+      <m:math>
+	<m:apply>
+	  <m:lt/>
+	  <m:ci>x</m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>
+      unless
+      <m:math> 
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>V</m:mi>
+		<m:mo>+</m:mo>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>
+      in this region; a similar result applies to
+      <m:math>
+	<m:apply>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>V</m:mi>
+	      <m:mo>-</m:mo>
+	    </m:msub>
+	  </m:ci>
+	</m:apply>
+      </m:math> 
+      for
+      <m:math>
+	<m:apply>
+	  <m:gt/>
+	  <m:ci>x</m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>.  
+      These physical constraints give us a cleaner solution.
+
+      <equation id="eq11">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">V</m:ci>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	      <m:piecewise>
+		<m:piece>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>V</m:mi>
+			  <m:mo>+</m:mo>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:minus/>
+			  <m:apply>
+			    <m:plus/>
+			    <m:ci>a</m:ci>
+			    <m:apply>
+			      <m:times/>
+			      <m:imaginaryi/>
+			      <m:ci>b</m:ci>
+			    </m:apply>
+			  </m:apply>
+			</m:apply>
+			<m:ci>x</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:gt/>
+		    <m:ci>x</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:piece>
+		<m:piece>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>V</m:mi>
+			  <m:mo>-</m:mo>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:exp/>
+		      <m:apply>
+			<m:times/>
+			<m:apply>
+			  <m:plus/>
+			  <m:ci>a</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:ci>b</m:ci>
+			  </m:apply>
+			</m:apply>
+			<m:ci>x</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:lt/>
+		    <m:ci>x</m:ci>
+		    <m:cn>0</m:cn>
+		  </m:apply>
+		</m:piece>
+	      </m:piecewise>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      This solution suggests that voltages (and currents too) will
+      decrease <emphasis>exponentially</emphasis> along a transmission
+      line.  The <term>space constant</term>, also known as the
+      <term>attenuation constant</term>, is the distance over which
+      the voltage decreases by a factor of
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:cn>1</m:cn>
+	  <m:exponentiale/>
+	</m:apply>
+      </m:math>.  
+      It equals the reciprocal of
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">a</m:ci>
+	  <m:ci>f</m:ci>
+	</m:apply>
+      </m:math>, 
+      which depends on frequency, and is expressed by manufacturers in
+      units of dB/m.
+    </para>
+
+    <para id="p6">
+      The presence of the imaginary part of
+      <m:math><m:ci>γ</m:ci></m:math>,
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">b</m:ci>
+	  <m:ci>f</m:ci>
+	</m:apply>
+      </m:math>, 
+      also provides insight into how transmission lines work.  Because
+      the solution for
+      <m:math>
+	<m:apply>
+	  <m:gt/>
+	  <m:ci>x</m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>
+      is proportional to 
+      <m:math>
+	<m:apply>
+	  <m:exp/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:imaginaryi/>
+	      <m:ci>b</m:ci>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>,
+      we know that the voltage's complex amplitude will <emphasis>vary
+      sinusoidally in space</emphasis>.  The complete solution for the
+      voltage has the form
+
+      <equation id="eq12">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">v</m:ci>
+	      <m:ci>x</m:ci>
+	      <m:ci>t</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:real/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>V</m:mi>
+		      <m:mo>+</m:mo>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>a</m:ci>
+		      <m:ci>x</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:exp/>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:apply>
+			<m:times/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+			<m:ci>t</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:times/>
+			<m:ci>b</m:ci>
+			<m:ci>x</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      The complex exponential portion has the form of a
+      <term>propagating wave</term>.  If we could take a snapshot of
+      the voltage (take its picture at
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>t</m:ci>
+	  <m:ci><m:msub>
+	      <m:mi>t</m:mi>
+	      <m:mn>1</m:mn>
+	    </m:msub></m:ci>
+	</m:apply>
+      </m:math>), 
+      we would see a sinusoidally varying waveform along the
+      transmission line.  One period of this variation, known as the
+      <term>wavelength</term>, equals
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>λ</m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	    </m:apply>
+	    <m:ci>b</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  
+      If we were to take a second picture at some later time
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>t</m:ci>
+	  <m:apply>
+	    <m:ci><m:msub>
+		<m:mi>t</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub></m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>, 
+      we would also see a sinusoidal voltage.  Because
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>f</m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>t</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub></m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>b</m:ci>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>f</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:ci><m:msub>
+		    <m:mi>t</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub></m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci><m:msub>
+		      <m:mi>t</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub></m:ci>
+		  <m:ci><m:msub>
+		      <m:mi>t</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub></m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>b</m:ci>
+	      <m:ci>x</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>f</m:ci>
+	      <m:ci><m:msub>
+		  <m:mi>t</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub></m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:ci>b</m:ci>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>x</m:ci>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		    </m:apply>
+		    <m:ci>b</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci><m:msub>
+			<m:mi>t</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub></m:ci>
+		    <m:ci><m:msub>
+			<m:mi>t</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub></m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+      the second waveform appears to be the first one, but
+      delayed—shifted to the right—in space.  Thus, the
+      voltage appeared to move to the right with a speed equal to
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:apply>
+	    <m:times/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	  <m:ci>b</m:ci>
+	</m:apply>
+      </m:math>
+      (assuming 
+      <m:math>
+	<m:apply>
+	  <m:gt/>
+	  <m:ci>b</m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>).  We denote this <term>propagation speed</term> by
+      <m:math><m:ci>c</m:ci></m:math>, and it equals
+
+      <equation id="eq13">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>c</m:ci>
+	    <m:apply>
+	      <m:abs/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:imaginary/>
+		  <m:apply>
+		    <m:root/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>
+			  <m:mover accent="true">
+			    <m:mi>G</m:mi>
+			    <m:mo>∼</m:mo>
+			  </m:mover>
+			</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>f</m:ci>
+			  <m:ci>
+			    <m:mover accent="true">
+			      <m:mi>C</m:mi>
+			      <m:mo>∼</m:mo>
+			    </m:mover>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:ci>
+			  <m:mover accent="true">
+			    <m:mi>R</m:mi>
+			    <m:mo>∼</m:mo>
+			  </m:mover>
+			</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:imaginaryi/>
+			  <m:cn>2</m:cn>
+			  <m:pi/>
+			  <m:ci>f</m:ci>
+			  <m:ci>
+			    <m:mover accent="true">
+			      <m:mi>L</m:mi>
+			      <m:mo>∼</m:mo>
+			    </m:mover>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      In the high-frequency region where
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>≫</m:mo></m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	    <m:ci>
+	      <m:mover accent="true">
+		<m:mi>L</m:mi>
+		<m:mo>∼</m:mo>
+	      </m:mover>
+	    </m:ci>
+	  </m:apply>
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>R</m:mi>
+	      <m:mo>∼</m:mo>
+	    </m:mover>
+	  </m:ci>
+	</m:apply> 
+      </m:math> 
+      and 
+      <m:math>
+	<m:apply>
+	  <m:ci><m:mo>≫</m:mo></m:ci>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	    <m:ci>
+	      <m:mover accent="true">
+		<m:mi>C</m:mi>
+		<m:mo>∼</m:mo>
+	      </m:mover>
+	    </m:ci>
+	  </m:apply>
+	  <m:ci>
+	    <m:mover accent="true">
+	      <m:mi>G</m:mi>
+	      <m:mo>∼</m:mo>
+	    </m:mover>
+	  </m:ci>
+	</m:apply>
+      </m:math>, 
+      the quantity under the radical simplifies to
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:cn>-4</m:cn>
+	    <m:apply>
+	      <m:power/>
+	      <m:pi/>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>f</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:ci>
+	      <m:mover accent="true">
+		<m:mi>L</m:mi>
+		<m:mo>∼</m:mo>
+	      </m:mover>
+	    </m:ci>
+	    <m:ci>
+	      <m:mover accent="true">
+		<m:mi>C</m:mi>
+		<m:mo>∼</m:mo>
+	      </m:mover>
+	    </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>, 
+      and we find the propagation speed to be
+
+      <equation id="eq14">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:limit/>
+	      <m:bvar>
+		<m:ci>f</m:ci>
+	      </m:bvar>
+	      <m:lowlimit>
+		<m:infinity/>
+	      </m:lowlimit>
+	      <m:ci>c</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:root/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>L</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>C</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      For typical coaxial cable, this propagation speed is a fraction
+      (one-third to two-thirds) 
+      of the speed of light.
+    </para>
+
+    <exercise id="pr1">
+      <problem id="id1167949914298">
+	<para id="p7">
+	  Find the propagation speed in terms of physical parameters
+	  for both the coaxial cable and twisted pair examples.
+	</para>
+      </problem>
+      
+      <solution id="id1167950413247">
+	<para id="p7.5">
+	  In both cases, the answer depends less on geometry than on
+	  material properties.  For coaxial cable,	  
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>c</m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:root/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>μ</m:mi>
+			<m:mi>d</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>ε</m:mi>
+			<m:mi>d</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	  For twisted pair,
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>c</m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:root/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>μ</m:ci>
+		      <m:ci>ε</m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:root/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:arccosh/>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>d</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:ci>r</m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>δ</m:ci>
+			<m:apply>
+			  <m:times/>
+			  <m:cn>2</m:cn>
+			  <m:ci>r</m:ci>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:arccosh/>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>d</m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:cn>2</m:cn>
+			    <m:ci>r</m:ci>
+			  </m:apply>
+			</m:apply> 
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply> 
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="p8">
+      By using the second of the transmission line equation 
+      <link target-id="eq5" strength="2"/>, 
+      we can solve for the current's complex amplitude.  Considering
+      the spatial region
+      <m:math>
+	<m:apply>
+	  <m:gt/>
+	  <m:ci>x</m:ci>
+	  <m:cn>0</m:cn>
+	</m:apply>
+      </m:math>, 
+      for example, we find that
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:diff/>
+	      <m:bvar>
+		<m:ci>x</m:ci>
+	      </m:bvar>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>γ</m:ci>
+		<m:apply>
+		  <m:ci type="fn">V</m:ci>
+		  <m:ci>x</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:minus/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>R</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>L</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">I</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      which means that the ratio of voltage and current complex
+      amplitudes does not depend on distance.
+
+      <equation id="eq15">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:ci type="fn">V</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:ci type="fn">I</m:ci>
+		<m:ci>x</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:root/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>R</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>L</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:mover accent="true">
+		      <m:mi>G</m:mi>
+		      <m:mo>∼</m:mo>
+		    </m:mover>
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>C</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>Z</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+      The quantity
+      <m:math>
+	<m:ci><m:msub>
+	    <m:mi>Z</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub></m:ci>
+      </m:math>
+      is known as the transmission line's <term>characteristic
+	impedance</term>.  Note that when the signal frequency is
+      sufficiently high, the characteristic impedance is real, which
+      means the transmission line appears resistive in this
+      high-frequency regime.
+
+      <equation id="eq16">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:limit/>
+	      <m:bvar><m:ci>f</m:ci></m:bvar>
+	      <m:lowlimit><m:infinity/></m:lowlimit>
+	      <m:ci><m:msub>
+		  <m:mi>Z</m:mi>
+		  <m:mn>0</m:mn>
+		</m:msub></m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:root/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>L</m:mi>
+		    <m:mo>∼</m:mo>
+		  </m:mover></m:ci>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>C</m:mi>
+		    <m:mo>∼</m:mo>
+		  </m:mover>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Typical values for characteristic impedance are 50 and
+      75 Ω.
+    </para>
+
+    <para id="p9">
+      A related transmission line is the optic fiber.  Here, the
+      electromagnetic field is light, and it propagates down a
+      cylinder of glass.  In this situation, we don't have two
+      conductors—in fact we have none—and the energy is
+      propagating in what corresponds to the dielectric material of
+      the coaxial cable.  Optic fiber communication has exactly the
+      same properties as other transmission lines: Signal strength
+      decays exponentially according to the fiber's space constant and
+      propagates at some speed less than light would in free space.
+      From the encompassing view of Maxwell's equations, the only
+      difference is the electromagnetic signal's frequency.  Because
+      no electric conductors are present and the fiber is protected by
+      an opaque “insulator,” optic fiber transmission is
+      interference-free.
+    </para>
+
+
+    <exercise id="ex2">
+      <problem id="id2662480">
+	<para id="p9.5">
+	  From tables of physical constants, find the frequency of a
+	  sinusoid in the middle of the visible light range.  Compare
+	  this frequency with that of a mid-frequency cable television
+	  signal.
+	</para>
+      </problem>
+      <solution id="id1167954870888">
+	<para id="p9.6">
+	  You can find these frequencies from 
+	  <link document="m0083" strength="2">the spectrum allocation
+	  chart</link>.  
+	  Light in the middle of the visible band has a wavelength of
+	  about 600 nm, which corresponds to a frequency of
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn type="e-notation">5<m:sep/>14</m:cn>
+	      <m:ci>Hz</m:ci>
+	    </m:apply>
+	  </m:math>. 
+	  Cable television transmits within the same frequency band as
+	  broadcast television (about 200 MHz or
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn type="e-notation">2<m:sep/>8</m:cn>
+	      <m:ci>Hz</m:ci>
+	    </m:apply>
+	  </m:math>).  
+	  Thus, the visible electromagnetic frequencies are over six
+	  orders of magnitude higher!
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="p10">To summarize, we use transmission lines for high-frequency
+      wireline signal communication.  In wireline communication, we
+      have a direct, physical connection—a circuit—between
+      transmitter and receiver.  When we select the transmission line
+      characteristics and the transmission frequency so that we
+      operate in the high-frequency regime, signals are not filtered
+      as they propagate along the transmission line: The
+      characteristic impedance is real-valued—the transmission
+      line's equivalent impedance is a resistor—and all the
+      signal's components at various frequencies propagate at the same
+      speed. Transmitted signal amplitude does decay exponentially
+      along the transmission line.  Note that in the high-frequency
+      regime the space constant is approximately zero, which
+      means the attenuation is quite small.
+    </para><exercise id="ex3">
+      <problem id="id5786168">
+	<para id="p11">
+	  What is the limiting value of the space constant in the high
+	  frequency regime?
+	</para>
+      </problem>
+      <solution id="id1167949995209">
+	<para id="p11.5">
+	  As frequency increases,
+	  <m:math>
+	    <m:apply>
+	      <m:ci><m:mo>≫</m:mo></m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>C</m:mi>
+		    <m:mo>∼</m:mo>
+		  </m:mover>
+		</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:mover accent="true">
+		  <m:mi>G</m:mi>
+		  <m:mo>∼</m:mo>
+		</m:mover>
+	      </m:ci>
+	    </m:apply>
+	  </m:math> and 
+	  <m:math>
+	    <m:apply>
+	      <m:ci><m:mo>≫</m:mo></m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>
+		  <m:mover accent="true">
+		    <m:mi>L</m:mi>
+		    <m:mo>∼</m:mo>
+		  </m:mover>
+		</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:mover accent="true">
+		  <m:mi>R</m:mi>
+		  <m:mo>∼</m:mo>
+		</m:mover>
+	      </m:ci>
+	    </m:apply>
+	  </m:math>.  
+	  In this high-frequency region,
+
+	  <equation id="exe3.1">
+	    <m:math>
+	      <m:apply>
+		<m:eq/>
+		<m:ci>γ</m:ci>
+
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:apply>
+		    <m:root/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:mover accent="true">
+			  <m:mi>L</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:ci>
+		      <m:ci>
+			<m:mover accent="true">
+			  <m:mi>C</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:root/>
+		    <m:apply>
+		      <m:times/>
+		      <m:apply>
+			<m:plus/>
+			<m:cn>1</m:cn>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>
+			    <m:mover accent="true">
+			      <m:mi>G</m:mi>
+			      <m:mo>∼</m:mo>
+			    </m:mover>
+			  </m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>f</m:ci>
+			    <m:ci>
+			      <m:mover accent="true">
+				<m:mi>C</m:mi>
+				<m:mo>∼</m:mo>
+			      </m:mover>
+			    </m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		      <m:apply>
+			<m:plus/>
+			<m:cn>1</m:cn>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>
+			    <m:mover accent="true">
+			      <m:mi>R</m:mi>
+			      <m:mo>∼</m:mo>
+			    </m:mover>
+			  </m:ci>
+			  <m:apply>
+			    <m:times/>
+			    <m:imaginaryi/>
+			    <m:cn>2</m:cn>
+			    <m:pi/>
+			    <m:ci>f</m:ci>
+			    <m:ci>
+			      <m:mover accent="true">
+				<m:mi>L</m:mi>
+				<m:mo>∼</m:mo>
+			      </m:mover>
+			    </m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:math>
+	  </equation>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:approx/>
+	      <m:mphantom>
+		<m:ci>γ</m:ci>
+	      </m:mphantom>
+	      <m:apply>
+		<m:times/>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:apply>
+		  <m:root/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>L</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>C</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:cn>1</m:cn>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:apply>
+			<m:times/>
+			<m:imaginaryi/>
+			<m:cn>2</m:cn>
+			<m:pi/>
+			<m:ci>f</m:ci>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:plus/>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>
+			  <m:mover accent="true">
+			    <m:mi>G</m:mi>
+			    <m:mo>∼</m:mo>
+			  </m:mover>
+			</m:ci>
+			<m:ci>
+			  <m:mover accent="true">
+			    <m:mi>C</m:mi>
+			    <m:mo>∼</m:mo>
+			  </m:mover>
+			</m:ci>
+		      </m:apply>
+		      <m:apply>
+			<m:divide/>
+			<m:ci>
+			  <m:mover accent="true">
+			    <m:mi>R</m:mi>
+			    <m:mo>∼</m:mo>
+			  </m:mover>
+			</m:ci>
+			<m:ci>
+			  <m:mover accent="true">
+			    <m:mi>L</m:mi>
+			    <m:mo>∼</m:mo>
+			  </m:mover>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+	      
+	  <m:math display="block">
+	    <m:apply>
+	      <m:approx/>
+	      <m:mphantom>
+		<m:ci>γ</m:ci>
+	      </m:mphantom> 
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:apply>
+		    <m:root/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:mover accent="true">
+			  <m:mi>L</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:ci>
+		      <m:ci>
+			<m:mover accent="true">
+			  <m:mi>C</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:mover accent="true">
+			  <m:mi>G</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:ci>
+		      <m:apply>
+			<m:root/>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>
+			    <m:mover accent="true">
+			      <m:mi>L</m:mi>
+			      <m:mo>∼</m:mo>
+			    </m:mover>
+			  </m:ci>
+			  <m:ci>
+			    <m:mover accent="true">
+			      <m:mi>C</m:mi>
+			      <m:mo>∼</m:mo>
+			    </m:mover>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:mover accent="true">
+			  <m:mi>R</m:mi>
+			  <m:mo>∼</m:mo>
+			</m:mover>
+		      </m:ci>
+		      <m:apply>
+			<m:root/>
+			<m:apply>
+			  <m:divide/>
+			  <m:ci>
+			    <m:mover accent="true">
+			      <m:mi>C</m:mi>
+			      <m:mo>∼</m:mo>
+			    </m:mover>
+			  </m:ci>
+			  <m:ci>
+			    <m:mover accent="true">
+			      <m:mi>L</m:mi>
+			      <m:mo>∼</m:mo>
+			    </m:mover>
+			  </m:ci>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  Thus, the attenuation (space) constant equals the real part
+	  of this expression, and equals
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:ci type="fn">a</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>G</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>Z</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:ci>
+		      <m:mover accent="true">
+			<m:mi>R</m:mi>
+			<m:mo>∼</m:mo>
+		      </m:mover>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>Z</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>
+
+  </content>
+</document>

@@ -1,0 +1,1422 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Formal Circuit Methods: Node Method</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0032</md:content-id>
+  <md:title>Formal Circuit Methods: Node Method</md:title>
+  <md:abstract>This module describes how to use a formal circuit method--the
+node method--to "solve" any circuit. A formal method can be
+employed when standard simplification rules cannot be used.
+</md:abstract>
+  <md:uuid>65948c82-5433-40da-b7a9-9bbb501b4411</md:uuid>
+</metadata>
+
+<content>
+    <para id="p01">
+      In some (complicated) cases, we cannot use the simplification
+      techniques--such as parallel or series combination rules--to
+      solve for a circuit's input-output relation. In other modules,
+      we wrote <emphasis>v-i</emphasis> relations and Kirchoff's laws
+      haphazardly, solving them more on intuition than procedure. We
+      need a formal method that produces a small, easy set of
+      equations that lead directly to the input-output relation we
+      seek. One such technique is the <term>node method</term>.
+    </para>
+
+    <figure id="circuit22a" orient="vertical">
+      <title>Node Voltage</title>
+      <media id="id8550485" alt="">
+        <image src="../../media/circuit22a.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit22a.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+
+    <para id="p02">
+      The node method begins by finding all nodes--places where
+      circuit elements attach to each other--in the circuit. We call
+      one of the nodes the <term>reference node</term>; the choice of
+      reference node is arbitrary, but it is usually chosen to be a
+      point of symmetry or the "bottom" node. For the remaining nodes,
+      we define <term>node voltages</term>
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>e</m:mi>
+            <m:mi>n</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      that represent the voltage between the node and the reference.
+      These node voltages constitute the only unknowns; all we need is
+      a sufficient number of equations to solve for them. In our
+      example, we have two node voltages. <emphasis>The very act of
+      defining node voltages is equivalent to using all the KVL
+      equations at your disposal</emphasis>. The reason for this
+      simple, but astounding, fact is that a node voltage is uniquely
+      defined regardless of what path is traced between the node and
+      the reference. Because two paths between a node and reference
+      have the same voltage, the sum of voltages around the loop
+      equals zero.  
+    </para>
+
+    <para id="p03"> 
+      In some cases, a node voltage corresponds exactly to the voltage
+      across a voltage source. In such cases, the node voltage is
+      specified by the source and is <emphasis>not</emphasis> an unknown.
+      For example, in our circuit,
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:ci>
+            <m:msub> 
+              <m:mi>e</m:mi>
+	      <m:mn>1</m:mn>
+            </m:msub>
+          </m:ci>
+          <m:ci>
+            <m:msub> 
+              <m:mi>v</m:mi>
+	      <m:mi>in</m:mi>
+            </m:msub>
+          </m:ci>
+	</m:apply>
+      </m:math>; 
+      thus, we need only to find one node voltage.
+    </para>   
+
+    <para id="p04"> 
+      The equations governing the node voltages are obtained by writing
+      KCL equations at each node having an unknown node voltage, using
+      the <emphasis>v-i</emphasis> relations for each element. In our 
+      example, the only circuit equation is  
+      
+      <equation id="eq01bio">                                              
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+              <m:apply>
+                <m:divide/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>in</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+              </m:apply>
+              <m:apply>
+                <m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>e</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+              </m:apply>
+              <m:apply>
+                <m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>e</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>3</m:mn>
+		  </m:msub>
+		</m:ci>
+              </m:apply>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      A little reflection reveals that when writing the KCL equations
+      for the sum of currents leaving a node, that node's voltage will
+      <emphasis>always</emphasis> appear with a plus sign, and all
+      other node voltages with a minus sign. Systematic application of
+      this procedure makes it easy to write node equations and to
+      check them before solving them. Also remember to check units at
+      this point: Every term should have units of current. In our
+      example, solving for the unknown node voltage is easy:
+
+      <equation id="eq02"><m:math>
+	  <m:apply>
+	    <m:eq/>	    
+	    <m:ci>
+	      <m:msub>
+		<m:mi>e</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:times/>
+              <m:apply>
+                <m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>3</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:times/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+              <m:ci>
+                <m:msub>
+                  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+                </m:msub>
+              </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para> 
+
+    <para id="p05"> 
+      Have we really solved the circuit with the node method? Along
+      the way, we have used KVL, KCL, and the <emphasis>v-i</emphasis>
+      relations. Previously, we indicated that the set of equations
+      resulting from applying these laws is necessary and sufficient.
+      This result guarantees that the node method can be used to
+      "solve" <emphasis>any</emphasis> circuit. One fallout of this
+      result is that we must be able to find any circuit variable
+      given the node voltages and sources. All circuit variables can
+      be found using the <emphasis>v-i</emphasis> relations and
+      voltage divider. For example, the current through
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+            <m:mn>3</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      equals
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+          <m:ci>
+            <m:msub>
+              <m:mi>e</m:mi>
+	      <m:mn>2</m:mn>
+            </m:msub>
+          </m:ci>
+          <m:ci>
+            <m:msub>
+              <m:mi>R</m:mi>
+	      <m:mn>3</m:mn>
+            </m:msub>
+          </m:ci>
+	</m:apply>
+      </m:math>.
+    </para>
+
+    <figure id="circuit22b">
+      <media id="id1164856050898" alt="">
+        <image src="../../media/circuit22b.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit22b.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+
+    <para id="para01">
+      The presence of a current source in the circuit does not affect
+      the node method greatly; just include it in writing KCL
+      equations as a current <emphasis>leaving</emphasis> the
+      node. The circuit has three nodes, requiring us to define two
+      node voltages. The node equations are
+	<m:math display="block">
+          <m:apply>
+            <m:eq/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>e</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>e</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+          </m:apply>
+	  <m:mtext>    (Node 1)</m:mtext>
+        </m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+            <m:apply>
+              <m:plus/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>e</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>3</m:mn>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+            </m:apply>
+            <m:cn>0</m:cn>	    
+	  </m:apply>
+	  <m:mtext>    (Node 2)</m:mtext>
+	</m:math>
+    </para>
+
+    <para id="p02bio"> Note that the node voltage corresponding to the
+      node that we are writing KCL for enters with a positive sign,
+      the others with a negative sign, and that the units of each term
+      is given in amperes. Rewrite these equations in the standard
+      set-of-linear-equations form.
+      
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+            <m:apply>
+              <m:minus/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>e</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>e</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+            </m:apply>    
+            <m:ci>
+              <m:msub>
+                <m:mi>i</m:mi>
+		<m:mi>in</m:mi>
+              </m:msub>
+            </m:ci>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+            <m:apply>
+              <m:plus/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>	      
+	      <m:apply>
+		<m:times/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>e</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:divide/>
+		    <m:cn>1</m:cn>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>3</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+            </m:apply>    
+            <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+
+      Solving these equations gives
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>e</m:mi>
+		<m:mn>1</m:mn>
+              </m:msub>
+            </m:ci> 
+            <m:apply>
+              <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci> 
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>3</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>3</m:mn>
+		  </m:msub>
+		</m:ci> 
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>e</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci> 
+            </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>e</m:mi>
+		<m:mn>2</m:mn>
+              </m:msub>
+            </m:ci> 
+            <m:apply>
+              <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci> 
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>3</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>3</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>        
+	      </m:apply>	      
+	      <m:ci>
+		<m:msub>
+		  <m:mi>i</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci> 
+            </m:apply>
+	  </m:apply>
+	</m:math>
+
+      To find the indicated current, we simply use   
+      <m:math>
+        <m:apply>
+          <m:eq/>
+	  <m:ci>i</m:ci>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>e</m:mi>
+		<m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+		<m:mn>3</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:apply>
+        </m:apply>
+      </m:math>.      
+    </para>
+    
+    <example id="example2">
+      <title>Node Method Example</title>
+      <figure id="circuit22c">
+	<media id="id1164861209366" alt="">
+          <image src="../../media/circuit22c.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circuit22c.eps" mime-type="application/postscript"/>
+        </media>
+      </figure>
+
+      <para id="p03bio">In this circuit (<link target-id="circuit22c"/>), we cannot use
+	the series/parallel combination rules: The vertical resistor
+	at node 1 keeps the two horizontal 1 Ω resistors from
+	being in series, and the 2 Ω resistor prevents the two
+	1 Ω resistors at node 2 from being in series. We
+	really do need the node method to solve this circuit! Despite
+	having six elements, we need only define two node
+	voltages. The node equations are
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>	      
+	      <m:apply>
+		<m:plus/>
+                <m:apply>
+                  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>e</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mi>in</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+                </m:apply>
+                <m:apply>
+                  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>1</m:cn>
+                </m:apply>
+                <m:apply>
+                  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>e</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>e</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+                </m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>	    
+	    <m:mtext>    (Node 1)</m:mtext>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:plus/>
+                <m:apply>
+                  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>e</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>v</m:mi>
+			<m:mi>in</m:mi>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+                </m:apply>
+                <m:apply>
+                  <m:divide/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>e</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>1</m:cn>
+                </m:apply>
+                <m:apply>
+                  <m:divide/>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>e</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>e</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+                </m:apply>
+	      </m:apply>
+	      <m:cn>0</m:cn>
+	    </m:apply>	    
+	    <m:mtext>    (Node 2)</m:mtext>
+	  </m:math>
+
+	Solving these equations yields   
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>e</m:mi>
+		<m:mn>1</m:mn>
+              </m:msub>
+            </m:ci>
+            <m:apply>
+              <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>6</m:cn>
+		<m:cn>13</m:cn>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+            </m:apply>
+	  </m:apply>
+	</m:math>
+
+	and   
+
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>e</m:mi>
+		<m:mn>2</m:mn>
+              </m:msub>
+            </m:ci>
+            <m:apply>
+              <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>5</m:cn>
+		<m:cn>13</m:cn>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+            </m:apply>
+	  </m:apply>
+	</m:math>. 
+	The output current equals 
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:apply>
+              <m:divide/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>e</m:mi>
+		  <m:mn>2</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:cn>1</m:cn>
+            </m:apply>
+            <m:apply>
+              <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>5</m:cn>
+		<m:cn>13</m:cn>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+            </m:apply>
+	  </m:apply>
+	</m:math>.  	
+	One unfortunate consequence of using the element's numeric
+	values from the outset is that it becomes impossible to check
+	units while setting up and solving equations.	
+      </para></example>	 
+    
+    <exercise id="exer1">
+      <problem id="id1164865436469">
+	<para id="exer1a"> 
+	  What is the equivalent resistance seen by the voltage
+	  source?
+	</para>
+      </problem>      
+      <solution id="id1164855623898">
+	<para id="exer1b">
+	  To find the equivalent resistance, we need to find the
+	  current flowing through the voltage source.  This current
+	  equals the current we have just found plus the current
+	  flowing through the other vertical 1 Ω resistor.  This
+	  current equals
+	  <m:math>
+	    <m:apply>
+	      <m:eq/>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>e</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:cn>1</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>6</m:cn>
+		  <m:cn>13</m:cn>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>v</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>, 
+	  making the total current through the voltage source (flowing
+	  out of it)
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>11</m:cn>
+		<m:cn>13</m:cn>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:math>. 
+	  
+	  Thus, the equivalent resistance is 
+	  <m:math>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>13</m:cn>
+		<m:cn>11</m:cn>
+	      </m:apply>
+	      <m:ci>Ω</m:ci>
+	    </m:apply>
+	  </m:math>.
+	</para>
+      </solution>
+    </exercise>  
+
+    <figure id="modification" orient="horizontal">
+      <title>Node Method and Impedances</title>      
+      <media id="id5387189" alt="">
+        <image src="../../media/circuit22d.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/circuit22d.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	Modification of the circuit shown on the left to illustrate 
+	the node method and the effect of adding the resistor 
+	<m:math>
+	  <m:ci>
+	    <m:msub> 
+	      <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+	    </m:msub>
+	  </m:ci>
+	</m:math>.
+      </caption>      
+    </figure>
+
+    <para id="p01nuke">
+      The node method applies to RLC circuits, without significant
+      modification from the methods used on simple resistive circuits,
+      if we use complex amplitudes. We rely on the fact that complex
+      amplitudes satisfy KVL, KCL, and impedance-based
+      <emphasis>v-i</emphasis> relations. In the example circuit, we
+      define complex amplitudes for the input and output variables and
+      for the node voltages. We need only one node voltage here, and
+      its KCL equation is
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+                <m:divide/>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>E</m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>V</m:mi>
+		      <m:mi>in</m:mi>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>1</m:mn>
+		  </m:msub>
+		</m:ci>
+              </m:apply>
+              <m:apply>
+                <m:times/>
+		<m:ci>E</m:ci>
+		<m:imaginaryi/>
+		<m:cn>2</m:cn>
+		<m:pi/>
+		<m:ci>f</m:ci>
+		<m:ci>C</m:ci>
+              </m:apply>
+              <m:apply>
+                <m:divide/>
+		<m:ci>E</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+              </m:apply>
+	    </m:apply>	    
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+
+      with the result 
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>	    
+	    <m:ci>E</m:ci>	    
+	    <m:apply>
+	      <m:times/>
+              <m:apply>
+                <m:divide/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>R</m:mi>
+		    <m:mn>2</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mn>2</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+              <m:ci>
+                <m:msub>
+                  <m:mi>V</m:mi>
+		  <m:mi>in</m:mi>
+                </m:msub>
+              </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      To find the transfer function between input and output voltages, 
+      we compute the ratio  
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+          <m:ci>E</m:ci>
+          <m:ci>
+            <m:msub>
+              <m:mi>V</m:mi>
+	      <m:mi>in</m:mi>
+            </m:msub>
+          </m:ci>
+	</m:apply>
+      </m:math>. 
+      The transfer function's magnitude and angle are
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>	    
+	    <m:apply>
+	      <m:abs/>
+              <m:apply>
+                <m:ci type="fn">H</m:ci>
+                <m:ci>f</m:ci>
+              </m:apply>
+	    </m:apply>	    
+	    <m:apply>
+	      <m:divide/>
+              <m:ci>
+                <m:msub>
+                  <m:mi>R</m:mi>
+		  <m:mn>2</m:mn>
+                </m:msub>
+              </m:ci>
+              <m:apply>
+                <m:root/>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:plus/>
+		      <m:ci><m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub></m:ci>
+		      <m:ci><m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub></m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:times/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mn>1</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mn>2</m:mn>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply> 
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:arg/>
+	      <m:apply>
+		<m:ci type="fn">H</m:ci>
+		<m:ci>f</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:apply>
+	      <m:minus/>
+              <m:apply>
+                <m:arctan/>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:times/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>C</m:ci>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>1</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>R</m:mi>
+			<m:mn>2</m:mn>
+		      </m:msub>
+		    </m:ci>
+		  </m:apply>
+		</m:apply>
+              </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      This circuit differs from the one shown <link document="m0028" target-id="rc" strength="3">previously</link> in that the resistor
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+            <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      has been added across the output. What effect has it had on the
+      transfer function, which in the original circuit was a lowpass
+      filter having cutoff frequency
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:ci>
+            <m:msub>
+              <m:mi>f</m:mi>
+	      <m:mi>c</m:mi>
+            </m:msub>
+          </m:ci>
+          <m:apply>
+            <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>2</m:cn>
+	      <m:pi/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>R</m:mi>
+		  <m:mn>1</m:mn>
+		</m:msub>
+	      </m:ci>
+	      <m:ci>C</m:ci>
+	    </m:apply>
+          </m:apply>
+	</m:apply>
+      </m:math>?  As shown in <link target-id="transfer" strength="3"/>,
+      adding the second resistor has two effects: it lowers the gain
+      in the passband (the range of frequencies for which the filter
+      has little effect on the input) and increases the cutoff
+      frequency.
+    </para>
+
+    <figure id="transfer">
+      <title>Transfer Function</title>
+      <media id="id2453902" alt="">
+        <image src="../../media/Hmagrcprime.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/Hmagrcprime.eps" mime-type="application/postscript"/>
+      </media>
+      <caption> 
+	Transfer  functions  of  the  circuits  shown  in 
+	<link target-id="modification" strength="3"/>.  
+	Here,
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>R</m:mi>
+		<m:mn>1</m:mn>
+              </m:msub>
+            </m:ci>
+            <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>,
+	
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>
+              <m:msub>
+                <m:mi>R</m:mi>
+		<m:mn>2</m:mn>
+              </m:msub>
+	    </m:ci>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>, 
+	and
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+            <m:ci>C</m:ci>
+            <m:cn>1</m:cn>
+	  </m:apply>
+	</m:math>.
+      </caption>
+    </figure>
+
+
+    <para id="p02nuke">
+      When
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+          <m:ci>
+            <m:msub>
+              <m:mi>R</m:mi>
+	      <m:mn>2</m:mn>
+            </m:msub>
+          </m:ci>
+          <m:ci>
+            <m:msub>
+              <m:mi>R</m:mi>
+	      <m:mn>1</m:mn>
+            </m:msub>
+          </m:ci>
+	</m:apply>
+      </m:math>, 
+      as shown on the plot, the passband gain becomes half of the
+      original, and the cutoff frequency increases by the same factor.
+      Thus, adding
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>R</m:mi>
+            <m:mn>2</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      provides a 'knob' by which we can trade passband gain for cutoff
+      frequency.
+    </para>
+    
+
+    <exercise id="exer2">
+      <problem id="id4077134">
+	<para id="exer2a"> 
+	  We can change the cutoff frequency without affecting
+	  passband gain by changing the resistance in the original
+	  circuit. Does the addition of the
+	  <m:math>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>R</m:mi>
+                <m:mn>2</m:mn>
+	      </m:msub>
+	    </m:ci>
+	  </m:math>
+	  resistor help in circuit design?
+	</para>
+      </problem>
+
+      <solution id="id4128093">
+	<para id="exer2b">
+	  Not necessarily, especially if we desire individual knobs
+	  for adjusting the gain and the cutoff frequency.
+	</para>
+      </solution>
+    </exercise>    
+  </content>
+</document>

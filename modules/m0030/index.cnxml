@@ -1,0 +1,340 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Equivalent Circuits: Impedances and Sources</title>
+
+  <metadata>
+  <md:content-id>m0030</md:content-id><md:title>Equivalent Circuits: Impedances and Sources</md:title>
+  <md:abstract>This module describes how to find the Thevenin and Norton
+equivalent circuits of an RLC circuit and sources.
+</md:abstract>
+  <md:uuid>73244798-6858-4b63-bd29-090f4a631336</md:uuid>
+</metadata>
+
+<content>
+
+
+    <para id="p01"> 
+      When we have circuits with capacitors and/or inductors as well
+      as resistors and sources, Thévenin and Mayer-Norton
+      equivalent circuits can still be defined by using impedances and
+      complex amplitudes for voltage and currents. For any circuit
+      containing sources, resistors, capacitors, and inductors, the
+      input-output relation for the <term>complex amplitudes</term> of
+      the terminal voltage and current is
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>V</m:ci>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:times/>
+                <m:ci>
+                  <m:msub>
+                    <m:mi>Z</m:mi>
+		    <m:mi>eq</m:mi>
+                  </m:msub>
+                </m:ci>
+                <m:ci>I</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>V</m:mi>
+                  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>I</m:ci>
+	    <m:apply>
+	      <m:minus/>
+	      <m:apply>
+		<m:divide/>
+                <m:ci>V</m:ci>
+                <m:ci>
+                  <m:msub>
+                    <m:mi>Z</m:mi>
+		    <m:mi>eq</m:mi>
+                  </m:msub>
+                </m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>I</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+
+      with   
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>V</m:mi>
+              <m:mi>eq</m:mi>
+	    </m:msub>
+	  </m:ci>
+	  <m:apply>
+	    <m:times/>
+            <m:ci>
+	      <m:msub>
+		<m:mi>Z</m:mi>
+		<m:mi>eq</m:mi>
+	      </m:msub>
+            </m:ci>
+            <m:ci>
+              <m:msub>
+                <m:mi>I</m:mi>
+		<m:mi>eq</m:mi>
+              </m:msub>
+            </m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>. 
+      Thus, we have Thévenin and Mayer-Norton equivalent
+      circuits as shown in
+      <link target-id="eqcircuits" strength="2"/>.
+    </para>
+
+
+    <figure id="eqcircuits" orient="vertical">
+      <title>Equivalent Circuits</title>
+      <subfigure id="eq-resistor">
+        <title>Equivalent circuits with resistors.</title>
+        <media id="id2947678" alt="">
+          <image src="../../media/equivalents.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/equivalents.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure>
+      <subfigure id="eq-impedance">
+        <title>Equivalent circuits with impedances.</title>
+        <media id="id1171932433811" alt="">
+          <image src="../../media/zequivalents.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/zequivalents.eps" mime-type="application/postscript"/>
+        </media>
+      </subfigure>
+      <caption>
+	Comparing the first, simpler, figure with the slightly more
+	complicated second figure, we see two differences. First of
+	all, more circuits (all those containing linear elements in
+	fact) have equivalent circuits that contain equivalents.
+	Secondly, the terminal and source variables are now complex
+	amplitudes, which carries the implicit assumption that the
+	voltages and currents are single complex exponentials, all
+	having the same frequency.
+      </caption>
+    </figure>
+
+
+
+    <example id="example01">
+      <figure id="simpRCcircuit">
+	<title>Simple RC Circuit</title>
+	<media id="id4450069" alt="">
+          <image src="../../media/circuit5b.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/circuit5b.eps" mime-type="application/postscript"/>
+        </media>
+      </figure>
+
+
+      <para id="example"> 
+	Let's find the Thévenin and Mayer-Norton equivalent circuits
+        for <link target-id="simpRCcircuit"/>. The open-circuit voltage and
+	short-circuit current techniques still work, except we use
+	impedances and complex amplitudes. The open-circuit voltage
+	corresponds to the transfer function we have already
+	found. When we short the terminals, the capacitor no longer
+	has any effect on the circuit, and the short-circuit current
+	<m:math>
+	  <m:ci>
+	    <m:msub>
+	      <m:mi>I</m:mi>
+	      <m:mi>sc</m:mi>
+	    </m:msub>
+	  </m:ci>
+	</m:math>
+	equals  
+	<m:math>
+	  <m:apply>
+	    <m:divide/>
+            <m:ci>
+	      <m:msub>
+		<m:mi>V</m:mi>
+		<m:mi>out</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:ci>R</m:ci>
+	  </m:apply>
+	</m:math>. 
+	The equivalent impedance can be found by setting the source to
+	zero, and finding the impedance using series and parallel
+	combination rules. In our case, the resistor and capacitor are
+	in parallel once the voltage source is removed (setting it to
+	zero amounts to replacing it with a short-circuit). Thus,
+	<m:math>
+	  <m:apply>
+	    <m:eq/>	    
+	    <m:ci>
+	      <m:msub>
+		<m:mi>Z</m:mi>
+                <m:mi>eq</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+              <m:ci><m:mo>∥</m:mo></m:ci>
+	      <m:ci>R</m:ci>
+	      <m:apply>
+		<m:divide/>
+                <m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>C</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>	    
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>R</m:ci>
+	      <m:apply>
+		<m:plus/>
+		<m:cn>1</m:cn>
+		<m:apply>
+		  <m:times/>
+		  <m:imaginaryi/>
+		  <m:cn>2</m:cn>
+		  <m:pi/>
+		  <m:ci>f</m:ci>
+		  <m:ci>R</m:ci>
+		  <m:ci>C</m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>. 
+	Consequently, we have   
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>V</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+                  <m:cn>1</m:cn>
+                  <m:apply>
+                    <m:plus/>
+		    <m:cn>1</m:cn>
+		    <m:apply>
+		      <m:times/>
+		      <m:imaginaryi/>
+		      <m:cn>2</m:cn>
+		      <m:pi/>
+		      <m:ci>f</m:ci>
+		      <m:ci>R</m:ci>
+		      <m:ci>C</m:ci>
+		    </m:apply>
+                  </m:apply>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>I</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>	      
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+                  <m:cn>1</m:cn>
+                  <m:ci>R</m:ci>
+		</m:apply>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>V</m:mi>
+		    <m:mi>in</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	  <m:math display="block">
+	    <m:apply>
+	      <m:eq/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>Z</m:mi>
+		  <m:mi>eq</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:apply>
+		<m:divide/>
+		<m:ci>R</m:ci>
+		<m:apply>
+		  <m:plus/>
+                  <m:cn>1</m:cn>
+                  <m:apply>
+                    <m:times/>
+		    <m:imaginaryi/>
+		    <m:cn>2</m:cn>
+		    <m:pi/>
+		    <m:ci>f</m:ci>
+		    <m:ci>R</m:ci>
+		    <m:ci>C</m:ci>
+                  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>
+
+	Again, we should check the units of our answer. Note in
+	particular that
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:imaginaryi/>
+	    <m:cn>2</m:cn>
+	    <m:pi/>
+	    <m:ci>f</m:ci>
+	    <m:ci>R</m:ci>
+	    <m:ci>C</m:ci>
+	  </m:apply>
+	</m:math>
+	must be dimensionless. Is it?
+      </para>
+    </example>
+  </content>
+</document>

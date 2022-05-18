@@ -1,0 +1,544 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>A Signal's Spectrum</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0040</md:content-id>
+  <md:title>A Signal's Spectrum</md:title>
+  <md:abstract>This is a general overview of how to solve simple electrical engineering problems.</md:abstract>
+  <md:uuid>8750e146-3861-418d-a195-1fedad059b8d</md:uuid>
+</metadata>
+
+<content>
+
+    
+    <para id="introductoryparagraph"> 
+
+      A periodic signal, such as the half-wave rectified sinusoid,
+      consists of a sum of elemental sinusoids.  A plot of the Fourier
+      coefficients as a function of the frequency index, such as shown
+      in
+      <link target-id="fourier" strength="3"/>,       
+      displays the signal's <term>spectrum</term>. The word "spectrum"
+      implies that the independent variable, here
+      <m:math><m:ci>k</m:ci></m:math>, corresponds somehow to
+      frequency.  Each coefficient is directly related to a sinusoid
+      having a frequency of
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:ci>k</m:ci>
+	  <m:ci>T</m:ci>
+	</m:apply>
+      </m:math>.  
+      Thus, if we half-wave rectified a 1 kHz sinusoid,   
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>k</m:ci> 
+	  <m:cn>1</m:cn>
+	</m:apply>
+      </m:math>
+      corresponds to 1 kHz,   
+      <m:math>
+	<m:apply>
+	  <m:eq/>
+	  <m:ci>k</m:ci>  
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math>
+      to 2 kHz, etc.
+    </para>
+
+
+    <figure id="fourier" orient="vertical">
+      <title>Fourier Series spectrum of a half-wave rectified sine wave</title>
+	<media id="id16483020" alt="">
+          <image src="../../media/spectrum2-43f2.png" mime-type="image/png"/>
+          <image for="pdf" src="../../media/spectrum2.eps" mime-type="application/postscript"/>
+        </media>
+      <caption>
+	The Fourier series spectrum of a half-wave rectified sinusoid
+	is shown. The index indicates the
+	multiple of the fundamental frequency at which the signal has
+	energy.
+      </caption>
+    </figure>   
+
+    <para id="secondparagraph"> 
+      A subtle, but very important, aspect of the Fourier spectrum is
+      its <emphasis>uniqueness</emphasis>: You can unambiguously find
+      the spectrum from the signal
+
+      (<link document="m0039" target-id="coefficients" strength="2">decomposition</link>) 
+
+      and the signal from the spectrum
+
+      (<link document="m0039" target-id="sine" strength="2">composition</link>).
+
+      Thus, any aspect of the signal can be found from the spectrum
+      and vice versa.  <emphasis>A signal's frequency domain
+      expression is its spectrum</emphasis>.  A periodic signal can be
+      defined either in the time domain (as a function) or in the
+      frequency domain (as a spectrum).
+</para>
+
+      <para id="fdtd">A fundamental aspect of solving electrical engineering
+	problems is whether the time or frequency domain provides the
+	most understanding of a signal's properties and the simplest way of 
+manipulating
+	it. The uniqueness
+	property says that either domain can provide the right answer.
+      As a simple example, suppose we want to know the (periodic)
+      signal's maximum value.  Clearly the time domain provides the
+      answer directly. To use a frequency domain approach would
+      require us to find the spectrum, form the signal from the
+      spectrum and calculate the maximum; we're back in the time
+      domain!
+    </para>
+
+    <para id="para1white">
+      Another feature of a signal is its average <term>power</term>. A
+      signal's instantaneous power is defined to be its square. The
+      average power is the average of the instantaneous power over
+      some time interval. For a periodic signal, the natural time
+      interval is clearly its period; for nonperiodic signals, a
+      better choice would be entire time or time from onset.  For a
+      periodic signal, the average power is the square of its
+      root-mean-squared (rms) value. We define the <term>rms</term> value of a
+      periodic signal to be 
+
+      <equation id="eqn1">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">rms</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:root/>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>T</m:ci>
+		</m:apply>
+		<m:apply>
+		  <m:int/>
+		  <m:bvar><m:ci>t</m:ci></m:bvar>
+		  <m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		  <m:uplimit><m:ci>T</m:ci></m:uplimit>
+		  <m:apply>
+		    <m:power/>
+		    <m:apply>
+		      <m:ci type="fn">s</m:ci>
+		      <m:ci>t</m:ci>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      and thus its average power is
+
+      <equation id="eqn2">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">power</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:ci type="fn">rms</m:ci>
+		<m:ci>s</m:ci>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		<m:uplimit><m:ci>T</m:ci> </m:uplimit>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:ci type="fn">s</m:ci>
+		    <m:ci>t</m:ci>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para>
+
+    <exercise id="exer1">
+      <problem id="id13773687">
+	<para id="probpara1">
+	  What is the rms value of the half-wave rectified sinusoid?
+	</para>
+      </problem>
+      <solution id="id6744149">
+	<para id="solpara1">
+	  The rms value of a sinusoid equals its amplitude divided by
+	  <m:math>
+	    <m:apply>
+	      <m:root/>
+	      <m:degree><m:cn>2</m:cn></m:degree>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>.	  
+	  As a half-wave rectified sine wave is zero during half of
+	  the period, its rms value is
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:ci>A</m:ci>
+              <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>
+          since the integral of the squared half-wave rectified sine wave equals 
+half that of a squared sinusoid.
+	</para>
+      </solution>
+    </exercise>
+
+    <para id="para2">
+      To find the average power in the frequency domain, we need to
+      substitute the spectral representation of the signal into this
+      expression.
+
+	<m:math display="block">
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">power</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+		<m:cn>1</m:cn>
+		<m:ci>T</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:int/>
+		<m:bvar><m:ci>t</m:ci></m:bvar>
+		<m:lowlimit><m:cn>0</m:cn></m:lowlimit>
+		<m:uplimit><m:ci>T</m:ci></m:uplimit>
+		<m:apply>
+		  <m:power/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mn>0</m:mn>
+		      </m:msub>
+		    </m:ci>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar><m:ci>k</m:ci></m:bvar>
+		      <m:lowlimit><m:cn>1</m:cn></m:lowlimit>
+		      <m:uplimit><m:infinity/></m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>a</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:cos/>
+			  <m:apply>
+			    <m:divide/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:pi/>
+			      <m:ci>k</m:ci>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			    <m:ci>T</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		    <m:apply>
+		      <m:sum/>
+		      <m:bvar><m:ci>k</m:ci></m:bvar>
+		      <m:lowlimit><m:cn>1</m:cn></m:lowlimit>
+		      <m:uplimit><m:infinity/></m:uplimit>
+		      <m:apply>
+			<m:times/>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>b</m:mi>
+			    <m:mi>k</m:mi>
+			  </m:msub>
+			</m:ci>
+			<m:apply>
+			  <m:sin/>
+			  <m:apply>
+			    <m:divide/>
+			    <m:apply>
+			      <m:times/>
+			      <m:cn>2</m:cn>
+			      <m:pi/>
+			      <m:ci>k</m:ci>
+			      <m:ci>t</m:ci>
+			    </m:apply>
+			    <m:ci>T</m:ci>
+			  </m:apply>
+			</m:apply>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      The square inside the integral will contain all possible
+      pairwise products. However, the
+
+      <link document="m0039" target-id="orthogonality" strength="2">orthogonality
+	properties</link> 
+      say that most of these crossterms integrate to zero. The
+      survivors leave a rather simple expression for the power we
+      seek.
+      
+      <equation id="power">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:ci type="fn">power</m:ci>
+	      <m:ci>s</m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:power/>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>a</m:mi>
+		    <m:mn>0</m:mn>
+		  </m:msub>
+		</m:ci>
+		<m:cn>2</m:cn>
+	      </m:apply>
+	      <m:apply>
+		<m:times/>
+		<m:apply>
+		  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:sum/>
+		  <m:bvar><m:ci>k</m:ci></m:bvar>
+		  <m:lowlimit><m:cn>1</m:cn></m:lowlimit>
+		  <m:uplimit><m:infinity/></m:uplimit>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>a</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>b</m:mi>
+			  <m:mi>k</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+    </para>
+
+
+    <figure id="fig1">
+      <title>Power Spectrum of a Half-Wave Rectified Sinusoid</title>
+      <media id="id13434698" alt="">
+        <image src="../../media/fourier3-7adc.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/fourier3.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	Power spectrum of a half-wave rectified sinusoid.
+      </caption>
+    </figure>
+
+    
+    <para id="para3">
+      It could well be that computing this sum is easier than
+      integrating the signal's square. Furthermore, the contribution
+      of each term in the Fourier series toward representing the
+      signal can be measured by its contribution to the signal's
+      average power. Thus, the power contained in a signal at its
+      <m:math>
+	<m:ci>k</m:ci>
+      </m:math>th harmonic is
+      <m:math>
+	<m:apply>
+	  <m:divide/>
+	  <m:apply>
+	    <m:plus/>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>a</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>b</m:mi>
+		  <m:mi>k</m:mi>
+		</m:msub>
+	      </m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	  <m:cn>2</m:cn>
+	</m:apply>
+      </m:math>. 
+      The <term>power spectrum</term>,
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">
+	    <m:msub>
+	      <m:mi>P</m:mi>
+	      <m:mi>s</m:mi>
+	    </m:msub></m:ci>
+	  <m:ci>k</m:ci>
+	</m:apply>
+      </m:math>,
+      such as shown in 
+      <link target-id="fig1" strength="2"/>,
+      plots each harmonic's contribution to the total power.
+    </para>
+
+
+    <exercise id="exer2">
+      <problem id="id20628271">
+	<para id="probpara2">In high-end audio, deviation of a sine wave from 
+the
+	  ideal is measured by the <term>total harmonic distortion</term>, which
+	  equals the total power in the harmonics higher than the
+	  first compared to power in the fundamental. Find an
+	  expression for the total harmonic distortion for any
+	  periodic signal.  Is this calculation most easily performed
+	  in the time or frequency domain?
+	</para>
+      </problem>
+      <solution id="id13306439">
+	<para id="solpara2">
+	  Total harmonic distortion equals 
+	  <m:math>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:sum/>
+		<m:bvar><m:ci>k</m:ci></m:bvar>
+		<m:lowlimit><m:cn>2</m:cn></m:lowlimit>
+		<m:uplimit><m:infinity/></m:uplimit>
+		<m:apply>
+		  <m:plus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>a</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:apply>
+		    <m:power/>
+		    <m:ci>
+		      <m:msub>
+			<m:mi>b</m:mi>
+			<m:mi>k</m:mi>
+		      </m:msub>
+		    </m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+	      <m:apply>
+		<m:plus/>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>a</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:power/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>b</m:mi>
+		      <m:mn>1</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	  </m:math>. 
+	  Clearly, this quantity is most easily computed in the
+	  frequency domain. However, the numerator equals the square
+	  of the signal's rms value minus the power in the average and
+	  the power in the first harmonic.
+	</para>
+      </solution>
+    </exercise>
+
+  </content>
+</document>

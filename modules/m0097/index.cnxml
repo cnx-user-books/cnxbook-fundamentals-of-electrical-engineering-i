@@ -1,0 +1,570 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  
+  <title>Error-Correcting Codes: Hamming Codes</title>
+
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0097</md:content-id>
+  <md:title>Error-Correcting Codes: Hamming Codes</md:title>
+  <md:abstract>A description of some strategies for minimizing there errors in a transmitted bit-stream.</md:abstract>
+  <md:uuid>b95ce1a3-5257-4c65-810c-b579645d13c7</md:uuid>
+</metadata>
+
+<content>
+    <para id="par1">
+      For the <link document="m0095" target-id="codematrix" strength="2">(7,4) example</link>, we have
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>2</m:cn>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>N</m:ci>
+		<m:ci>K</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	  <m:cn>7</m:cn>
+	</m:apply>
+      </m:math>
+
+      error patterns that can be corrected.  We start with single-bit
+      error patterns, and multiply them by the parity check matrix.
+      If we obtain unique answers, we are done; if two or more error
+      patterns yield the same result, we can try double-bit error
+      patterns.  In our case, single-bit error patterns give a unique
+      result.
+    </para>
+
+    <table id="table1" frame="all" summary="">
+      <title>Parity Check Matrix</title>
+      <tgroup cols="2" align="left" colsep="1" rowsep="1">
+	<thead valign="top">
+	  <row>
+	    <entry>
+	      e
+	    </entry>
+	    <entry>
+	      He
+	    </entry>
+	  </row>
+	</thead>
+	<tbody valign="top">
+	  <row>
+	    <entry>
+	      1000000
+	    </entry>
+	    <entry>
+	      101
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      0100000
+	    </entry>
+	    <entry>
+	      111
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      0010000
+	    </entry>
+	    <entry>
+	      110
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      0001000
+	    </entry>
+	    <entry>
+	      011
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      0000100
+	    </entry>
+	    <entry>
+	      100
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      0000010
+	    </entry>
+	    <entry>
+	      010
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      0000001
+	    </entry>
+	    <entry>
+	      001
+	    </entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+
+    <para id="parafix2">
+      This corresponds to our decoding table: We associate the parity
+      check matrix multiplication result with the error pattern and
+      add this to the received word. If more than one error occurs
+      (unlikely though it may be), this "error correction" strategy
+      usually makes the error worse in the sense that more bits are
+      changed from what was transmitted.
+    </para>
+
+    <para id="parafix1">
+      As with the repetition code, we must question whether our (7,4)
+      code's error correction capability compensates for the increased
+      error probability due to the necessitated reduction in bit
+      energy.  <link target-id="figurefixy"/> shows that if the
+      signal-to-noise ratio is large enough channel coding yields a
+      smaller error probability.  Because the bit stream emerging from
+      the source decoder is segmented into four-bit blocks, the fair
+      way of comparing coded and uncoded transmission is to compute
+      the probability of <term>block</term> error: the probability
+      that any bit in a block remains in error despite error
+      correction and regardless of whether the error occurs in the
+      data or in coding buts.  Clearly, our (7,4) channel code does
+      yield smaller error rates, and is worth the additional systems
+      required to make it work.
+    </para>
+
+    <figure id="figurefixy" orient="vertical">
+      <title>Probability of error occurring</title>
+      <media id="id1171486466717" alt="">
+        <image src="../../media/hamming.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/hamming.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The probability of an error occurring in transmitted
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>K</m:ci>
+	    <m:cn>4</m:cn>
+	  </m:apply>
+	</m:math> data bits equals
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+	    <m:cn>1</m:cn>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:minus/>
+		<m:cn>1</m:cn>
+		<m:ci><m:msub>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		  </m:msub></m:ci>
+	      </m:apply>
+	      <m:cn>4</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+	as 
+	<m:math>
+	  <m:apply>
+	    <m:power/>
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	      <m:ci><m:msub>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		</m:msub></m:ci>
+	    </m:apply>
+	    <m:cn>4</m:cn>
+	  </m:apply>
+	</m:math>
+	equals the probability that the four bits are received without
+	error.  The upper curve displays how this probability of an
+	error anywhere in the four-bit block varies with the
+	signal-to-noise ratio.  When a (7,4) single-bit error
+	correcting code is used, the transmitter reduced the energy it
+	expends during a single-bit transmission by 4/7, appending
+	three extra bits for error correction.  Now the probability of
+	any bit in the <emphasis>seven</emphasis>-bit block being in
+	error after error correction equals
+
+	<m:math>
+	  <m:apply>
+	    <m:minus/>
+
+	    <m:apply>
+	      <m:minus/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:power/>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:ci><m:msubsup>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		    <m:mo>′</m:mo>
+		  </m:msubsup></m:ci>
+		</m:apply>
+		<m:cn>7</m:cn>
+	      </m:apply>
+	    </m:apply>
+
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:times/>
+		<m:cn>7</m:cn>
+		<m:ci><m:msubsup>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		    <m:mo>′</m:mo>
+		  </m:msubsup></m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:power/>
+		<m:apply>
+		  <m:minus/>
+		  <m:cn>1</m:cn>
+		  <m:ci><m:msubsup>
+		      <m:mi>p</m:mi>
+		      <m:mi>e</m:mi>
+		      <m:mo>′</m:mo>
+		    </m:msubsup></m:ci>
+		</m:apply>
+		<m:cn>6</m:cn>
+	      </m:apply>
+	    </m:apply>
+	  </m:apply>
+	</m:math>, where
+	<m:math>
+	  <m:ci><m:msubsup>
+	      <m:mi>p</m:mi>
+	      <m:mi>e</m:mi>
+	      <m:mo>′</m:mo>
+	    </m:msubsup></m:ci>
+	</m:math>
+	is the probability of a bit error occurring in the channel when
+	channel coding occurs.  Here
+	<m:math>
+	  <m:apply>
+	    <m:times/>
+	    <m:apply>
+	      <m:times/>
+	      <m:cn>7</m:cn>
+	      <m:ci><m:msubsup>
+		  <m:mi>p</m:mi>
+		  <m:mi>e</m:mi>
+		  <m:mo>′</m:mo>
+		</m:msubsup></m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:power/>
+	      <m:apply>
+		<m:minus/>
+		<m:cn>1</m:cn>
+		<m:ci><m:msubsup>
+		    <m:mi>p</m:mi>
+		    <m:mi>e</m:mi>
+		    <m:mo>′</m:mo>
+		  </m:msubsup></m:ci>
+	      </m:apply>
+	      <m:cn>6</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:math> equals the probability of exactly on in seven bits
+	emerging from the channel in error; The channel decoder
+	corrects this type of error, and all data bits in the block
+	are received correctly.
+      </caption>
+    </figure>
+    
+    <para id="par2">
+      Note that our (7,4) code has the length and number of data bits
+      that perfectly fits correcting single bit errors.  This pleasant
+      property arises because the number of error patterns that can be
+      corrected,
+
+      <m:math display="inline">
+	<m:apply>
+	  <m:minus/>
+	  <m:apply>
+	    <m:power/>
+	    <m:cn>2</m:cn>
+	    <m:apply>
+	      <m:minus/>
+	      <m:ci>N</m:ci>
+	      <m:ci>K</m:ci>
+	    </m:apply>
+	  </m:apply>
+	  <m:cn>1</m:cn>
+	</m:apply>
+      </m:math>, equals the codeword length
+      
+      <m:math display="inline"><m:ci>N</m:ci></m:math>.  Codes that
+      have
+      
+      <m:math display="inline">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:minus/>
+	    <m:apply>
+	      <m:power/>
+	      <m:cn>2</m:cn>
+	      <m:apply>
+		<m:minus/>
+		<m:ci>N</m:ci>
+		<m:ci>K</m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>1</m:cn>
+	  </m:apply>
+	  <m:ci>N</m:ci>
+	</m:apply>
+      </m:math>
+      
+      are known as <term>Hamming codes</term>, and <link target-id="hammtable" strength="3">the following table</link>
+       provides the parameters of these codes.  Hamming codes are the
+       simplest single-bit error correction codes, and the
+       generator/parity check matrix formalism for channel coding and
+       decoding works for them.
+    </para>
+
+    <table id="hammtable" frame="all" summary="">
+      <title>Hamming Codes</title>
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+	<thead valign="top">
+	  <row>
+	    <entry>
+	      <m:math><m:ci>N</m:ci></m:math>
+	    </entry>
+	    <entry>
+	      <m:math><m:ci>K</m:ci></m:math>
+	    </entry>
+	    <entry>
+	      <m:math><m:ci>E</m:ci></m:math> (efficiency)
+	    </entry>
+	  </row>
+	</thead>
+	<tbody valign="top">
+	  <row>
+	    <entry>
+	      3
+	    </entry>
+	    <entry>
+	      1
+	    </entry>
+	    <entry>
+	      0.33
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      7
+	    </entry>
+	    <entry>
+	      4
+	    </entry>
+	    <entry>
+	      0.57
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      15
+	    </entry>
+	    <entry>
+	      11
+	    </entry>
+	      <entry>
+	      0.73
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      31
+	    </entry>
+	    <entry>
+	      26
+	    </entry>
+	    <entry>
+	      0.84
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      63
+	    </entry>
+	    <entry>
+	      57
+	    </entry>
+	    <entry>
+	      0.90
+	    </entry>
+	  </row>
+	  <row>
+	    <entry>
+	      127
+	    </entry>
+	    <entry>
+	      120
+	    </entry>
+	    <entry>
+	      0.94
+	    </entry>
+	  </row>
+	</tbody>
+      </tgroup>
+    </table>
+
+    <para id="par3">
+      Unfortunately, for such large blocks, the probability of
+      multiple-bit errors can exceed the number of single-bit errors
+      unless the channel single-bit error probability
+
+      <m:math display="inline">
+	<m:ci><m:msub>
+	    <m:mi>p</m:mi>
+	    <m:mi>e</m:mi>
+	  </m:msub></m:ci>
+      </m:math> 
+
+      is very small.  Consequently, we need to enhance the code's
+      error correcting capability by adding double as well as
+      single-bit error correction.
+    </para>
+
+    <exercise id="exer4">
+      <problem id="id1171478877110">
+	<para id="prob1">
+	  What must the relation between
+	  <m:math><m:ci>N</m:ci></m:math> and
+	  <m:math><m:ci>K</m:ci></m:math> be for a code to correct all
+	  single- and double-bit errors with a "perfect fit"?
+	</para>
+      </problem>
+      <solution id="id2296501">
+	<para id="sol1">
+	  In a length-<m:math><m:ci>N</m:ci></m:math> block,
+	  <m:math><m:ci>N</m:ci></m:math> single-bit and
+
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>N</m:ci>
+		<m:apply>
+		  <m:minus/>
+		  <m:ci>N</m:ci>
+		  <m:cn>1</m:cn>
+		</m:apply>
+	      </m:apply>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:math>
+
+	  double-bit errors can occur.  The number of non-zero vectors
+	  resulting from
+	  <m:math display="inline">
+	    <m:apply>
+	      <m:times/>
+	      <m:ci type="matrix">H</m:ci>
+	      <m:ci type="vector">
+		<m:mover>
+		  <m:mi>c</m:mi>
+		  <m:mo>^</m:mo>
+		</m:mover></m:ci>
+	    </m:apply>
+	  </m:math>
+	  must equal or exceed the sum of these two numbers.
+
+	  <equation id="equ0001">
+	    <m:math>
+	      <m:apply>
+		<m:geq/>
+		<m:apply>
+		  <m:minus/>
+		  <m:apply>
+		    <m:power/>
+		    <m:cn>2</m:cn>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>N</m:ci>
+		      <m:ci>K</m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:cn>1</m:cn>
+		</m:apply>
+		<m:apply>
+		  <m:plus/>
+		  <m:ci>N</m:ci>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>N</m:ci>
+		      <m:apply>
+			<m:minus/>
+			<m:ci>N</m:ci>
+			<m:cn>1</m:cn>
+		      </m:apply>
+		    </m:apply>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		</m:apply>
+	      </m:apply>
+
+	      <m:mtext>  or  </m:mtext>
+	      
+	      <m:apply>
+		<m:geq/>
+		<m:apply>
+		  <m:power/>
+		  <m:cn>2</m:cn>
+		  <m:apply>
+		    <m:minus/>
+		    <m:ci>N</m:ci>
+		    <m:ci>K</m:ci>
+		  </m:apply>
+		</m:apply>
+		<m:apply>
+		  <m:divide/>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:power/>
+		      <m:ci>N</m:ci>
+		      <m:cn>2</m:cn>
+		    </m:apply>
+		    <m:ci>N</m:ci>
+		    <m:cn>2</m:cn>
+		  </m:apply>
+		  <m:cn>2</m:cn>
+		</m:apply>
+	      </m:apply>
+	    </m:math>  
+	  </equation>
+
+	  The first two solutions that attain equality are (5,1) and
+          (90,78) codes.  However, <emphasis>no</emphasis> perfect
+          code exists other than the single-bit error correcting
+          Hamming code. (Perfect codes satisfy relations like <link target-id="equ0001" strength="3"/> with equality.)
+	</para>
+      </solution>
+    </exercise>
+
+  </content>
+</document>

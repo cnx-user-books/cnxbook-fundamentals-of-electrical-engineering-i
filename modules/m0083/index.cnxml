@@ -1,0 +1,33 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+
+  <title>Frequency Allocations</title>
+
+  <metadata>
+  <md:content-id>m0083</md:content-id><md:title>Frequency Allocations</md:title>
+  <md:abstract>An explanation and picture of the frequency allocation chart.</md:abstract>
+  <md:uuid>db130183-fa6c-41a2-96f8-b36d6a74fef6</md:uuid>
+</metadata>
+
+<content>
+    <para id="par1">To prevent radio stations from transmitting signals “on top of
+      each other,” the United States and other national governments
+      in the 1930s began regulating the carrier frequencies and power
+      outputs stations could use.  With increased use of the radio
+      spectrum for both public and private use, this regulation has
+      become increasingly important.  This is the so-called
+      <term>Frequency Allocation Chart</term>, which shows what kinds
+      of broadcasting can occur in which frequency bands. Detailed
+      radio carrier frequency assignments are much too detailed to
+      present here.
+    </para>
+
+    <figure id="freqchart">
+      <title>Frequency Allocation Chart</title>
+      <media id="id9691256" alt="">
+        <image src="../../media/allochrtvvsmall.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/allochrtvvsmall.eps" mime-type="application/postscript"/>
+      </media>
+    </figure>
+
+  </content>
+</document>

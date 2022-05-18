@@ -1,0 +1,266 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+
+  <title>Wireless Channels</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m0101</md:content-id>
+  <md:title>Wireless Channels</md:title>
+  <md:abstract>A basic analysis of wireless channels and their transfer characteristics.</md:abstract>
+  <md:uuid>f7f93c60-d996-4983-87b1-053e07629eec</md:uuid>
+</metadata>
+
+  <content>
+    <para id="p1">
+      Wireless channels exploit the prediction made by Maxwell's
+      equation that electromagnetic fields propagate in free space
+      like light. When a voltage is applied to an antenna, it creates
+      an electromagnetic field that propagates in all directions
+      (although antenna geometry affects how much power flows in any
+      given direction) that induces electric currents in the
+      receiver's antenna.  Antenna geometry determines how energetic a
+      field a voltage of a given frequency creates.  In general terms,
+      the dominant factor is the relation of the antenna's size to the
+      field's wavelength.  The fundamental equation relating frequency
+      and wavelength for a propagating wave is
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:times/>
+	    <m:ci>λ</m:ci>
+	    <m:ci>f</m:ci>
+	  </m:apply>
+	  <m:ci>c</m:ci>
+	</m:apply>
+      </m:math>
+
+      Thus, wavelength and frequency are inversely related: High
+      frequency corresponds to small wavelengths.  For example, a
+      1 MHz electromagnetic field has a wavelength of 300 m.
+      Antennas having a size or distance from the ground comparable to
+      the wavelength radiate fields most efficiently.  Consequently,
+      the lower the frequency the bigger the antenna must be.  Because
+      most information signals are baseband signals, having spectral
+      energy at low frequencies, they must be modulated to higher
+      frequencies to be transmitted over wireless channels.
+    </para>
+
+    <para id="p2">
+      For most antenna-based wireless systems, how the signal
+      diminishes as the receiver moves further from the transmitter
+      derives by considering how radiated power changes with distance
+      from the transmitting antenna.  An antenna radiates a given
+      amount of power into free space, and ideally this power
+      propagates without loss in all directions.  Considering a sphere
+      centered at the transmitter, the total power, which is found by
+      integrating the radiated power over the surface of the sphere,
+      must be constant regardless of the sphere's radius.  This
+      requirement results from the conservation of energy.  Thus, if
+      <m:math>
+	<m:apply>
+	  <m:ci type="fn">p</m:ci>
+	  <m:ci>d</m:ci>
+	</m:apply>
+      </m:math>
+      represents the power integrated with respect to direction at a
+      distance <m:math><m:ci>d</m:ci></m:math> from the antenna, the
+      total power will be
+      <m:math>
+	<m:apply>
+	  <m:times/>
+	  <m:apply>
+	    <m:ci type="fn">p</m:ci>
+	    <m:ci>d</m:ci>
+	  </m:apply>
+	  <m:cn>4</m:cn>
+	  <m:pi/>
+	  <m:apply>
+	    <m:power/>
+	    <m:ci>d</m:ci>
+	    <m:cn>2</m:cn>
+	  </m:apply>
+	</m:apply>
+      </m:math>.  
+      For this quantity to be a constant, we must have 
+
+      <m:math display="block">
+	<m:apply>
+	  <m:ci><m:mo>∝</m:mo></m:ci>
+	  <m:apply>
+	    <m:ci type="fn">p</m:ci>
+	    <m:ci>d</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:divide/>
+	    <m:cn>1</m:cn>
+	    <m:apply>
+	      <m:power/>
+	      <m:ci>d</m:ci>
+	      <m:cn>2</m:cn>
+	    </m:apply>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+
+      which means that the received signal amplitude  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>A</m:mi>
+	    <m:mi>R</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      must be proportional to the transmitter's amplitude   
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>A</m:mi>
+	    <m:mi>T</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      and inversely related to distance from the transmitter.
+
+      <equation id="eq1">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>
+	      <m:msub>
+		<m:mi>A</m:mi>
+		<m:mi>R</m:mi>
+	      </m:msub>
+	    </m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:apply>
+		<m:times/>
+		<m:ci>k</m:ci>
+		<m:ci>
+		  <m:msub>
+		    <m:mi>A</m:mi>
+		    <m:mi>T</m:mi>
+		  </m:msub>
+		</m:ci>
+	      </m:apply>
+	      <m:ci>d</m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      for some value of the constant <m:math><m:ci>k</m:ci></m:math>.
+      Thus, the further from the transmitter the receiver is located,
+      the weaker the received signal.  Whereas the attenuation found
+      in wireline channels can be controlled by physical parameters
+      and choice of transmission frequency, the inverse-distance
+      attenuation found in wireless channels persists across all
+      frequencies.
+    </para>
+
+
+    <exercise id="new_exercise">
+      <problem id="id6941696">
+	<para id="nea">Why don't signals attenuate according to the inverse-square
+	  law in a conductor?  What is the difference between the wireline
+	  and wireless cases?
+	</para>
+      </problem>
+      <solution id="id4788378">
+	<para id="neb">
+	  As shown <link document="m0100" target-id="eq11" strength="3">previously</link>, voltages and currents in a
+	  wireline channel, which is modeled as a transmission line
+	  having resistance, capacitance and inductance, decay
+	  exponentially with distance.  The inverse-square law governs
+	  free-space propagation because such propagation is lossless,
+	  with the inverse-square law a consequence of the
+	  conservation of power.  The exponential decay of wireline
+	  channels occurs because they have losses and some filtering.
+	</para>
+      </solution>
+    </exercise>
+
+
+    <para id="p3">The speed of propagation is governed by the dielectric constant  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>μ</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      and magnetic permeability   
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>ε</m:mi>
+	    <m:mn>0</m:mn>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      of free space.
+
+      <equation id="eq2"><m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:ci>c</m:ci>
+	    <m:apply>
+	      <m:divide/>
+	      <m:cn>1</m:cn>
+	      <m:apply>
+		<m:root/>
+		<m:apply>
+		  <m:times/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>μ</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>ε</m:mi>
+		      <m:mn>0</m:mn>
+		    </m:msub>
+		  </m:ci>
+		</m:apply>
+	      </m:apply>
+	    </m:apply>
+	    <m:mrow>
+	      <m:cn type="e-notation">3<m:sep/>8</m:cn>
+	      <m:mtext>m/s</m:mtext>
+	    </m:mrow>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Known familiarly as the speed of light, it sets an upper limit
+      on how fast signals can propagate from one place to another.
+      Because signals travel at a finite speed, a receiver senses a
+      transmitted signal only after a time delay inversely related to
+      the propagation speed:
+
+      <m:math display="block">
+	<m:apply>
+	  <m:eq/>
+	  <m:apply>
+	    <m:ci><m:mo>Δ</m:mo></m:ci>
+	    <m:ci>t</m:ci>
+	  </m:apply>
+	  <m:apply>
+	    <m:divide/>
+	    <m:ci>d</m:ci>
+	    <m:ci>c</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:math>
+
+      At the speed of light, a signal travels across the United States
+      in 16 ms, a reasonably small time delay.  If a lossless
+      (zero space constant) coaxial cable connected the East and West
+      coasts, this delay would be two to three times longer because of
+      the slower propagation speed.
+    </para></content>
+</document>

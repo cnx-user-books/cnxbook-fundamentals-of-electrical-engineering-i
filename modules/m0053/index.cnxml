@@ -1,0 +1,426 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Dependent Sources</title>
+
+  <metadata>
+  <md:content-id>m0053</md:content-id><md:title>Dependent Sources</md:title>
+  <md:abstract>Dependent sources.</md:abstract>
+  <md:uuid>a9b7f5f0-c225-4e7d-9bfe-1300da2ea447</md:uuid>
+</metadata>
+
+<content>
+    <para id="one"> A <term>dependent source</term> is either a
+      voltage or current source whose value is proportional to some
+      other voltage or current in the circuit. Thus, there are four
+      different kinds of dependent sources; to describe an op-amp, we
+      need a voltage-dependent voltage source.  However, the <link document="m1019" strength="2">standard circuit-theoretical model
+      for a transistor</link> contains a current-dependent current
+      source. Dependent sources do not serve as inputs to a circuit
+      like independent sources. They are used to model
+      <term>active circuits</term>: those containing electronic
+      elements. The RLC circuits we have been considering so far are
+      known as <term>passive circuits</term>.
+    </para>
+
+    <figure id="depsources">
+      <title>dependent sources</title>
+      <media id="id1165858351302" alt="">
+        <image src="../../media/depsource-5dc6.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/depsource.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	Of the four possible dependent sources, depicted is a
+	voltage-dependent voltage source in the context of a generic
+	circuit.
+      </caption>
+    </figure>
+
+    <para id="two"> 
+      <link target-id="opamp" strength="2"/>       
+      shows the circuit symbol for the op-amp and its equivalent
+      circuit in terms of a voltage-dependent voltage source.
+    </para>
+
+    <figure id="opamp">
+      <title>op-amp</title> 
+      <media id="id1165864341059" alt="">
+        <image src="../../media/opamp10-c479.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/opamp10.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>	
+	The op-amp has four terminals to which connections can be
+	made.  Inputs attach to nodes <emphasis>a</emphasis> and
+	<emphasis>b</emphasis>, and the output is node
+	<emphasis>c</emphasis>. As the circuit model on the right
+	shows, the op-amp serves as an amplifier for the difference of
+	the input node voltages.
+      </caption>
+    </figure>
+
+
+    <para id="three">       
+      Here, the output voltage equals an amplified version of the
+      difference of node voltages appearing across its inputs. The
+      dependent source model portrays how the op-amp works quite
+      well. As in most active circuit schematics, the power supply is
+      not shown, but must be present for the circuit model to be
+      accurate. Most operational amplifiers require both positive and
+      negative supply voltages for proper operation.
+    </para>
+
+    <para id="newone">
+      Because dependent sources cannot be described as impedances, and
+      because the dependent variable cannot "disappear" when you apply
+      parallel/series combining rules, circuit simplifications such as
+      current and voltage divider should not be applied in most
+      cases. Analysis of circuits containing dependent sources
+      essentially requires use of formal methods, like the 
+      <link document="m0032" strength="3">node method</link>. 
+      Using the node method for such circuits is not
+      difficult, with node voltages defined across the source treated
+      as if they were known (as with independent sources). Consider
+      the circuit shown on the top in      
+      <link target-id="fdop" strength="2"/>.
+    </para>
+    
+
+    <figure id="fdop">
+      <title>feedback op-amp</title>
+      <media id="id1165863951770" alt="">
+        <image src="../../media/opamp9-9f7b.png" mime-type="image/png"/>
+        <image for="pdf" src="../../media/opamp9.eps" mime-type="application/postscript"/>
+      </media>
+      <caption>
+	The top circuit depicts an op-amp in a feedback amplifier
+	configuration.  On the bottom is the equivalent circuit, and
+	integrates the op-amp circuit model into the circuit.
+      </caption>
+    </figure>
+    
+
+    <para id="newtwo">Note that the op-amp is placed in the circuit "upside-down,"
+      with its inverting input at the top and serving as the only
+      input. As we explore op-amps in more detail in the next section,
+      this configuration will appear again and again and its usefulness demonstrated. To determine how the output voltage is related
+      to the input voltage, we apply the node method.
+      Only two node voltages— 
+      <m:math display="inline">
+	<m:ci>v</m:ci>
+      </m:math> 
+      and  
+      <m:math display="inline">
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>out</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>—need be defined; the remaining nodes are across
+      sources or serve as the reference. The node equations are
+
+      <equation id="eqone">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:divide/>
+                <m:apply>
+                  <m:minus/>
+		  <m:ci>v</m:ci> 
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>in</m:mi>
+		    </m:msub>
+		  </m:ci>
+                </m:apply>
+                <m:ci>R</m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+                <m:ci>v</m:ci>
+                <m:ci>
+                  <m:msub>
+                    <m:mi>R</m:mi>
+                    <m:mi>in</m:mi>
+                  </m:msub>
+                </m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+                <m:apply>
+                  <m:minus/>
+		  <m:ci>v</m:ci> 
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>out</m:mi>
+		    </m:msub>
+		  </m:ci>
+                </m:apply>
+                <m:ci>
+                  <m:msub>
+                    <m:mi>R</m:mi>
+                    <m:mi>F</m:mi>
+                  </m:msub>
+                </m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      <equation id="eqtwo">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:plus/>
+	      <m:apply>
+		<m:divide/>
+                <m:apply>
+                  <m:minus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>out</m:mi>
+		    </m:msub> 
+		  </m:ci>
+		  <m:apply>
+		    <m:times/>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>G</m:ci>
+		    </m:apply>
+		    <m:ci>v</m:ci>
+		  </m:apply>
+                </m:apply>
+                <m:ci>
+                  <m:msub>
+                    <m:mi>R</m:mi>
+		    <m:mi>out</m:mi>
+                  </m:msub>
+                </m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+                <m:apply>
+                  <m:minus/>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>v</m:mi>
+		      <m:mi>out</m:mi>
+		    </m:msub>
+		  </m:ci> 
+		  <m:ci>v</m:ci>
+                </m:apply>
+                <m:ci>
+                  <m:msub>
+                    <m:mi>R</m:mi>
+                    <m:mi>F</m:mi>
+                  </m:msub>
+                </m:ci>
+	      </m:apply>
+	      <m:apply>
+		<m:divide/>
+                <m:ci>
+                  <m:msub>
+                    <m:mi>v</m:mi>
+                    <m:mi>out</m:mi>
+                  </m:msub>
+                </m:ci>
+                <m:ci>
+                  <m:msub>
+                    <m:mi>R</m:mi>
+                    <m:mi>L</m:mi>
+                  </m:msub>
+                </m:ci>
+	      </m:apply>
+	    </m:apply>
+	    <m:cn>0</m:cn>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      Note that no special considerations were used in applying the
+      node method to this dependent-source circuit. Solving these to
+      learn how
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>out</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math> 
+      relates to  
+      <m:math>
+	<m:ci>
+	  <m:msub>
+	    <m:mi>v</m:mi>
+	    <m:mi>in</m:mi>
+	  </m:msub>
+	</m:ci>
+      </m:math>
+      yields
+
+      <equation id="eqthree">
+	<m:math>
+	  <m:apply>
+	    <m:eq/>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:minus/>
+                <m:apply>
+                  <m:times/>
+		  <m:apply>
+		    <m:divide/>
+		    <m:apply>
+		      <m:times/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>F</m:mi>
+			</m:msub>
+		      </m:ci>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>out</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:minus/>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>out</m:mi>
+			</m:msub>
+		      </m:ci> 
+		      <m:apply>
+			<m:times/>
+			<m:ci>G</m:ci>
+			<m:ci>
+			  <m:msub>
+			    <m:mi>R</m:mi>
+			    <m:mi>F</m:mi>
+			  </m:msub>
+			</m:ci>
+		      </m:apply>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>out</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>in</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>L</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+		  <m:apply>
+		    <m:plus/>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>R</m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>in</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		    <m:apply>
+		      <m:divide/>
+		      <m:cn>1</m:cn>
+		      <m:ci>
+			<m:msub>
+			  <m:mi>R</m:mi>
+			  <m:mi>F</m:mi>
+			</m:msub>
+		      </m:ci>
+		    </m:apply>
+		  </m:apply>
+                </m:apply>
+                <m:apply>
+                  <m:divide/>
+		  <m:cn>1</m:cn>
+		  <m:ci>
+		    <m:msub>
+		      <m:mi>R</m:mi>
+		      <m:mi>F</m:mi>
+		    </m:msub>
+		  </m:ci>
+                </m:apply>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>out</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	    <m:apply>
+	      <m:times/>
+	      <m:apply>
+		<m:divide/>
+                <m:cn>1</m:cn>
+                <m:ci>R</m:ci>
+	      </m:apply>
+	      <m:ci>
+		<m:msub>
+		  <m:mi>v</m:mi>
+		  <m:mi>in</m:mi>
+		</m:msub>
+	      </m:ci>
+	    </m:apply>
+	  </m:apply>
+	</m:math>
+      </equation>
+
+      This expression represents the general input-output relation for
+      this circuit, known as the <term>standard feedback
+      configuration</term>. Once we learn more about <link document="m0036" strength="3">op-amps</link>, in particular what
+      its typical element values are, the expression will simplify
+      greatly. Do note that the units check, and that the parameter
+      <m:math>
+	<m:ci>G</m:ci>
+      </m:math> 
+      of the dependent source is a dimensionless gain.
+    </para>
+
+  </content>
+</document>

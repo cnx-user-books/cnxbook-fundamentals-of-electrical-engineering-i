@@ -1,0 +1,1660 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 2119 35 2429 242 
+%%Title: sig15.eps
+%%Creator: Canvas 
+%%CreationDate: Friday, April 24, 1998
+%%DocumentProcSets: Deneba_CanvasCustomColors
+%%+ Deneba_CanvasGraphics
+%%DocumentFonts: Helvetica
+%%DocumentSuppliedFonts: 
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%Copyright: (C) 1996 Deneba Systems. All Rights Reserved
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Deneba_CanvasGraphics
+%%Title: Deneba standard graphics
+%%Version: 1.0
+%%CreationDate: 10/1/94
+%%Copyright: (C) 1994 Deneba Systems. All Rights Reserved
+userdict /Deneba_CanvasGraphics 300 dict put
+Deneba_CanvasGraphics begin
+/invalidcolortable? true def   
+/level2 /languagelevel where {pop languagelevel 2 ge}{false} ifelse def
+/initialize
+{Deneba_CanvasGraphics
+{dup xcheck{bind}if pop pop}forall
+currentscreen /_sp exch def /_sa exch def /_sf exch def
+/DefaultScreen{_sf _sa /_sp load}def
+/DefaultScreenProc{ /_sp load}def
+/setstrokeadjust where{pop true}{false}ifelse
+{
+	/sa /setstrokeadjust load def
+	/li /lineto load def
+	/mt /moveto load def
+	/ct /curveto load def
+	/lh { currentpoint exch pop lineto}bind def
+	/lv { currentpoint pop exch lineto}bind def}
+{
+/sa
+{
+	{/_xl
+	{transform
+	.25 sub round .25 add exch
+	.25 sub round .25 add exch
+	itransform
+	}bind def
+	/li{ _xl lineto}bind def
+	/mt{ _xl moveto}bind def
+	/ct{ _xl curveto}bind def
+	/lh { dup _xl pop currentpoint exch pop lineto}bind def
+	/lv { dup _xl pop currentpoint pop exch lineto}bind def
+	/rp{_xl/cv_b xdf/cv_r xdf
+	_xl/cv_t xdf/cv_l xdf
+	cv_l cv_t moveto
+	cv_r cv_t lineto
+	cv_r cv_b lineto
+	cv_l cv_b lineto
+	closepath
+	}def}
+	{/li{lineto} def
+	/mt{moveto} def
+	/ct{curveto} def
+	/lh{currentpoint exch pop lineto}def
+	/lv{currentpoint pop exch lineto}def
+	/rp
+	{/cv_b xdf/cv_r xdf
+	/cv_t xdf/cv_l xdf
+	cv_l cv_t moveto
+	cv_r cv_t lineto
+	cv_r cv_b lineto
+	cv_l cv_b lineto
+	closepath}def}ifelse}def
+}ifelse
+}def
+/terminate
+{
+currentdict Deneba_CanvasGraphics eq{end}if}def
+/mxMax 8 def
+/mxStk [mxMax {matrix} repeat]def
+/mxIdx 0 def
+/stm{mxStk mxIdx get currentmatrix pop
+/mxIdx mxIdx 1 add store}def
+/rtm{/mxIdx mxIdx 1 sub store
+mxStk mxIdx get setmatrix}def
+/_cvmtx matrix def
+/_txtmtx matrix def
+/_initmtx matrix def
+/xdf{exch def}def
+/min{2 copy gt{exch}if pop}def
+/max{2 copy lt{exch}if pop}def
+/CVvec 256 array def
+/T true def
+/F false def
+/_id 0 def
+/_encodindex 0 def
+/_encodArr 10 array def
+/_fd 0 def
+/_textSave null def
+/_letterSpace 0 def
+/_spaceXtra 0 def
+/_PageSave null def
+/_penh 1.0 def
+/_penv 1.0 def
+/save0 null def
+/_w 0 def
+/_h 0 def
+/st0 null def
+/st1 null def
+/st2 null def
+/st3 null def
+/st4 null def
+/stb 256 string def
+/pw 0 def
+/wdif 0 def
+/temp 0 def
+/currot 0 def
+/savehandler null def
+/debug
+{dup /$eps exch not def{/savehandler errordict /handleerror get def
+errordict
+/handleerror{$error begin
+newerror{/newerror false def
+showpage
+72 72 scale
+/Helvetica findfont .2 scalefont setfont
+.25 9.6 moveto
+(Error: )show
+errorname
+{dup type/stringtype ne
+{(converted error name will end up in this string)cvs}if
+show}exec
+.25 9.4 moveto
+(Offending Command: )show
+/command load
+{dup type/stringtype ne
+{(converted command name will end up in this string)cvs}if
+show}exec
+.25 9.2 moveto
+(Stack: )show
+ostack
+{.25 currentpoint .2 sub exch pop moveto
+dup type/stringtype ne{dup type/integertype eq
+1 index type/realtype eq or
+1 index type/nametype eq or
+not {type}if
+(converted stack will end up in this string)cvs}if
+show}forall
+showpage
+Deneba_CanvasGraphics /savehandler get exec}if
+end}put}if}def
+/lc{setlinecap}def
+/lj{setlinejoin}def
+/lm{setmiterlimit}def
+/lf{setflat}def
+/cp{closepath}def
+/np{newpath}def
+/$psz 6 array def
+/$pix 0 def
+/gs{gsave $psz dup $pix _penh put $pix 1 add _penv put /$pix $pix 2 add def}def
+/gr{grestore/$pix $pix 2 sub def $psz dup $pix get /_penh exch def $pix 1 add get /_penv exch def}def
+/li{lineto} def
+/lh{currentpoint exch pop lineto}def
+/lv{currentpoint pop exch lineto}def
+/mt{moveto} def
+/mh{currentpoint exch pop moveto}def
+/mv{currentpoint pop exch moveto}def
+/ct{curveto} def
+/rt{4 -2 roll moveto
+dup 0 exch rlineto
+exch 0 rlineto
+neg 0 exch rlineto
+closepath}def
+/_hr
+{
+{/@err false def currentflat dup{gsave{eoclip}stopped{grestore 2 mul dup setflat dup 200 ge{(%% Canvas:Clip failed\r)print /@err true def pop exit}if}{grestore setflat exit}ifelse}loop @err not {eoclip}if setflat}
+{/@err false def currentflat dup{gsave{clip}stopped{grestore 2 mul dup setflat dup 200 ge{(%% Canvas:Clip failed\r)print /@err true def pop exit}if}{grestore setflat exit}ifelse}loop @err not {clip}if setflat}
+}def
+/_cs null def
+/fg{$eps{systemdict /setgray get exec}{setgray}ifelse}def
+/setcmykcolor where {pop true}{false}ifelse
+{/f4{ setcmykcolor}def}{/f4{1 sub 4 1 roll 3{3 index add neg dup 0 lt{pop 0}if 3 1 roll}repeat setrgbcolor pop}def}ifelse
+/setcolorspace where {pop true}{false}ifelse
+{/scs{ dup setcolorspace /_cs exch def}def/f3{ _cs setcolorspace setcolor}def
+}{/f3{ setrgbcolor}def/scs{ pop}def}ifelse
+/$cc 5 array def
+/findcmykcustomcolor where {pop true}{false}ifelse
+not {/findcmykcustomcolor{$cc astore}def}if
+/setcustomcolor where {pop true}{false}ifelse
+not{
+/setcmykcolor where {pop true}{false}ifelse
+	{/setcustomcolor{exch aload pop pop 4{4 index mul 4 1 roll}repeat setcmykcolor pop}def}
+	{/setcustomcolor{exch aload pop pop 4{4 index mul 4 1 roll}repeat 1 sub 4 1 roll 3{3 index add neg dup 0 lt{pop 0}if 3 1 roll}repeat setrgbcolor pop pop}def}ifelse
+}if
+/fc{6 1 roll findcmykcustomcolor exch setcustomcolor}def
+/setseparationgray where {pop true}{false}ifelse
+not{/setseparationgray {systemdict /setgray get exec} def}if
+/sg{ setseparationgray}def
+/sp{/_penv xdf/_penh xdf}def
+/rp
+{/cv_b xdf/cv_r xdf
+/cv_t xdf/cv_l xdf
+cv_l cv_t moveto
+cv_r cv_t lineto
+cv_r cv_b lineto
+cv_l cv_b lineto
+closepath}def
+/rr{/yradius xdf
+/xradius xdf
+/cv_b xdf
+/cv_r xdf
+/cv_t xdf
+/cv_l xdf
+cv_l xradius add cv_t moveto
+cv_r xradius sub cv_t lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+1 0 1 1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_r cv_b yradius sub lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+0 1 -1 1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_l xradius add cv_b lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+-1 0 -1 -1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+cv_l cv_t yradius add lineto
+_cvmtx currentmatrix pop
+currentpoint translate
+xradius yradius scale
+0 -1 1 -1 1 arcto 4{pop}repeat
+_cvmtx setmatrix
+closepath}def
+/ep{_cvmtx currentmatrix pop
+translate
+scale
+1 0 moveto
+0 0 1 0 360 arc
+closepath
+_cvmtx setmatrix}def
+/wd{_cvmtx currentmatrix pop
+translate
+scale
+0 0 moveto
+0 0 1 5 -2 roll arcn
+closepath
+_cvmtx setmatrix}def
+/as{_cvmtx currentmatrix pop
+translate
+scale
+0 0 1 5 -2 roll arcn
+_cvmtx setmatrix}def
+/ds
+{_penv _penh ne dup{stm _penh dup 0 le{pop 1}if _penv dup 0 le{pop 1}if scale}{_penh setlinewidth}ifelse stroke {rtm}if}def
+/df{fill}def
+/de{eofill}def
+/_gstk 5 array def
+/_gstkc 0 def
+/_gst{ 9 dict begin level2{/_ccs currentcolorspace def /_cc [currentcolor] def}{/_cc [currentrgbcolor]def}ifelse {currentpoint}stopped {/_cp null def}{ 2 array astore /_cp exch def}ifelse /_cf currentfont def
+/_clw currentlinewidth def /_clc currentlinecap def /_clj currentlinejoin def /_cml currentmiterlimit def currentdict end}def
+/hs{newpath gsave stm}def
+/hc{/_hr load exch get exec newpath}def
+/he{_gstk _gstkc _gst put /_gstkc _gstkc 1 add store 
+grestore rtm /_gstkc _gstkc 1 sub store _gstk _gstkc get level2{dup /_ccs get setcolorspace dup /_cc get aload pop setcolor}{dup /_cc get aload pop setrgbcolor}ifelse dup /_cp get dup null eq 
+not{aload pop moveto}{pop}ifelse dup /_cf get setfont
+dup/_clw get setlinewidth dup/_clc get setlinecap dup/_clj get setlinejoin dup/_cml get setmiterlimit pop}def
+/id{ /_id xdf}def
+/_imatrix{_w 0 0 _h _id 0 ne{neg 0 _h}{0 0}ifelse _cvmtx astore}def
+% Copyright (C) 1990, 1991 by Adobe Systems Incorporated.
+% All rights reserved.
+level2 { save /dontloadlevel1 xdf }if
+/startnoload{{/noload save def} if}def
+/endnoload{{noload restore}if }def
+/testsystemdict{where{systemdict eq{true}{false}ifelse}{false}ifelse}def
+/ncolors 1 def
+/colorimage where{pop true}{false}ifelse{/ncolors 0
+statusdict begin 
+/processcolors where{pop pop processcolors}{/deviceinfo where{pop deviceinfo /Colors known
+{pop {deviceinfo /Colors get}}if}if}ifelse end def
+ncolors 0 ne{/colorimage testsystemdict
+/setcolortransfer testsystemdict
+/currentcolortransfer testsystemdict
+/currentcmykcolor testsystemdict
+and and and not{/ncolors 0 def}if}if}if
+ncolors dup 1 ne exch dup 3 ne exch 4 ne and and {/ncolors 0 def}if
+ncolors 1 eq dup dup not startnoload
+{/doclutimage{[{255 mul round cvi bwclut exch get 255 div} /exec load dup currenttransfer exch] 
+cvx bind settransfer _w _h 8 _imatrix {currentfile st0 readhexstring pop}image}def}if
+not endnoload
+ncolors dup 3 eq exch 4 eq or
+dup dup not startnoload
+{/nullproc{{}}def/concatutil{/exec load
+7 -1 roll /exec load}def
+/defsubclut
+{1 add getinterval def}def
+/spconcattransfer   
+{/Dclut exch def/Cclut exch def/Bclut exch def/Aclut exch def/ncompute exch ld
+currentcolortransfer
+[{Aclut ncompute}concatutil] cvx
+[{Bclut ncompute}concatutil] cvx
+[{Cclut ncompute}concatutil] cvx
+[{Dclut ncompute}concatutil] cvx
+setcolortransfer}def
+/setuprgbcluts
+{/bit3x rgbclut length 3 sub def
+/bit1x bit3x 3 idiv def/rclut rgbclut def
+/gclut rclut 1 bit3x defsubclut/bclut rclut 2 bit3x defsubclut}def}if not  
+endnoload ncolors 3 eq dup dup not startnoload
+{/3compute{exch bit3x mul
+round cvi get 255 div}def
+/doclutimage{%/rgbclut xdf pop 
+setuprgbcluts/3compute rclut gclut bclut dup
+spconcattransfer _w _h 8 _imatrix
+[{currentfile st0 readhexstring pop}/exec load
+/dup load dup]cvx
+nullproc nullproc true 3 colorimage}def}if not endnoload ncolors 4 eq dup dup not startnoload
+{/stuffclut{cmykindex 3 -1 roll put}def
+/ftoint{1 exch sub 255 mul round cvi}def
+/4compute { exch bit4x mul round cvi get 255 div } def
+/computecmykclut{setuprgbcluts/bit4x rgbclut length 3 idiv 4 mul 4 sub def
+/cmykclut bit4x 4 add string def
+/cclut cmykclut def
+/mclut cclut 1 bit4x defsubclut
+/yclut cclut 2 bit4x defsubclut
+/kclut cclut 3 bit4x defsubclut
+/cmykindex 0 def
+0 1 bit1x
+{dup /cmykindex exch bit1x exch sub 4 mul def
+3 mul dup rclut exch get 255 div exch dup gclut exch get 255 div
+exch bclut exch get 255 div
+setrgbcolor currentcmykcolor
+ftoint kclut stuffclut
+ftoint yclut stuffclut
+ftoint mclut stuffclut
+ftoint cclut stuffclut
+}for}def
+/doclutimage{invalidcolortable?{computecmykclut}if
+/4compute cclut mclut yclut kclut spconcattransfer
+_w _h 8 _imatrix[{currentfile st0 readhexstring pop}/exec load/dup load dup dup] cvx 
+nullproc nullproc nullproc true 4 colorimage}def}if
+not endnoload
+ncolors 0 eq
+dup dup not startnoload
+{/colorexpand{mystringexp 0 rgbclut
+3 copy
+7 -1 roll
+{3 mul 3 getinterval putinterval exch 3 add exch 3 copy}forall
+pop pop pop pop pop}def
+/createexpandstr{/mystringexp exch st0 length mul string def}def
+/doclutimage{/rgbclut xdf pop 3 createexpandstr _w _h 8 _imatrix
+[{currentfile st0 readhexstring pop} /exec load /colorexpand load /exec load] cvx
+false 3 colorimage}def}if not endnoload
+level2 { dontloadlevel1 restore }if
+level2 not{ save /dontloadlevel2 xdf }if
+/rgbclut 0 def/doclutimage{/hival 255 def
+[/Indexed /DeviceRGB hival rgbclut] setcolorspace
+_imagedict dup begin 
+/Width _w def 
+/Height _h def  
+/Decode [0 hival] def  
+/ImageMatrix _imatrix def
+/DataSource{currentfile st0 readhexstring pop}def
+/BitsPerComponent 8 def 
+/Interpolate false def
+end image}def
+level2 not{ dontloadlevel2 restore }if
+%%EndProcSet
+/_imagedict 12 dict begin /ImageType 1 def/BitsPerComponent 8 def/Interpolate false def currentdict end def
+/$rhs0 {currentfile st0 readhexstring pop}def
+/$rhs1 {currentfile st1 readhexstring pop}def
+/$rhs2 {currentfile st2 readhexstring pop}def
+/$rhs3 {currentfile st3 readhexstring pop}def
+/$rhs4 {currentfile st4 readhexstring pop}def
+/$rs0 {currentfile st0 readstring pop}def
+/$rs1 {currentfile st1 readstring pop}def
+/$rs2 {currentfile st2 readstring pop}def
+/$rs3 {currentfile st3 readstring pop}def
+/$rs4 {currentfile st4 readstring pop}def
+/hascolor
+/deviceinfo where
+{pop deviceinfo /Colors known
+{deviceinfo /Colors get exec 1 gt}
+{false} ifelse}
+{/statusdict where
+{pop statusdict /processcolors known
+{statusdict /processcolors get exec 1 gt}
+{false} ifelse}{false} ifelse}ifelse
+def
+/level2 systemdict /languagelevel known
+{languagelevel 2 ge}{false}ifelse def
+/foureq {4 index eq 8 1 roll
+4 index eq 8 1 roll
+4 index eq 8 1 roll
+4 index eq 8 1 roll
+pop pop pop pop and and and} def
+/setupbands{gsave
+/_settransfer systemdict /settransfer get def
+/_currenttransfer systemdict /currenttransfer get def
+/_image systemdict /image get def
+/blank 0 _currenttransfer exec
+1 _currenttransfer exec eq def
+/negative blank{0 _currenttransfer exec 0.5 lt}
+{0 _currenttransfer exec 1 _currenttransfer exec gt}ifelse def
+/inverted? negative def
+/_currentgray systemdict /currentgray get def
+hascolor{/$b 0 def} {/$b 5 def} ifelse
+/setcmykcolor where{pop 1 0 0 0 setcmykcolor _currentgray 1 exch sub
+0 1 0 0 setcmykcolor _currentgray 1 exch sub
+0 0 1 0 setcmykcolor _currentgray 1 exch sub
+0 0 0 1 setcmykcolor _currentgray 1 exch sub
+4 {4 copy} repeat
+1 0 0 0 foureq{/$b 1 store}if
+0 1 0 0 foureq{/$b 2 store}if
+0 0 1 0 foureq{/$b 3 store}if
+0 0 0 1 foureq{/$b 4 store}if
+0 0 0 0 foureq{/$b 6 store}if}if
+blank{/$b 6 store}if
+$b 0 eq $b 5 eq or{/$dt 0 def}if/$dt -1 def grestore}def
+/doimage{exch
+1 index 0 eq{dup dup/Width get exch /Decode get length 2 div mul cvi}{dup/Width get}ifelse
+/st0 exch string def
+begin
+/MultipleDataSources false def
+dup 0 eq{pop/DataSource /$rhs0 load def}
+{1 eq{/DataSource /$rs0 load def}{/DataSource currentfile /ASCII85Decode filter def}ifelse}ifelse
+currentdict end
+%level2{image}
+true
+{begin
+Width Height BitsPerComponent ImageMatrix
+Decode length 2 eq
+{/DataSource load end image}{
+Decode length 6 eq
+{MultipleDataSources{DataSource 0 get DataSource 1 get DataSource 2 get}{/DataSource load}ifelse
+MultipleDataSources 3 end DSIColorImage}{
+Decode length 8 eq{MultipleDataSources{DataSource 0 get DataSource 1 get
+DataSource 2 get DataSource 3 get}{/DataSource load}ifelse
+MultipleDataSources 4 end DSIColorImage}if}ifelse
+}ifelse
+}if}def
+/dt{/rgbclut xdf /bwclut xdf}def
+/cl{pop gsave $i setmatrix translate scale
+cvi/_h xdf cvi/_w xdf/st0 _w string def pop doclutimage grestore}def
+/c3{/imagesave save def
+/$src xdf $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+level2{_cs setcolorspace 0 0 0 setrgbcolor}if
+_imagedict begin
+/Width _w def
+/Height _h def
+/ImageMatrix _imatrix def
+/Decode [0 1 0 1 0 1]def 
+currentdict end exch
+doimage
+imagesave restore}def
+/ca{/imagesave save def
+/$src xdf $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+level2{_cs setcolorspace}if
+_imagedict begin
+/Decode[0 100 -128 127 -128 127]def  
+/Width _w def
+/Height _h def
+/ImageMatrix _imatrix def
+currentdict end exch
+doimage 
+imagesave restore}def
+/c4{/imagesave save def
+/$src xdf $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+level2 {/DeviceCMYK setcolorspace 0 0 0 0 setcmykcolor}if
+_imagedict begin
+/Decode [0 1 0 1 0 1 0 1] def  
+/Width _w def
+/Height _h def
+/ImageMatrix _imatrix def
+currentdict end exch
+doimage
+imagesave restore}def
+/im{/imagesave save def
+pop $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+level2{/DeviceGray setcolorspace 0 setgray}if
+_imagedict begin
+/Decode [0 1] def  
+/Width _w def
+/Height _h def
+/ImageMatrix _imatrix def
+currentdict end exch
+doimage 
+imagesave restore}def
+/colorimage where{pop/DSIColorImage {colorimage} def}{/DSIColorImage{
+/$nc xdf pop /proc0 xdf 3 index 2 index mul 7 add 8 div cvi string /st1 xdf
+$nc 3 eq{{proc0 dup/st0 xdf 0 exch 3 exch length 3 sub
+{dup st0 exch get .3 mul 1 index 1 add st0 exch get .59 mul add 1 index 2 add st0 exch get .11 mul add
+cvi exch 3 div cvi exch st1 3 1 roll put}for st1}}{{proc0 dup/st0 xdf 0 exch 4 exch length 4 sub{dup
+st0 exch get .3 mul
+1 index 1 add st0 exch get .59 mul add
+1 index 2 add st0 exch get .11 mul add
+1 index 3 add st0 exch get add dup 255.0 gt{pop 255.0}if
+255.0 exch sub cvi
+exch 4 div cvi exch
+st1 3 1 roll put}for st1}}ifelse
+image}def}ifelse
+/OPIimage{image}def
+/$i matrix def
+/bi{scale translate $i currentmatrix pop translate scale setupbands}def
+/ei{$i setmatrix}def
+/ik{/imagesave save def $i setmatrix translate scale cvi/_h xdf cvi/_w xdf
+/st0 _w 7 add 8 div cvi string def _w _h false _imatrix 5 -1 roll 0 eq {{$rhs0}}{{$rs0}}ifelse imagemask imagesave restore}def
+/rs{2 copy translate
+3 -1 roll neg rotate
+neg exch neg exch translate
+}def
+/cs{_cvmtx astore concat} def
+/fd{/_fd xdf}def
+/_fontMatrix{1 0 0 _fd 0 ne{-1 0 0}{1 0 0}ifelse _cvmtx astore}def
+/$cvfontdict 150 dict begin  /Symbol {/Symbol /Symbol /Symbol -1} def currentdict end def
+/rfp{/_encodindex xdf
+FontDirectory 3 index known
+not{
+dup FontDirectory exch known{exch pop}{pop}ifelse
+ findfont dup length 1 add dict begin{1 index/FID ne{def}{pop pop}ifelse}forall
+dup /FontName exch def FontType 0 ne{/Encoding Encoding 256 array copy def
+_encodindex 0 ge{0 _encodArr _encodindex get{dup type/nametype eq{Encoding 2 index 2 index put pop 1 add}
+{exch pop}ifelse}forall pop}if}if
+dup
+currentdict end
+definefont pop}{pop pop}ifelse} def
+/rf{3 index 6 1 roll
+counttomark array astore cvx exch pop
+$cvfontdict 3 1 roll put}def
+/cvsf{$cvfontdict exch get exec rfp findfont ftSize 0 0 ftSize _fd 0 ne{-1 mul}if 0 0 _cvmtx astore 
+makefont setfont}def
+/mf{3 -1 roll $cvfontdict exch get exec rfp
+findfont 3 1 roll exch ftSize mul exch ftSize mul 0 exch 0 exch _fd 0 ne{-1 mul}if 0 0 _cvmtx astore makefont setfont}def
+/wrk1 ( ) def
+/wdict 16 dict def
+/Work75 75 string def
+/Nmk{Work75 cvs dup}def
+/Npt{put cvn}def
+/dhOdh{Nmk 2 79 Npt}def
+/dhBdh{Nmk 2 111 Npt}def
+/dhSdh{Nmk 2 83 Npt}def
+/sfWidth{gsave 0 0 moveto 0 0 lineto 0 0 lineto 0 0 lineto closepath clip stringwidth grestore}def
+/fts{/ftSize exch def}def
+/mkFT{dup/FontType get 0 eq{dup maxlength dict begin
+{1 index/FID ne 2 index /UniqueID ne and{def}{pop pop}ifelse}forall
+currentdict end
+dup/FDepVector 2 copy get
+[exch 6 index exch 6 index exch{mkFT 3 1 roll}forall pop pop] put dup}{/tempFT 12 dict def
+tempFT begin
+/FontMatrix [1 0 0 1 0 0] def
+/FontType 3 def
+dup/Encoding get/Encoding exch def
+/proc2 2 index def
+dup/ft1 exch def
+/ft2 1 array def
+/FontBBox [0 0 1 1] def
+/BuildChar{Deneba_CanvasGraphics begin
+exch dup/ftdt xdf begin
+wdict begin
+/chr xdf/chrst wrk1 dup 0 chr put def
+ft2 0 get null eq{ft1 dup length 2 add dict begin
+{1 index/FID ne 2 index /UniqueID ne and{def}{pop pop}ifelse}forall
+/PaintType 2 def/StrokeWidth .024 0 FontMatrix idtransform pop def
+currentdict end
+/q exch definefont
+ft2 exch 0 exch put}if
+ftdt/proc2 get exec end end end}def end tempFT}ifelse
+3 index exch
+definefont exch pop}def
+/mb{dup dhBdh
+FontDirectory 1 index known
+{exch pop}{dup 2 index
+$cvfontdict exch get
+exec
+rfp
+findfont{boldproc}exch
+mkFT
+pop pop pop
+dup 3 -1 roll
+mark 3 1 roll dup -1
+counttomark array astore cvx
+exch pop
+$cvfontdict
+exch 2 index exch put}ifelse}def/mo{dup dhOdh
+FontDirectory 1 index known{exch pop}{dup 2 index
+$cvfontdict exch get
+exec
+rfp
+findfont{outproc} exch
+mkFT pop pop pop
+dup 3 -1 roll
+mark 3 1 roll dup -1
+counttomark array astore cvx 		
+exch pop
+$cvfontdict 
+exch 2 index exch put}ifelse}def
+/ms{
+dup dhSdh
+FontDirectory 1 index known{exch pop}{dup 2 index
+$cvfontdict exch get
+exec
+rfp
+findfont{ShadChar} exch
+mkFT
+pop pop pop
+dup 3 -1 roll
+mark 3 1 roll dup -1
+counttomark array astore cvx 		
+exch pop
+$cvfontdict 
+exch 2 index exch put}ifelse}def
+/outproc{ft1 setfont
+gsave chrst sfWidth grestore
+setcharwidth dblsh}def
+/boldproc{ft1 setfont
+gsave
+chrst sfWidth 1 index 0 ne{exch .05 add exch}if
+grestore
+setcharwidth
+ft1 /PaintType get 2 ne
+{0 0 moveto gsave ft2 0 get setfont chrst show grestore chrst show}
+{0 0 moveto gsave chrst show grestore .05 0 moveto chrst show}ifelse}def
+/dblsh{currentgray 1.0 setgray
+chrst 0 0 moveto show setgray
+ft2 0 get setfont chrst 0 0 moveto show}def
+/ShadChar{
+ft1 setfont
+gsave
+chrst sfWidth 1 index 0 ne{exch .05 add exch}if
+grestore
+setcharwidth
+chrst .06 0 moveto show
+0 .05 translate dblsh}def
+/ts{show}def
+/ta{/_letterSpace xdf/_spaceXtra xdf}def
+/tf{/_textWidth xdf
+/_numSpaces xdf
+/_stringLength xdf
+dup	stringwidth pop
+_letterSpace _stringLength 1 sub mul add
+_spaceXtra _numSpaces mul add
+_textWidth exch sub /wdif xdf
+_spaceXtra 0 32
+wdif _stringLength div
+_letterSpace add
+0 6 -1 roll awidthshow}def
+/pb{/_PageSave save def/showpage{}def}def
+/pe{_PageSave restore}def
+/pm{_pm currentmatrix pop}def
+/_pm matrix def
+/ps{showpage _pm setmatrix}def
+level2{/ef {gsave 6 array astore concat dup execform grestore}def}
+{/ef{gsave 6 array astore concat newpath dup begin Matrix concat
+BBox dup dup 0 get exch 1 get moveto
+dup dup 0 get exch 3 get lineto
+dup dup 2 get exch 3 get lineto
+dup 2 get exch 1 get lineto closepath
+clip newpath PaintProc end grestore}def}ifelse
+/DSIBeginPaintProc{/pp mark{currentfile token not{}if dup/DSIEndPaintProc
+eq{pop counttomark array astore cvx bind /exec load]cvx def DSIEndPaintProc exit}
+{counttomark 300 gt{counttomark array astore cvx bind /exec load}if}ifelse}loop}def
+/bc{save 11 1 roll 10 dict begin/BBox 5 1 roll 4 array astore def/Matrix 7 1 roll 6 array astore def
+/FormType 1 def/PaintProc{/pp get exec}def}def
+/ec{pop restore}def
+/printvm{1 vmreclaim vmstatus pop exch pop (                         )cvs print (\n)print flush}def
+/DSIEndPaintProc{currentdict end}def
+/setoverprint where {pop}{/setoverprint{pop}def}ifelse
+/initfonts{level2{$cvfontdict dup { pop 1 index exch undef}forall pop}if
+$cvfontdict begin /Symbol {/Symbol /Symbol /Symbol -1}def end}def
+initialize
+end
+%%EndResource
+Deneba_CanvasGraphics begin
+
+_encodArr 0
+[
+39/quotesingle 96/grave
+128/bullet/bullet/quotesinglbase/florin/quotedblbase/ellipsis/dagger/daggerdbl/circumflex/perthousand/Scaron/guilsinglleft/OE/bullet/bullet/bullet
+/bullet/quoteleft/quoteright/quotedblleft/quotedblright/bullet/endash/emdash/tilde/trademark
+/scaron
+/guilsinglright/oe/bullet/bullet/Ydieresis
+/bullet/exclamdown/cent/sterling/currency/yen/brokenbar/section/dieresis/copyright/ordfeminine/guillemotleft/logicalnot/hyphen/registered/macron
+/degree/plusminus/twosuperior/threesuperior/acute/mu/paragraph/periodcentered/cedilla/onesuperior/ordmasculine/guillemotright/onequarter/onehalf/threequarters/questiondown
+/Agrave/Aacute/Acircumflex/Atilde/Adieresis
+/Aring
+/AE/Ccedilla/Egrave/Eacute/Egrave/Edieresis/Igrave/Iacute/Icircumflex/Idieresis
+/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls
+/agrave/aacute/acircumflex/atilde/adieresis
+/aring
+/ae/ccedilla/egrave/eacute/ecircumflex/edieresis
+/igrave
+/iacute
+/icircumflex
+/idieresis
+/eth/ntilde/ograve/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis/yacute/thorn/ydieresis
+] put
+
+_encodArr 1
+[
+39/quotesingle 96/grave
+128/Adieresis/Aring/Ccedilla/Eacute/Ntilde/Odieresis/Udieresis/aacute
+/agrave/acircumflex/adieresis/atilde/aring/ccedilla/eacute/egrave
+/ecircumflex/edieresis/iacute/igrave/icircumflex/idieresis/ntilde/oacute
+/ograve/ocircumflex/odieresis/otilde/uacute/ugrave/ucircumflex/udieresis
+/dagger/degree/cent/sterling/section/bullet/paragraph/germandbls
+/registered/copyright/trademark/acute/dieresis/notequal/AE/Oslash
+/infinity/plusminus/lessequal/greaterequal/yen/mu/partialdiff/summation
+/product/pi/integral/ordfeminine/ordmasculine/Omega/ae/oslash
+/questiondown/exclamdown/logicalnot/radical/florin/approxequal/Delta/guillemotleft
+/guillemotright/ellipsis/blank/Agrave/Atilde/Otilde/OE/oe
+/endash/emdash/quotedblleft/quotedblright/quoteleft/quoteright/divide/lozenge
+/ydieresis/Ydieresis/fraction/currency/guilsinglleft/guilsinglright/fi/fl
+/daggerdbl/periodcentered/quotesinglbase/quotedblbase/perthousand/Acircumflex/Ecircumflex/Aacute
+/Edieresis/Egrave/Iacute/Icircumflex/Idieresis/Igrave/Oacute/Ocircumflex
+/apple/Ograve/Uacute/Ucircumflex/Ugrave/dotlessi/circumflex/tilde
+/macron/breve/dotaccent/ring/cedilla/hungarumlaut/ogonek/caron
+] put
+mark /___FN3 /Helvetica dup 1 rf
+F debug
+0 id
+1 fd
+0 277 translate
+1 -1 scale
+%%EndSetup
+/DeviceCMYK scs
+0. 0. 0. 1. f4
+0.125 0.125 sp
+1 lc
+T sa
+%%DSIBeginObject: #1 - Ref:1261 Group
+%%DSIBeginObject: #2 - Ref:1309 Polygon
+0.8711 0.2266 1. 0.0508 f4
+1. 1. sp
+0 lc
+14.3 lm
+0 lj
+np
+2219.9677 141.9301 mt
+2220.9677 121.9301 li
+2220.9677 102.9301 li
+2221.9677 85.9301 li
+2222.9677 71.9301 li
+2223.9677 61.9301 li
+2224.9677 54.9301 li
+2225.9677 52.9301 li
+2226.9677 54.9301 li
+2226.9677 61.9301 li
+2227.9677 71.9301 li
+2228.9677 84.9301 li
+2229.9677 100.9301 li
+2230.9677 118.9301 li
+2231.9677 136.9301 li
+2232.9677 154.9301 li
+2232.9677 170.9301 li
+2233.9677 185.9301 li
+2234.9677 197.9301 li
+2235.9677 206.9301 li
+2236.9677 211.9301 li
+2237.9677 213.9301 li
+2238.9677 211.9301 li
+2238.9677 205.9301 li
+2239.9677 197.9301 li
+2240.9677 187.9301 li
+2241.9677 174.9301 li
+2242.9677 161.9301 li
+2243.9677 148.9301 li
+2244.9677 136.9301 li
+2244.9677 124.9301 li
+2245.9677 115.9301 li
+2246.9677 108.9301 li
+2247.9677 103.9301 li
+2248.9677 100.9301 li
+2249.9677 100.9301 li
+2250.9677 102.9301 li
+2250.9677 106.9301 li
+2251.9677 112.9301 li
+2252.9677 118.9301 li
+2253.9677 124.9301 li
+2254.9677 131.9301 li
+2255.9677 137.9301 li
+2256.9677 142.9301 li
+2256.9677 145.9301 li
+2257.9677 147.9301 li
+2258.9677 148.9301 li
+2259.9677 148.9301 li
+2260.9677 146.9301 li
+2261.9677 144.9301 li
+2262.9677 141.9301 li
+2262.9677 138.9301 li
+2263.9677 136.9301 li
+2264.9677 134.9301 li
+2265.9677 134.9301 li
+2266.9677 135.9301 li
+2267.9677 137.9301 li
+2267.9677 140.9301 li
+2268.9677 145.9301 li
+2269.9677 151.9301 li
+2270.9677 158.9301 li
+2271.9677 164.9301 li
+2272.9677 170.9301 li
+2273.9677 176.9301 li
+2273.9677 180.9301 li
+2274.9677 182.9301 li
+2275.9677 182.9301 li
+2276.9677 179.9301 li
+2277.9677 174.9301 li
+2278.9677 167.9301 li
+2279.9677 158.9301 li
+2279.9677 146.9301 li
+2280.9677 134.9301 li
+2281.9677 121.9301 li
+2282.9677 108.9301 li
+2283.9677 96.9301 li
+2284.9677 85.9301 li
+2285.9677 77.9301 li
+2285.9677 71.9301 li
+2286.9677 69.9301 li
+2287.9677 71.9301 li
+2288.9677 76.9301 li
+2289.9677 85.9301 li
+2290.9677 97.9301 li
+2291.9677 112.9301 li
+2291.9677 128.9301 li
+2292.9677 146.9301 li
+2293.9677 164.9301 li
+2294.9677 182.9301 li
+2295.9677 198.9301 li
+2296.9677 211.9301 li
+2297.9677 221.9301 li
+2297.9677 228.9301 li
+2298.9677 230.9301 li
+2299.9677 228.9301 li
+2300.9677 221.9301 li
+2301.9677 211.9301 li
+2302.9677 197.9301 li
+2303.9677 180.9301 li
+2303.9677 161.9301 li
+2304.9677 141.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #3 - Ref:1174 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2135. 151.6999 mt
+(0) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #4 - Ref:1262 Line
+0.6563 0.5273 0.5156 1. f4
+0.5 0.5 sp
+2 lc
+2 lj
+np
+2219.9677 141.9301 mt
+2219.9677 138.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #5 - Ref:1263 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2221. 151.6999 mt
+(T) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #6 - Ref:1268 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2304.9677 141.9301 mt
+2304.9677 138.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #7 - Ref:1269 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2306. 151.6999 mt
+0. 0. ta
+(2T) 2 0 11.6699 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #8 - Ref:1274 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2390.9677 141.9301 mt
+2390.9677 138.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #9 - Ref:1275 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2393. 151.6999 mt
+0. 0. ta
+(3T) 2 0 11.6699 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #10 - Ref:1277 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 232.9301 mt
+2133.9677 232.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #11 - Ref:1278 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2121. 236.6999 mt
+0. 0. ta
+(-2) 2 0 8.8916 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #12 - Ref:1280 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 209.9301 mt
+2133.9677 209.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #13 - Ref:1283 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 187.9301 mt
+2133.9677 187.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #14 - Ref:1284 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2121. 191.6999 mt
+0. 0. ta
+(-1) 2 0 8.8916 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #15 - Ref:1286 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 164.9301 mt
+2133.9677 164.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #16 - Ref:1289 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 141.9301 mt
+2133.9677 141.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #17 - Ref:1290 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2124. 145.6999 mt
+(0) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #18 - Ref:1292 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 118.9301 mt
+2133.9677 118.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #19 - Ref:1295 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 96.9301 mt
+2133.9677 96.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #20 - Ref:1296 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2124. 100.6999 mt
+(1) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #21 - Ref:1298 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 73.9301 mt
+2133.9677 73.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #22 - Ref:1301 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2130.9677 50.9301 mt
+2133.9677 50.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #23 - Ref:1302 Text
+0.6563 0.5273 0.5156 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0.6563 0.5273 0.5156 1. f4
+F sa
+2124. 54.6999 mt
+(2) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #24 - Ref:1308 Polygon
+1. 0.957 0. 0. f4
+1. 1. sp
+0 lc
+14.3 lm
+0 lj
+np
+2133.9677 141.9301 mt
+2134.9677 132.9301 li
+2135.9677 124.9301 li
+2136.9677 117.9301 li
+2136.9677 110.9301 li
+2137.9677 104.9301 li
+2138.9677 100.9301 li
+2139.9677 97.9301 li
+2140.9677 96.9301 li
+2141.9677 96.9301 li
+2142.9677 98.9301 li
+2142.9677 101.9301 li
+2143.9677 106.9301 li
+2144.9677 112.9301 li
+2145.9677 119.9301 li
+2146.9677 127.9301 li
+2147.9677 135.9301 li
+2148.9677 144.9301 li
+2148.9677 152.9301 li
+2149.9677 160.9301 li
+2150.9677 168.9301 li
+2151.9677 174.9301 li
+2152.9677 179.9301 li
+2153.9677 183.9301 li
+2154.9677 186.9301 li
+2154.9677 187.9301 li
+2155.9677 186.9301 li
+2156.9677 183.9301 li
+2157.9677 179.9301 li
+2158.9677 174.9301 li
+2159.9677 168.9301 li
+2160.9677 160.9301 li
+2160.9677 152.9301 li
+2161.9677 144.9301 li
+2162.9677 135.9301 li
+2163.9677 127.9301 li
+2164.9677 119.9301 li
+2165.9677 112.9301 li
+2166.9677 106.9301 li
+2166.9677 101.9301 li
+2167.9677 98.9301 li
+2168.9677 96.9301 li
+2169.9677 96.9301 li
+2170.9677 97.9301 li
+2171.9677 100.9301 li
+2172.9677 104.9301 li
+2172.9677 110.9301 li
+2173.9677 117.9301 li
+2174.9677 124.9301 li
+2175.9677 132.9301 li
+2176.9677 141.9301 li
+2177.9677 150.9301 li
+2178.9677 158.9301 li
+2178.9677 165.9301 li
+2179.9677 172.9301 li
+2180.9677 178.9301 li
+2181.9677 182.9301 li
+2182.9677 185.9301 li
+2183.9677 186.9301 li
+2184.9677 186.9301 li
+2184.9677 184.9301 li
+2185.9677 181.9301 li
+2186.9677 176.9301 li
+2187.9677 170.9301 li
+2188.9677 163.9301 li
+2189.9677 155.9301 li
+2190.9677 147.9301 li
+2190.9677 138.9301 li
+2191.9677 130.9301 li
+2192.9677 122.9301 li
+2193.9677 114.9301 li
+2194.9677 108.9301 li
+2195.9677 103.9301 li
+2196.9677 99.9301 li
+2196.9677 96.9301 li
+2197.9677 96.9301 li
+2198.9677 96.9301 li
+2199.9677 99.9301 li
+2200.9677 103.9301 li
+2201.9677 108.9301 li
+2202.9677 114.9301 li
+2202.9677 122.9301 li
+2203.9677 130.9301 li
+2204.9677 138.9301 li
+2205.9677 147.9301 li
+2206.9677 155.9301 li
+2207.9677 163.9301 li
+2208.9677 170.9301 li
+2208.9677 176.9301 li
+2209.9677 181.9301 li
+2210.9677 184.9301 li
+2211.9677 186.9301 li
+2212.9677 186.9301 li
+2213.9677 185.9301 li
+2214.9677 182.9301 li
+2214.9677 178.9301 li
+2215.9677 172.9301 li
+2216.9677 165.9301 li
+2217.9677 158.9301 li
+2218.9677 150.9301 li
+2219.9677 141.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #25 - Ref:1310 Polygon
+0. 0.9258 1. 0. f4
+np
+2304.9677 141.9301 mt
+2305.9677 130.9301 li
+2306.9677 119.9301 li
+2307.9677 110.9301 li
+2308.9677 103.9301 li
+2309.9677 98.9301 li
+2309.9677 96.9301 li
+2310.9677 96.9301 li
+2311.9677 100.9301 li
+2312.9677 106.9301 li
+2313.9677 114.9301 li
+2314.9677 124.9301 li
+2315.9677 135.9301 li
+2315.9677 147.9301 li
+2316.9677 158.9301 li
+2317.9677 168.9301 li
+2318.9677 176.9301 li
+2319.9677 182.9301 li
+2320.9677 186.9301 li
+2321.9677 186.9301 li
+2321.9677 184.9301 li
+2322.9677 179.9301 li
+2323.9677 172.9301 li
+2324.9677 163.9301 li
+2325.9677 152.9301 li
+2326.9677 141.9301 li
+2327.9677 130.9301 li
+2327.9677 119.9301 li
+2328.9677 110.9301 li
+2329.9677 103.9301 li
+2330.9677 98.9301 li
+2331.9677 96.9301 li
+2332.9677 96.9301 li
+2333.9677 100.9301 li
+2333.9677 106.9301 li
+2334.9677 114.9301 li
+2335.9677 124.9301 li
+2336.9677 135.9301 li
+2337.9677 147.9301 li
+2338.9677 158.9301 li
+2339.9677 168.9301 li
+2339.9677 176.9301 li
+2340.9677 182.9301 li
+2341.9677 186.9301 li
+2342.9677 186.9301 li
+2343.9677 184.9301 li
+2344.9677 179.9301 li
+2345.9677 172.9301 li
+2345.9677 163.9301 li
+2346.9677 152.9301 li
+2347.9677 141.9301 li
+2348.9677 130.9301 li
+2349.9677 119.9301 li
+2350.9677 110.9301 li
+2351.9677 103.9301 li
+2351.9677 98.9301 li
+2352.9677 96.9301 li
+2353.9677 96.9301 li
+2354.9677 100.9301 li
+2355.9677 106.9301 li
+2356.9677 114.9301 li
+2357.9677 124.9301 li
+2357.9677 135.9301 li
+2358.9677 147.9301 li
+2359.9677 158.9301 li
+2360.9677 168.9301 li
+2361.9677 176.9301 li
+2362.9677 182.9301 li
+2363.9677 186.9301 li
+2364.9677 184.9301 li
+2365.9677 179.9301 li
+2366.9677 172.9301 li
+2367.9677 163.9301 li
+2368.9677 152.9301 li
+2369.9677 141.9301 li
+2369.9677 130.9301 li
+2370.9677 119.9301 li
+2371.9677 110.9301 li
+2372.9677 103.9301 li
+2373.9677 98.9301 li
+2374.9677 96.9301 li
+2375.9677 96.9301 li
+2375.9677 100.9301 li
+2376.9677 106.9301 li
+2377.9677 114.9301 li
+2378.9677 124.9301 li
+2379.9677 135.9301 li
+2380.9677 147.9301 li
+2381.9677 158.9301 li
+2381.9677 168.9301 li
+2382.9677 176.9301 li
+2383.9677 182.9301 li
+2384.9677 186.9301 li
+2385.9677 186.9301 li
+2386.9677 184.9301 li
+2387.9677 179.9301 li
+2387.9677 172.9301 li
+2388.9677 163.9301 li
+2389.9677 152.9301 li
+2390.9677 141.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #26 - Ref:1312 Line
+0. 0. 0. 1. f4
+0.5 0.5 sp
+np
+2130.8427 141.9301 mt
+2408.3739 141.9301 li
+ds
+gs
+0. 0. 0. 1. f4
+np
+2416.4677 141.9848 mt
+2406.8427 145.4301 li
+2406.8427 138.4301 li
+2416.4677 141.9848 li
+cp
+de
+gr
+%%DSIEndObject
+%%DSIBeginObject: #27 - Ref:1313 Line
+0. 0. 0. 1. f4
+np
+2133.9677 232.9301 mt
+2133.9677 43.5239 li
+ds
+gs
+0. 0. 0. 1. f4
+np
+2134.0224 35.4302 mt
+2137.4677 45.0552 li
+2130.4677 45.0552 li
+2134.0224 35.4302 li
+cp
+de
+gr
+%%DSIEndObject
+%%DSIBeginObject: #28 - Ref:1095 Line
+0. 0. 0. 1. f4
+np
+2219.9677 50.9301 mt
+2219.9677 53.9301 li
+2219.9677 58.9301 mt
+2219.9677 61.9301 li
+2219.9677 66.9301 mt
+2219.9677 69.9301 li
+2219.9677 74.9301 mt
+2219.9677 77.9301 li
+2219.9677 82.9301 mt
+2219.9677 85.9301 li
+2219.9677 90.9301 mt
+2219.9677 93.9301 li
+2219.9677 98.9301 mt
+2219.9677 101.9301 li
+2219.9677 106.9301 mt
+2219.9677 109.9301 li
+2219.9677 114.9301 mt
+2219.9677 117.9301 li
+2219.9677 122.9301 mt
+2219.9677 125.9301 li
+2219.9677 130.9301 mt
+2219.9677 133.9301 li
+2219.9677 138.9301 mt
+2219.9677 141.9301 li
+2219.9677 146.9301 mt
+2219.9677 149.9301 li
+2219.9677 154.9301 mt
+2219.9677 157.9301 li
+2219.9677 162.9301 mt
+2219.9677 165.9301 li
+2219.9677 170.9301 mt
+2219.9677 173.9301 li
+2219.9677 178.9301 mt
+2219.9677 181.9301 li
+2219.9677 186.9301 mt
+2219.9677 189.9301 li
+2219.9677 194.9301 mt
+2219.9677 197.9301 li
+2219.9677 202.9301 mt
+2219.9677 205.9301 li
+2219.9677 210.9301 mt
+2219.9677 213.9301 li
+2219.9677 218.9301 mt
+2219.9677 221.9301 li
+2219.9677 226.9301 mt
+2219.9677 229.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #29 - Ref:1124 Line
+0. 0. 0. 1. f4
+np
+2304.9677 50.9301 mt
+2304.9677 53.9301 li
+2304.9677 58.9301 mt
+2304.9677 61.9301 li
+2304.9677 66.9301 mt
+2304.9677 69.9301 li
+2304.9677 74.9301 mt
+2304.9677 77.9301 li
+2304.9677 82.9301 mt
+2304.9677 85.9301 li
+2304.9677 90.9301 mt
+2304.9677 93.9301 li
+2304.9677 98.9301 mt
+2304.9677 101.9301 li
+2304.9677 106.9301 mt
+2304.9677 109.9301 li
+2304.9677 114.9301 mt
+2304.9677 117.9301 li
+2304.9677 122.9301 mt
+2304.9677 125.9301 li
+2304.9677 130.9301 mt
+2304.9677 133.9301 li
+2304.9677 138.9301 mt
+2304.9677 141.9301 li
+2304.9677 146.9301 mt
+2304.9677 149.9301 li
+2304.9677 154.9301 mt
+2304.9677 157.9301 li
+2304.9677 162.9301 mt
+2304.9677 165.9301 li
+2304.9677 170.9301 mt
+2304.9677 173.9301 li
+2304.9677 178.9301 mt
+2304.9677 181.9301 li
+2304.9677 186.9301 mt
+2304.9677 189.9301 li
+2304.9677 194.9301 mt
+2304.9677 197.9301 li
+2304.9677 202.9301 mt
+2304.9677 205.9301 li
+2304.9677 210.9301 mt
+2304.9677 213.9301 li
+2304.9677 218.9301 mt
+2304.9677 221.9301 li
+2304.9677 226.9301 mt
+2304.9677 229.9301 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #30 - Ref:1126 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+2419. 144.6999 mt
+(t) show
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #31 - Ref:1127 Text
+0. 0. 0. 1. f4
+stm
+10. fts
+/___FN3 cvsf
+0. 0. 0. 1. f4
+F sa
+2139. 44.6999 mt
+0. 0. ta
+(x\(t\)) 4 0 14.4385 tf
+T sa
+rtm
+%%DSIEndObject
+%%DSIBeginObject: #32 - Ref:1260 Group
+%%DSIBeginObject: #33 - Ref:1380 Line
+0.6563 0.5273 0.5156 1. f4
+np
+2144.8976 238.6698 mt
+2206.4577 238.6702 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #34 - Ref:1405 Oval
+1. 0.957 0. 0. f4
+1. 1. sp
+np
+2.8354 2.8351 2145.3031 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #35 - Ref:1406 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2157.4529 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #36 - Ref:1407 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2169.6028 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #37 - Ref:1121 Group
+%%DSIBeginObject: #38 - Ref:1408 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2182.1576 218.0153 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #39 - Ref:1411 Line
+1. 0.957 0. 0. f4
+np
+2182.1576 238.6698 mt
+2182.1576 217.813 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #40 - Ref:1409 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2194.7124 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #41 - Ref:1410 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2206.8623 239.075 ep
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #42 - Ref:1130 Group
+%%DSIBeginObject: #43 - Ref:1435 Line
+0.6563 0.5273 0.5156 1. f4
+0.5 0.5 sp
+2 lc
+2 lj
+np
+2230.4451 238.6698 mt
+2292.8152 238.6702 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #44 - Ref:1438 Oval
+1. 0.957 0. 0. f4
+1. 1. sp
+0 lc
+14.3 lm
+0 lj
+np
+2.8354 2.8351 2230.8506 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #45 - Ref:1439 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2243.0005 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #46 - Ref:1440 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2255.9603 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #47 - Ref:1443 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2293.2198 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #48 - Ref:1131 Group
+%%DSIBeginObject: #49 - Ref:1132 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2267.7051 218.0153 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #50 - Ref:1133 Line
+1. 0.957 0. 0. f4
+np
+2267.7051 238.6698 mt
+2267.7051 217.813 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #51 - Ref:1134 Group
+%%DSIBeginObject: #52 - Ref:1203 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2280.6649 218.0153 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #53 - Ref:1259 Line
+1. 0.957 0. 0. f4
+np
+2280.6649 238.6698 mt
+2280.6649 217.813 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #54 - Ref:1266 Group
+%%DSIBeginObject: #55 - Ref:1270 Line
+0.6563 0.5273 0.5156 1. f4
+0.5 0.5 sp
+2 lc
+2 lj
+np
+2316.3976 238.6698 mt
+2378.7677 238.6702 li
+ds
+%%DSIEndObject
+%%DSIBeginObject: #56 - Ref:1271 Oval
+1. 0.957 0. 0. f4
+1. 1. sp
+0 lc
+14.3 lm
+0 lj
+np
+2.8354 2.8351 2316.8031 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #57 - Ref:1272 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2328.9529 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #58 - Ref:1273 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2341.9128 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #59 - Ref:1276 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2379.1723 239.075 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #60 - Ref:1285 Group
+%%DSIBeginObject: #61 - Ref:1287 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2366.6174 218.0153 ep
+ds
+%%DSIEndObject
+%%DSIBeginObject: #62 - Ref:1288 Line
+1. 0.957 0. 0. f4
+np
+2366.6174 238.6698 mt
+2366.6174 217.813 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #63 - Ref:1291 Oval
+1. 0.957 0. 0. f4
+np
+2.8354 2.8351 2353.6576 239.075 ep
+ds
+%%DSIEndObject
+%%DSIEndObject
+%%DSIBeginObject: #64 - Ref:1293 Line
+0. 0. 0. 1. f4
+0.5 0.5 sp
+np
+2390.9677 50.9301 mt
+2390.9677 53.9301 li
+2390.9677 58.9301 mt
+2390.9677 61.9301 li
+2390.9677 66.9301 mt
+2390.9677 69.9301 li
+2390.9677 74.9301 mt
+2390.9677 77.9301 li
+2390.9677 82.9301 mt
+2390.9677 85.9301 li
+2390.9677 90.9301 mt
+2390.9677 93.9301 li
+2390.9677 98.9301 mt
+2390.9677 101.9301 li
+2390.9677 106.9301 mt
+2390.9677 109.9301 li
+2390.9677 114.9301 mt
+2390.9677 117.9301 li
+2390.9677 122.9301 mt
+2390.9677 125.9301 li
+2390.9677 130.9301 mt
+2390.9677 133.9301 li
+2390.9677 138.9301 mt
+2390.9677 141.9301 li
+2390.9677 146.9301 mt
+2390.9677 149.9301 li
+2390.9677 154.9301 mt
+2390.9677 157.9301 li
+2390.9677 162.9301 mt
+2390.9677 165.9301 li
+2390.9677 170.9301 mt
+2390.9677 173.9301 li
+2390.9677 178.9301 mt
+2390.9677 181.9301 li
+2390.9677 186.9301 mt
+2390.9677 189.9301 li
+2390.9677 194.9301 mt
+2390.9677 197.9301 li
+2390.9677 202.9301 mt
+2390.9677 205.9301 li
+2390.9677 210.9301 mt
+2390.9677 213.9301 li
+2390.9677 218.9301 mt
+2390.9677 221.9301 li
+2390.9677 226.9301 mt
+2390.9677 229.9301 li
+ds
+%%DSIEndObject
+%%DSIEndObject
+terminate
+showpage
