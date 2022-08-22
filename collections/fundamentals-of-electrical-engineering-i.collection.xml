@@ -1,12 +1,13 @@
-<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en">
+<?xml version="1.0"?>
+<col:collection xmlns="http://cnx.rice.edu/collxml" xmlns:md="http://cnx.rice.edu/mdml" xmlns:col="http://cnx.rice.edu/collxml" xml:lang="en" authors="Don Johnson">
   <metadata xmlns:md="http://cnx.rice.edu/mdml" mdml-version="0.5">
     <md:content-id>col10040</md:content-id>
     <md:title>Fundamentals of Electrical Engineering I</md:title>
     <md:language>en</md:language>
     <md:license url="http://creativecommons.org/licenses/by/1.0">Creative Commons Attribution License</md:license>
     <md:uuid>778e36af-4c21-4ef7-9c02-dae860eb7d14</md:uuid>
-<md:slug>fundamentals-of-electrical-engineering-i</md:slug>
-</metadata>
+    <md:slug>fundamentals-of-electrical-engineering-i</md:slug>
+  </metadata>
   <col:content>
     <col:subcollection>
       <md:title>Introduction</md:title>
